@@ -1864,7 +1864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractiveTime: 0.5
   CanUseObject: 0
-  interactiveObjectType: 1
+  interactiveObjectType: 12
   ActionType: 0
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 0}
@@ -2069,7 +2069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractiveTime: 0.5
   CanUseObject: 0
-  interactiveObjectType: 1
+  interactiveObjectType: 12
   ActionType: 0
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 0}
@@ -2133,7 +2133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractiveTime: 0.5
   CanUseObject: 0
-  interactiveObjectType: 1
+  interactiveObjectType: 12
   ActionType: 0
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 0}
@@ -2255,7 +2255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractiveTime: 0.5
   CanUseObject: 0
-  interactiveObjectType: 1
+  interactiveObjectType: 12
   ActionType: 0
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 0}

@@ -32,8 +32,6 @@ public class ObjectData : MonoBehaviour {
 
         NumberOfCollisions NumberOfCollisionsScript = GetComponent<NumberOfCollisions>();
 
-        CollisionAnimator collisionAnimator = GetComponent<CollisionAnimator>();
-
         if (CollisionObjectScript != null)
         {
             CollisionObjectScript.SetCollisionReCheckTime(ReCheckTime);

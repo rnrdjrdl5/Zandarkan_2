@@ -8,7 +8,6 @@ public class TitleLogoManager : MonoBehaviour {
 
     private GameObject UICanvas;
 
-    private GameObject CKLogoPanel;
     private GameObject FadePanel;
 
     private GameObject FadeImage;
@@ -24,7 +23,6 @@ public class TitleLogoManager : MonoBehaviour {
 
         UICanvas = GameObject.Find("UICanvas").gameObject;
 
-        CKLogoPanel = UICanvas.transform.Find("CKLogoPanel").gameObject;
         FadePanel = UICanvas.transform.Find("FadePanel").gameObject;
 
         FadeImage = FadePanel.transform.Find("FadeImage").gameObject;

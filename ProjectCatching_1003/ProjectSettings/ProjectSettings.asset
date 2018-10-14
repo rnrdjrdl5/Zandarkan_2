@@ -616,14 +616,14 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Build: 1
-    Collab: 1
+    Build: 0
+    Collab: 0
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: a00fdfeb-9516-4530-8dcf-36fe3aa155ad
+  cloudProjectId: e7d17f1a-2097-470a-8e4e-9d694622734b
   projectName: Cat_Chinh_Game_Scene
-  organizationId: sika917
+  organizationId: rnrdjrdl5
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

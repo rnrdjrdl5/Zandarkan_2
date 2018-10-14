@@ -61,6 +61,8 @@ public class UIManager : Photon.PunBehaviour {
     public event DeleUpdate UpdateEvent;
 
 
+    // 상호작용 물체 GUI
+    public InterObjectGUIPanelScript interObjectGUIPanelScript { get; set; }
 
 
     IEnumerator EnumCoro;
@@ -77,7 +79,6 @@ public class UIManager : Photon.PunBehaviour {
     }
 
     /**** 접근자 private ****/
-    private PhotonManager photonManager;                // 포톤매니저
 
     public List<PhotonPlayer> Players{ get; set; }              // 플레이어를 담는 리스트 , PhotonManager에서 Add시킴
 
@@ -167,7 +168,6 @@ public class UIManager : Photon.PunBehaviour {
         uIManager = this;
 
 
-        photonManager = GameObject.Find("PhotonManager").GetComponent<PhotonManager>();
 
 
         
@@ -251,6 +251,10 @@ public class UIManager : Photon.PunBehaviour {
         menuUIPanelScript = new MenuUIPanelScript();
         menuUIPanelScript.InitData();
 
+        interObjectGUIPanelScript = new InterObjectGUIPanelScript();
+        interObjectGUIPanelScript.InitData();
+
+
     }
 
     private void Start()
@@ -262,10 +266,19 @@ public class UIManager : Photon.PunBehaviour {
     private void Update()
     {
 
+
+
         // 하위 스크립트의 이벤트들을 실행
         UpdateEvent();
 
+        //UI 키입력 처리
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if(interObjectGUIPanelScript.GetActive() == false)
+                interObjectGUIPanelScript.SetActive(true);
 
+            else interObjectGUIPanelScript.SetActive(false);
+        }
 
     }
 

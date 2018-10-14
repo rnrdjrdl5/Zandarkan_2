@@ -40,7 +40,7 @@ public class TrapState{
 
         NumberOfCollisions NumberOfCollisionsScript = CollisionGameObject.GetComponent<NumberOfCollisions>();
 
-        CollisionAnimator collisionAnimator = CollisionGameObject.GetComponent<CollisionAnimator>();
+        
 
         if (CollisionObjectScript != null)
         {

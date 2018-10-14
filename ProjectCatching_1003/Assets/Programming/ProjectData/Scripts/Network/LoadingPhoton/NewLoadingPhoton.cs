@@ -16,7 +16,6 @@ public class NewLoadingPhoton : Photon.PunBehaviour{
     public GameObject LoadingObject;
     public GameObject LoadingFinish;
 
-    private PhotonView photonView;
 
     private bool isOnceLoadingFinishRPC;
 
@@ -103,8 +102,6 @@ public class NewLoadingPhoton : Photon.PunBehaviour{
 
     void InitPhotonView()
     {
-
-        photonView = GetComponent<PhotonView>();
 
         if (photonView == null)
             Debug.Log("photon 없음");

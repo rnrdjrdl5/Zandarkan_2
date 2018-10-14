@@ -9,7 +9,6 @@ public partial class TimeBar : MonoBehaviour {
 
         // 1. 인스턴트화 시 오브젝트, 프리팹 생성.
         isCount = false;
-        InGameCanvas = GameObject.Find("InGameCanvas");
 
     }
 	

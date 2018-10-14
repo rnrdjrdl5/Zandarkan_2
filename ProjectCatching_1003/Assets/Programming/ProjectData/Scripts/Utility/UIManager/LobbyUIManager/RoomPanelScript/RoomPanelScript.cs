@@ -68,7 +68,7 @@ public class RoomPanelScript{
         lobbyUIManager.UpdateEvent += ExitImageEffect.EffectEventLobby;
         lobbyUIManager.UpdateEvent += HelpImageEffect.EffectEventLobby;
 
-
+        
     }
 
     public void FadeOutEffect()

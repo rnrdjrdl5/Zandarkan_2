@@ -35,7 +35,6 @@ public partial class TimeBar {
 
         isCount = false;
 
-        NowTimeBar = null;
         NowTimeBarImage = null;
 
         NowTime = 0.0f;

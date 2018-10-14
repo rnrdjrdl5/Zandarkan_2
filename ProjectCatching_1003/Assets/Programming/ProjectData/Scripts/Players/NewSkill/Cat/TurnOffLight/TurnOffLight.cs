@@ -7,14 +7,12 @@ public class TurnOffLight : DefaultNewSkill
     // 불 끌때 각종 옵션입니다.
     public TurnOffLightState turnOffLightState;
 
-    // 캔버스입니다. 불 끄는 ui가 들어갈 위치.
-    private GameObject InGameCanvas;
+   
 
     protected override void Awake()
     {
         base.Awake();
 
-        InGameCanvas = GameObject.Find("InGameCanvas").gameObject;
 
         defaultCdtAct = new NormalCdtAct();
         defaultCdtAct.InitCondition(this);

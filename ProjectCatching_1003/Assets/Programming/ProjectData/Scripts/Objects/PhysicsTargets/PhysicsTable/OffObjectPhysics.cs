@@ -29,7 +29,11 @@ public class OffObjectPhysics : MonoBehaviour {
            {*/
         if (!isCheck) {
             isCheck = true;
-            // StartCoroutine(CoroOffPhysics);
+
+
+            StartCoroutine(CoroOffPhysics);
+
+
             gameObject.layer = LayerMask.NameToLayer("NoPlayerInterEnd");
 
 

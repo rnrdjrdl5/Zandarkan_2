@@ -20,7 +20,6 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
     public GameObject DramaticCameraPrefab;
     private GameObject DramaticCameraObject;
 
-    bool isObserverMode = true;
 
 
     //이벤트들

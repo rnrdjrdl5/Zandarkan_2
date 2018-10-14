@@ -46,6 +46,7 @@ public class NewLobbyRoomPhoton : Photon.PunBehaviour
     private GameObject MenuBook;
     private Animator MenuBookAnimator;
 
+    private string playerName;
 
     private void Awake()
     {
@@ -69,8 +70,6 @@ public class NewLobbyRoomPhoton : Photon.PunBehaviour
 
         readyTimeLine = OpeningObject.transform.Find("ReadyTimeLine").gameObject;
         playTimeLine = OpeningObject.transform.Find("PlayTimeLine").gameObject;
-
-        
 
     }
 
@@ -105,6 +104,41 @@ public class NewLobbyRoomPhoton : Photon.PunBehaviour
 
             StartCoroutine("ChangeTitleLobby");
 
+        }
+
+        if (gameStateType == EnumGameState.FINDROOM)
+        {
+
+            FindRoomGUI();
+        }
+
+    }
+
+    private void FindRoomGUI()
+    {
+        
+        // 1. 방 받아오기
+        RoomInfo[] fi = PhotonNetwork.GetRoomList();
+
+        // 2. 받아온 방의 정보로 각 방 매칭시키기
+
+        int count = lobbyUIManager.waitingRoomPanelScript.MAX_ROOMLIST;
+        int roomCount = fi.Length;
+        Debug.Log(roomCount);
+        for (int i = 0; i < count; i++)
+        {
+            if (roomCount > i)
+            {
+                lobbyUIManager.waitingRoomPanelScript.RoomList[i].SetActive(true);
+                lobbyUIManager.waitingRoomPanelScript.RoomName[i].text = fi[i].Name;
+
+                string playerAmount = fi[i].PlayerCount + " / " + fi[i].MaxPlayers;
+                lobbyUIManager.waitingRoomPanelScript.RoomPlayerAmount[i].text = playerAmount;
+            }
+            else
+            {
+                lobbyUIManager.waitingRoomPanelScript.RoomList[i].SetActive(false);
+            }
         }
     }
 
@@ -348,21 +382,19 @@ public class NewLobbyRoomPhoton : Photon.PunBehaviour
     {
         base.OnJoinedLobby();
 
+        // 방 탐지?
+        FindRoomGUI();
         gameStateType = EnumGameState.FINDROOM;
 
-        Debug.Log("게임입장완료");
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
 
-        PhotonNetwork.JoinRandomRoom();
-    }
+        DeleFadeOut = lobbyUIManager.lobbyPanelScript.FadeOutEffect;
+        DeleFadeIn = lobbyUIManager.waitingRoomPanelScript.FadeInEffect;
 
-    public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
-    {
-        RoomOptions ro = new RoomOptions
-        {
-            MaxPlayers = 6
-        };
-
-        PhotonNetwork.CreateRoom("Catching" + Random.Range(0, 1000).ToString(), ro, TypedLobby.Default);
+        DeleSetOff = lobbyUIManager.lobbyPanelScript.SetActive;
+        DeleSetOn = lobbyUIManager.waitingRoomPanelScript.SetActive;
+        StartCoroutine("Finish_FadeOut_Start_Animation");
+        FinishFadeEvent = WaitingRoomEvent;
     }
 
     public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
@@ -387,6 +419,8 @@ public class NewLobbyRoomPhoton : Photon.PunBehaviour
     {
 
         base.OnJoinedRoom();
+
+        Debug.Log((string)PhotonNetwork.room.CustomProperties["Password"]);
 
         if (!isUseEvent) return;
 
@@ -460,22 +494,15 @@ public class NewLobbyRoomPhoton : Photon.PunBehaviour
     {
         if (!isUseEvent) return;
 
-        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
-
-        DeleFadeOut = lobbyUIManager.lobbyPanelScript.FadeOutEffect;
-        DeleFadeIn = lobbyUIManager.waitingRoomPanelScript.FadeInEffect;
-
-        DeleSetOff = lobbyUIManager.lobbyPanelScript.SetActive;
-        DeleSetOn = lobbyUIManager.waitingRoomPanelScript.SetActive;
-        StartCoroutine("Finish_FadeOut_Start_Animation");
-        FinishFadeEvent = WaitingRoomEvent;
-
-
-
-
+        // 로비 이동 클릭 시 먼저 입장함 이후 UI 변경
+        PhotonNetwork.JoinLobby();
 
     }
 
+    public override void OnReceivedRoomListUpdate()
+    {
+        Debug.Log("weafvew");
+    }
 
 
     public void ClickExitClient()
@@ -497,7 +524,7 @@ public class NewLobbyRoomPhoton : Photon.PunBehaviour
 
     public void ClickGameStart()
     {
-
+        
         if (!isUseEvent) return;
 
         soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
@@ -537,13 +564,132 @@ public class NewLobbyRoomPhoton : Photon.PunBehaviour
         StartCoroutine("Finish_FadeOut_Start_Animation");
     }
 
+    public void ClickCreateRoom()
+    {
+
+        // 1. 방 만드는 메뉴창 보여주기.
+        lobbyUIManager.waitingRoomPanelScript.CreateRoomWindow.SetActive(true);
+
+    }
+
+    public void ClickCROrderButton()
+    {
+
+
+        //1 . 방이름 받아오기.
+        string RoomName = lobbyUIManager.waitingRoomPanelScript.InputRoomName.text;
+        string RoomPassword = lobbyUIManager.waitingRoomPanelScript.InputRoomPW.text;
+
+        // 같은 방 이름이 있는지 체크함.
+        RoomInfo[] fi = PhotonNetwork.GetRoomList();
+
+
+        int count = fi.Length;
+        for (int i = 0; i < count; i++)
+        {
+            if (fi[i].Name == RoomName)
+            {
+                return;   
+            }
+        }
+
+
+        // 2. 방 fadeout시키기
+        lobbyUIManager.waitingRoomPanelScript.CreateRoomWindow.SetActive(false);
+
+        //3. 방 생성
+        RoomOptions ro = new RoomOptions
+        {
+            MaxPlayers = 6
+        };
+
+        ExitGames.Client.Photon.Hashtable PlayerSceneState = new ExitGames.Client.Photon.Hashtable
+        {
+            
+            { "Password", RoomPassword}
+        };
+
+        ro.CustomRoomPropertiesForLobby = new string[] { RoomPassword };// = PlayerSceneState;
+
+        PhotonNetwork.CreateRoom(RoomName, ro, TypedLobby.Default);
+
+
+    }
+    public void ClickCRBackButton()
+    {
+        // 1. 방 만드는 메뉴창 보여주기.
+        lobbyUIManager.waitingRoomPanelScript.CreateRoomWindow.SetActive(false);
+    }
+
+    public void ClickQuickMatch()
+    {        
+        PhotonNetwork.JoinRandomRoom();
+    }
+
+    public void ClickRoom1() { ClickJoinRoom(1); }
+    public void ClickRoom2() { ClickJoinRoom(2); }
+    public void ClickRoom3() { ClickJoinRoom(3); }
+    public void ClickRoom4() { ClickJoinRoom(4); }
+    public void ClickRoom5() { ClickJoinRoom(5); }
+    public void ClickRoom6() { ClickJoinRoom(6); }
+
+    public void ClickJoinRoom(int number)
+    {
+        RoomInfo[] fi = PhotonNetwork.GetRoomList();
+        PhotonNetwork.JoinRoom(fi[number - 1].Name);
+    }
+
+    public void ClickReturnTitleButton()
+    {
+
+        PhotonNetwork.LeaveLobby();
+
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
+
+        DeleFadeOut = lobbyUIManager.waitingRoomPanelScript.FadeOutEffect;
+        DeleFadeIn = lobbyUIManager.lobbyPanelScript.FadeInEffect;
+
+        DeleSetOff = lobbyUIManager.waitingRoomPanelScript.SetActive;
+        DeleSetOn = lobbyUIManager.lobbyPanelScript.SetActive;
+        StartCoroutine("Finish_FadeOut_Start_Animation");
+        FinishFadeEvent = LobbyRoomEvent;
+    }
+
+
+    // 닉네임설정 시작
+    public void ClickCreateNameButton()
+    {
+        lobbyUIManager.waitingRoomPanelScript.CreatePlayerName.SetActive(true);
+    }
+
+    
+
+    public void ClickCPOrderButton()
+    {
+
+        playerName = lobbyUIManager.waitingRoomPanelScript.InputPlayerName.text;
+        lobbyUIManager.waitingRoomPanelScript.PlayerName.text = playerName;
+        lobbyUIManager.waitingRoomPanelScript.CreatePlayerName.SetActive(false);
+    }
+
+    public void ClickCPBackButtonButton()
+    {
+        lobbyUIManager.waitingRoomPanelScript.CreatePlayerName.SetActive(false);
+    }
+    // 닉네임설정 끝
+
+
+
     /**** Fade 이벤트 ****/
 
     public void WaitingRoomEvent()
     {
-        gameStateType = EnumGameState.FINDROOM;
-        PhotonNetwork.JoinLobby();
         FinishFadeEvent = null;
+    }
+
+    public void LobbyRoomEvent()
+    {
+        gameStateType = EnumGameState.LOBBY;
     }
 
     public void ChangeScene()

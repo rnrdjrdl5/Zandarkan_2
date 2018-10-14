@@ -32,7 +32,6 @@ public partial class PlayerHealth
     private bool isHiting;
     private float NowHiting;
 
-    private PhotonManager photonManager;
 
     private float NowRopeDeadTime;
     private bool isUseRopeDead = false;

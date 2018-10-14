@@ -425,7 +425,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925726866383996}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 3.58, y: -2.418, z: 9.7}
+  m_LocalPosition: {x: -0.4499998, y: -3.009, z: 19.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4690851284387872}
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractiveTime: 0.5
   CanUseObject: 0
-  interactiveObjectType: 1
+  interactiveObjectType: 12
   ActionType: 0
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 0}
@@ -1897,7 +1897,7 @@ MonoBehaviour:
   InterPosType: 2
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
-  MinPlayerMount: 5
+  MinPlayerMount: 0
   ObjectHeight: 100
   isCanFirstCheck: 0
   interMountType: 0
@@ -2044,7 +2044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractiveTime: 0.5
   CanUseObject: 0
-  interactiveObjectType: 1
+  interactiveObjectType: 12
   ActionType: 0
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 0}
@@ -2069,7 +2069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractiveTime: 0.5
   CanUseObject: 0
-  interactiveObjectType: 1
+  interactiveObjectType: 12
   ActionType: 0
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 0}
@@ -2183,7 +2183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractiveTime: 0.5
   CanUseObject: 0
-  interactiveObjectType: 1
+  interactiveObjectType: 12
   ActionType: 0
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 0}

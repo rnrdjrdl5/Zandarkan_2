@@ -16,11 +16,9 @@ public partial class TimeBar
     public GameObject TimeBarPanelPrefab;
     private GameObject TimeBarPanelObject;
 
-    // 인게임 캠버스.
-    private GameObject InGameCanvas;
+   
 
-    // 타임바 
-    private GameObject NowTimeBar;
+    
 
     // 타임바 이미지 컴포넌트
     private Image NowTimeBarImage;

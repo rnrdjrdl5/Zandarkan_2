@@ -16,7 +16,6 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
     }
 
 
-    private GameObject inGameCanvas;                       // UI 캔버스
     private GameObject interactiveObject;                  // 상호작용 오브젝트
 
     private int interViewID;                    // viewID 동기화 용 , 상호작용 물체에서 물체확인용으로 사용
@@ -60,8 +59,6 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
 
     private void Awake()
     {
-
-        inGameCanvas = GameObject.Find("InGameObject");                               // 캔버스 설정
 
         animator = GetComponent<Animator>();                                      // 애니메이터 설정
 

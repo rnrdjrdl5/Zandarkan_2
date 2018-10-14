@@ -24,7 +24,6 @@ public class BaseCollision : Photon.PunBehaviour{
 
     private PlayerHealth playerHealth;              // 플레이어 체력 스크립트
 
-    private PlayerState playerState;                // 플레이어 상태
 
     private Animator animator;              // 애니메이터 
 
@@ -47,8 +46,6 @@ public class BaseCollision : Photon.PunBehaviour{
         // 플레이어 체력 스크립트 받기
         playerHealth = gameObject.GetComponent<PlayerHealth>();
 
-        // 플레이어 상태 받기
-        playerState = gameObject.GetComponent<PlayerState>();
         
         // 애니메이터 받기
         animator = gameObject.GetComponent<Animator>();
