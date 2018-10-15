@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: dbd5910831142924bb2eee215cf54015
+timeCreated: 1539532153
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Wall_Door
+    100004: Wall_Enter
+    100006: Wall_Enter_2nd
+    100008: Wall_Enter_Clean
+    100010: Wall_Kitchen
+    100012: Wall_Kitchen_2nd
+    100014: Wall_Pillar
+    100016: Wall_Stage
+    100018: Wall_Stage_2nd
+    100020: Wall_Stairs
+    100022: Wall_Stairs_sides
+    100024: Wall_Wood_Moulding
+    400000: //RootNode
+    400002: Wall_Door
+    400004: Wall_Enter
+    400006: Wall_Enter_2nd
+    400008: Wall_Enter_Clean
+    400010: Wall_Kitchen
+    400012: Wall_Kitchen_2nd
+    400014: Wall_Pillar
+    400016: Wall_Stage
+    400018: Wall_Stage_2nd
+    400020: Wall_Stairs
+    400022: Wall_Stairs_sides
+    400024: Wall_Wood_Moulding
+    2300000: Wall_Door
+    2300002: Wall_Enter
+    2300004: Wall_Enter_2nd
+    2300006: Wall_Enter_Clean
+    2300008: Wall_Kitchen
+    2300010: Wall_Kitchen_2nd
+    2300012: Wall_Pillar
+    2300014: Wall_Stage
+    2300016: Wall_Stage_2nd
+    2300018: Wall_Stairs
+    2300020: Wall_Stairs_sides
+    2300022: Wall_Wood_Moulding
+    3300000: Wall_Door
+    3300002: Wall_Enter
+    3300004: Wall_Enter_2nd
+    3300006: Wall_Enter_Clean
+    3300008: Wall_Kitchen
+    3300010: Wall_Kitchen_2nd
+    3300012: Wall_Pillar
+    3300014: Wall_Stage
+    3300016: Wall_Stage_2nd
+    3300018: Wall_Stairs
+    3300020: Wall_Stairs_sides
+    3300022: Wall_Wood_Moulding
+    4300000: Wall_Enter
+    4300002: Wall_Pillar
+    4300004: Wall_Stage
+    4300006: Wall_Stairs_sides
+    4300008: Wall_Kitchen
+    4300010: Wall_Stairs
+    4300012: Wall_Enter_2nd
+    4300014: Wall_Stage_2nd
+    4300016: Wall_Kitchen_2nd
+    4300018: Wall_Wood_Moulding
+    4300020: Wall_Door
+    4300022: Wall_Enter_Clean
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall-Nonwood
+    second: {fileID: 2100000, guid: 84e89226cff4b8745a524e010489728b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pillar
+    second: {fileID: 2100000, guid: 8a5199f7deae8a3469b3394079d58ccb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall
+    second: {fileID: 2100000, guid: 5795f7a5cd253ed4793a5c5f90672686, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: 0bc2ab748d2e9724fa038945014dba5e, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -384,7 +384,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001314777569958}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -16.999126, y: 0, z: -3.2226682}
+  m_LocalPosition: {x: -3.47, y: 14.385, z: -13.817}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4989030789964542}
@@ -1040,7 +1040,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277939926438334}
-  m_Mesh: {fileID: 4300000, guid: c02490d2edd98674781223cc463b7c72, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a6a232739ea494c4681d13dda6472c58, type: 3}
 --- !u!33 &33894277761516350
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1175,11 +1175,13 @@ MonoBehaviour:
   CanUseObject: 0
   interactiveObjectType: 3
   ActionType: 1
-  InterObjectScore: 373
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 1159525782602162}
   InterPosType: 0
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
+  MinPlayerMount: 0
+  ObjectHeight: 0
   isCanFirstCheck: 0
   interMountType: 0
+  physicsEffect: 0
