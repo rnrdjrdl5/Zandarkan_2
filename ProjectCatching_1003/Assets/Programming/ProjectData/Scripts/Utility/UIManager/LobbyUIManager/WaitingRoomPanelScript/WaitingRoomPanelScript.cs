@@ -12,9 +12,11 @@ public class WaitingRoomPanelScript{
     }
 
 
+    // 방들
     public int MAX_ROOMLIST = 6;
     public GameObject[] RoomList;
     public GameObject[] BackGround;
+    public Button[] RoomListButton;
     public Text[] RoomName;
     public Text[] RoomPlayerAmount;
 
@@ -23,6 +25,7 @@ public class WaitingRoomPanelScript{
     public void InitRoomList()
     {
         RoomList = new GameObject[MAX_ROOMLIST];
+        RoomListButton = new Button[MAX_ROOMLIST];
         BackGround = new GameObject[MAX_ROOMLIST];
         RoomName = new Text[MAX_ROOMLIST];
         RoomPlayerAmount = new Text[MAX_ROOMLIST];
@@ -35,6 +38,8 @@ public class WaitingRoomPanelScript{
             BackGround[i] = RoomList[i].transform.
                 Find("BackGround").gameObject;
 
+            RoomListButton[i] = BackGround[i].GetComponent<Button>();
+
             RoomName[i] =
                 BackGround[i].transform.Find("RoomName").GetComponent<Text>();
 
@@ -46,6 +51,8 @@ public class WaitingRoomPanelScript{
     }
 
 
+
+    // 자식 방만들기 객체
     public GameObject CreateRoomWindow;
     public InputField InputRoomName;
     public InputField InputRoomPW;
@@ -64,6 +71,7 @@ public class WaitingRoomPanelScript{
     }
 
 
+    // 자식 이름생성 객체
     public GameObject CreatePlayerName;
     public InputField InputPlayerName;
     public void InitCreatePlayerName()
@@ -71,8 +79,44 @@ public class WaitingRoomPanelScript{
         CreatePlayerName = WaitingRoomPanel.transform.Find("CreatePlayerName").gameObject;
 
         InputPlayerName = CreatePlayerName.transform.Find("InputPlayerName").GetComponent<InputField>();
+
     }
 
+
+
+
+    // 비활성화 용
+    public GameObject QuickMatchButton;
+    public Button QuickMatchButtonButton;
+    public void InitQuickMatchButton()
+    {
+        QuickMatchButton = WaitingRoomPanel.transform.Find("QuickMatchButton").gameObject;
+        QuickMatchButtonButton = QuickMatchButton.GetComponent<Button>();
+    }
+
+    public GameObject ReturnTitleButton;
+    public Button ReturnTitleButtonButton;
+    public void InitReturnTitleButton()
+    {
+        ReturnTitleButton = WaitingRoomPanel.transform.Find("ReturnTitleButton").gameObject;
+        ReturnTitleButtonButton = ReturnTitleButton.GetComponent<Button>();
+    }
+
+    public GameObject CreateNameButton;
+    public Button CreateNameButtonButton;
+    public void InitCreateNameButton()
+    {
+        CreateNameButton = WaitingRoomPanel.transform.Find("CreateNameButton").gameObject;
+        CreateNameButtonButton = CreateNameButton.GetComponent<Button>();
+    }
+
+    public GameObject CreateRoomButton;
+    public Button CreateRoomButtonButton;
+    public void InitCreateRoomButton()
+    {
+        CreateRoomButton = WaitingRoomPanel.transform.Find("CreateRoomButton").gameObject;
+        CreateRoomButtonButton = CreateRoomButton.GetComponent<Button>();
+    }
 
     public void InitData()
     {
@@ -83,6 +127,26 @@ public class WaitingRoomPanelScript{
         InitRoomList();
         InitCreateRoomWindow();
         InitCreatePlayerName();
+
+        InitQuickMatchButton();
+        InitReturnTitleButton();
+        InitCreateNameButton();
+        InitCreateRoomButton();
+    }
+
+    public void SetInteractable(bool isInteractable)
+    {
+        for (int i = 0; i < MAX_ROOMLIST; i++)
+        {
+            RoomListButton[i].interactable = isInteractable;
+        }
+
+        CreateNameButtonButton.interactable = isInteractable;
+        QuickMatchButtonButton.interactable = isInteractable;
+        CreateRoomButtonButton.interactable = isInteractable;
+        ReturnTitleButtonButton.interactable = isInteractable;
+
+
     }
 
     public void SetActive(bool isActive)

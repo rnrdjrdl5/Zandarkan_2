@@ -588,7 +588,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ddddd
+  m_Text: 
 --- !u!222 &245381266
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3446,12 +3446,12 @@ Prefab:
     - target: {fileID: 224118108428797396, guid: 2abec209895e080498b6750782243e81,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 529.77924
+      value: 564.27924
       objectReference: {fileID: 0}
     - target: {fileID: 224118108428797396, guid: 2abec209895e080498b6750782243e81,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 299.24277
+      value: 318.74277
       objectReference: {fileID: 0}
     - target: {fileID: 114073453718681170, guid: 2abec209895e080498b6750782243e81,
         type: 2}
