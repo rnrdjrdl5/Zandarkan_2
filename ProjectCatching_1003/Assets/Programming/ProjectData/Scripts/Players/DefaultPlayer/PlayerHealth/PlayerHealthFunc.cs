@@ -20,8 +20,6 @@ public partial class PlayerHealth
     {
 
 
-        photonManager = PhotonManager.GetInstance();
-
         playerState = GetComponent<PlayerState>();
 
         animator = GetComponent<Animator>();

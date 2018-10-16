@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AppID: 8d791475-3b63-43a5-8205-fda504e13775
   VoiceAppID: 
-  ChatAppID: 
+  ChatAppID: 8d791475-3b63-43a5-8205-fda504e13775
   HostType: 1
   PreferredRegion: 9
   EnabledRegions: -1
@@ -29,11 +29,10 @@ MonoBehaviour:
   RpcList:
   - ApplyDamage
   - Chat
+  - DestroyFirstEffects
   - DestroyRpc
   - FallDamage
   - InstantiateRpc
-  - OffRope
-  - OnRope
   - PickupItemInit
   - PunPickup
   - PunPickupSimple
@@ -42,52 +41,62 @@ MonoBehaviour:
   - RequestForPickupTimes
   - RPCActionAnimation
   - RPCActionCheckCreatePlayer
+  - RPCActionCheckFinishNext
   - RPCActionCheckGameFinish
   - RPCActionCheckGameStart
   - RPCAddDebuffState
-  - RPCAngryEmoticon
   - RPCAnimation
-  - RPCAttack
   - RPCCancelActionAnimation
   - RPCCheckUseItem
-  - RPCCheckUseRescue
   - RPCCreateEffect
-  - RPCCreateEmoticon
   - RPCCreateFryingPan
   - RPCCreateMarble
   - RPCCreatePlayer
   - RPCCreateTrap
   - RPCDamagedDebuff
-  - RPCDeadEffect
   - RPCEquip
   - RPCEraseTrap
+  - RPCFinishLoading
   - RPCGroggyDebuff
-  - RPCHappyEmoticon
   - RPCHideBuff
-  - RPCHiEmoticon
   - RPCInterMessage
-  - RPCLoadingScene
-  - RPCMerongEmoticon
-  - RPCNextScene
-  - RPCNoSign
+  - RPCisAttack
+  - RPCNextRound
   - RPCNotMoveDebuff
-  - RPCOKSign
   - RPCOnCanFirstCheck
-  - RPCOtherCancelEvent
-  - RPCPostDeadAction
-  - RPCPreStartCount
   - RPCPushObjectPool
+  - RPCReScene
   - RPCRetunDontSkill
   - RPCReturnFail
   - RPCReturnSkill
   - RPCReturnUseItem
-  - RPCSadEmoticon
   - RPCSetAnimationMode
   - RPCSlideDebuff
   - RPCStunDebuff
-  - RPCSuccessRescue
   - RPCTableAction
   - RPCTurnOffLight
+  - RPCUseCrash
+  - RPCCheckUseRescue
+  - RPCNoSign
+  - RPCOKSign
+  - RPCOtherCancelEvent
+  - RPCSuccessRescue
+  - RPCPreStartCount
+  - RPCCreateEmoticon
+  - RPCAngryEmoticon
+  - RPCHappyEmoticon
+  - RPCHiEmoticon
+  - RPCMerongEmoticon
+  - RPCSadEmoticon
+  - RPCOffCameraOffActive
+  - RPCPostDeadAction
+  - RPCAttack
+  - RPCNextScene
+  - OffRope
+  - OnRope
+  - RPCDeadEffect
+  - RPCLoadingScene
+  - RPCTestdd
   - RPCTutoActionCheckGameStart
   - RPCTutoCreatePlayer
   - RPCTutoPlayingGame

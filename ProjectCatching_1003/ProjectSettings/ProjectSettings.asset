@@ -621,9 +621,15 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
+<<<<<<< HEAD
   cloudProjectId: b6ef9fdc-fcb5-40fc-9df8-8ae21413447e
   projectName: Cat_Chinh_Game_Scene
   organizationId: albert-4573171
+=======
+  cloudProjectId: e7d17f1a-2097-470a-8e4e-9d694622734b
+  projectName: Cat_Chinh_Game_Scene
+  organizationId: rnrdjrdl5
+>>>>>>> Programmer
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

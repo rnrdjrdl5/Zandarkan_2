@@ -18,8 +18,6 @@ public class CameraShake : MonoBehaviour {
     private bool isUseShake = false;
 
 
-    private bool isCoroRunning = false; // 코루틴 실행중 판단 여부
-
     IEnumerator CoroShake;       // 코루틴
 
     // public Vector3 OnlyShakePosition;        // 코루틴으로 이동하는 거리
@@ -39,7 +37,6 @@ public class CameraShake : MonoBehaviour {
 
     // 현재 쉐이크 위치
     int NowShakeCount;
-    int MaxShakeCount;
 
 
     // 각 포지션 정의
@@ -130,7 +127,6 @@ public class CameraShake : MonoBehaviour {
 
             // 현재 쉐이크 위치
             NowShakeCount = 0;
-            MaxShakeCount = ShakeOptions.Count;
 
 
             // 각 포지션 정의
@@ -219,7 +215,6 @@ public class CameraShake : MonoBehaviour {
 
 
         NowShakeCount = 0;
-        MaxShakeCount = 0;
 
 
         NowPosition = Vector3.zero;

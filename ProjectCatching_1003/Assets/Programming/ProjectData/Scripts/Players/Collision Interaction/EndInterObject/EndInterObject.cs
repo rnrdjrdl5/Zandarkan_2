@@ -26,7 +26,6 @@ public class EndInterObject : MonoBehaviour
 
     }
 
-    int a = 0;
 
     private void OnTriggerEnter(Collider other)
     {

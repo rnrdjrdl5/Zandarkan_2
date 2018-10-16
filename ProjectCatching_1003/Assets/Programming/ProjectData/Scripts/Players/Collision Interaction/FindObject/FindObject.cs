@@ -24,7 +24,6 @@ public class FindObject : MonoBehaviour {
 
 
 
-    private GameObject InGameCanvas;
 
 
 
@@ -83,7 +82,6 @@ public class FindObject : MonoBehaviour {
 
 
         PTL = new PointToLocation();
-        InGameCanvas = UIManager.GetInstance().InGameCanvas;
 
 
         

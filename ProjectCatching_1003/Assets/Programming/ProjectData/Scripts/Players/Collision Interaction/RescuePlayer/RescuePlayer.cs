@@ -28,7 +28,6 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
     private PlayerBodyPart playerBodyPart;
 
     private bool isUsedRescue = false;      // 동기화, 살려지는지 판단
-    private bool isUpdateRescueTime = false;        // 살리고 있는지 판단. 
 
 
     private float NowRescueTime = 0.0f;

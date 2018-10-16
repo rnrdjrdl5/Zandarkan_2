@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class InteractionAnimator : StateMachineBehaviour
 {
-    private FindObject findObject;
     private PlayerState playerState;
-    private InteractiveState interactiveState;
     private NewInteractionSkill newInteractionSkill;
     private PhotonView photonView;
 
@@ -18,17 +16,10 @@ public class InteractionAnimator : StateMachineBehaviour
     void InitScripts(Animator animator)
     {
 
-            findObject = animator.gameObject.GetComponent<FindObject>();
-
 
             playerState = animator.gameObject.GetComponent<PlayerState>();
     }
 
-    void InitinteractiveState(Animator animator)
-    {
-         interactiveState = newInteractionSkill.GetinteractiveState();
-
-    }
 
     void InitNewInteractionSkill(Animator animator)
     {

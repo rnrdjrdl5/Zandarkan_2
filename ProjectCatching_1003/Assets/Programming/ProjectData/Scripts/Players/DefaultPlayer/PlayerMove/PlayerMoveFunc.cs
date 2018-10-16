@@ -187,7 +187,6 @@ public partial class PlayerMove
             // 캐릭터 움직임.
             characterController.Move(MoveDir * Time.deltaTime);
 
-            RaycastHit hit;
 
             if (MoveDir.y < 0 &&
                 animator.GetInteger("JumpType") == 1)

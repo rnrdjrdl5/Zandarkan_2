@@ -9,6 +9,8 @@ public class ObjectManager : MonoBehaviour {
 
     private const int MAX_OBJECT_TYPE = 12 + 1;  // 1 이유 : 시작점이 1이라서 한칸 더 할당함
 
+
+
     private static ObjectManager objectManager;
     public static ObjectManager GetInstance() { return objectManager; }
 
@@ -39,15 +41,27 @@ public class ObjectManager : MonoBehaviour {
 
     private int[] mountObjects;     //오브젝트의 총 가중치를 의미함.
 
+
+    // 아래부터는 오브젝트를 표기하기 위한 변수입니다.
+
+    private int[] maxGUIObject;
+    private int[] nowGUIObject;
     
 
     private void Awake()
     {
         objectManager = this;
+
         mountObjects = new int[MAX_OBJECT_TYPE];
+
+        maxGUIObject = new int[MAX_OBJECT_TYPE];
+        nowGUIObject = new int[MAX_OBJECT_TYPE];
+
         for (int i = 0; i < MAX_OBJECT_TYPE; i++)
         {
             mountObjects[i] = 0;
+            maxGUIObject[i] = 0;
+            nowGUIObject[i] = 0;
         }
     }
 
@@ -78,32 +92,34 @@ public class ObjectManager : MonoBehaviour {
             if (InterObj[i].GetPhotonView().viewID == vID)
             {
 
-                // 고양이 플레이어 인 경우
-                /*  if ((string)PhotonNetwork.player.CustomProperties["PlayerType"] == "Cat")
-                  {*/
-
+                // 점수 받아오기
                 float NowCatScore = (float)PhotonNetwork.player.CustomProperties["StoreScore"];
 
+                // 물체정보
                 InteractiveState IS = InterObj[i].GetComponent<InteractiveState>();
 
+                // 물체 점수
                 float Score;
                 if (IS.ObjectHeight == 0 || IS.InterObjectMag == 0) Score = 0;
 
+                // 가중치를 통한 점수설정
                 else Score = IS.InterObjectMag * IS.ObjectHeight;
 
-
+                // 점수 감소
                 float NextCatScore = NowCatScore - Score;
                 if (NextCatScore <= 0)
                     NextCatScore = 0;
 
 
+                // 실질적 점수 설정
                 PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "StoreScore", NextCatScore } });
 
 
-                Debug.Log("가중치 :" + IS.InterObjectMag);
-                Debug.Log("비율 :" + IS.ObjectHeight);
 
-                Debug.Log("점수 : " + Score);
+                // GUI 카운트
+                nowGUIObject[(int)IS.interactiveObjectType]--;
+                if (nowGUIObject[(int)IS.interactiveObjectType] < 0) nowGUIObject[(int)IS.interactiveObjectType] = 0;
+                UIManager.GetInstance().interObjectGUIPanelScript.SetText(maxGUIObject, nowGUIObject);
 
 
                 // }
@@ -118,6 +134,8 @@ public class ObjectManager : MonoBehaviour {
                 RemoveEvent();
 
 
+                
+
             }
         }
 
@@ -125,6 +143,8 @@ public class ObjectManager : MonoBehaviour {
 
     public void RegisterObjectMount()
     {
+
+        // 초기화
         for (int i = InterObj.Count - 1; i >= 0; i--)
         {
 
@@ -136,9 +156,20 @@ public class ObjectManager : MonoBehaviour {
 
                 mountObjects[(int)IS.interactiveObjectType] +=
                     IS.ObjectHeight;
+
+                maxGUIObject[(int)IS.interactiveObjectType]++;
             }
             else { Debug.Log(" Inter 참조 에러, RegisterObjectMount()"); }
         }
+
+        // 현재 GUI 등록
+        for (int i = 1; i < MAX_OBJECT_TYPE; i++)
+        {
+            nowGUIObject[i] = maxGUIObject[i];
+        }
+
+        // GUI와 Text 일치화
+        UIManager.GetInstance().interObjectGUIPanelScript.SetText(maxGUIObject, nowGUIObject);
     }
 
     public void CalcObjectMag()

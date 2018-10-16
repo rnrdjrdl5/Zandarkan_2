@@ -93,7 +93,7 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
 
     private ObjectManager objectManager;                // 플레이어 오브젝트 관리  매니저
 
-    private bool isPlayerAction = false;                              // 해당 플레이어 액션 했는지 여부
+
 
     private Animator animator;
 
@@ -180,7 +180,7 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
 
     private void Start()
     {
-        //objectManager.IncObjectCount(interactiveObjectType , ObjectHeight);
+
     }
 
 

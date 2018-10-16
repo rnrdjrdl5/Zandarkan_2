@@ -101,7 +101,7 @@ public class TutorialAction {
 
     void DrawImage()
     {
-        Vector3 position = new Vector3(imageXPosition, imageYPosition, 0);
+       // Vector3 position = new Vector3(imageXPosition, imageYPosition, 0);
 
         // 생성할 방법이 필요하다. 그러면?
         //GameObject go = Instantiate(imageObject, position, Quaternion.identity);
