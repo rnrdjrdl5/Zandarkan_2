@@ -33,7 +33,6 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
     public string gameVersion;
 
     private bool isUseEvent;
-    private GameObject MenuBook;
     private Animator MenuBookAnimator;
 
 
@@ -47,8 +46,9 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
 
 
         isUseEvent = false;
-        MenuBook = GameObject.Find("MenuBook").gameObject;
-        MenuBookAnimator = MenuBook.transform.Find("menu2").GetComponent<Animator>();
+        GameObject MenuBook = GameObject.Find("MenuBook").gameObject;
+        MenuBookAnimator = MenuBook.GetComponent<Animator>();
+
         GameObject OpeningObject = GameObject.Find("OpeningObjects").gameObject;
 
         PhotonNetwork.ConnectUsingSettings(gameVersion);
