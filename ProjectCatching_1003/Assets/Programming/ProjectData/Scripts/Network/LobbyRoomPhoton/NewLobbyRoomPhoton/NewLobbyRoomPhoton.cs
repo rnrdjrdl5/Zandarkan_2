@@ -41,7 +41,7 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
     {
         TitleAwake();
         RoomAwake();
-
+        FindRoomAwake();
 
         gameStateType = EnumGameState.NONE;
 

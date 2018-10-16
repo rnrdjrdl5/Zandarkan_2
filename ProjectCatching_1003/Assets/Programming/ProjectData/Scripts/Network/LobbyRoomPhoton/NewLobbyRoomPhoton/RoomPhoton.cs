@@ -22,6 +22,7 @@ public partial class NewLobbyRoomPhoton
             roomPlayerDatas.Clear();
             InitPlayerList();
             DrawRoomState();
+            Debug.Log(PhotonNetwork.playerName);
         }
     }
 
@@ -144,7 +145,7 @@ public partial class NewLobbyRoomPhoton
         StartCoroutine("Finish_FadeOut_Start_Animation");
 
         // 이름 랜덤 생성
-        CreateRandomID();
+      //  CreateRandomID();
 
         // 플레이어 정보 생성
         InitPlayerList();

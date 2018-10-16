@@ -20,7 +20,11 @@ public class WaitingRoomPanelScript{
     public Text[] RoomName;
     public Text[] RoomPlayerAmount;
 
-    public Text PlayerName;
+    
+    // 방 목록 변경하기
+    public bool isCanRoomChannelButton { get; set; }
+    public Button RoomBeforeButtonButton;
+    public Button RoomNextButtonButton;
 
     public void InitRoomList()
     {
@@ -47,10 +51,18 @@ public class WaitingRoomPanelScript{
                 BackGround[i].transform.Find("RoomPlayerAmount").GetComponent<Text>();
         }
 
-        PlayerName = WaitingRoomPanel.transform.Find("PlayerName").GetComponent<Text>();
+        isCanRoomChannelButton = true;
+        RoomBeforeButtonButton = WaitingRoomPanel.transform.Find("RoomBeforeButton").GetComponent<Button>();
+        RoomNextButtonButton = WaitingRoomPanel.transform.Find("RoomNextButton").GetComponent<Button>();
     }
+    
 
-
+    // 이름
+    public InputField InputPlayerName;
+    public void InitInputPlayerName()
+    {
+        InputPlayerName = WaitingRoomPanel.transform.Find("InputPlayerName").GetComponent<InputField>();
+    }
 
     // 자식 방만들기 객체
     public GameObject CreateRoomWindow;
@@ -70,17 +82,6 @@ public class WaitingRoomPanelScript{
 
     }
 
-
-    // 자식 이름생성 객체
-    public GameObject CreatePlayerName;
-    public InputField InputPlayerName;
-    public void InitCreatePlayerName()
-    {
-        CreatePlayerName = WaitingRoomPanel.transform.Find("CreatePlayerName").gameObject;
-
-        InputPlayerName = CreatePlayerName.transform.Find("InputPlayerName").GetComponent<InputField>();
-
-    }
 
 
 
@@ -102,14 +103,6 @@ public class WaitingRoomPanelScript{
         ReturnTitleButtonButton = ReturnTitleButton.GetComponent<Button>();
     }
 
-    public GameObject CreateNameButton;
-    public Button CreateNameButtonButton;
-    public void InitCreateNameButton()
-    {
-        CreateNameButton = WaitingRoomPanel.transform.Find("CreateNameButton").gameObject;
-        CreateNameButtonButton = CreateNameButton.GetComponent<Button>();
-    }
-
     public GameObject CreateRoomButton;
     public Button CreateRoomButtonButton;
     public void InitCreateRoomButton()
@@ -117,6 +110,32 @@ public class WaitingRoomPanelScript{
         CreateRoomButton = WaitingRoomPanel.transform.Find("CreateRoomButton").gameObject;
         CreateRoomButtonButton = CreateRoomButton.GetComponent<Button>();
     }
+
+    public GameObject CreateSystemWindow;
+    public Text RoomSystemText;
+    public RoomSystemMessage roomSystemMessage;
+    public void InitCreateSystemWindow()
+    {
+        CreateSystemWindow = WaitingRoomPanel.transform.Find("CreateSystemWindow").gameObject;
+        RoomSystemText = CreateSystemWindow.transform.Find("RoomSystemText").GetComponent<Text>();
+        roomSystemMessage = RoomSystemText.GetComponent<RoomSystemMessage>();
+    }
+
+    public void OutputRoomMessage(RoomSystemMessage.EnumSystemCondition systemConditionType)
+    {
+        CreateSystemWindow.SetActive(true);
+
+        int count = roomSystemMessage.systemConditionType.Length;
+
+        for (int i = 0; i < count; i++)
+        {
+            if (roomSystemMessage.systemConditionType[i] == systemConditionType)
+            {
+                RoomSystemText.text = roomSystemMessage.SystemText[i];
+            }
+        }
+    }
+
 
     public void InitData()
     {
@@ -126,13 +145,15 @@ public class WaitingRoomPanelScript{
 
         InitRoomList();
         InitCreateRoomWindow();
-        InitCreatePlayerName();
+        InitCreateSystemWindow();
 
         InitQuickMatchButton();
         InitReturnTitleButton();
-        InitCreateNameButton();
         InitCreateRoomButton();
+        InitInputPlayerName();
     }
+
+
 
     public void SetInteractable(bool isInteractable)
     {
@@ -141,13 +162,36 @@ public class WaitingRoomPanelScript{
             RoomListButton[i].interactable = isInteractable;
         }
 
-        CreateNameButtonButton.interactable = isInteractable;
         QuickMatchButtonButton.interactable = isInteractable;
         CreateRoomButtonButton.interactable = isInteractable;
         ReturnTitleButtonButton.interactable = isInteractable;
-
-
+        InputPlayerName.interactable = isInteractable;
     }
+
+    public void SetInteractablePageButton(bool isInteractable, int nowRoomPage, int maxRoomPage)
+    {
+
+        if (!isInteractable)
+        {
+            RoomNextButtonButton.interactable = isInteractable;
+            RoomBeforeButtonButton.interactable = isInteractable;
+        }
+
+        else
+        {
+            if (nowRoomPage >= maxRoomPage)
+                RoomNextButtonButton.interactable = false;
+            else
+                RoomNextButtonButton.interactable = true; 
+
+            if(nowRoomPage <= 1)
+                RoomBeforeButtonButton.interactable = false;
+            else
+                RoomBeforeButtonButton.interactable = true;
+        }
+    }
+
+
 
     public void SetActive(bool isActive)
     {
