@@ -1,60 +1,53 @@
-﻿Shader "Custom/FX_Bubble_Shader" {
-	Properties {
-		_Color ("Color", Color) = (1,1,1,1)
-		_MainTex ("Albedo (RGB)", 2D) = "white" {}
-		_MainTex2 ("Albedo (RGB)", 2D) = "white" {}
-		_ref("Refraction" , float) = 0
-		_rimpow("Rim Power" , float) = 0
+// Shader created with Shader Forge v1.38 
+// Shader Forge (c) Freya Holmer - http://www.acegikmo.com/shaderforge/
+// Note: Manually altering this data may prevent you from opening it in Shader Forge
+/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:1,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.375,fgcg:0.2674062,fgcb:0.1847426,fgca:1,fgde:0.015,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:643,x:32719,y:32712,varname:node_643,prsc:2;pass:END;sub:END;*/
 
-	}
-	SubShader {
-		Tags { "RenderType"="Opaque" }
-		
-		GrabPass{}
-
-		CGPROGRAM
-		#pragma surface surf Lambert 
-
-		#pragma target 3.0
-
-		sampler2D _MainTex;
-		sampler2D _MainTex2;
-		sampler2D _GrabTexture;
-
-		float _ref;
-		float _rimpow;
-		float _spec;
-
-		struct Input {
-			float2 uv_MainTex;
-			float2 uv_MainTex2;
-
-			float4 screenPos;
-			float3 viewDir;
-		};
-
-	
-		fixed4 _Color;
-
-	
-
-		void surf (Input IN, inout SurfaceOutput o) {
-			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) ;
-			float4 d = tex2D (_MainTex2, IN.uv_MainTex2) * _Color;
-			float3 screenUV = IN.screenPos.rgb/IN.screenPos.a;
-			//프레넬
-			float3 rim = saturate(dot(IN.viewDir, o.Normal));
-			rim = pow(1-rim,_rimpow);
-			
-			//굴절
-			o.Emission = tex2D(_GrabTexture,screenUV + c.r * _ref).rgb;
-			o.Emission = lerp (o.Emission , _Color ,rim) + d ; 
-			o.Alpha = c.a;
-		}
-
-		
-
-		ENDCG
-	}
-	FallBack "Diffuse"
+Shader "Custom/FX_Bubble_Shader" {
+    Properties {
+    }
+    SubShader {
+        Tags {
+            "RenderType"="Opaque"
+        }
+        Pass {
+            Name "FORWARD"
+            Tags {
+                "LightMode"="ForwardBase"
+            }
+            
+            
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #include "UnityCG.cginc"
+            #pragma multi_compile_fwdbase_fullshadows
+            #pragma multi_compile_fog
+            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma target 3.0
+            struct VertexInput {
+                float4 vertex : POSITION;
+            };
+            struct VertexOutput {
+                float4 pos : SV_POSITION;
+                UNITY_FOG_COORDS(0)
+            };
+            VertexOutput vert (VertexInput v) {
+                VertexOutput o = (VertexOutput)0;
+                o.pos = UnityObjectToClipPos( v.vertex );
+                UNITY_TRANSFER_FOG(o,o.pos);
+                return o;
+            }
+            float4 frag(VertexOutput i) : COLOR {
+////// Lighting:
+                float3 finalColor = 0;
+                fixed4 finalRGBA = fixed4(finalColor,1);
+                UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
+                return finalRGBA;
+            }
+            ENDCG
+        }
+    }
+    FallBack "Diffuse"
+    CustomEditor "ShaderForgeMaterialInspector"
 }

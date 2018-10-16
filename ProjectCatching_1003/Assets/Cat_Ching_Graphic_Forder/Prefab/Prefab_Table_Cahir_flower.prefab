@@ -1998,11 +1998,7 @@ MonoBehaviour:
   ObjectHeight: 0
   isCanFirstCheck: 0
   interMountType: 0
-<<<<<<< HEAD
-  physicsEffect: 0
-=======
   physicsEffect: 29
->>>>>>> Programmer
 --- !u!114 &114281222062742910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2040,11 +2036,7 @@ MonoBehaviour:
   ObjectHeight: 0
   isCanFirstCheck: 0
   interMountType: 0
-<<<<<<< HEAD
-  physicsEffect: 0
-=======
   physicsEffect: 29
->>>>>>> Programmer
 --- !u!114 &114390926497547020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2108,11 +2100,7 @@ MonoBehaviour:
   ObjectHeight: 0
   isCanFirstCheck: 0
   interMountType: 0
-<<<<<<< HEAD
-  physicsEffect: 0
-=======
   physicsEffect: 13
->>>>>>> Programmer
 --- !u!114 &114475774806444930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2202,11 +2190,7 @@ MonoBehaviour:
   ObjectHeight: 0
   isCanFirstCheck: 0
   interMountType: 0
-<<<<<<< HEAD
-  physicsEffect: 0
-=======
   physicsEffect: 29
->>>>>>> Programmer
 --- !u!114 &114544058816915054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2353,11 +2337,7 @@ MonoBehaviour:
   ObjectHeight: 0
   isCanFirstCheck: 0
   interMountType: 0
-<<<<<<< HEAD
-  physicsEffect: 0
-=======
   physicsEffect: 29
->>>>>>> Programmer
 --- !u!114 &114866021431768362
 MonoBehaviour:
   m_ObjectHideFlags: 1

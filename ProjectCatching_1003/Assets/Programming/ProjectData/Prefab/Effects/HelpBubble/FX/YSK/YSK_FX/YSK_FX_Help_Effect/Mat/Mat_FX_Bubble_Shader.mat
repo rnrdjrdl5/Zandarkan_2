@@ -29,7 +29,7 @@ Material:
     m_Floats:
     - _Glossiness: 0.5
     - _Metallic: 0
-    - _ref: 0.1
+    - _ref: -5.74
     - _rimpow: 2.63
     - _spec: 2358.9
     m_Colors:
