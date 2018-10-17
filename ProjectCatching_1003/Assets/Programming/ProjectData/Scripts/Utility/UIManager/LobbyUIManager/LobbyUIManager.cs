@@ -31,12 +31,27 @@ public class LobbyUIManager : MonoBehaviour {
     public TitlePanelScript titlePanelScript;
 
 
+
+    // 공용 용도의 라인
+    public GameObject BookLineLeft;
+    public GameObject BookLineRight;
+
+    public UIEffect BookLineLeftEffect;
+    public UIEffect BookLineRightEffect;
+
+
     private void Awake()
     {
         if (lobbyUIManager == null)
             lobbyUIManager = this;
 
         UICanvas = GameObject.Find("UICanvas").gameObject;
+
+        BookLineLeft = UICanvas.transform.Find("BookLineLeft").gameObject;
+        BookLineRight = UICanvas.transform.Find("BookLineRight").gameObject;
+
+        BookLineLeftEffect = new UIEffect();
+        BookLineRightEffect = new UIEffect();
 
         InitScripts();
     }
@@ -71,6 +86,31 @@ public class LobbyUIManager : MonoBehaviour {
         titlePanelScript.InitData();
 
     }
-   
-    
+
+
+    public void LineFadeInEffect()
+    {
+        BookLineLeftEffect.AddFadeEffectNode(BookLineLeft, UIFadeTime, UIEffectNode.EnumFade.IN);
+        UpdateEvent += BookLineLeftEffect.EffectEventLobby;
+
+        BookLineRightEffect.AddFadeEffectNode(BookLineRight, UIFadeTime, UIEffectNode.EnumFade.IN);
+        UpdateEvent += BookLineRightEffect.EffectEventLobby;
+    }
+
+    public void LineFadeOutEffect()
+    {
+        BookLineLeftEffect.AddFadeEffectNode(BookLineLeft, UIFadeTime, UIEffectNode.EnumFade.OUT);
+        UpdateEvent += BookLineLeftEffect.EffectEventLobby;
+
+        BookLineRightEffect.AddFadeEffectNode(BookLineRight, UIFadeTime, UIEffectNode.EnumFade.OUT);
+        UpdateEvent += BookLineRightEffect.EffectEventLobby;
+    }
+
+    public void LineSetActive(bool isActive)
+    {
+        BookLineLeft.SetActive(isActive);
+        BookLineRight.SetActive(isActive);
+    }
+
+
 }

@@ -425,7 +425,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925726866383996}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -0.4499998, y: -3.009, z: 19.55}
+  m_LocalPosition: {x: -3.12, y: -2.418, z: 5.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4690851284387872}
@@ -1789,7 +1789,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 0
+  ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
   physicsEffect: 29
@@ -1898,7 +1898,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 100
+  ObjectHeight: 10
   isCanFirstCheck: 0
   interMountType: 0
   physicsEffect: 13
@@ -2052,7 +2052,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 0
+  ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
   physicsEffect: 29
@@ -2077,7 +2077,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 50
+  ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
   physicsEffect: 29
@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   YPower: 12
   XZPower: 3
-  TorquePower: 100
+  TorquePower: 25
   tableMass: 1
   subObjectMass: 0.1
   subObjects:
@@ -2191,7 +2191,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 0
+  ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
   physicsEffect: 29

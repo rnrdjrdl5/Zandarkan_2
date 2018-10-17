@@ -148,8 +148,6 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
         // 튜토리얼 아님
         if (!isTutorial)
         {
-            // 캐릭터 선택 효과 발생
-            uIManager.selectCharPanelScript.LockEvent();
 
             // 게임 시작
             IEnumCoro = CoroTrigger(condition, conditionLoop, rPCActionType, "RPCActionCheckGameStart");

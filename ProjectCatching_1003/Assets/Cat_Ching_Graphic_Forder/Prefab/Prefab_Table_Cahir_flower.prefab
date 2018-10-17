@@ -1987,7 +1987,6 @@ MonoBehaviour:
   InteractiveTime: 0.5
   CanUseObject: 0
   interactiveObjectType: 1
-  interactiveObjectType: 12
   ActionType: 0
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 0}
@@ -1995,7 +1994,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 0
+  ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
   physicsEffect: 29
@@ -2033,7 +2032,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 0
+  ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
   physicsEffect: 29
@@ -2097,7 +2096,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 0
+  ObjectHeight: 10
   isCanFirstCheck: 0
   interMountType: 0
   physicsEffect: 13
@@ -2187,7 +2186,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 0
+  ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
   physicsEffect: 29
@@ -2334,7 +2333,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 0
+  ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
   physicsEffect: 29

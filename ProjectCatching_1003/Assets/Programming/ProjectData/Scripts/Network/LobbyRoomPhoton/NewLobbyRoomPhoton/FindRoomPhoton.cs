@@ -4,7 +4,6 @@ using UnityEngine;
 
 public partial class NewLobbyRoomPhoton
 {
-    private string playerName;
 
     private int nowRoomPage;
     private int maxRoomPage;
@@ -98,9 +97,10 @@ public partial class NewLobbyRoomPhoton
         DeleSetOn = lobbyUIManager.waitingRoomPanelScript.SetActive;
         StartCoroutine("Finish_FadeOut_Start_Animation");
         FinishFadeEvent = WaitingRoomEvent;
+
     }
 
-
+    
     /*****  Click 이벤트들  *****/
 
     private void CheckCreatePopup(bool isShow)
@@ -110,9 +110,26 @@ public partial class NewLobbyRoomPhoton
         lobbyUIManager.waitingRoomPanelScript.SetInteractablePageButton(isShow, nowRoomPage, maxRoomPage);
     }
 
+    private bool CheckEmptyName()
+    {
+        if (string.IsNullOrEmpty(lobbyUIManager.waitingRoomPanelScript.InputPlayerName.text))
+        {
+            return true;
+        }
+
+        else return false;
+    }
+
     // FindRoom - 방만들기 클릭 시
     public void ClickCreateRoom()
     {
+
+        if (CheckEmptyName())
+        {
+            lobbyUIManager.waitingRoomPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.EMPTY_NAME);
+            return;
+        }
+
 
         CheckCreatePopup(false);
 
@@ -166,6 +183,7 @@ public partial class NewLobbyRoomPhoton
         ro.CustomRoomPropertiesForLobby = new string[] { RoomPassword };// = PlayerSceneState;
 
 
+        PhotonNetwork.playerName = lobbyUIManager.waitingRoomPanelScript.InputPlayerName.text;
         PhotonNetwork.CreateRoom(RoomName, ro, TypedLobby.Default);
 
 
@@ -194,7 +212,14 @@ public partial class NewLobbyRoomPhoton
     // FindRoom - 빠른시작
     public void ClickQuickMatch()
     {
+        if (CheckEmptyName())
+        {
+            lobbyUIManager.waitingRoomPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.EMPTY_NAME);
+            return;
+        }
+
         PhotonNetwork.playerName = lobbyUIManager.waitingRoomPanelScript.InputPlayerName.text;
+        Debug.Log("로비 이름 : " + PhotonNetwork.playerName);
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -236,8 +261,14 @@ public partial class NewLobbyRoomPhoton
 
     public void ClickJoinRoom(int number)
     {
+        if (CheckEmptyName())
+        {
+            lobbyUIManager.waitingRoomPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.EMPTY_NAME);
+            return;
+        }
 
         RoomInfo[] fi = PhotonNetwork.GetRoomList();
+        PhotonNetwork.playerName = lobbyUIManager.waitingRoomPanelScript.InputPlayerName.text;
         PhotonNetwork.JoinRoom(fi[number - 1].Name);
     }
 

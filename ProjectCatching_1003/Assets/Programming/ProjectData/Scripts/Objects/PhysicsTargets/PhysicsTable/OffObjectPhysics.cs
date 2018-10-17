@@ -31,7 +31,7 @@ public class OffObjectPhysics : MonoBehaviour {
             isCheck = true;
 
 
-            StartCoroutine(CoroOffPhysics);
+            //StartCoroutine(CoroOffPhysics);
 
 
             gameObject.layer = LayerMask.NameToLayer("NoPlayerInterEnd");

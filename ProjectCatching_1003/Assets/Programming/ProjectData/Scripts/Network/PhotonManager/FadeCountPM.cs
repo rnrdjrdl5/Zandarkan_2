@@ -15,13 +15,12 @@ public partial class PhotonManager
 
     IEnumerator ChaneBookUIUsedFade()
     {
-
+        
         uIManager.fadeImageScript.FadeImage.SetActive(true);
         uIManager.fadeImageScript.SetAlpha(0);
 
 
         UIEffect uIEffect = new UIEffect();
-        uIEffect.AddFadeEffectNode(uIManager.fadeImageScript.FadeImage, MenuUIFadeInFadeOut, UIEffectNode.EnumFade.IN);
         uIEffect.AddUIEffectCustom(OffMenuUIActive);
         uIEffect.AddFadeEffectNode(uIManager.fadeImageScript.FadeImage, MenuUIFadeInFadeOut, UIEffectNode.EnumFade.OUT);
 
@@ -64,12 +63,7 @@ public partial class PhotonManager
 
     void OffMenuUIActive()
     {
-        uIManager.menuUIPanelScript.OffActive();
-        uIManager.selectCharPanelScript.OffActive();
-
         uIManager.hpPanelScript.SetHealthPoint(true);
-
-
 
         uIManager.limitTimePanelScript.SetLimitTime(true);
         UpdateTimeEvent = uIManager.limitTimePanelScript.TimeTickUpdateEvent;

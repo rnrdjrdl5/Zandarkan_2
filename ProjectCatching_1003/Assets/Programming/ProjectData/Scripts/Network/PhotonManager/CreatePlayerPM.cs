@@ -58,10 +58,6 @@ public partial class PhotonManager
         RandomObjectSpawn randomObjectSpawn = GetComponent<RandomObjectSpawn>();
         randomObjectSpawn.ObjectSpawn();
 
-        uIManager.selectCharPanelScript.PlayerType = PlayerType;
-
-        uIManager.selectCharPanelScript.isUseDelay = true;
-
 
         // 인원수에 따른 물체 삭제
         if (objectManager != null)
@@ -76,6 +72,8 @@ public partial class PhotonManager
             objectManager.CalcObjectMag();
             Debug.Log("수행완료3");
         }
+
+        PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Offset", "LoadingComplete" } });
 
         GameTimeOutCondition = mouseWinScoreCondition[MousePlayerListOneSort.Count - 1];
         playTimerNumber = playTimes[MousePlayerListOneSort.Count - 1];

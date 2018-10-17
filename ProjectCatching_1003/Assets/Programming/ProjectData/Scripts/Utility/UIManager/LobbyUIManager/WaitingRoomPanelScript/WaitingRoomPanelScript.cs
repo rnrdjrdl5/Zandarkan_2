@@ -197,16 +197,18 @@ public class WaitingRoomPanelScript{
     {
 
         WaitingRoomPanel.SetActive(isActive);
+
+        lobbyUIManager.LineSetActive(isActive);
     }
 
     public void FadeOutEffect()
     {
-
+        lobbyUIManager.LineFadeOutEffect();
     }
 
     public void FadeInEffect()
     {
-
+        lobbyUIManager.LineFadeInEffect();
     }
 
 
