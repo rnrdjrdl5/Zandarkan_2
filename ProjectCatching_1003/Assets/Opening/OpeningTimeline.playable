@@ -1736,7 +1736,7 @@ MonoBehaviour:
   m_Script: {fileID: 2024714994, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
   m_Name: AnimationPlayableAsset of Recorded
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 74397609948947602}
+  m_Clip: {fileID: 0}
   m_Position: {x: -10.435, y: 6.558, z: 15.152}
   m_Rotation: {x: 0.013030115, y: 0.9721844, z: -0.05577822, w: 0.22710457}
   m_UseTrackMatchFields: 0
