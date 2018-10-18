@@ -12,7 +12,7 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
     public enum EnumInteractiveObject
     { TABLE = 1, MIKE, DRAWE, POT, PIANO, POSMEKA, SAUCES, FRYHANGER, CART, REFRIGERATOR,
 
-        FRAME , CHAIR
+        FRAME , CHAIR, CANDLE
     };
     
 

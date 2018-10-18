@@ -111,31 +111,6 @@ public class WaitingRoomPanelScript{
         CreateRoomButtonButton = CreateRoomButton.GetComponent<Button>();
     }
 
-    public GameObject CreateSystemWindow;
-    public Text RoomSystemText;
-    public RoomSystemMessage roomSystemMessage;
-    public void InitCreateSystemWindow()
-    {
-        CreateSystemWindow = WaitingRoomPanel.transform.Find("CreateSystemWindow").gameObject;
-        RoomSystemText = CreateSystemWindow.transform.Find("RoomSystemText").GetComponent<Text>();
-        roomSystemMessage = RoomSystemText.GetComponent<RoomSystemMessage>();
-    }
-
-    public void OutputRoomMessage(RoomSystemMessage.EnumSystemCondition systemConditionType)
-    {
-        CreateSystemWindow.SetActive(true);
-
-        int count = roomSystemMessage.systemConditionType.Length;
-
-        for (int i = 0; i < count; i++)
-        {
-            if (roomSystemMessage.systemConditionType[i] == systemConditionType)
-            {
-                RoomSystemText.text = roomSystemMessage.SystemText[i];
-            }
-        }
-    }
-
 
     public void InitData()
     {
@@ -145,7 +120,6 @@ public class WaitingRoomPanelScript{
 
         InitRoomList();
         InitCreateRoomWindow();
-        InitCreateSystemWindow();
 
         InitQuickMatchButton();
         InitReturnTitleButton();
@@ -154,19 +128,6 @@ public class WaitingRoomPanelScript{
     }
 
 
-
-    public void SetInteractable(bool isInteractable)
-    {
-        for (int i = 0; i < MAX_ROOMLIST; i++)
-        {
-            RoomListButton[i].interactable = isInteractable;
-        }
-
-        QuickMatchButtonButton.interactable = isInteractable;
-        CreateRoomButtonButton.interactable = isInteractable;
-        ReturnTitleButtonButton.interactable = isInteractable;
-        InputPlayerName.interactable = isInteractable;
-    }
 
     public void SetInteractablePageButton(bool isInteractable, int nowRoomPage, int maxRoomPage)
     {

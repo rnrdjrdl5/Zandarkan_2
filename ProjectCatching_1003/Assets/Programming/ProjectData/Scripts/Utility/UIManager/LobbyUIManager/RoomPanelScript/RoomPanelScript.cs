@@ -30,9 +30,6 @@ public class RoomPanelScript{
     // 플레이어 정보
     public PlayerPanelScript[] playerPanelScripts;
 
-    // 플레이어 이름 백그라운드
-    public GameObject[] PlayerSpace;
-    private UIEffect[] PlayerSpaceEffect;
 
     private UIEffect StartImageEffect;
     private UIEffect ReadyImageEffect;
@@ -65,11 +62,6 @@ public class RoomPanelScript{
             else playerPanelScripts[i].SetActive(false);
         }
 
-        for (int i = 0; i < LobbyUIManager.MAXPLAYER; i++)
-        {
-            PlayerSpace[i].SetActive(isActive);
-        }
-
 
         lobbyUIManager.LineSetActive(isActive);
 
@@ -93,11 +85,6 @@ public class RoomPanelScript{
         ChaserButton = ChoosePlayer.transform.Find("ChaserButton").gameObject;
 
 
-        PlayerSpace = new GameObject[LobbyUIManager.MAXPLAYER];
-        for (int i = 0; i < LobbyUIManager.MAXPLAYER; i++)
-        {
-            PlayerSpace[i] = RoomPanel.transform.Find("PlayerSpace" + (i + 1).ToString()).gameObject;
-        }
 
         InitPlayerPanelScript();
 
@@ -110,11 +97,6 @@ public class RoomPanelScript{
         RunnerButtonEffect = new UIEffect();
         ChaserButtonEffect = new UIEffect();
 
-        PlayerSpaceEffect = new UIEffect[LobbyUIManager.MAXPLAYER];
-        for (int i = 0; i < LobbyUIManager.MAXPLAYER; i++)
-        {
-            PlayerSpaceEffect[i] = new UIEffect();
-        }
 
 }
 
@@ -130,12 +112,6 @@ public class RoomPanelScript{
         ChooseEdgeEffect.AddFadeEffectNode(ChooseEdge, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
         RunnerButtonEffect.AddFadeEffectNode(RunnerButton, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
         ChaserButtonEffect.AddFadeEffectNode(ChaserButton, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
-
-        for (int i = 0; i < LobbyUIManager.MAXPLAYER; i++)
-        {
-            PlayerSpaceEffect[i].AddFadeEffectNode(ChaserButton, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
-            lobbyUIManager.UpdateEvent += PlayerSpaceEffect[i].EffectEventLobby;
-        }
 
 
 
@@ -169,11 +145,6 @@ public class RoomPanelScript{
         ChaserButtonEffect.AddFadeEffectNode(ChaserButton, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
 
 
-        for (int i = 0; i < LobbyUIManager.MAXPLAYER; i++)
-        {
-            PlayerSpaceEffect[i].AddFadeEffectNode(ChaserButton, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
-            lobbyUIManager.UpdateEvent += PlayerSpaceEffect[i].EffectEventLobby;
-        }
 
 
         PlayerPanelUIEffect(UIEffectNode.EnumFade.OUT);

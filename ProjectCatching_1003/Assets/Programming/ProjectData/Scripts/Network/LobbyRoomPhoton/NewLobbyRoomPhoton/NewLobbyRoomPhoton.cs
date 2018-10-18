@@ -174,4 +174,11 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
         SceneManager.LoadScene("Loading");
     }
 
+
+    // 공용 Click 이벤트
+    // Click 이벤트
+    public void ClickSWBackButton()
+    {
+        lobbyUIManager.systemPanelScript.SetActive(false);
+    }
 }

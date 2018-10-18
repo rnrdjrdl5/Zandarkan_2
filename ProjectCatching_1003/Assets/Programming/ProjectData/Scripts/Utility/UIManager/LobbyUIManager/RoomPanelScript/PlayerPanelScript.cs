@@ -24,6 +24,7 @@ public class PlayerPanelScript {
     public GameObject RunnerImage;
     public GameObject RandomImage;
     public GameObject MasterImage;
+    public GameObject PlayerSpace;
     public Text NameText;
 
     public GameObject CatMainImage;
@@ -36,6 +37,7 @@ public class PlayerPanelScript {
     private UIEffect RunnerImageEffect;
     private UIEffect RandomImageEffect;
     private UIEffect MasterImageEffect;
+    private UIEffect PlayerSpaceEffect;
 
     private UIEffect CatMainImageEffect;
     private UIEffect MouseMainImageEffect;
@@ -53,6 +55,7 @@ public class PlayerPanelScript {
         RunnerImage = PlayerPanel.transform.Find("RunnerImage").gameObject;
         RandomImage = PlayerPanel.transform.Find("RandomImage").gameObject;
         MasterImage = PlayerPanel.transform.Find("MasterImage").gameObject;
+        PlayerSpace = PlayerPanel.transform.Find("PlayerSpace").gameObject;
         NameText = PlayerPanel.transform.Find("NameText").GetComponent<Text>();
 
         CatMainImage = PlayerPanel.transform.Find("CatMainImage").gameObject;
@@ -64,6 +67,7 @@ public class PlayerPanelScript {
         RunnerImageEffect = new UIEffect();
         RandomImageEffect = new UIEffect();
         MasterImageEffect = new UIEffect();
+        PlayerSpaceEffect = new UIEffect();
 
         CatMainImageEffect = new UIEffect();
         MouseMainImageEffect = new UIEffect();
@@ -81,6 +85,8 @@ public class PlayerPanelScript {
         RunnerImage.SetActive(isActive);
         RandomImage.SetActive(isActive);
         MasterImage.SetActive(isActive);
+        PlayerSpace.SetActive(isActive);
+        NameText.gameObject.SetActive(isActive);
 
         CatMainImage.SetActive(isActive);
         MouseMainImage.SetActive(isActive);
@@ -124,6 +130,7 @@ public class PlayerPanelScript {
         RunnerImageEffect.AddFadeEffectNode(RunnerImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
         RandomImageEffect.AddFadeEffectNode(RandomImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
         MasterImageEffect.AddFadeEffectNode(MasterImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
+        PlayerSpaceEffect.AddFadeEffectNode(PlayerSpace, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
 
         CatMainImageEffect.AddFadeEffectNode(CatMainImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
         MouseMainImageEffect.AddFadeEffectNode(MouseMainImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
@@ -134,6 +141,7 @@ public class PlayerPanelScript {
         lobbyUIManager.UpdateEvent += RunnerImageEffect.EffectEventLobby;
         lobbyUIManager.UpdateEvent += RandomImageEffect.EffectEventLobby;
         lobbyUIManager.UpdateEvent += MasterImageEffect.EffectEventLobby;
+        lobbyUIManager.UpdateEvent += PlayerSpaceEffect.EffectEventLobby;
 
         lobbyUIManager.UpdateEvent += CatMainImageEffect.EffectEventLobby;
         lobbyUIManager.UpdateEvent += MouseMainImageEffect.EffectEventLobby;
@@ -150,6 +158,7 @@ public class PlayerPanelScript {
         RunnerImageEffect.AddFadeEffectNode(RunnerImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
         RandomImageEffect.AddFadeEffectNode(RandomImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
         MasterImageEffect.AddFadeEffectNode(MasterImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
+        PlayerSpaceEffect.AddFadeEffectNode(PlayerSpace, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
 
         CatMainImageEffect.AddFadeEffectNode(CatMainImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
         MouseMainImageEffect.AddFadeEffectNode(MouseMainImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
@@ -160,6 +169,7 @@ public class PlayerPanelScript {
         lobbyUIManager.UpdateEvent += RunnerImageEffect.EffectEventLobby;
         lobbyUIManager.UpdateEvent += RandomImageEffect.EffectEventLobby;
         lobbyUIManager.UpdateEvent += MasterImageEffect.EffectEventLobby;
+        lobbyUIManager.UpdateEvent += PlayerSpaceEffect.EffectEventLobby;
 
         lobbyUIManager.UpdateEvent += CatMainImageEffect.EffectEventLobby;
         lobbyUIManager.UpdateEvent += MouseMainImageEffect.EffectEventLobby;

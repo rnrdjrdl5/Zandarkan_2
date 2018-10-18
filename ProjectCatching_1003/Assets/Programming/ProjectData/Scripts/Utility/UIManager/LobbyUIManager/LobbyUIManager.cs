@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine;
 public class LobbyUIManager : MonoBehaviour {
 
     public const int MAXPLAYER = 6;
@@ -39,6 +39,7 @@ public class LobbyUIManager : MonoBehaviour {
     public UIEffect BookLineLeftEffect;
     public UIEffect BookLineRightEffect;
 
+    public SystemPanelScript systemPanelScript;
 
     private void Awake()
     {
@@ -84,6 +85,9 @@ public class LobbyUIManager : MonoBehaviour {
 
         titlePanelScript = new TitlePanelScript();
         titlePanelScript.InitData();
+
+        systemPanelScript = new SystemPanelScript();
+        systemPanelScript.InitData();
 
     }
 
