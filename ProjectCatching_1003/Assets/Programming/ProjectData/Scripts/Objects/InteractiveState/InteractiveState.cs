@@ -105,7 +105,7 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
 
     public List<Material> InterMaterials { get; set; } // 메테리얼 저장
     public List<Texture> InterTexture { get; set; }      // 텍스쳐 저장
-    public MeshRenderer[] InterMeshRenderer {get;set;}
+    public MeshRenderer[] InterMeshRenderer;
 
     public PlayerPositionScript playerPositionScript { get; set; }
 
@@ -133,6 +133,8 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
 
 
 
+    public Material EndInterMaterials;      // 반투명 될 메테리얼
+    private Material OriginalMaterials;      // 반투명 이전 저장 메테리얼
 
 
 
@@ -171,7 +173,7 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
                 if (playerPositionScript == null)
                     Debug.Log("player position script 못찾음.");
             }
-        
+
 
     }
 
@@ -269,6 +271,7 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
         {
             mrs = gameObject.GetComponentsInChildren<MeshRenderer>();
             InterMeshRenderer = mrs;
+            OriginalMaterials = mrs[0].material;
 
             for (int i = 0; i < mrs.Length; i++)
             {

@@ -42,6 +42,9 @@ public class GradePanelScript{
 
     private UIEffect uIEffect;
 
+    private UIEffect ArrowEffect;
+    private UIEffect RedArrowEffect;
+    private UIEffect YellowArrowEffect;
 
     public void InitData()
     {
@@ -67,9 +70,15 @@ public class GradePanelScript{
 
         uIManager.UpdateEvent += UpdateGrade;
 
-    }
 
-    public void InitEvent()
+        ArrowEffect = new UIEffect();
+        RedArrowEffect = new UIEffect();
+        YellowArrowEffect = new UIEffect();
+
+
+}
+
+public void InitEvent()
     {
         ObjectManager.GetInstance().RemoveEvent += ShakeRestaurantEvent;
     }
@@ -153,5 +162,55 @@ public class GradePanelScript{
 
         UIManager.GetInstance().UpdateEvent += uIEffect.EffectEvent;
     }
-    
+
+
+    public void AlmostTimeOut()
+    {
+        ArrowScale(ArrowEffect, GradeArrow, 100, 200, 0.15f);
+        ArrowEffect.AddWaitEffectNode(0.35f);
+
+        ArrowScale(ArrowEffect, GradeArrow, 100, 200, 0.15f);
+        ArrowEffect.AddWaitEffectNode(0.35f);
+
+        ArrowScale(ArrowEffect, GradeArrow, 100, 200, 0.15f);
+        ArrowEffect.AddWaitEffectNode(0.35f);
+
+        UIManager.GetInstance().UpdateEvent += ArrowEffect.EffectEvent;
+
+
+
+        ArrowScale(RedArrowEffect, GradeRedArrow, 100, 200, 0.15f);
+        RedArrowEffect.AddWaitEffectNode(0.35f);
+
+        ArrowScale(RedArrowEffect, GradeRedArrow, 100, 200, 0.15f);
+        RedArrowEffect.AddWaitEffectNode(0.35f);
+
+        ArrowScale(RedArrowEffect, GradeRedArrow, 100, 200, 0.15f);
+        RedArrowEffect.AddWaitEffectNode(0.35f);
+
+        UIManager.GetInstance().UpdateEvent += RedArrowEffect.EffectEvent;
+
+
+
+        ArrowScale(YellowArrowEffect, GradeYellowArrow, 100, 200, 0.15f);
+        YellowArrowEffect.AddWaitEffectNode(0.35f);
+
+        ArrowScale(YellowArrowEffect, GradeYellowArrow, 100, 200, 0.15f);
+        YellowArrowEffect.AddWaitEffectNode(0.35f);
+
+        ArrowScale(YellowArrowEffect, GradeYellowArrow, 100, 200, 0.15f);
+        YellowArrowEffect.AddWaitEffectNode(0.35f);
+
+        UIManager.GetInstance().UpdateEvent += YellowArrowEffect.EffectEvent;
+    }
+
+    private void ArrowScale(UIEffect uIEffect, GameObject arrow, float min, float max, float time)
+    {
+        float currentTime = time / 3;
+
+        uIEffect.AddScaleEffectNode(arrow, 100.0f, max, currentTime);
+        uIEffect.AddScaleEffectNode(arrow, max, min, currentTime);
+        uIEffect.AddScaleEffectNode(arrow, min, 100.0f, currentTime);
+
+    }
 }

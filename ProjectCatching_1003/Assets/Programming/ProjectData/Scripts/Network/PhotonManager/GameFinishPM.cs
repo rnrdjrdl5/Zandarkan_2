@@ -124,7 +124,7 @@ public partial class PhotonManager
 
         uIManager.OverlayCanvas.SetActive(false);
 
-
+        uIManager.interObjectGUIPanelScript.SetActive(false);
     }
 
 

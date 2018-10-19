@@ -74,7 +74,6 @@ public class LimitTimePanelScript
 
         LimitTimeTextText.text = minuteString + " : " + secondString;
 
-
     }
 
     public void AddTimeYPosition(float yPosition)

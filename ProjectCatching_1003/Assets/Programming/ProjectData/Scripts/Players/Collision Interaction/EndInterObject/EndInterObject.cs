@@ -42,23 +42,13 @@ public class EndInterObject : MonoBehaviour
                 if (!IS.GetCanUseObject())
                 {
 
-                    // 반투명 키는 부분
-                    
-
-                    for (int i = 0; i < IS.GetInterMaterials().Count; i++)
+                    int mrCount = IS.InterMeshRenderer.Length;
+                    for (int i = 0; i < mrCount; i++)
                     {
-
-                        Debug.Log("Materials i : " + i);
-
-                        Color color = new Color(IS.GetInterMaterials()[i].color.r,
-                            IS.GetInterMaterials()[i].color.g,
-                            IS.GetInterMaterials()[i].color.b,
-                            0.2f);
-
-                        IS.GetInterMaterials()[i].color = color;
+                        IS.InterMeshRenderer[i].material = IS.EndInterMaterials;
+                        Debug.Log("반투명 킨다");
                     }
-
-                    Debug.Log(" 반투명 시작!");
+                    
                 }
 
                 else
@@ -82,18 +72,13 @@ public class EndInterObject : MonoBehaviour
 
                 if (!IS.GetCanUseObject())
                 {
-                    for (int i = 0; i < IS.GetInterMaterials().Count; i++)
+
+                    int mrCount = IS.InterMeshRenderer.Length;
+                    for (int i = 0; i < mrCount; i++)
                     {
-
-                        Color color = new Color(IS.GetInterMaterials()[i].color.r,
-                            IS.GetInterMaterials()[i].color.g,
-                            IS.GetInterMaterials()[i].color.b,
-                            1.0f);
-
-                        IS.GetInterMaterials()[i].color = color;
+                        IS.InterMeshRenderer[i].material = IS.OriginalMaterials;
+                        Debug.Log("반투명 돌린다");
                     }
-
-                    Debug.Log(" 반투명 off");
                 }
 
             }
