@@ -72,6 +72,8 @@ public class EffectAniManager : MonoBehaviour
 
     public void CartChargeEffect()
     {
+        Debug.Log(gameObject.name);
+
         GameObject go = PoolingManager.GetInstance().CreateEffect(PoolingManager.EffctType.FIRST_CARTCHARGE);
         go.transform.position = transform.position;
         go.transform.rotation = transform.rotation;

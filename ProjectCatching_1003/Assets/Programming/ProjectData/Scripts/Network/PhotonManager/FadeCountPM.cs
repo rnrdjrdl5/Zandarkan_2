@@ -10,18 +10,20 @@ public partial class PhotonManager
     void RPCPreStartCount()
     {
 
-        StartCoroutine("ChaneBookUIUsedFade");
+        StartCoroutine("ChangeFade");
     }
 
-    IEnumerator ChaneBookUIUsedFade()
+
+    // Fade 동시에, 게임 시작.
+    IEnumerator ChangeFade()
     {
-        
+
         uIManager.fadeImageScript.FadeImage.SetActive(true);
         uIManager.fadeImageScript.SetAlpha(0);
 
 
         UIEffect uIEffect = new UIEffect();
-        uIEffect.AddUIEffectCustom(OffMenuUIActive);
+        uIEffect.AddUIEffectCustom(SettingUI);
         uIEffect.AddFadeEffectNode(uIManager.fadeImageScript.FadeImage, MenuUIFadeInFadeOut, UIEffectNode.EnumFade.OUT);
 
         UIManager.GetInstance().UpdateEvent += uIEffect.EffectEvent;
@@ -35,6 +37,8 @@ public partial class PhotonManager
         StartGamePlayCount();
     }
 
+
+    // 시간 체크
     void StartGamePlayCount()
     {
 
@@ -61,7 +65,7 @@ public partial class PhotonManager
             return false;
     }
 
-    void OffMenuUIActive()
+    void SettingUI()
     {
         uIManager.hpPanelScript.SetHealthPoint(true);
 
@@ -77,5 +81,7 @@ public partial class PhotonManager
         uIManager.skillPanelScript.SkillPanel.SetActive(true);
 
         uIManager.pressImagePanelScript.PressImagePanel.SetActive(true);
+
+        uIManager.interObjectGUIPanelScript.SetActive(true);
     }
 }

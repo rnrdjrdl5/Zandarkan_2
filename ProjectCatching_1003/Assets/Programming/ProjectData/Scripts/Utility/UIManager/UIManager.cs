@@ -266,10 +266,31 @@ public class UIManager : Photon.PunBehaviour {
         //UI 키입력 처리
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if(interObjectGUIPanelScript.GetActive() == false)
-                interObjectGUIPanelScript.SetActive(true);
 
-            else interObjectGUIPanelScript.SetActive(false);
+            float guiHeightSize = interObjectGUIPanelScript.ObjGUIBgImageRect.sizeDelta.y;
+
+            if (interObjectGUIPanelScript.GetObjectActive() == false)
+            {
+
+                interObjectGUIPanelScript.SetObjectActive(true);
+
+                // 탭키, 시간 이미지 위치 변경.
+
+                limitTimePanelScript.AddTimeYPosition(-guiHeightSize);
+                interObjectGUIPanelScript.AddTapImageHeight(-guiHeightSize);
+
+            }
+
+            else
+            {
+
+                interObjectGUIPanelScript.SetObjectActive(false);
+
+                limitTimePanelScript.AddTimeYPosition(+guiHeightSize);
+                interObjectGUIPanelScript.AddTapImageHeight(+guiHeightSize);
+
+
+            }
         }
 
     }

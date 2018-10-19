@@ -1,0 +1,369 @@
+fileFormatVersion: 2
+guid: 6174cf50f53e88e48873cf70e9c7f40f
+timeCreated: 1539949962
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Big leaf004
+    100002: Big leaf005
+    100004: Big leaf006
+    100006: Big leaf007
+    100008: Big leaf008
+    100010: Big leaf009
+    100012: Big leaf010
+    100014: Big leaf011
+    100016: Big leaf012
+    100018: Big leaf013
+    100020: Big leaf014
+    100022: Big leaf015
+    100024: Big leaf016
+    100026: Big leaf017
+    100028: Big leaf018
+    100030: Big leaf019
+    100032: Big leaf020
+    100034: Big leaf021
+    100036: Big leaf022
+    100038: Big leaf023
+    100040: Big leaf024
+    100042: Big leaf025
+    100044: Big leaf026
+    100046: Big leaf027
+    100048: Big leaf028
+    100050: Big leaf029
+    100052: Big leaf030
+    100054: Big leaf031
+    100056: Big leaf032
+    100058: Big leaf033
+    100060: Big leaf034
+    100062: Big leaf035
+    100064: Big leaf036
+    100066: Big leaf037
+    100068: Big leaf038
+    100070: Big leaf039
+    100072: leaflet033
+    100074: leaflet034
+    100076: leaflet035
+    100078: leaflet036
+    100080: leaflet037
+    100082: leaflet038
+    100084: leaflet039
+    100086: leaflet040
+    100088: leaflet041
+    100090: leaflet042
+    100092: leaflet043
+    100094: leaflet044
+    100096: leaflet045
+    100098: leaflet046
+    100100: leaflet047
+    100102: leaflet048
+    100104: Pot(1)
+    100106: //RootNode
+    400000: Big leaf004
+    400002: Big leaf005
+    400004: Big leaf006
+    400006: Big leaf007
+    400008: Big leaf008
+    400010: Big leaf009
+    400012: Big leaf010
+    400014: Big leaf011
+    400016: Big leaf012
+    400018: Big leaf013
+    400020: Big leaf014
+    400022: Big leaf015
+    400024: Big leaf016
+    400026: Big leaf017
+    400028: Big leaf018
+    400030: Big leaf019
+    400032: Big leaf020
+    400034: Big leaf021
+    400036: Big leaf022
+    400038: Big leaf023
+    400040: Big leaf024
+    400042: Big leaf025
+    400044: Big leaf026
+    400046: Big leaf027
+    400048: Big leaf028
+    400050: Big leaf029
+    400052: Big leaf030
+    400054: Big leaf031
+    400056: Big leaf032
+    400058: Big leaf033
+    400060: Big leaf034
+    400062: Big leaf035
+    400064: Big leaf036
+    400066: Big leaf037
+    400068: Big leaf038
+    400070: Big leaf039
+    400072: leaflet033
+    400074: leaflet034
+    400076: leaflet035
+    400078: leaflet036
+    400080: leaflet037
+    400082: leaflet038
+    400084: leaflet039
+    400086: leaflet040
+    400088: leaflet041
+    400090: leaflet042
+    400092: leaflet043
+    400094: leaflet044
+    400096: leaflet045
+    400098: leaflet046
+    400100: leaflet047
+    400102: leaflet048
+    400104: Pot(1)
+    400106: //RootNode
+    2300000: Big leaf004
+    2300002: Big leaf005
+    2300004: Big leaf006
+    2300006: Big leaf007
+    2300008: Big leaf008
+    2300010: Big leaf009
+    2300012: Big leaf010
+    2300014: Big leaf011
+    2300016: Big leaf012
+    2300018: Big leaf013
+    2300020: Big leaf014
+    2300022: Big leaf015
+    2300024: Big leaf016
+    2300026: Big leaf017
+    2300028: Big leaf018
+    2300030: Big leaf019
+    2300032: Big leaf020
+    2300034: Big leaf021
+    2300036: Big leaf022
+    2300038: Big leaf023
+    2300040: Big leaf024
+    2300042: Big leaf025
+    2300044: Big leaf026
+    2300046: Big leaf027
+    2300048: Big leaf028
+    2300050: Big leaf029
+    2300052: Big leaf030
+    2300054: Big leaf031
+    2300056: Big leaf032
+    2300058: Big leaf033
+    2300060: Big leaf034
+    2300062: Big leaf035
+    2300064: Big leaf036
+    2300066: Big leaf037
+    2300068: Big leaf038
+    2300070: Big leaf039
+    2300072: leaflet033
+    2300074: leaflet034
+    2300076: leaflet035
+    2300078: leaflet036
+    2300080: leaflet037
+    2300082: leaflet038
+    2300084: leaflet039
+    2300086: leaflet040
+    2300088: leaflet041
+    2300090: leaflet042
+    2300092: leaflet043
+    2300094: leaflet044
+    2300096: leaflet045
+    2300098: leaflet046
+    2300100: leaflet047
+    2300102: leaflet048
+    2300104: Pot(1)
+    3300000: Big leaf004
+    3300002: Big leaf005
+    3300004: Big leaf006
+    3300006: Big leaf007
+    3300008: Big leaf008
+    3300010: Big leaf009
+    3300012: Big leaf010
+    3300014: Big leaf011
+    3300016: Big leaf012
+    3300018: Big leaf013
+    3300020: Big leaf014
+    3300022: Big leaf015
+    3300024: Big leaf016
+    3300026: Big leaf017
+    3300028: Big leaf018
+    3300030: Big leaf019
+    3300032: Big leaf020
+    3300034: Big leaf021
+    3300036: Big leaf022
+    3300038: Big leaf023
+    3300040: Big leaf024
+    3300042: Big leaf025
+    3300044: Big leaf026
+    3300046: Big leaf027
+    3300048: Big leaf028
+    3300050: Big leaf029
+    3300052: Big leaf030
+    3300054: Big leaf031
+    3300056: Big leaf032
+    3300058: Big leaf033
+    3300060: Big leaf034
+    3300062: Big leaf035
+    3300064: Big leaf036
+    3300066: Big leaf037
+    3300068: Big leaf038
+    3300070: Big leaf039
+    3300072: leaflet033
+    3300074: leaflet034
+    3300076: leaflet035
+    3300078: leaflet036
+    3300080: leaflet037
+    3300082: leaflet038
+    3300084: leaflet039
+    3300086: leaflet040
+    3300088: leaflet041
+    3300090: leaflet042
+    3300092: leaflet043
+    3300094: leaflet044
+    3300096: leaflet045
+    3300098: leaflet046
+    3300100: leaflet047
+    3300102: leaflet048
+    3300104: Pot(1)
+    4300000: Pot(1)
+    4300002: Big leaf004
+    4300004: Big leaf005
+    4300006: Big leaf006
+    4300008: Big leaf007
+    4300010: Big leaf008
+    4300012: Big leaf009
+    4300014: Big leaf010
+    4300016: Big leaf011
+    4300018: Big leaf012
+    4300020: Big leaf013
+    4300022: Big leaf014
+    4300024: Big leaf015
+    4300026: Big leaf016
+    4300028: Big leaf017
+    4300030: Big leaf018
+    4300032: Big leaf019
+    4300034: Big leaf020
+    4300036: Big leaf021
+    4300038: leaflet033
+    4300040: leaflet034
+    4300042: leaflet035
+    4300044: leaflet036
+    4300046: leaflet037
+    4300048: leaflet038
+    4300050: leaflet039
+    4300052: leaflet040
+    4300054: leaflet041
+    4300056: leaflet042
+    4300058: leaflet043
+    4300060: leaflet044
+    4300062: leaflet045
+    4300064: leaflet046
+    4300066: leaflet047
+    4300068: leaflet048
+    4300070: Big leaf022
+    4300072: Big leaf023
+    4300074: Big leaf024
+    4300076: Big leaf025
+    4300078: Big leaf026
+    4300080: Big leaf027
+    4300082: Big leaf028
+    4300084: Big leaf029
+    4300086: Big leaf030
+    4300088: Big leaf031
+    4300090: Big leaf032
+    4300092: Big leaf033
+    4300094: Big leaf034
+    4300096: Big leaf035
+    4300098: Big leaf036
+    4300100: Big leaf037
+    4300102: Big leaf038
+    4300104: Big leaf039
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: 9782458cd60c9874f9dfe7bc9a90da76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 03 - Default
+    second: {fileID: 2100000, guid: fbe7f2840cc13dd4fac1ab260a534f0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 07 - Default
+    second: {fileID: 2100000, guid: e696d58d46bbf5f47af24fbf2539fef1, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

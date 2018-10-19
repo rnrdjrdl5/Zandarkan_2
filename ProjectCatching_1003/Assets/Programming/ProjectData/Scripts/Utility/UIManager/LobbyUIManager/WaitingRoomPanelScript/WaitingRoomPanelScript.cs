@@ -67,7 +67,6 @@ public class WaitingRoomPanelScript{
     // 자식 방만들기 객체
     public GameObject CreateRoomWindow;
     public InputField InputRoomName;
-    public InputField InputRoomPW;
 
     public void InitCreateRoomWindow()
     {
@@ -76,9 +75,6 @@ public class WaitingRoomPanelScript{
 
         InputRoomName =
             CreateRoomWindow.transform.Find("InputRoomName").GetComponent<InputField>();
-
-        InputRoomPW =
-            CreateRoomWindow.transform.Find("InputRoomPW").GetComponent<InputField>();
 
     }
 

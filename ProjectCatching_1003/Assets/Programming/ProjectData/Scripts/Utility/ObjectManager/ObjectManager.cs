@@ -7,7 +7,7 @@ using UnityEngine;
 // 점수를 확인하기 위해서도 사용
 public class ObjectManager : MonoBehaviour {
 
-    private const int MAX_OBJECT_TYPE = 13 + 1;  // 1 이유 : 시작점이 1이라서 한칸 더 할당함
+    private const int MAX_OBJECT_TYPE = 15 + 1;  // 1 이유 : 시작점이 1이라서 한칸 더 할당함
 
 
 
@@ -118,8 +118,14 @@ public class ObjectManager : MonoBehaviour {
 
                 // GUI 카운트
                 nowGUIObject[(int)IS.interactiveObjectType]--;
-                if (nowGUIObject[(int)IS.interactiveObjectType] < 0) nowGUIObject[(int)IS.interactiveObjectType] = 0;
+                if (nowGUIObject[(int)IS.interactiveObjectType] < 0) {
+
+                    nowGUIObject[(int)IS.interactiveObjectType] = 0;
+                }
+
+
                 UIManager.GetInstance().interObjectGUIPanelScript.SetText(maxGUIObject, nowGUIObject);
+                UIManager.GetInstance().interObjectGUIPanelScript.SetGUICheck(maxGUIObject, nowGUIObject);
 
 
                 // }

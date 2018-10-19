@@ -136,7 +136,6 @@ public partial class NewLobbyRoomPhoton
 
         //1 . 방이름 받아오기.
         string RoomName = lobbyUIManager.waitingRoomPanelScript.InputRoomName.text;
-        string RoomPassword = lobbyUIManager.waitingRoomPanelScript.InputRoomPW.text;
 
         // 같은 방 이름이 있는지 체크함.
         RoomInfo[] fi = PhotonNetwork.GetRoomList();
@@ -171,14 +170,6 @@ public partial class NewLobbyRoomPhoton
         {
             MaxPlayers = 6
         };
-
-        ExitGames.Client.Photon.Hashtable PlayerSceneState = new ExitGames.Client.Photon.Hashtable
-        {
-
-            { "Password", RoomPassword}
-        };
-
-        ro.CustomRoomPropertiesForLobby = new string[] { RoomPassword };// = PlayerSceneState;
 
 
         PhotonNetwork.playerName = lobbyUIManager.waitingRoomPanelScript.InputPlayerName.text;

@@ -25,13 +25,14 @@ public class OffObjectPhysics : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
 
-        /*   if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && !isCheck)
-           {*/
-        if (!isCheck) {
+          if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && !isCheck)
+           {
             isCheck = true;
 
 
-            //StartCoroutine(CoroOffPhysics);
+
+            // 에러, 추가하면 부자연스러워진다. 
+           // StartCoroutine(CoroOffPhysics);
 
 
             gameObject.layer = LayerMask.NameToLayer("NoPlayerInterEnd");

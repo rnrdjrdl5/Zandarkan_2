@@ -406,7 +406,15 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
                     PhysicsPower = AddPhysics(interactiveState.physicsEffect);
                     break;
 
+                case InteractiveState.EnumInteractiveObject.PIANO_CHAIR:
+                    PhysicsPower = AddPhysics(interactiveState.physicsEffect);
+                    break;
+
                 case InteractiveState.EnumInteractiveObject.CHAIR:
+                    PhysicsPower = AddPhysics(interactiveState.physicsEffect);
+                    break;
+
+                case InteractiveState.EnumInteractiveObject.TABLEWARE_TABLE:
                     PhysicsPower = AddPhysics(interactiveState.physicsEffect);
                     break;
 

@@ -81,7 +81,7 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
     [Tooltip(" 0-> 1 , 1->2 ... 4->5 로 사용")]
     public float[] mouseWinScoreCondition;  // 타임아웃 판단 인원수별로 조절
 
-    public float GameTimeOutCondition { get; set; }      // 타임아웃 시 판단게이지
+    public float GameTimeOutCondition { get; set; }      // 타임아웃 시 고양이가 지고 이기고를 판단하는 게이지
 
     /**** Private ****/
     private UIManager uIManager;                // UI 매니저

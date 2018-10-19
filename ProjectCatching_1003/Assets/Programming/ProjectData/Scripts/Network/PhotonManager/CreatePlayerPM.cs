@@ -129,14 +129,10 @@ public partial class PhotonManager
             new ExitGames.Client.Photon.Hashtable { { "Offset", "LoadingComplete" } });
 
 
-       // uIManager.menuUIPanelScript.OffActive();
-
-       // uIManager.selectCharPanelScript.OffActive();
-
         uIManager.hpPanelScript.SetHealthPoint(true);
 
-       // uIManager.limitTimePanelScript.SetLimitTime(true);
-       // UpdateTimeEvent = uIManager.limitTimePanelScript.TimeTickUpdateEvent;
+        uIManager.limitTimePanelScript.SetLimitTime(true);
+        UpdateTimeEvent = uIManager.limitTimePanelScript.TimeTickUpdateEvent;
 
         uIManager.SetAim(true);
         uIManager.mouseImagePanelScript.MouseImagePanel.SetActive(true);
@@ -147,6 +143,8 @@ public partial class PhotonManager
         uIManager.skillPanelScript.SkillPanel.SetActive(true);
 
         uIManager.pressImagePanelScript.PressImagePanel.SetActive(true);
+
+        uIManager.interObjectGUIPanelScript.SetActive(true);
     }
 
 

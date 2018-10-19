@@ -248,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerMove: {fileID: 0}
+  PlayerObject: {fileID: 0}
   SpringArmPosition: {x: 0, y: 0, z: 0}
   SeePlayerNumber: 0
   MinRotationY: -45

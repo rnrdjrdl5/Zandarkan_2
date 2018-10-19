@@ -11,22 +11,14 @@ public class LimitTimePanelScript
     public void InitLimitTimePanel() { LimitTimePanel = UIManager.GetInstance().UICanvas.transform.Find("LimitTimePanel").gameObject; }
 
 
-    public GameObject LimitMinuteText { get; set; }
-    public void InitLimitMinuteText() { LimitMinuteText = LimitTimePanel.transform.Find("LimitMinuteText").gameObject; }
-    private Text LimitMinuteTextText { get; set; }
-    public void InitLimitMinuteTextText() { LimitMinuteTextText = LimitMinuteText.GetComponent<Text>(); }
+    public GameObject LimitTimeText { get; set; }
+    public void InitLimitTimeText() { LimitTimeText = LimitTimePanel.transform.Find("LimitTimeText").gameObject; }
 
-    public GameObject LimitSecondText { get; set; }
-    public void InitLimitSecondText() { LimitSecondText = LimitTimePanel.transform.Find("LimitSecondText").gameObject; }
-    private Text LimitSecondTextText { get; set; }
-    public void InitLimitSecondTextText() { LimitSecondTextText = LimitSecondText.GetComponent<Text>(); }
-
+    public Text LimitTimeTextText { get; set; }
+    public void InitLimitTimeTextText() { LimitTimeTextText = LimitTimeText.GetComponent<Text>(); }
 
     public GameObject LimitTimeLineImage { get; set; }
     public void InitLimitTimeLineImage() { LimitTimeLineImage = LimitTimePanel.transform.Find("LimitTimeLineImage").gameObject; }
-
-    public GameObject LimitTimeDoublePointImage { get; set; }
-    public void InitLimitTimeDoublePointImage() { LimitTimeDoublePointImage = LimitTimePanel.transform.Find("LimitTimeDoublePointImage").gameObject; }
 
 
 
@@ -37,11 +29,9 @@ public class LimitTimePanelScript
     {
         LimitTimePanel.SetActive(isActive);
 
-        LimitMinuteText.SetActive(isActive);
-        LimitSecondText.SetActive(isActive);
+        LimitTimeText.SetActive(isActive);
 
         LimitTimeLineImage.SetActive(isActive);
-        LimitTimeDoublePointImage.SetActive(isActive);
 
     }
 
@@ -49,13 +39,10 @@ public class LimitTimePanelScript
     {
         InitLimitTimePanel();
 
-        InitLimitMinuteText();
-        InitLimitMinuteTextText();
-        InitLimitSecondText();
-        InitLimitSecondTextText();
+        InitLimitTimeText();
+        InitLimitTimeTextText();
 
         InitLimitTimeLineImage();
-        InitLimitTimeDoublePointImage();
     }
 
     public void TimeTickUpdateEvent(int timeData)
@@ -76,9 +63,30 @@ public class LimitTimePanelScript
             MinuteTime += 1;               
         }
 
-        LimitMinuteTextText.text = MinuteTime.ToString();
-        LimitSecondTextText.text = timeData.ToString();
+        string minuteString = null;
+        minuteString += MinuteTime.ToString();
+
+        string secondString = null;
+        if (timeData < 10) secondString = "0";
+        secondString += timeData.ToString();
 
 
+
+        LimitTimeTextText.text = minuteString + " : " + secondString;
+
+
+    }
+
+    public void AddTimeYPosition(float yPosition)
+    {
+        LimitTimeText.transform.localPosition = new Vector3(
+        LimitTimeText.transform.localPosition.x,
+        LimitTimeText.transform.localPosition.y + yPosition,
+        LimitTimeText.transform.localPosition.z);
+
+        LimitTimeLineImage.transform.localPosition = new Vector3(
+        LimitTimeLineImage.transform.localPosition.x,
+        LimitTimeLineImage.transform.localPosition.y + yPosition,
+        LimitTimeLineImage.transform.localPosition.z);
     }
 }

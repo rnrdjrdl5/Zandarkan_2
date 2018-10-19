@@ -98,6 +98,11 @@ public partial class NewLobbyRoomPhoton
                 string readyPlayerType = (string)roomPlayerDatas[i].GetPhotonPlayer().CustomProperties["Ready"];
 
 
+                // 방장이면 Ready 해제한다.
+                if (roomPlayerDatas[i].GetPhotonPlayer().IsMasterClient)
+                    roomPlayerDatas[i].GetPhotonPlayer().SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Ready", "false" } });
+
+                // true, false에 따른 레디 이미지 체크
                 if (readyPlayerType == "true")
                 {
                     lobbyUIManager.roomPanelScript.playerPanelScripts[i].ReadyImage.SetActive(true);
@@ -318,6 +323,7 @@ public partial class NewLobbyRoomPhoton
             {
                 int tempCount = Random.Range(0, PhotonNetwork.playerList.Length);
                 catPlayer = PhotonNetwork.playerList[tempCount];
+                Debug.Log("모두쥐");
             }
         }
 
@@ -330,6 +336,7 @@ public partial class NewLobbyRoomPhoton
             {
                 PhotonNetwork.playerList[i].
                     SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "PlayerType", "Cat" } });
+                Debug.Log("asf");
             }
 
             else
@@ -381,6 +388,12 @@ public partial class NewLobbyRoomPhoton
     public void ClickSelectCat()
     {
         PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "SelectPlayer", "Cat" } });
+    }
+
+    // Room - 랜덤 선택 시 
+    public void ClickSelectRandom()
+    {
+        PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "SelectPlayer", "Random" } });
     }
 
     // Ready 누를 시 , 방장은 당연히 못누른다.
