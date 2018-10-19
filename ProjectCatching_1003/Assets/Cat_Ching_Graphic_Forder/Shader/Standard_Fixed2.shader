@@ -33,7 +33,7 @@
 		Zwrite off
 		cull off
 		CGPROGRAM
-		#pragma surface surf Standard fullforwardshadows alpha:fade
+		#pragma surface surf Standard fullforwardshas alpha:fade
 		#pragma target 3.0
 
 		sampler2D _MainTex;
@@ -54,6 +54,7 @@
 			fixed4 c = tex2D(_MainTex, IN.uv_MainTex)*_Color;
 			fixed4 d = tex2D (_MetalicTexture, IN.uv_MetalicTexture);
 			o.Albedo = c.rgb;
+			o.Emission = 0;
 			o.Normal = UnpackNormal(tex2D(_BumpMap,IN.uv_BumpMap));
 			o.Metallic = d.r;
 			o.Smoothness = d.a*_Glossiness;
