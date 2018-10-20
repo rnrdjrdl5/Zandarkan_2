@@ -110,7 +110,7 @@ Transform:
   - {fileID: 4209972084575538}
   m_Father: {fileID: 4863842553382880}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.2972867, y: 90, z: -90}
 --- !u!4 &4209972084575538
 Transform:
   m_ObjectHideFlags: 1
@@ -123,7 +123,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4106323093905202}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -40, z: 0}
 --- !u!4 &4347502270488430
 Transform:
   m_ObjectHideFlags: 1
@@ -131,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874591217509474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.492}
+  m_LocalPosition: {x: 0.865, y: 0, z: 0.136}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4863842553382880}
@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1190962930444274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.641921, y: 0, z: 9.3742}
+  m_LocalPosition: {x: 4.4731617, y: 0, z: -13.142191}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4106323093905202}
@@ -304,12 +304,21 @@ MonoBehaviour:
   CanUseObject: 0
   interactiveObjectType: 2
   ActionType: 1
-  InterObjectScore: 15
   MaxInterUseMount: 0
   PlayerInterPosition: {fileID: 1715869280066106}
   InterPosType: 0
+  PlayerNextPositionType: 0
+  NextPosition: {fileID: 0}
+  MinPlayerMount: 0
+  ObjectHeight: 0
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
+  physicsEffect: 0
+  EndInterMaterials:
+  - {fileID: 2100000, guid: a07ebbb54a372db4699cabb9e30cdc47, type: 2}
+  OriginalMaterials: []
 --- !u!114 &114263672893863976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,5 +367,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69eee08f5f60c14c803d7cd461642fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InterEffect: {fileID: 0}
+  InterEffect: {fileID: 1874591217509474}
   UseEffect: {fileID: 0}

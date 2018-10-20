@@ -450,7 +450,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667847903549704}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -6.6200004, y: 1.068, z: -3.913}
+  m_LocalPosition: {x: -8.996394, y: 0.017605841, z: -2.509356}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4201055533854890}
@@ -1997,7 +1997,12 @@ MonoBehaviour:
   ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 29
+  EndInterMaterials:
+  - {fileID: 2100000, guid: 0e9c3d0e31b06d344bb141d6f0060f5a, type: 2}
+  OriginalMaterials: []
 --- !u!114 &114281222062742910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2035,7 +2040,12 @@ MonoBehaviour:
   ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 29
+  EndInterMaterials:
+  - {fileID: 2100000, guid: 0e9c3d0e31b06d344bb141d6f0060f5a, type: 2}
+  OriginalMaterials: []
 --- !u!114 &114390926497547020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2099,7 +2109,12 @@ MonoBehaviour:
   ObjectHeight: 10
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 13
+  EndInterMaterials:
+  - {fileID: 2100000, guid: 62e7e271ef2e39044b54a4980e23d11c, type: 2}
+  OriginalMaterials: []
 --- !u!114 &114475774806444930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2189,7 +2204,12 @@ MonoBehaviour:
   ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 29
+  EndInterMaterials:
+  - {fileID: 2100000, guid: 0e9c3d0e31b06d344bb141d6f0060f5a, type: 2}
+  OriginalMaterials: []
 --- !u!114 &114544058816915054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2336,7 +2356,12 @@ MonoBehaviour:
   ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 29
+  EndInterMaterials:
+  - {fileID: 2100000, guid: 0e9c3d0e31b06d344bb141d6f0060f5a, type: 2}
+  OriginalMaterials: []
 --- !u!114 &114866021431768362
 MonoBehaviour:
   m_ObjectHideFlags: 1

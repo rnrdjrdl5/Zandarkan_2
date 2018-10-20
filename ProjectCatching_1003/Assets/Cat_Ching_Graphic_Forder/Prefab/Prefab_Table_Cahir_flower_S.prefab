@@ -1875,7 +1875,11 @@ MonoBehaviour:
   ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 29
+  EndInterMaterials: []
+  OriginalMaterials: []
 --- !u!114 &114281665686018110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2080,7 +2084,11 @@ MonoBehaviour:
   ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 29
+  EndInterMaterials: []
+  OriginalMaterials: []
 --- !u!114 &114678161801201148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2144,7 +2152,11 @@ MonoBehaviour:
   ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 29
+  EndInterMaterials: []
+  OriginalMaterials: []
 --- !u!114 &114710675966847916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2266,7 +2278,11 @@ MonoBehaviour:
   ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 29
+  EndInterMaterials: []
+  OriginalMaterials: []
 --- !u!114 &114878862434399732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2330,7 +2346,11 @@ MonoBehaviour:
   ObjectHeight: 10
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 13
+  EndInterMaterials: []
+  OriginalMaterials: []
 --- !u!114 &114952438500029066
 MonoBehaviour:
   m_ObjectHideFlags: 1

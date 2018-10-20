@@ -106,6 +106,7 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
     public List<Material> InterMaterials { get; set; } // 메테리얼 저장
     public List<Texture> InterTexture { get; set; }      // 텍스쳐 저장
     public MeshRenderer[] InterMeshRenderer;
+    public SkinnedMeshRenderer[] InterSkinnedMeshRanderer;
 
     public PlayerPositionScript playerPositionScript { get; set; }
 
@@ -133,8 +134,8 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
 
 
 
-    public Material EndInterMaterials;      // 반투명 될 메테리얼
-    private Material OriginalMaterials;      // 반투명 이전 저장 메테리얼
+    public Material[] EndInterMaterials;      // 반투명 될 메테리얼
+    public Material[] OriginalMaterials;  // 반투명 이전 저장 메테리얼
 
 
 
@@ -263,6 +264,7 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
     {
 
         MeshRenderer[] mrs;
+        SkinnedMeshRenderer[] smrs;
         
 
        
@@ -270,14 +272,45 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
         if (interMountType == InterMountType.ONE)
         {
             mrs = gameObject.GetComponentsInChildren<MeshRenderer>();
+            smrs = gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
             InterMeshRenderer = mrs;
-            OriginalMaterials = mrs[0].material;
+            InterSkinnedMeshRanderer = smrs;
 
-            for (int i = 0; i < mrs.Length; i++)
+
+            List<Material> tempMaterials = new List<Material>();
+
+            if (mrs.Length != 0)
             {
-                InterTexture.Add(mrs[i].material.GetTexture("_MainTex"));
-                InterMaterials.Add(mrs[i].material);
+                for (int i = 0; i < mrs.Length; i++)
+                {
+
+                    if (mrs != null)
+                    {
+                        tempMaterials.Add(mrs[i].materials[0]);
+
+                        InterTexture.Add(mrs[i].material.GetTexture("_MainTex"));
+                        InterMaterials.Add(mrs[i].material);
+                    }
+
+                }
             }
+
+            if (smrs.Length != 0)
+            {
+                for (int i = 0; i < smrs.Length; i++)
+                {
+
+                    if (smrs != null)
+                    {
+                        tempMaterials.Add(smrs[i].materials[0]);
+
+                        InterTexture.Add(smrs[i].material.GetTexture("_MainTex"));
+                        InterMaterials.Add(smrs[i].material);
+                    }
+
+                }
+            }
+            OriginalMaterials = tempMaterials.ToArray();
 
 
         }
@@ -293,13 +326,27 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
                 if (tr[i].tag == "Interaction")
                 {
                     mrs = tr[i].gameObject.GetComponentsInChildren<MeshRenderer>();
+                    smrs = tr[i].gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
 
                     if (mrs != null)
                     {
-
-                        InterTexture.Add(mrs[i].material.GetTexture("_MainTex"));
-                        InterMaterials.Add(mrs[i].material);
+                        for (int j = 0; j < mrs.Length; j++)
+                        {
+                            InterTexture.Add(mrs[j].material.GetTexture("_MainTex"));
+                            InterMaterials.Add(mrs[j].material);
+                        }
                     }
+
+                    if (smrs != null)
+                    {
+                        for (int j = 0; j < mrs.Length; j++)
+                        {
+                            InterTexture.Add(smrs[j].material.GetTexture("_MainTex"));
+                            InterMaterials.Add(smrs[j].material);
+                        }
+                    }
+
+
                 }
             }
         }

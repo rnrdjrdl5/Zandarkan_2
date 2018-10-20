@@ -28,6 +28,8 @@ public class PoolingManager : MonoBehaviour {
 
         ATTACK_FINISH, CHAIR_EFFECT, BALL_HIT,
 
+        STUN_EFFECT, 
+
         NONE
 
     }
@@ -146,9 +148,13 @@ public class PoolingManager : MonoBehaviour {
             case EffctType.BALL_HIT:
                 effect = PopObject("FX_KDH_Prefab_HitBall");
                 break;
+            case EffctType.STUN_EFFECT:
+                effect = PopObject("strun_main_01");
+                break;
             case EffctType.NONE:
                 effect = null;
                 break;
+            
 
 
 

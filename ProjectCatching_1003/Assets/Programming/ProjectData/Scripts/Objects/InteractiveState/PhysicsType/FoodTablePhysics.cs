@@ -48,6 +48,7 @@ public class FoodTablePhysics : MonoBehaviour {
 		
 	}
 
+
     public void Action(Vector3 dirVector)
     {
 
@@ -94,6 +95,10 @@ public class FoodTablePhysics : MonoBehaviour {
     {
         yield return new WaitForSeconds(CreateOffPhysicsObjectTime);
 
+        //부모 오브젝트는 끝났다 알림
+        gameObject.layer = LayerMask.NameToLayer("NoPlayerInterEnd");
+
+        // 자식도 끝났지만, 충돌 이펙트는 보여준다.
         int count = FoodTableObjects.Length;
         for (int i = 0; i < count; i++)
         {

@@ -52,7 +52,24 @@ public partial class PlayerState
             playerGroggyDebuff.SetMaxDebuffTime(MaxTime);
             playerGroggyDebuff.SetNowDebuffTime(0);
         }
+
+        else if ((DefaultPlayerSkillDebuff.EnumSkillDebuff)ESD == DefaultPlayerSkillDebuff.EnumSkillDebuff.FALL_DOWN)
+        {
+            Debug.Log("점프높이 충돌");
+            animator.SetBool("isFallDown", true);
+
+            PlayerFallDownDebuff playerFallDownDebuff = gameObject.GetComponent<PlayerFallDownDebuff>();
+            if (playerFallDownDebuff == null)
+            {
+                playerFallDownDebuff = gameObject.AddComponent<PlayerFallDownDebuff>();
+            }
+
+            playerFallDownDebuff.SetMaxDebuffTime(MaxTime);
+            playerFallDownDebuff.SetNowDebuffTime(0);
+        }
+            
     }
+
 
 
 

@@ -2276,7 +2276,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1038783261941394}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.06, y: 14.470868, z: 0.411}
+  m_LocalPosition: {x: -11.678105, y: 0, z: -4.731743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4854356819612606}
@@ -6907,7 +6907,12 @@ MonoBehaviour:
   ObjectHeight: 100
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 0
+  EndInterMaterials:
+  - {fileID: 2100000, guid: 2a78e62d98899844283ae9f6297fbe92, type: 2}
+  OriginalMaterials: []
 --- !u!114 &114582454037963130
 MonoBehaviour:
   m_ObjectHideFlags: 1
