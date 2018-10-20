@@ -85,7 +85,7 @@ public class TablePhysics : MonoBehaviour {
         
     }
 
-    // 보조 오브젝트 연결 해제
+    // 보조 오브젝트 연결 해제 , 강체 물리박스 생성
     private void UnLockSubObjects()
     {
         // for문
@@ -108,17 +108,13 @@ public class TablePhysics : MonoBehaviour {
     }
 
     // N초뒤에 물리 제거용 스크립트 생성
+    // 서브 오브젝트들은 각자 충돌체크를 통해 제거된다.
     IEnumerator SetOffPhysics()
     {
         
         // N초 뒤
         yield return new WaitForSeconds(CreateOffPhysicsObjectTime);
 
-        // 플레이어와의 충돌은 없애고, 상호작용탐지도 없앤다.
-        for (int i = 0; i < subObjects.Length; i++)
-        {
-            subObjects[i].layer = LayerMask.NameToLayer("NoPlayerIntering");
-        }
 
         // 이 오브젝트에도 물리 제거 스크립트 등록
         OffObjectPhysics offObjectPhysics = gameObject.AddComponent<OffObjectPhysics>();

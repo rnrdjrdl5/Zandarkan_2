@@ -13,14 +13,30 @@ public class InterObjectGUIPanelScript
             UIManager.GetInstance().UICanvas.transform.Find("InterObjectGUIPanel").gameObject;
     }
 
+    private GameObject Objects;
+    private void InitObjects()
+    {
+        Objects = InterObjectGUIPanel.transform.Find("Objects").gameObject;
+    }
 
+    private GameObject ObjGUIBgImage;
+    private void InitObjGUIBgImage()
+    {
+        ObjGUIBgImage = Objects.transform.Find("ObjGUIBgImage").gameObject;
+    }
+    public RectTransform ObjGUIBgImageRect;
+    private void InitObjGUIBgImageRect()
+    {
+        ObjGUIBgImageRect = ObjGUIBgImage.GetComponent<RectTransform>();
+    }
 
-    const int MAX_GUI_MOUNT = 6;
+    const int MAX_GUI_MOUNT = 10;
 
     public GameObject[] GUIObjects;
     public InterGUIType[] interGUITypes;        // 타입을 받아오기 위해 사용
     private Text[] GUINowTexts;
     private Text[] GUIMaxTexts;
+    private GameObject[] GUICheck;
 
 
     public void InitGUIs()
@@ -29,18 +45,34 @@ public class InterObjectGUIPanelScript
         interGUITypes = new InterGUIType[MAX_GUI_MOUNT];
         GUINowTexts = new Text[MAX_GUI_MOUNT];
         GUIMaxTexts = new Text[MAX_GUI_MOUNT];
+        GUICheck = new GameObject[MAX_GUI_MOUNT];
 
 
         for (int i = 0; i < MAX_GUI_MOUNT; i++)
         {
             string Text = "GUI" + (i + 1).ToString();
 
-            GUIObjects[i] = InterObjectGUIPanel.transform.Find(Text).gameObject;
+            GUIObjects[i] = Objects.transform.Find(Text).gameObject;
             interGUITypes[i] = GUIObjects[i].GetComponent<InterGUIType>();
 
             GUINowTexts[i] = GUIObjects[i].transform.Find("NowText").GetComponent<Text>();
             GUIMaxTexts[i] = GUIObjects[i].transform.Find("MaxText").GetComponent<Text>();
+
+            GUICheck[i] = GUIObjects[i].transform.Find("UICheck").gameObject;
         }
+
+
+
+    }
+
+    public GameObject TapImage;
+    public void InitTapImage() { TapImage = InterObjectGUIPanel.transform.Find("TapImage").gameObject; }
+    public void AddTapImageHeight(float yPosition)
+    {
+        TapImage.transform.localPosition = new Vector3(
+            TapImage.transform.localPosition.x,
+            TapImage.transform.localPosition.y + yPosition,
+            TapImage.transform.localPosition.z);
         
     }
 
@@ -49,17 +81,35 @@ public class InterObjectGUIPanelScript
 
         InitInterObjectGUIPanel();
 
+        InitObjects();
+
+        InitObjGUIBgImage();
+        InitObjGUIBgImageRect();
+
         InitGUIs();
+
+        InitTapImage();
     }
 
     public void SetActive(bool isActive)
     {
+        Debug.Log("dsafsadsf");
         InterObjectGUIPanel.SetActive(isActive);
+
+        ObjGUIBgImage.SetActive(isActive);
+        TapImage.SetActive(isActive);
     }
-    public bool GetActive()
+    public bool GetObjectActive()
     {
-        return InterObjectGUIPanel.activeInHierarchy;
+        return Objects.activeInHierarchy;
     }
+
+    public void SetObjectActive(bool isActive)
+    {
+        Objects.SetActive(isActive);
+    }
+
+    
 
 
     public void SetText(int[] maxData, int[] nowData)
@@ -80,5 +130,19 @@ public class InterObjectGUIPanelScript
         }
 
 
+    }
+
+    public void SetGUICheck(int[] maxData, int[] nowData)
+    {
+
+        for (int i = 0; i < MAX_GUI_MOUNT; i++)
+        {
+
+            if (nowData[(int)interGUITypes[i].interactiveObjectType] <= 0)
+                GUICheck[i].SetActive(true);
+
+            else
+                GUICheck[i].SetActive(false);
+        }
     }
 }

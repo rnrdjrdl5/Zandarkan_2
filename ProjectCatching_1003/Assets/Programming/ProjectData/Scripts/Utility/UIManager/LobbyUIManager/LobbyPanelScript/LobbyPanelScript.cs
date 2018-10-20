@@ -49,6 +49,8 @@ public class LobbyPanelScript{
         OptionImage.SetActive(isActive);
         ExitImage.SetActive(isActive);
         LogoImage.SetActive(isActive);
+
+        lobbyUIManager.LineSetActive(isActive);
     }
 
     public void FadeOutEffect()
@@ -64,6 +66,8 @@ public class LobbyPanelScript{
 
         LogoImageEffect.AddFadeEffectNode(LogoImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
         lobbyUIManager.UpdateEvent += LogoImageEffect.EffectEventLobby;
+
+        lobbyUIManager.LineFadeOutEffect();
     }
 
     public void FadeInEffect()
@@ -79,6 +83,8 @@ public class LobbyPanelScript{
 
         LogoImageEffect.AddFadeEffectNode(LogoImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
         lobbyUIManager.UpdateEvent += LogoImageEffect.EffectEventLobby;
+
+        lobbyUIManager.LineFadeInEffect();
     }
 
 

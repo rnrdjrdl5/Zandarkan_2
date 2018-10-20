@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIManager : Photon.PunBehaviour {
 
-
-    public SelectCharPanelScript selectCharPanelScript { get; set; }
     public float SelectChar_MaxRouletteTick;
     public float SelectChar_DelayRouletteTick;
     public float SelectChar_ExitRouletteTick;
@@ -54,8 +52,6 @@ public class UIManager : Photon.PunBehaviour {
     // 스킬 관련 UI
     public TurnOffPanelScript turnOffPanelScript { get; set; }
     public SaucePanelScript saucePanelScript { get; set; }
-
-    public MenuUIPanelScript menuUIPanelScript { get; set; }
 
     public delegate void DeleUpdate();
     public event DeleUpdate UpdateEvent;
@@ -191,8 +187,6 @@ public class UIManager : Photon.PunBehaviour {
         InitAimImage();
 
 
-        selectCharPanelScript = new SelectCharPanelScript();
-        selectCharPanelScript.InitData();
 
         limitTimePanelScript = new LimitTimePanelScript();
         limitTimePanelScript.InitData();
@@ -248,8 +242,6 @@ public class UIManager : Photon.PunBehaviour {
         rescueIconPanelScript = new RescueIconPanelScript();
         rescueIconPanelScript.InitData();
 
-        menuUIPanelScript = new MenuUIPanelScript();
-        menuUIPanelScript.InitData();
 
         interObjectGUIPanelScript = new InterObjectGUIPanelScript();
         interObjectGUIPanelScript.InitData();
@@ -274,10 +266,31 @@ public class UIManager : Photon.PunBehaviour {
         //UI 키입력 처리
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if(interObjectGUIPanelScript.GetActive() == false)
-                interObjectGUIPanelScript.SetActive(true);
 
-            else interObjectGUIPanelScript.SetActive(false);
+            float guiHeightSize = interObjectGUIPanelScript.ObjGUIBgImageRect.sizeDelta.y;
+
+            if (interObjectGUIPanelScript.GetObjectActive() == false)
+            {
+
+                interObjectGUIPanelScript.SetObjectActive(true);
+
+                // 탭키, 시간 이미지 위치 변경.
+
+                limitTimePanelScript.AddTimeYPosition(-guiHeightSize);
+                interObjectGUIPanelScript.AddTapImageHeight(-guiHeightSize);
+
+            }
+
+            else
+            {
+
+                interObjectGUIPanelScript.SetObjectActive(false);
+
+                limitTimePanelScript.AddTimeYPosition(+guiHeightSize);
+                interObjectGUIPanelScript.AddTapImageHeight(+guiHeightSize);
+
+
+            }
         }
 
     }

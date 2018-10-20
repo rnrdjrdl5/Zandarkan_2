@@ -12,17 +12,15 @@ public partial class NewLobbyRoomPhoton
 
 
     List<RoomPlayerData> roomPlayerDatas;
-    public XMLManager xmlManager;
 
     void RoomUpdate()
     {
         if (gameStateType == EnumGameState.ROOM)
         {
-
             roomPlayerDatas.Clear();
             InitPlayerList();
+
             DrawRoomState();
-            Debug.Log(PhotonNetwork.playerName);
         }
     }
 
@@ -47,7 +45,6 @@ public partial class NewLobbyRoomPhoton
     {
         // 정보 생성
         RoomPlayerData rpd = new RoomPlayerData();
-
         rpd.InitPlayerData(pp);
 
         // 리스트에 삽입
@@ -86,20 +83,34 @@ public partial class NewLobbyRoomPhoton
             if (i < PhotonNetwork.playerList.Length)
             {
 
+                string selectPlayerType = (string)roomPlayerDatas[i].GetPhotonPlayer().CustomProperties["SelectPlayer"];
+
+                // 1.플레이어 패널
                 lobbyUIManager.roomPanelScript.playerPanelScripts[i].SetActive(true);
-
-                if (roomPlayerDatas[i].GetPlayerID() == PhotonNetwork.player.ID)
-                    lobbyUIManager.roomPanelScript.playerPanelScripts[i].MeImage.SetActive(true);
-
-                else
-                    lobbyUIManager.roomPanelScript.playerPanelScripts[i].MeImage.SetActive(false);
-
+                lobbyUIManager.roomPanelScript.playerPanelScripts[i].SetSelectPlayer(selectPlayerType);
+                lobbyUIManager.roomPanelScript.playerPanelScripts[i].NameText.text = roomPlayerDatas[i].GetPlayerName();
 
                 if (roomPlayerDatas[i].GetIsMaster())
                     lobbyUIManager.roomPanelScript.playerPanelScripts[i].MasterImage.SetActive(true);
                 else
                     lobbyUIManager.roomPanelScript.playerPanelScripts[i].MasterImage.SetActive(false);
 
+                string readyPlayerType = (string)roomPlayerDatas[i].GetPhotonPlayer().CustomProperties["Ready"];
+
+
+                // 방장이면 Ready 해제한다.
+                if (roomPlayerDatas[i].GetPhotonPlayer().IsMasterClient)
+                    roomPlayerDatas[i].GetPhotonPlayer().SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Ready", "false" } });
+
+                // true, false에 따른 레디 이미지 체크
+                if (readyPlayerType == "true")
+                {
+                    lobbyUIManager.roomPanelScript.playerPanelScripts[i].ReadyImage.SetActive(true);
+                }
+                else if (readyPlayerType == "false")
+                {
+                    lobbyUIManager.roomPanelScript.playerPanelScripts[i].ReadyImage.SetActive(false);
+                }
             }
 
 
@@ -120,13 +131,13 @@ public partial class NewLobbyRoomPhoton
         if (PhotonNetwork.isMasterClient)
         {
 
-            //StartPanel 허용한다.
-            lobbyUIManager.roomPanelScript.StartImage.GetComponent<Button>().interactable = true;
+            lobbyUIManager.roomPanelScript.StartImage.SetActive(true);
+            lobbyUIManager.roomPanelScript.ReadyImage.SetActive(false);
         }
         else
         {
-
-            lobbyUIManager.roomPanelScript.StartImage.GetComponent<Button>().interactable = false;
+            lobbyUIManager.roomPanelScript.StartImage.SetActive(false);
+            lobbyUIManager.roomPanelScript.ReadyImage.SetActive(true);
         }
     }
 
@@ -134,6 +145,9 @@ public partial class NewLobbyRoomPhoton
     void RoomEnter()
     {
         if (!isUseEvent) return;
+
+        // 해쉬 데이터 설정
+        InitHashData();
 
         gameStateType = EnumGameState.ROOM;
 
@@ -144,8 +158,6 @@ public partial class NewLobbyRoomPhoton
         DeleSetOn = lobbyUIManager.roomPanelScript.SetActive;
         StartCoroutine("Finish_FadeOut_Start_Animation");
 
-        // 이름 랜덤 생성
-      //  CreateRandomID();
 
         // 플레이어 정보 생성
         InitPlayerList();
@@ -153,8 +165,6 @@ public partial class NewLobbyRoomPhoton
         // 그리기
         DrawRoomState();
 
-        // 해쉬 데이터 설정
-        InitHashData();
 
     }
 
@@ -192,59 +202,25 @@ public partial class NewLobbyRoomPhoton
             { "Round",1 }
         };
 
+        ExitGames.Client.Photon.Hashtable SelectPlayer = new ExitGames.Client.Photon.Hashtable
+        {
+            { "SelectPlayer","Random" }
+        };
+
+        ExitGames.Client.Photon.Hashtable ReadyType = new ExitGames.Client.Photon.Hashtable
+        {
+            { "Ready","false" }
+        };
+
         PhotonNetwork.player.SetCustomProperties(PlayerSceneState);
         PhotonNetwork.player.SetCustomProperties(PlayerLoadingState);
         PhotonNetwork.player.SetCustomProperties(PlayerType);
         PhotonNetwork.player.SetCustomProperties(UseBoss);
         PhotonNetwork.player.SetCustomProperties(CatScore);
+        PhotonNetwork.player.SetCustomProperties(SelectPlayer);
+        PhotonNetwork.player.SetCustomProperties(ReadyType);
 
         PhotonNetwork.player.SetCustomProperties(Round);
-    }
-
-    // 이름 랜덤 생성
-    void CreateRandomID()
-    {
-
-        xmlManager = new XMLManager();
-        List<string> Names = xmlManager.XmlRead();
-
-        while (true)
-        {
-            string RandomMyName = Names[Random.Range(0, Names.Count)];
-
-            bool isFind = false;
-
-
-            string SelectMyName = null;
-            for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
-            {
-
-                // 없으면 자기 닉네임으로 선정
-                if (PhotonNetwork.playerList[i].NickName != RandomMyName)
-                {
-
-                    if (!isFind)
-                        SelectMyName = RandomMyName;
-                    isFind = true;
-                }
-
-                // 하나라도 겹치면 제외
-                else
-                {
-                    Names.Remove(RandomMyName);
-                    isFind = false;
-                    break;
-                }
-            }
-
-            // 찾으면 나감.
-            if (isFind)
-            {
-                PhotonNetwork.playerName = SelectMyName;
-                break;
-            }
-
-        }
     }
 
     /***** Click 이벤트 *****/
@@ -255,12 +231,121 @@ public partial class NewLobbyRoomPhoton
 
         if (!isUseEvent) return;
 
+        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+        {
+            if (!PhotonNetwork.playerList[i].IsMasterClient)
+            {
+                string data = (string)PhotonNetwork.playerList[i].CustomProperties["Ready"];
+
+                if (data == "false") return;
+            }
+        }
+
+
         soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
 
         PhotonNetwork.room.IsOpen = false;
         PhotonNetwork.room.IsVisible = false;
 
+        // 랜덤 결정 
+
+        SetRandomPlayer();
         photonView.RPC("RPCLoadingScene", PhotonTargets.All);
+    }
+
+    public void SetRandomPlayer()
+    {
+        // 1. 고양이가 여러명 있으면 이중에 정한다.
+        // 2, 고양이가 한명이면 이중에 정한다.
+        // 3. 쥐밖에 없으면 그 중에 정한다.
+        // 4. 쥐를 고르고 랜덤이 있으면 랜덤에서만 고양이를 선택한다.
+
+
+        // 쥐 , 고양이, 랜덤  카운팅
+        int catCount = 0;
+        List<PhotonPlayer> catPlayers = new List<PhotonPlayer>();
+
+        int mouseCount = 0;
+        List<PhotonPlayer> mousePlayers = new List<PhotonPlayer>();
+
+        int randomCount = 0;
+        List<PhotonPlayer> randomPlayers = new List<PhotonPlayer>();
+
+
+        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+        {
+            if ((string)PhotonNetwork.playerList[i].CustomProperties["SelectPlayer"] ==
+                "Cat")
+            {
+                catCount++;
+                catPlayers.Add(PhotonNetwork.playerList[i]);
+            }
+
+            else if ((string)PhotonNetwork.playerList[i].CustomProperties["SelectPlayer"] ==
+                "Mouse")
+            {
+                mouseCount++;
+                mousePlayers.Add(PhotonNetwork.playerList[i]);
+            }
+
+            else
+            {
+                randomCount++;
+                randomPlayers.Add(PhotonNetwork.playerList[i]);
+            }
+
+            
+        }
+
+
+
+        // 고양이 플레이어 정하기
+        PhotonPlayer catPlayer = null;
+
+        if (catCount >= 1)
+        {
+            int tempCount = Random.Range(0, catCount);
+
+            catPlayer = catPlayers[tempCount];
+        }
+
+        else if (catCount == 0)
+        {
+            // 랜덤을 돌리는 대상은 랜덤 대상 위주로
+
+            if (randomCount >= 1)
+            {
+                int tempCount = Random.Range(0, randomCount);
+                catPlayer = randomPlayers[tempCount];
+            }
+
+            else
+            {
+                int tempCount = Random.Range(0, PhotonNetwork.playerList.Length);
+                catPlayer = PhotonNetwork.playerList[tempCount];
+                Debug.Log("모두쥐");
+            }
+        }
+
+
+        // 실질적인 플레이어 정하기
+        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+        {
+
+            if (catPlayer.ID == PhotonNetwork.playerList[i].ID)
+            {
+                PhotonNetwork.playerList[i].
+                    SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "PlayerType", "Cat" } });
+                Debug.Log("asf");
+            }
+
+            else
+            {
+                PhotonNetwork.playerList[i].
+                SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "PlayerType", "Mouse" } });
+            }
+        }
+
     }
 
     // Room - 게임 퇴장
@@ -291,6 +376,47 @@ public partial class NewLobbyRoomPhoton
         if (!isUseEvent) return;
 
         soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
+    }
+
+    // Room - 쥐 선택 시
+    public void ClickSelectMouse()
+    {
+        PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "SelectPlayer", "Mouse" } });
+    }
+
+    // Room - 고양이 선택 시
+    public void ClickSelectCat()
+    {
+        PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "SelectPlayer", "Cat" } });
+    }
+
+    // Room - 랜덤 선택 시 
+    public void ClickSelectRandom()
+    {
+        PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "SelectPlayer", "Random" } });
+    }
+
+    // Ready 누를 시 , 방장은 당연히 못누른다.
+    public void ClickReadyImage()
+    {
+        if (lobbyUIManager.roomPanelScript.ReadyImage.activeInHierarchy == true)
+        {
+            string readyData = (string)PhotonNetwork.player.CustomProperties["Ready"];
+            if (readyData == "true")
+            {
+
+                PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Ready", "false" } });
+                Debug.Log("1");
+            }
+
+            else if (readyData == "false")
+            {
+
+                PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Ready", "true" } });
+                Debug.Log("2");
+            }
+        }
+
     }
 
 

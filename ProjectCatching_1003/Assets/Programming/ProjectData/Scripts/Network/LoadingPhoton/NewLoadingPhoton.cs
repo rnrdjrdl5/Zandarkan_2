@@ -17,16 +17,28 @@ public class NewLoadingPhoton : Photon.PunBehaviour{
     public GameObject LoadingFinish;
 
 
+    private Image LoadingCat;
+    private Image LoadingMouse;
+    private Image FadeImage;
+
     private bool isOnceLoadingFinishRPC;
 
     private void Awake()
     {
+        LoadingCat = GameObject.Find("LoadingCat").GetComponent<Image>();
+        LoadingMouse = GameObject.Find("LoadingMouse").GetComponent<Image>();
+        FadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
+
         LoadingData = 0.0f;
         InitPhotonView();
 
         CoroLoading = Loading();
 
         isOnceLoadingFinishRPC = false;
+
+
+
+
 
     }
 
@@ -38,6 +50,53 @@ public class NewLoadingPhoton : Photon.PunBehaviour{
         PhotonNetwork.player.SetCustomProperties(ht);
 
         StartCoroutine(CoroLoading);
+
+        // fade 효과주기
+        StartCoroutine("FadeIn");
+    }
+
+    IEnumerator FadeIn()
+    {
+
+        float count = 1.0f;
+        while (true)
+        {
+            if (count <= 0) yield break;
+
+            FadeImage.color = new Color(
+                FadeImage.color.r,
+                FadeImage.color.g,
+                FadeImage.color.b,
+                count);
+
+            count -= Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeOut()
+    {
+        yield return new WaitForSeconds(3.0f);
+
+        float count = 0.0f;
+        while (true)
+        {
+
+            if (count >= 1)
+            {
+                async.allowSceneActivation = true;
+                yield break;
+            }
+
+            FadeImage.color = new Color(
+                FadeImage.color.r,
+                FadeImage.color.g,
+                FadeImage.color.b,
+                count);
+
+            count += Time.deltaTime;
+            yield return null;
+        }
     }
 	
 	// Update is called once per frame
@@ -112,7 +171,8 @@ public class NewLoadingPhoton : Photon.PunBehaviour{
     [PunRPC]
     void RPCNextScene()
     {
-        async.allowSceneActivation = true;
+        StartCoroutine("FadeOut");
+       // async.allowSceneActivation = true;
     }
 
 

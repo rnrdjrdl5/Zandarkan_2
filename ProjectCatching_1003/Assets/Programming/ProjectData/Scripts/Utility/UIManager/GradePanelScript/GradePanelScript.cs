@@ -37,6 +37,9 @@ public class GradePanelScript{
     public GameObject GradeRedArrow { get; set; }
     public void InitGradeRedArrow() { GradeRedArrow = GradePanel.transform.Find("GradeRedArrow").gameObject; }
 
+    public GameObject GradeYellowArrow { get; set; }
+    public void InitGradeYellowArrow() { GradeYellowArrow = GradePanel.transform.Find("GradeYellowArrow").gameObject; }
+
     private UIEffect uIEffect;
 
 
@@ -54,7 +57,7 @@ public class GradePanelScript{
 
         InitGradeArrow();
         InitGradeRedArrow();
-
+        InitGradeYellowArrow();
 
         UIManager uIManager = UIManager.GetInstance();
 
@@ -82,6 +85,8 @@ public class GradePanelScript{
         GradeArrow.SetActive(isActive);
 
         GradeRedArrow.SetActive(isActive);
+
+        GradeYellowArrow.SetActive(isActive);
     }
 
 
@@ -111,7 +116,11 @@ public class GradePanelScript{
 
         float GradeArrowYPos = GradeRootYPos + GradePersent * GradeBarImageRect.rect.height;
 
-        float GradeRedArrowYPos = GradeRootYPos + photonManager.GameTimeOutCondition / 100 * GradeBarImageRect.rect.height;
+        float GradeRedArrowYPos = GradeRootYPos + photonManager.GameBreakCondition / 100 * GradeBarImageRect.rect.height;
+
+        float GradeYellowArrowYPos = GradeRootYPos + photonManager.GameTimeOutCondition / 100 * GradeBarImageRect.rect.height;
+
+        
 
         GradeArrow.transform.localPosition = new Vector3(
             GradeArrow.transform.localPosition.x,
@@ -124,7 +133,13 @@ public class GradePanelScript{
             GradeArrow.transform.localPosition.z
             );
 
-       
+        GradeYellowArrow.transform.localPosition = new Vector3(
+            GradeArrow.transform.localPosition.x,
+            GradeYellowArrowYPos,
+            GradeArrow.transform.localPosition.z
+            );
+
+
 
 
 

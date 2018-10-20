@@ -24,12 +24,15 @@ public class HPPanelScript
 
     public GameObject NowHPText { get; set; }
     public Text NowHPTextText { get; set; }
-    public GameObject HPPersentImage { get; set; }
     public GameObject HPInfinityImage { get; set; }
 
     private PlayerHealth playerHealth;
 
     private UIEffect uIEffect;
+
+
+    private GameObject CheeseImage { get; set; }
+    private GameObject StaticHPText { get; set; }
 
     // playerhealth에서 사용함.
     public void SetPlayerHealth(GameObject go)
@@ -65,9 +68,14 @@ public class HPPanelScript
         NowHPText = HPPanel.transform.Find("NowHPText").gameObject;
         NowHPTextText = NowHPText.GetComponent<Text>();
 
-        HPPersentImage = HPPanel.transform.Find("HPPersentImage").gameObject;
         HPInfinityImage = HPPanel.transform.Find("HPInfinityImage").gameObject;
 
+    }
+
+    public void InitStaticImages()
+    {
+        CheeseImage = HPPanel.transform.Find("CheeseImage").gameObject;
+        StaticHPText = HPPanel.transform.Find("StaticHPText").gameObject;
     }
 
     public void SetHealthPoint(bool isActive)
@@ -76,7 +84,8 @@ public class HPPanelScript
         NowHPImage.SetActive(isActive);
         MaxHPImage.SetActive(isActive);
 
-        HPPersentImage.SetActive(isActive);
+        CheeseImage.SetActive(isActive);
+        StaticHPText.SetActive(isActive);
 
         string playerType = (string)PhotonNetwork.player.CustomProperties["PlayerType"];
 
@@ -109,7 +118,11 @@ public class HPPanelScript
 
         uIEffect = new UIEffect();
 
-        
+
+        InitStaticImages();
+
+
+
     }
 
     public void HPEvent()
@@ -122,7 +135,7 @@ public class HPPanelScript
 
         int Persent = (int)(NowHPImageImage.fillAmount * 100);
 
-            NowHPTextText.text = Persent.ToString();
+            NowHPTextText.text = Persent.ToString() + "%";
 
         // 첫 등록했을때는? 어떻게? check
 

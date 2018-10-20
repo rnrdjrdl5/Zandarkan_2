@@ -4,7 +4,6 @@ using UnityEngine;
 
 public partial class NewLobbyRoomPhoton
 {
-    private string playerName;
 
     private int nowRoomPage;
     private int maxRoomPage;
@@ -98,23 +97,33 @@ public partial class NewLobbyRoomPhoton
         DeleSetOn = lobbyUIManager.waitingRoomPanelScript.SetActive;
         StartCoroutine("Finish_FadeOut_Start_Animation");
         FinishFadeEvent = WaitingRoomEvent;
+
     }
 
-
+    
     /*****  Click 이벤트들  *****/
 
-    private void CheckCreatePopup(bool isShow)
+    private bool CheckEmptyName()
     {
-        lobbyUIManager.waitingRoomPanelScript.SetInteractable(isShow);
-        lobbyUIManager.waitingRoomPanelScript.isCanRoomChannelButton = isShow;
-        lobbyUIManager.waitingRoomPanelScript.SetInteractablePageButton(isShow, nowRoomPage, maxRoomPage);
+        if (string.IsNullOrEmpty(lobbyUIManager.waitingRoomPanelScript.InputPlayerName.text))
+        {
+            return true;
+        }
+
+        else return false;
     }
 
     // FindRoom - 방만들기 클릭 시
     public void ClickCreateRoom()
     {
 
-        CheckCreatePopup(false);
+        if (CheckEmptyName())
+        {
+            lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.EMPTY_NAME);
+            
+            return;
+        }
+
 
         // 1. 방 만드는 메뉴창 보여주기.
         lobbyUIManager.waitingRoomPanelScript.CreateRoomWindow.SetActive(true);
@@ -124,27 +133,32 @@ public partial class NewLobbyRoomPhoton
     // FindRoom > CreateRoom - 방 생성 Order 클릭 시
     public void ClickCROrderButton()
     {
-        // 이외에 정보들 클릭 가능
-        CheckCreatePopup(true);
 
         //1 . 방이름 받아오기.
         string RoomName = lobbyUIManager.waitingRoomPanelScript.InputRoomName.text;
-        string RoomPassword = lobbyUIManager.waitingRoomPanelScript.InputRoomPW.text;
 
         // 같은 방 이름이 있는지 체크함.
         RoomInfo[] fi = PhotonNetwork.GetRoomList();
 
 
         int count = fi.Length;
-        
+
 
         for (int i = 0; i < count; i++)
         {
+
             if (fi[i].Name == RoomName)
             {
-                lobbyUIManager.waitingRoomPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.SAME_ROOM);
+                lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.SAME_ROOM);
                 return;
             }
+        }
+
+
+        if (string.IsNullOrEmpty(RoomName))
+        {
+            lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.EMPTY_ROOM_NAME);
+            return;
         }
 
 
@@ -157,15 +171,8 @@ public partial class NewLobbyRoomPhoton
             MaxPlayers = 6
         };
 
-        ExitGames.Client.Photon.Hashtable PlayerSceneState = new ExitGames.Client.Photon.Hashtable
-        {
 
-            { "Password", RoomPassword}
-        };
-
-        ro.CustomRoomPropertiesForLobby = new string[] { RoomPassword };// = PlayerSceneState;
-
-
+        PhotonNetwork.playerName = lobbyUIManager.waitingRoomPanelScript.InputPlayerName.text;
         PhotonNetwork.CreateRoom(RoomName, ro, TypedLobby.Default);
 
 
@@ -173,8 +180,6 @@ public partial class NewLobbyRoomPhoton
     // FindRoom > CreateRoom - 방만들기 퇴장 시
     public void ClickCRBackButton()
     {
-        // 이외에 정보들 클릭 가능
-        CheckCreatePopup(true);
 
         // 1. 방 만드는 메뉴창 보여주기.
         lobbyUIManager.waitingRoomPanelScript.CreateRoomWindow.SetActive(false);
@@ -182,19 +187,20 @@ public partial class NewLobbyRoomPhoton
 
 
 
-    // FindRoom > SystemWindow - 시스템적 문제로 인한 메세지 관련 이벤트
-    public void ClickSWBackButton()
-    {
-        CheckCreatePopup(true);
 
-        lobbyUIManager.waitingRoomPanelScript.CreateSystemWindow.SetActive(false);
-    }
 
 
     // FindRoom - 빠른시작
     public void ClickQuickMatch()
     {
+        if (CheckEmptyName())
+        {
+            lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.EMPTY_NAME);
+            return;
+        }
+
         PhotonNetwork.playerName = lobbyUIManager.waitingRoomPanelScript.InputPlayerName.text;
+        Debug.Log("로비 이름 : " + PhotonNetwork.playerName);
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -203,8 +209,7 @@ public partial class NewLobbyRoomPhoton
         base.OnPhotonRandomJoinFailed(codeAndMsg);
 
         // 방찾기 실패
-        lobbyUIManager.waitingRoomPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.NOT_QUICK_MATCH);
-        CheckCreatePopup(false);
+        lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.NOT_QUICK_MATCH);
     }
 
 
@@ -236,8 +241,14 @@ public partial class NewLobbyRoomPhoton
 
     public void ClickJoinRoom(int number)
     {
+        if (CheckEmptyName())
+        {
+            lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.EMPTY_NAME);
+            return;
+        }
 
         RoomInfo[] fi = PhotonNetwork.GetRoomList();
+        PhotonNetwork.playerName = lobbyUIManager.waitingRoomPanelScript.InputPlayerName.text;
         PhotonNetwork.JoinRoom(fi[number - 1].Name);
     }
 

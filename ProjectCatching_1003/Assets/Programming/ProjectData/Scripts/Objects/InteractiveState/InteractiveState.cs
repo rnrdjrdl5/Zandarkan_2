@@ -12,7 +12,7 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
     public enum EnumInteractiveObject
     { TABLE = 1, MIKE, DRAWE, POT, PIANO, POSMEKA, SAUCES, FRYHANGER, CART, REFRIGERATOR,
 
-        FRAME , CHAIR
+        FRAME , CHAIR, CANDLE , TABLEWARE_TABLE, PIANO_CHAIR
     };
     
 
@@ -112,9 +112,6 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
     public float InterObjectMag { get; set; }       // 물체 배율
 
     public PoolingManager.EffctType physicsEffect;
-    
-
-    /**** 접근자 ****/
 
 
     public bool GetCanUseObject()
@@ -266,6 +263,8 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
         MeshRenderer[] mrs;
         
 
+       
+
         if (interMountType == InterMountType.ONE)
         {
             mrs = gameObject.GetComponentsInChildren<MeshRenderer>();
@@ -276,6 +275,8 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
                 InterTexture.Add(mrs[i].material.GetTexture("_MainTex"));
                 InterMaterials.Add(mrs[i].material);
             }
+
+
         }
 
         else if (interMountType == InterMountType.MANY)
@@ -421,6 +422,12 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
     private void RPCTableAction(Vector3 normalVector3)
     {
 
+        // 1. 상호작용 중임을 표시하는 NoPlayerIntering , 반투명 탐지만 없고 충돌 없음
+
+        // 2. 상호작용 후에는 NoPlayerInterEnd로 변환.
+        // ( 변환 조건 : 메인오브젝트 : n초 후 땅 충돌체크 인식 후 변경)
+        // ( 서브 오브젝트 : 땅 충돌 후 변경 )
+
 
         // 리스트에서 해당 오브젝트 삭제
         objectManager.RemoveObject(photonView.viewID);
@@ -429,9 +436,10 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
         gameObject.layer = LayerMask.NameToLayer("NoPlayerIntering");
 
         if (interactiveObjectType == EnumInteractiveObject.TABLE ||
-            interactiveObjectType == EnumInteractiveObject.CHAIR)
+            interactiveObjectType == EnumInteractiveObject.CHAIR ||
+            interactiveObjectType == EnumInteractiveObject.PIANO_CHAIR)
         {
-            
+
             // 물리 컴포넌트 받기
             TablePhysics tablePhysics = GetComponent<TablePhysics>();
 
@@ -446,6 +454,14 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
 
             // 물리 방식 액션 사용
             cartPhysics.Action(normalVector3);
+        }
+
+        else if (interactiveObjectType == EnumInteractiveObject.TABLEWARE_TABLE)
+        {
+
+            FoodTablePhysics foodTablePhysics = GetComponent<FoodTablePhysics>();
+
+            foodTablePhysics.Action(normalVector3);
         }
 
     }

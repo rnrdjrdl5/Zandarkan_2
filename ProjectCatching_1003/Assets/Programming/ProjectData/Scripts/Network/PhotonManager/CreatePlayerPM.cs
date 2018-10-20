@@ -58,10 +58,6 @@ public partial class PhotonManager
         RandomObjectSpawn randomObjectSpawn = GetComponent<RandomObjectSpawn>();
         randomObjectSpawn.ObjectSpawn();
 
-        uIManager.selectCharPanelScript.PlayerType = PlayerType;
-
-        uIManager.selectCharPanelScript.isUseDelay = true;
-
 
         // 인원수에 따른 물체 삭제
         if (objectManager != null)
@@ -76,6 +72,8 @@ public partial class PhotonManager
             objectManager.CalcObjectMag();
             Debug.Log("수행완료3");
         }
+
+        PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Offset", "LoadingComplete" } });
 
         GameTimeOutCondition = mouseWinScoreCondition[MousePlayerListOneSort.Count - 1];
         playTimerNumber = playTimes[MousePlayerListOneSort.Count - 1];
@@ -131,14 +129,10 @@ public partial class PhotonManager
             new ExitGames.Client.Photon.Hashtable { { "Offset", "LoadingComplete" } });
 
 
-       // uIManager.menuUIPanelScript.OffActive();
-
-       // uIManager.selectCharPanelScript.OffActive();
-
         uIManager.hpPanelScript.SetHealthPoint(true);
 
-       // uIManager.limitTimePanelScript.SetLimitTime(true);
-       // UpdateTimeEvent = uIManager.limitTimePanelScript.TimeTickUpdateEvent;
+        uIManager.limitTimePanelScript.SetLimitTime(true);
+        UpdateTimeEvent = uIManager.limitTimePanelScript.TimeTickUpdateEvent;
 
         uIManager.SetAim(true);
         uIManager.mouseImagePanelScript.MouseImagePanel.SetActive(true);
@@ -149,6 +143,8 @@ public partial class PhotonManager
         uIManager.skillPanelScript.SkillPanel.SetActive(true);
 
         uIManager.pressImagePanelScript.PressImagePanel.SetActive(true);
+
+        uIManager.interObjectGUIPanelScript.SetActive(true);
     }
 
 

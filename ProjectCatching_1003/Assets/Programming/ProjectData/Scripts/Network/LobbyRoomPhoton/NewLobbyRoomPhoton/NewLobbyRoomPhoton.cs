@@ -33,7 +33,7 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
     public string gameVersion;
 
     private bool isUseEvent;
-    private Animator MenuBookAnimator;
+    public Animator MenuBookAnimator;
 
 
     private void Awake()
@@ -45,9 +45,7 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
         gameStateType = EnumGameState.NONE;
 
 
-        isUseEvent = false;
-        GameObject MenuBook = GameObject.Find("MenuBook").gameObject;
-        MenuBookAnimator = MenuBook.GetComponent<Animator>();
+        Debug.Log("Animator : " + MenuBookAnimator);
 
         GameObject OpeningObject = GameObject.Find("OpeningObjects").gameObject;
 
@@ -176,4 +174,11 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
         SceneManager.LoadScene("Loading");
     }
 
+
+    // 공용 Click 이벤트
+    // Click 이벤트
+    public void ClickSWBackButton()
+    {
+        lobbyUIManager.systemPanelScript.SetActive(false);
+    }
 }

@@ -72,11 +72,17 @@ public class TutoTestPhoton : Photon.PunBehaviour
             { "Round",1 }
         };
 
+        ExitGames.Client.Photon.Hashtable SelectPlayer = new ExitGames.Client.Photon.Hashtable
+        {
+            { "SelectPlayer","Random" }
+        };
+
         PhotonNetwork.player.SetCustomProperties(PlayerSceneState);
         PhotonNetwork.player.SetCustomProperties(PlayerLoadingState);
         PhotonNetwork.player.SetCustomProperties(PlayerType);
         PhotonNetwork.player.SetCustomProperties(UseBoss);
         PhotonNetwork.player.SetCustomProperties(CatScore);
+        PhotonNetwork.player.SetCustomProperties(SelectPlayer);
 
         PhotonNetwork.player.SetCustomProperties(Round);
 
