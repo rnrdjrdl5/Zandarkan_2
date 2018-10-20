@@ -10,7 +10,7 @@ public partial class NewLobbyRoomPhoton
 
     void TitleAwake()
     {
-        GameObject OpeningObject = GameObject.Find("OpeningObjects").gameObject;
+        GameObject OpeningObject = GameObject.Find("OpeningTimeLine").gameObject;
 
         readyTimeLine = OpeningObject.transform.Find("ReadyTimeLine").gameObject;
         playTimeLine = OpeningObject.transform.Find("PlayTimeLine").gameObject;

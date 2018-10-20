@@ -34,15 +34,21 @@ public partial class NewLobbyRoomPhoton
         int roomCount = fi.Length;
 
 
-        maxRoomPage = ((int)(roomCount / count)) + 1;
+        // 안되는 것 : 6/6 , 12/6 (* 6/6 : 0  12/6 : 1 )     13/6 
+        maxRoomPage = ((int)(roomCount / count)) + 1;       // 최대 방의 페이지
         if (nowRoomPage > maxRoomPage) nowRoomPage = maxRoomPage;
+
+
+        // 최대 방 수  와   현재 방 수가  같을 경우,    위의 공식을 사용하면 에러가 나온다.       추가 처리
+        if (roomCount % count == 0 && roomCount != 0) { maxRoomPage = roomCount / count; }
 
 
         // 현재 페이지 방 개수 설정
         int nowPageRoomAmount;
 
+        // 현재 방의 개수와 최대 방의 개수가 다르면?
         if (maxRoomPage != nowRoomPage)
-            nowPageRoomAmount = count;
+            nowPageRoomAmount = count;      //  현재 방 페이지의 방 개수를 최대로
 
         else
             nowPageRoomAmount = roomCount % count;
