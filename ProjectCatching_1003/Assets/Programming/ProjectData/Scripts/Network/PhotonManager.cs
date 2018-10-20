@@ -453,6 +453,8 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
     {
         SpringArmObject.GetInstance().GetSystemSoundManager().StopBGSound();
         SpringArmObject.GetInstance().GetSystemSoundManager().PlayEffectSound(SoundManager.EnumEffectSound.UI_LAST_30_SECOND);
+        UIManager.GetInstance().gradePanelScript.AlmostTimeOut();
+
 
         yield return new WaitForSeconds(1.5f);
         SpringArmObject.GetInstance().GetSystemSoundManager().PlayBGSound(SoundManager.EnumBGSound.BG_FAST_INGAME_SOUND);

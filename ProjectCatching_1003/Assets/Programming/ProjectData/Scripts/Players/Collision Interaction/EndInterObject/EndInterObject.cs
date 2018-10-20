@@ -41,24 +41,61 @@ public class EndInterObject : MonoBehaviour
                 // 사용 불가능하면
                 if (!IS.GetCanUseObject())
                 {
-
-                    // 반투명 키는 부분
-                    
-
-                    for (int i = 0; i < IS.GetInterMaterials().Count; i++)
+                    Debug.Log(IS.gameObject.name);
+                    Debug.Log("a2sd");
+                    int mrCount;
+                    if (IS.InterMeshRenderer.Length != 0)
                     {
+                        Debug.Log("a3sd");
+                        mrCount = IS.InterMeshRenderer.Length;
 
-                        Debug.Log("Materials i : " + i);
+                        int eMCount = IS.EndInterMaterials.Length;
 
-                        Color color = new Color(IS.GetInterMaterials()[i].color.r,
-                            IS.GetInterMaterials()[i].color.g,
-                            IS.GetInterMaterials()[i].color.b,
-                            0.2f);
+                        for (int i = 0; i < mrCount; i++)
+                        {
+                            Debug.Log("as4d");
 
-                        IS.GetInterMaterials()[i].color = color;
+                            // 해당되는 것과 같은 이름 찾기
+                            Material tempMaterials = null;
+                            for (int j = 0; j < eMCount; j++)
+                            {
+
+                                if (IS.InterMeshRenderer[i].material.name.Split(' ')[0] + "_End" == IS.EndInterMaterials[j].name)
+                                {
+                                    Debug.Log("as5d");
+
+                                    tempMaterials = IS.EndInterMaterials[j];
+
+                                }
+                            }
+
+                            if(tempMaterials != null) IS.InterMeshRenderer[i].material = tempMaterials;
+                        }
                     }
 
-                    Debug.Log(" 반투명 시작!");
+                    else if (IS.InterSkinnedMeshRanderer.Length != 0)
+                    {
+
+                        mrCount = IS.InterSkinnedMeshRanderer.Length;
+
+                        for (int i = 0; i < mrCount; i++)
+                        {
+                            int eMCount = IS.EndInterMaterials.Length;
+                            Material tempMaterials = null;
+                            for (int j = 0; j < eMCount; j++)
+                            {
+                                if (IS.InterSkinnedMeshRanderer[i].material.name.Split(' ')[0] + "_End" == IS.EndInterMaterials[j].name)
+                                {
+                                    
+                                    tempMaterials = IS.EndInterMaterials[j];
+                                }
+                            }
+
+
+                           if(tempMaterials != null) IS.InterSkinnedMeshRanderer[i].material = tempMaterials;
+                        }
+                    }
+
                 }
 
                 else
@@ -82,18 +119,27 @@ public class EndInterObject : MonoBehaviour
 
                 if (!IS.GetCanUseObject())
                 {
-                    for (int i = 0; i < IS.GetInterMaterials().Count; i++)
+
+                    int mrCount;
+                    if (IS.InterMeshRenderer.Length != 0)
                     {
 
-                        Color color = new Color(IS.GetInterMaterials()[i].color.r,
-                            IS.GetInterMaterials()[i].color.g,
-                            IS.GetInterMaterials()[i].color.b,
-                            1.0f);
-
-                        IS.GetInterMaterials()[i].color = color;
+                        mrCount = IS.InterMeshRenderer.Length;
+                        for (int i = 0; i < mrCount; i++)
+                        {
+                            IS.InterMeshRenderer[i].material = IS.OriginalMaterials[i];
+                        }
                     }
 
-                    Debug.Log(" 반투명 off");
+                    else if (IS.InterSkinnedMeshRanderer.Length != 0)
+                    {
+
+                        mrCount = IS.InterSkinnedMeshRanderer.Length;
+                        for (int i = 0; i < mrCount; i++)
+                        {
+                            IS.InterSkinnedMeshRanderer[i].material = IS.OriginalMaterials[i];
+                        }
+                    }
                 }
 
             }

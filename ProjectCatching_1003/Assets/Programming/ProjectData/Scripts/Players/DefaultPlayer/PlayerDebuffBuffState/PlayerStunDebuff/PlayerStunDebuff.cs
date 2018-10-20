@@ -5,19 +5,14 @@ using UnityEngine;
 public class PlayerStunDebuff : PlayerDefaultDebuff
 {
 
-    PlayerBodyPart playerBodyPart;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        playerBodyPart = GetComponent<PlayerBodyPart>();
-    }
+
 
 
     protected override void Start()
     {
         base.Start();
-        CreateDebuffEffect("strun_main_01", playerBodyPart.UpHeadPosition.transform);
+        CreateDebuffEffect(PoolingManager.EffctType.STUN_EFFECT, playerBodyPart.UpHeadPosition.transform);
     }
 
    

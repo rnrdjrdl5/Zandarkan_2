@@ -47,8 +47,6 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
 
         Debug.Log("Animator : " + MenuBookAnimator);
 
-        GameObject OpeningObject = GameObject.Find("OpeningObjects").gameObject;
-
         PhotonNetwork.ConnectUsingSettings(gameVersion);
 
         PhotonNetwork.automaticallySyncScene = true;

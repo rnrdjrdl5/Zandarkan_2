@@ -6904,10 +6904,15 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 100
+  ObjectHeight: 120
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 0
+  EndInterMaterials:
+  - {fileID: 2100000, guid: 2a78e62d98899844283ae9f6297fbe92, type: 2}
+  OriginalMaterials: []
 --- !u!114 &114582454037963130
 MonoBehaviour:
   m_ObjectHideFlags: 1

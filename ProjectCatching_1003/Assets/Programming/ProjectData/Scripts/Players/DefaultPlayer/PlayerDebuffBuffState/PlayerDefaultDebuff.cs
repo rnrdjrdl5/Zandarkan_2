@@ -27,11 +27,17 @@ public class PlayerDefaultDebuff : MonoBehaviour {
 
     // Use this for initialization
 
+    protected PlayerBodyPart playerBodyPart;
+
     virtual protected void Awake()
     {
         animator = GetComponent<Animator>();
         if (animator == null)
             Debug.Log(" 애니메이터가 없습니다1");
+
+        playerBodyPart = GetComponent<PlayerBodyPart>();
+        if (playerBodyPart == null)
+            Debug.LogWarning("Player Body 스크립트가 없음.");
     }
     virtual protected void Start () {
         NowDebuffTime = 0.0f;
@@ -54,15 +60,18 @@ public class PlayerDefaultDebuff : MonoBehaviour {
 
     }
 
-    protected virtual void CreateDebuffEffect(string name , Transform debuffTransform)
+    // 이펙트 1개만 대응함.
+    protected virtual void CreateDebuffEffect(PoolingManager.EffctType effctType , Transform debuffTransform)
     {
-        DebuffEffect = PoolingManager.GetInstance().PopObject(name);
+        DebuffEffect = PoolingManager.GetInstance().CreateEffect(effctType);
 
         DebuffEffect.transform.position =
            debuffTransform.position - transform.up * 0.5f;
 
         DebuffEffect.transform.SetParent(debuffTransform);
     }
+
+    
 
     protected virtual void PopDebuffEffect()
     {

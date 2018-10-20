@@ -138,6 +138,7 @@ public partial class PlayerMove
             // 캐릭터 조건부 x방향 회전
             if (!ps.EqualPlayerCondition(PlayerState.ConditionEnum.STUN) &&
                 !ps.EqualPlayerCondition(PlayerState.ConditionEnum.GROGGY) &&
+                !ps.EqualPlayerCondition(PlayerState.ConditionEnum.FALL_DOWN) &&
                 !ps.EqualPlayerCondition(PlayerState.ConditionEnum.NOTCOLLISION))
                 SetPlayerRotateX();
 
@@ -203,7 +204,6 @@ public partial class PlayerMove
 
             else if (!IsLandGround() &&
 
-            //else if (!characterController.isGrounded &&
                  animator.GetInteger("JumpType") == 0)
             {
                 animator.SetInteger("JumpType", 2);
@@ -215,7 +215,6 @@ public partial class PlayerMove
 
 
             // 지상일때, 착지 애니메이션 사용중일때 
-            //else if (characterController.isGrounded &&
             else if(IsLandGround() && 
                 MoveDir.y < 0 &&
                 animator.GetInteger("JumpType") == 2)
@@ -231,8 +230,9 @@ public partial class PlayerMove
                         // 데미지주기
                         playerHealth.CallFallDamage(FallDamage);
 
-                        // 스턴 주기
-                        ps.AddDebuffState(DefaultPlayerSkillDebuff.EnumSkillDebuff.STUN, FallStunTime);
+                        // 지금
+                        // 애니메이션 재생
+                        ps.AddDebuffState(DefaultPlayerSkillDebuff.EnumSkillDebuff.FALL_DOWN, FallStunTime);
 
                         // 속도값 없애기
                         MoveDir = Vector3.up * MoveDir.y;

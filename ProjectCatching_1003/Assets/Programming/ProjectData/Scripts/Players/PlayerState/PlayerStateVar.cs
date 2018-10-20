@@ -24,7 +24,7 @@ public partial class PlayerState
         IDLE, RUN, SPEEDRUN, JUMP,
         DAMAGE, STUN, GROGGY, NOTMOVE , SLIDE 
      , THROW_FRYING_PAN, TRAP, EMOTICON , HIDE
-      , INTERACTION, RESCUE ,
+      , INTERACTION, RESCUE, FALL_DOWN
     };
 
     public ConditionEnum PlayerCondition = ConditionEnum.IDLE;

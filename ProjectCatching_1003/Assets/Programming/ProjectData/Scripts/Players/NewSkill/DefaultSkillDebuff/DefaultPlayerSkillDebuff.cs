@@ -6,7 +6,7 @@ using UnityEngine;
 public class DefaultPlayerSkillDebuff
 {
     // 스킬 디버프 속성입니다. 디버프 추가 시 이 속성을 보고 추가합니다.
-    public enum EnumSkillDebuff { STUN , DAMAGED , NOTMOVE , GROGGY , SLIDE}
+    public enum EnumSkillDebuff { STUN , DAMAGED , NOTMOVE , GROGGY , SLIDE , FALL_DOWN}
     
     public EnumSkillDebuff SkillDebuffType;
 

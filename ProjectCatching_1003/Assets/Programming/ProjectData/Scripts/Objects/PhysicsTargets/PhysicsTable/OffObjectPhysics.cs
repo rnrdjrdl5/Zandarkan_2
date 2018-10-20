@@ -24,9 +24,12 @@ public class OffObjectPhysics : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Floor 일일히 추가하기 힘들다. 빠지는 부분이 많다.
+        // if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && !isCheck)
 
-          if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && !isCheck)
-           {
+
+        if (!isCheck)
+        {
             isCheck = true;
 
 

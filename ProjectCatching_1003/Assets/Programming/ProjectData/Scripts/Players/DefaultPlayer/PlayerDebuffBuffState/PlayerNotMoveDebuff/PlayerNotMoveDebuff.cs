@@ -15,7 +15,7 @@ public class PlayerNotMoveDebuff : PlayerDefaultDebuff
 
     protected override void Start()
     {
-        CreateDebuffEffect("strun_main_01", playerBodyPart.UpHeadPosition.transform);
+        CreateDebuffEffect(PoolingManager.EffctType.STUN_EFFECT, playerBodyPart.UpHeadPosition.transform);
     }
 
     protected override void Update()

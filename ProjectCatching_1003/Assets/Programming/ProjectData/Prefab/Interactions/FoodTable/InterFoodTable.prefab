@@ -145,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1080974025206460}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.71}
+  m_LocalPosition: {x: 5.201768, y: 0, z: -9.857773}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4431548700557926}
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b29a307e8cd1c4aad10a622a45853b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractiveTime: 0.5
+  InteractiveTime: 2
   CanUseObject: 0
   interactiveObjectType: 14
   ActionType: 0
@@ -532,7 +532,12 @@ MonoBehaviour:
   ObjectHeight: 5
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 29
+  EndInterMaterials:
+  - {fileID: 2100000, guid: f27256372bc907749b15419ab6d649ec, type: 2}
+  OriginalMaterials: []
 --- !u!114 &114320004761950706
 MonoBehaviour:
   m_ObjectHideFlags: 1

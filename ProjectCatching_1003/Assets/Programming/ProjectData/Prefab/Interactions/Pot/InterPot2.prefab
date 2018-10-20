@@ -1001,7 +1001,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020577581893228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.096833, y: 0, z: 6.849396}
+  m_LocalPosition: {x: 1.9749074, y: 0, z: -11.698502}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4207340400442544}
@@ -4080,7 +4080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b29a307e8cd1c4aad10a622a45853b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractiveTime: 3
+  InteractiveTime: 1.5
   CanUseObject: 0
   interactiveObjectType: 4
   ActionType: 1
@@ -4090,7 +4090,14 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 0
+  ObjectHeight: 350
   isCanFirstCheck: 0
   interMountType: 0
+  InterMeshRenderer: []
+  InterSkinnedMeshRanderer: []
   physicsEffect: 0
+  EndInterMaterials:
+  - {fileID: 2100000, guid: 0e60879317f63de409e54a9d3daca114, type: 2}
+  - {fileID: 2100000, guid: c62894e04772b8c4fa402566bf9cf65b, type: 2}
+  - {fileID: 2100000, guid: f94770e7accb55140937ce476593c625, type: 2}
+  OriginalMaterials: []
