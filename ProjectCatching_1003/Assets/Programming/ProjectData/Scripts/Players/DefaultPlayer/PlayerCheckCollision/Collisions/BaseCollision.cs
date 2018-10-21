@@ -58,6 +58,7 @@ public class BaseCollision : Photon.PunBehaviour{
     public void UseCollision(Collider other)
     {
 
+        
         // collisionObject 받아오기
         collisionObject = other.gameObject.GetComponent<CollisionObject>();
 
@@ -65,7 +66,7 @@ public class BaseCollision : Photon.PunBehaviour{
         // 성공적으로 받음
         if (collisionObject != null)
         {
-
+            
             if (!CheckNoCollisionList())
                 return;
 
@@ -272,7 +273,6 @@ public class BaseCollision : Photon.PunBehaviour{
 
     private void LeftAnimation(GameObject go ,bool isItem)
     {
-
         if (collisionAnimator == null)
             return;
 
@@ -282,7 +282,9 @@ public class BaseCollision : Photon.PunBehaviour{
                 return;
         }
 
-        photonView.RPC("RPCSetAnimationMode", PhotonTargets.All , collisionObject.GetComponent<ObjectIDScript>().ID);
+        
+
+        photonView.RPC("RPCSetAnimationMode", PhotonTargets.All , go.GetComponent<ObjectIDScript>().ID);
     }
 
 
@@ -290,7 +292,6 @@ public class BaseCollision : Photon.PunBehaviour{
 
     public void UseItemCollision(Collider other)
     {
-
         collisionObject = other.GetComponent<CollisionObject>();
 
 
@@ -328,14 +329,18 @@ public class BaseCollision : Photon.PunBehaviour{
         // 데미지 체크
         LeftApplyDamage(go , true);
 
+
         // 디버프 체크
         LeftDebuff(go , true);
+
 
         // 최대 충돌횟수 체크
         LeftNumberOfCollision(go , true);
 
+
         // 애니메이션 여부 판단해서 재생함.
         LeftAnimation(go , true);
+
     }
 
 
@@ -511,8 +516,6 @@ public class BaseCollision : Photon.PunBehaviour{
 
 
 
-        playerHealth.FlushEffect();
-
 
     }
 
@@ -554,6 +557,7 @@ public class BaseCollision : Photon.PunBehaviour{
         if (collisionAnimator == null)
             return;
 
+        Debug.Log("애니메이션재생4 " + go.GetComponent<ObjectIDScript>().ID);
         collisionAnimator.SetAnimatorMode();
     }
 

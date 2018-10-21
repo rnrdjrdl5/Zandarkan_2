@@ -73,7 +73,6 @@ public class PointToLocation{
             layerMask))
 
         {
-            Debug.Log("찾음");
 
             // 3-2 : 카메라를 레이가 맞춘 자리로 적용
             FindPostCameraPosition = hit.point;

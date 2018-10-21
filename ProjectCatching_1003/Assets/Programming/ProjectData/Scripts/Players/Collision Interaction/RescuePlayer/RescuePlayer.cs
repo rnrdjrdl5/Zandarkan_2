@@ -16,7 +16,6 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
 
 
-
     private PhotonView photonView;
     private GameObject tempTargetObject;
     private GameObject targetObject;
@@ -166,6 +165,8 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
     }
 
+
+    // 대상과 본인의 거리를 판단해서 살릴 수 있는지 판단한다.
     private void CheckMinRescue()
     {
 
@@ -231,6 +232,7 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
     }
 
 
+    // 살리기 시작한 뒤 코루틴
     private IEnumerator UpdateResqueTime()
     {
         uIManager.rescueBarPanelScript.SetActive(true);
@@ -238,6 +240,8 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
         while (true)
         {
+            Debug.Log("살리는 코루틴 동작 시행중");
+
             CheckMinRescue();
 
             NowRescueTime += Time.deltaTime;
@@ -276,8 +280,13 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
     private void RegisterEvent()
     {
+
+        // UI 이벤트 등록
         UIManager.GetInstance().rescueBarPanelScript.SetEvent(gameObject);
         playerMove.RescueCancelEvent = CancelEvent;
+
+        // 플레이어 사망 이벤트 등록
+        playerHealth.FinishHealthEvent += CancelEvent;
     }
 
     public void CancelEvent()
@@ -298,6 +307,8 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
 
     }
+
+    
 
     public void CreateHelpEffect()
     {
@@ -358,14 +369,22 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
     }
     /***** RPC *****/
 
+
+    
     [PunRPC]
     public void RPCCheckUseRescue(int vID)
     {
+
+        // 살릴 대상을 체크한다.
         if (!CheckPhotonMine())
             return;
 
+        // 살려주는 대상 찾아내기
         GameObject go = FindPlayerObject(vID);
         RescuePlayer rescuePlayer = go.GetComponent<RescuePlayer>();
+
+
+        // 누군가가 살리지 않고 있으면 시도
         if (!isUsedRescue)
         {
 
@@ -373,8 +392,6 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
             isUsedRescue = true;
 
             playerHealth.SetisUseRopeDead(false);
-
-
         }
 
         else

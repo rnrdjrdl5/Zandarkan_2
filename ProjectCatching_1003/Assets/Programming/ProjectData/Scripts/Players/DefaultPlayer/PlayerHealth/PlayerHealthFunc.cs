@@ -12,6 +12,8 @@ public partial class PlayerHealth
 
     public event HealthDele HealthEvent;
 
+    public event HealthDele FinishHealthEvent;
+
     private int playerNumber = -1;
     public int GetPlayerNumber() { return playerNumber; }
     public void SetPlayerNumber(int pn) { playerNumber = pn; }
@@ -29,7 +31,7 @@ public partial class PlayerHealth
 
 
         UIManager.GetInstance().hpPanelScript.SetPlayerHealth(gameObject);
-
+        skinnedMeshRenderer = gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
 
 
 
@@ -215,12 +217,14 @@ public partial class PlayerHealth
 
 
             // 등록한 스크립트들에게 이벤트 실행
-            HealthEvent();
+            if(HealthEvent != null) HealthEvent();
 
 
             // 체력 0이하면 밧줄로 변경
             if (NowHealth <= 0)
             {
+                if (FinishHealthEvent != null) FinishHealthEvent();
+
                 NowHealth = 0;
                 BindRope();
             }
@@ -272,18 +276,6 @@ public partial class PlayerHealth
         gameObject.SetActive(false);
     }
 
-    public void FlushEffect()
-    {
-       /* // 그 외에도 이펙트는 준다.
-        for (int i = 0; i < skinnedMeshRenderer.Length; i++)
-        {
-            skinnedMeshRenderer[i].material.color = Color.red;
-        }
-
-        isHiting = true;
-        NowHiting = 0.0f;*/
-
-    }
 
     [PunRPC]
     public void OnRope()

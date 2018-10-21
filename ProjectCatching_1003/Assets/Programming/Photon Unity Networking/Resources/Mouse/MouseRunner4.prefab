@@ -2842,7 +2842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RescueDistance: 10
-  MaxRescueTime: 3
+  MaxRescueTime: 15
   RescueHP: 10
   MinPlayerDis: 1.5
   defaultInput:
