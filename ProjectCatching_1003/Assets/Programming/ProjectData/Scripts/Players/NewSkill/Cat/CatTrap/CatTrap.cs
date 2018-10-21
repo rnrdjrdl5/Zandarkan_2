@@ -127,6 +127,8 @@ public class CatTrap : DefaultNewSkill
                 Debug.Log("리스트 크기 : " + Traps.Count);
                 Traps[0].GetComponent<Animator>().SetBool("isAction", false);
                 photonView.RPC("RPCEraseTrap", PhotonTargets.All, Traps[0].GetComponent<ObjectIDScript>().ID);
+                Traps.RemoveAt(0);
+                
                 break;
             }
         }

@@ -14,6 +14,8 @@ public class CollisionAnimator : MonoBehaviour {
 
     public void SetAnimatorMode()
     {
+
+
         animator = GetComponent<Animator>();
         // 애니메이션 상태로 돌입합니다. 
         // 충돌 콜리더를 모두 꺼버리고 강체도 꺼버립니다.
