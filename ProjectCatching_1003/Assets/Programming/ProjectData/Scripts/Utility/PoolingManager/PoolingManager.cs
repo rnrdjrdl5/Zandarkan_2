@@ -28,9 +28,9 @@ public class PoolingManager : MonoBehaviour {
 
         ATTACK_FINISH, CHAIR_EFFECT, BALL_HIT,
 
-        STUN_EFFECT, 
-
+        STUN_EFFECT, FALLDOWN_EFFECT, FOODTABLE_EFFECT, 
         NONE
+
 
     }
 
@@ -40,13 +40,17 @@ public class PoolingManager : MonoBehaviour {
         switch (effectType)
         {
             case EffctType.TABLE_EFFECT:
-                effect = PopObject("FX_KDH_HitTable_Charge");
+                effect = PopObject("FX_KDH_HitTable_RE_Line_01");
                 break;
             case EffctType.POT_EFFECT:
                 effect = PopObject("FX_KDH_HitPlate_wave");
                 break;
             case EffctType.CHAIR_EFFECT:
                 effect = PopObject("FX_KDH_Prefab_chair");
+                break;
+            case EffctType.FOODTABLE_EFFECT:
+                Debug.Log("asdf");
+                effect = PopObject("FX_KDH_CartCrash_01");
                 break;
 
         }
@@ -151,6 +155,12 @@ public class PoolingManager : MonoBehaviour {
             case EffctType.STUN_EFFECT:
                 effect = PopObject("strun_main_01");
                 break;
+            case EffctType.FALLDOWN_EFFECT:
+                effect = PopObject("FX_KDH_DiveDamege_01");
+                break;
+            case EffctType.FOODTABLE_EFFECT:
+                effect = PopObject("FX_KDH_CartCrash_01");
+                break;
             case EffctType.NONE:
                 effect = null;
                 break;
@@ -163,6 +173,11 @@ public class PoolingManager : MonoBehaviour {
         return effect;
     }
 
+
+
+
+
+    // 피격, 아이템 획득 시 발생하는 이펙트를 이펙트 타입에 따라 변경한다.
     public float DecideEffectPosition(EffctType effectType)
     {
         if (effectType == EffctType.CHEESE_HEALING_EFFECT)
@@ -186,7 +201,39 @@ public class PoolingManager : MonoBehaviour {
     }
 
 
+    // 상호작용 이펙트 출력 위치를 결정한다.
+    public Vector3 DecideInterEffectPosition
+        (EffctType EffectType, Vector3 dirPosition, Vector3 playerPosition,
+        Vector3 interPosition)
+    {
 
+        Vector3 tempPosition;
+        if (EffectType == EffctType.FOODTABLE_EFFECT)
+        {
+            // y 0.5 x 0.3 앞으로.
+            tempPosition = dirPosition * 0.3f + Vector3.up * 0.5f + playerPosition;
+        }
+
+        else
+        {
+            // 기본형
+            tempPosition = interPosition + Vector3.up + dirPosition * -0.5f;
+        }
+
+        return tempPosition;
+    }
+
+    public void DecideEffectRotate(GameObject effectObject, GameObject playerObject)
+    {
+
+
+        // baseVector3 : 기준벡터, 기본값 vector3.Right
+        // 기본형 : right 기준으로 -90 회전
+        effectObject.transform.rotation = playerObject.transform.rotation;
+        effectObject.transform.Rotate(Vector3.right, -90);
+    }
+
+    
 
 
 

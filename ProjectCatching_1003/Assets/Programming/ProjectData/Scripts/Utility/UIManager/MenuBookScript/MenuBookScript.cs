@@ -5,11 +5,11 @@ using UnityEngine;
 public class MenuBookScript : MonoBehaviour
 {
 
-    private SoundManager soundManager;
+    public SoundManager soundManager;
 
-    private void Awake()
+    public void Start()
     {
-        soundManager = GameObject.Find("Main Camera").GetComponent<SoundManager>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     public void CallPageSound()

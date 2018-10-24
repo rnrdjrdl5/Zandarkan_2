@@ -41,7 +41,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event InterAniSetLayer has a time (0.832969) outside
+      the clip's valid range (0.000000..0.766667). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -81,6 +82,14 @@ ModelImporter:
         functionName: InterAniSetLayer
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 66b29a307e8cd1c4aad10a622a45853b,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.50789475
+        functionName: BreakCandleSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 689fee5cff97215458d911452b2c7d19,
           type: 3}
         floatParameter: 0
         intParameter: 0

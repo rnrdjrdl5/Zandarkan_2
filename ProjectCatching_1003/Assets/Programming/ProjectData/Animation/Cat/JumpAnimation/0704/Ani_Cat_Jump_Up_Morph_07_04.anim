@@ -54834,7 +54834,8 @@ AnimationClip:
   - time: 0.016666668
     functionName: CallRandomJumpSound
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: 9ad541ebdea7d37468197af7273f04df,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

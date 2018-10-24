@@ -371,28 +371,31 @@ public partial class NewLobbyRoomPhoton
     }
 
     // Room - Help 클릭 시
-    public void ClickGameHelp()
+    public void ClickExplaneImage()
     {
         if (!isUseEvent) return;
-
+        lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.NOT_DEVELOP);
         soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
     }
 
     // Room - 쥐 선택 시
     public void ClickSelectMouse()
     {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
         PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "SelectPlayer", "Mouse" } });
     }
 
     // Room - 고양이 선택 시
     public void ClickSelectCat()
     {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
         PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "SelectPlayer", "Cat" } });
     }
 
     // Room - 랜덤 선택 시 
     public void ClickSelectRandom()
     {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
         PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "SelectPlayer", "Random" } });
     }
 
@@ -401,6 +404,8 @@ public partial class NewLobbyRoomPhoton
     {
         if (lobbyUIManager.roomPanelScript.ReadyImage.activeInHierarchy == true)
         {
+            soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
+
             string readyData = (string)PhotonNetwork.player.CustomProperties["Ready"];
             if (readyData == "true")
             {
@@ -419,6 +424,10 @@ public partial class NewLobbyRoomPhoton
 
     }
 
+    public void ClickGameExplain()
+    {
+        lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.NOT_DEVELOP);
+    }
 
     /**** RPC ****/
     [PunRPC]

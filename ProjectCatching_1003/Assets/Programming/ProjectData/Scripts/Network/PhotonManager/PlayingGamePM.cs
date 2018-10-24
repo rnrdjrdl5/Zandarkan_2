@@ -165,6 +165,14 @@ public partial class PhotonManager
     {
         UIManager.GetInstance().gameStartCountPanelScript.Start.SetActive(true);
 
+        string playerType = (string)PhotonNetwork.player.CustomProperties["PlayerType"];
+
+        if (playerType == "Cat")
+            SpringArmObject.GetInstance().GetSystemSoundManager().PlayEffectSound(SoundManager.EnumEffectSound.UI_STARTCOUNT_CAT);
+
+        else if (playerType == "Mouse")
+            SpringArmObject.GetInstance().GetSystemSoundManager().PlayEffectSound(SoundManager.EnumEffectSound.UI_STARTCOUNT_MOUSE);
+
         yield return new WaitForSeconds(StartImage_WaitTime);
 
         UIManager.GetInstance().gameStartCountPanelScript.Start.SetActive(false);

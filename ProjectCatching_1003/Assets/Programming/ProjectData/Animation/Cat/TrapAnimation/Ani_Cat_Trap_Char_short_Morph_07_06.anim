@@ -72265,11 +72265,12 @@ AnimationClip:
   - time: 0
     functionName: CallTrapSound
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: 96bf52e899f27ef49bd8a77d82296754,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.70469207
+  - time: 0.7
     functionName: CreateTrap
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 96bf52e899f27ef49bd8a77d82296754,

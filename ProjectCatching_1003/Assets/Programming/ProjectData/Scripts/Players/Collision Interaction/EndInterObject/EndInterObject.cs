@@ -42,18 +42,15 @@ public class EndInterObject : MonoBehaviour
                 if (!IS.GetCanUseObject())
                 {
                     Debug.Log(IS.gameObject.name);
-                    Debug.Log("a2sd");
                     int mrCount;
                     if (IS.InterMeshRenderer.Length != 0)
                     {
-                        Debug.Log("a3sd");
                         mrCount = IS.InterMeshRenderer.Length;
 
                         int eMCount = IS.EndInterMaterials.Length;
 
                         for (int i = 0; i < mrCount; i++)
                         {
-                            Debug.Log("as4d");
 
                             // 해당되는 것과 같은 이름 찾기
                             Material tempMaterials = null;
@@ -62,7 +59,6 @@ public class EndInterObject : MonoBehaviour
 
                                 if (IS.InterMeshRenderer[i].material.name.Split(' ')[0] + "_End" == IS.EndInterMaterials[j].name)
                                 {
-                                    Debug.Log("as5d");
 
                                     tempMaterials = IS.EndInterMaterials[j];
 

@@ -67,6 +67,8 @@ public class DefaultNewSkill : MonoBehaviour {
 
     public delegate void DeleSkillEvent_No();
 
+    protected SoundManager soundManager;
+
     virtual protected void Awake()
     {
         
@@ -98,6 +100,8 @@ public class DefaultNewSkill : MonoBehaviour {
         playerState = gameObject.GetComponent<PlayerState>();
         animator = gameObject.GetComponent<Animator>();
         playerManager = gameObject.GetComponent<PlayerManager>();
+
+        soundManager = gameObject.GetComponent<SoundManager>();
 
         isUseCtnCoolTime = false;
 
@@ -179,6 +183,7 @@ public class DefaultNewSkill : MonoBehaviour {
             if (NowCtnCoolTime <= 0)
                 NowCtnCoolTime = 0;
 
+            if(UpdateCtnCoolTimeEvent != null)
                 UpdateCtnCoolTimeEvent(NowCtnCoolTime, MaxCtnCoolTime, PlayerSkillNumber);
         }
 

@@ -32,12 +32,24 @@ public class ObserverMoe : MonoBehaviour {
 
         // 입력값에 따라 회전시키기.
 
-        Quaternion rotation =  Quaternion.Euler(PlayerRotationY, PlayerRotationX, 0);
+        Quaternion rotation = Quaternion.Euler(PlayerRotationY, PlayerRotationX, 0);
 
         transform.rotation = rotation;
 
 
         transform.position += (Input.GetAxisRaw("Horizontal") * transform.right +
             Input.GetAxisRaw("Vertical") * transform.forward).normalized * ObserverMoveSpeed * Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ObserverMoveSpeed -= 0.5f;
+            if (ObserverMoveSpeed < 0 )ObserverMoveSpeed = 0;
+        }
+
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            ObserverMoveSpeed += 0.5f;
+            if (ObserverMoveSpeed > 15) ObserverMoveSpeed = 15;
+        }
     }
 }

@@ -2547,6 +2547,7 @@ MonoBehaviour:
   PlayerSpeed: 4
   PlayerBackSpeed: 3
   PlayerRopeSpeed: 2.5
+  PlayerRopeCurve: 0
   RotationSpeed: 100
   JumpSpeed: 10
   gravity: 40
@@ -2745,7 +2746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown:
-    MaxCoolDown: 50
+    MaxCoolDown: 1
   InputKey:
     SkillKeyType: 6
   ExitInputKey:
@@ -2882,7 +2883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown:
-    MaxCoolDown: 5
+    MaxCoolDown: 1
   InputKey:
     SkillKeyType: 1
   ExitInputKey:
@@ -2927,15 +2928,6 @@ MonoBehaviour:
     Name: DirectionY
   - Type: 4
     SynchronizeType: 0
-    Name: isAttack
-  - Type: 4
-    SynchronizeType: 0
-    Name: isThrowFryingPan
-  - Type: 4
-    SynchronizeType: 0
-    Name: isCatTrap
-  - Type: 4
-    SynchronizeType: 0
     Name: isSpeedRun
   - Type: 3
     SynchronizeType: 0
@@ -2946,6 +2938,15 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: isSlide
+  - Type: 4
+    SynchronizeType: 0
+    Name: isAttack
+  - Type: 4
+    SynchronizeType: 0
+    Name: isThrowFryingPan
+  - Type: 4
+    SynchronizeType: 0
+    Name: isCatTrap
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

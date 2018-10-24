@@ -4090,7 +4090,7 @@ MonoBehaviour:
   PlayerNextPositionType: 0
   NextPosition: {fileID: 0}
   MinPlayerMount: 0
-  ObjectHeight: 350
+  ObjectHeight: 400
   isCanFirstCheck: 0
   interMountType: 0
   InterMeshRenderer: []

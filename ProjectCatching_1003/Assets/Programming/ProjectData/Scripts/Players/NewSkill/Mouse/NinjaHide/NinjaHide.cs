@@ -8,6 +8,7 @@ public class NinjaHide : DefaultNewSkill {
 
     public UIEffect uIEffect;
 
+
     protected override void Awake()
     {
         base.Awake();
@@ -71,6 +72,7 @@ public class NinjaHide : DefaultNewSkill {
     {
 
         GameObject ninjaHideEffect = PoolingManager.GetInstance().CreateEffect(PoolingManager.EffctType.NINJA_HIDE);
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_MOUSE_HIDE);
 
         ninjaHideEffect.transform.position = transform.position;
     }

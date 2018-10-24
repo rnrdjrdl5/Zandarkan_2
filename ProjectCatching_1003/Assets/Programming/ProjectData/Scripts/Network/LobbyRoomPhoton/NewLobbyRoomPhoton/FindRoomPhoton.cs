@@ -94,8 +94,6 @@ public partial class NewLobbyRoomPhoton
         FindRoomGUI();
         gameStateType = EnumGameState.FINDROOM;
 
-        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
-
         DeleFadeOut = lobbyUIManager.lobbyPanelScript.FadeOutEffect;
         DeleFadeIn = lobbyUIManager.waitingRoomPanelScript.FadeInEffect;
 
@@ -123,6 +121,8 @@ public partial class NewLobbyRoomPhoton
     public void ClickCreateRoom()
     {
 
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
+
         if (CheckEmptyName())
         {
             lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.EMPTY_NAME);
@@ -139,6 +139,8 @@ public partial class NewLobbyRoomPhoton
     // FindRoom > CreateRoom - 방 생성 Order 클릭 시
     public void ClickCROrderButton()
     {
+
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
 
         //1 . 방이름 받아오기.
         string RoomName = lobbyUIManager.waitingRoomPanelScript.InputRoomName.text;
@@ -186,7 +188,7 @@ public partial class NewLobbyRoomPhoton
     // FindRoom > CreateRoom - 방만들기 퇴장 시
     public void ClickCRBackButton()
     {
-
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_EXIT_1);
         // 1. 방 만드는 메뉴창 보여주기.
         lobbyUIManager.waitingRoomPanelScript.CreateRoomWindow.SetActive(false);
     }
@@ -199,6 +201,8 @@ public partial class NewLobbyRoomPhoton
     // FindRoom - 빠른시작
     public void ClickQuickMatch()
     {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
+
         if (CheckEmptyName())
         {
             lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.EMPTY_NAME);
@@ -223,9 +227,10 @@ public partial class NewLobbyRoomPhoton
     // FindRoom - 타이틀로 돌아가기
     public void ClickReturnTitleButton()
     {
+
         PhotonNetwork.LeaveLobby();
 
-        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_EXIT_1);
 
         DeleFadeOut = lobbyUIManager.waitingRoomPanelScript.FadeOutEffect;
         DeleFadeIn = lobbyUIManager.lobbyPanelScript.FadeInEffect;
@@ -247,6 +252,8 @@ public partial class NewLobbyRoomPhoton
 
     public void ClickJoinRoom(int number)
     {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
+
         if (CheckEmptyName())
         {
             lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.EMPTY_NAME);
@@ -260,14 +267,19 @@ public partial class NewLobbyRoomPhoton
 
     public void ClickRoomNextButton()
     {
-        if(maxRoomPage > nowRoomPage) nowRoomPage++;
+
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
+
+        if (maxRoomPage > nowRoomPage) nowRoomPage++;
 
         lobbyUIManager.waitingRoomPanelScript.SetInteractablePageButton(true, nowRoomPage,maxRoomPage);
     }
 
     public void ClickRoomBeforeButton()
     {
-        if(nowRoomPage>1) nowRoomPage--;
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
+
+        if (nowRoomPage>1) nowRoomPage--;
 
         lobbyUIManager.waitingRoomPanelScript.SetInteractablePageButton(true, nowRoomPage, maxRoomPage);
     }

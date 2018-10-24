@@ -65,7 +65,7 @@ public partial class NewLobbyRoomPhoton
     IEnumerator FadeInGame()
     {
         // 새운드 재생과 함께 숨겨진 로고이미지 삭제
-        soundManager.PlayBGSound(SoundManager.EnumBGSound.BG_LOBBY_SOUND);
+        //soundManager.PlayBGSound(SoundManager.EnumBGSound.BG_LOBBY_SOUND);
 
 
         lobbyUIManager.fadePanelScript.FadeOutEffect();
@@ -86,6 +86,7 @@ public partial class NewLobbyRoomPhoton
     {
         if (!isUseEvent) return;
 
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
         // 로비 이동 클릭 시 먼저 입장함 이후 UI 변경
         PhotonNetwork.JoinLobby();
     }
@@ -95,17 +96,18 @@ public partial class NewLobbyRoomPhoton
     {
         if (!isUseEvent) return;
 
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
         Application.Quit();
     }
 
     // Title - Option 클릭 시 , 삭제 예정
-    public void ClickGameOption()
+    public void ClickGameTutorial()
     {
         if (!isUseEvent) return;
 
         soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
 
-        Debug.Log("게임옵션");
+        lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.NOT_DEVELOP);
         // 게임옵션
     }
 

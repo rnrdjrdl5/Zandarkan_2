@@ -6,7 +6,6 @@ public class MouseSpread : DefaultNewSkill {
 
     public MarbleState marbleState;
 
-
     protected override void Awake()
     {
         base.Awake();
@@ -44,6 +43,7 @@ public class MouseSpread : DefaultNewSkill {
 
     void CreateMarble()
     {
+        CallSpreadEffectSound();
 
         // 클라이언트 주인인 경우
         if (photonView.isMine)
@@ -58,6 +58,11 @@ public class MouseSpread : DefaultNewSkill {
     {
 
         animator.SetBool("isUseMarble", false);
+    }
+
+    void CallSpreadEffectSound()
+    {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_CAT_SPREADMARBLE);
     }
 
     // RPC
@@ -86,6 +91,6 @@ public class MouseSpread : DefaultNewSkill {
         // 이펙트
         GameObject ballDropEffect = PoolingManager.GetInstance().CreateEffect(PoolingManager.EffctType.BALL_DROP);
 
-        ballDropEffect.transform.position = transform.position;
+        ballDropEffect.transform.position = transform.position + Vector3.up *0.2f;
     }
 }

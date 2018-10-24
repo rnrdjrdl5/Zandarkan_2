@@ -230,6 +230,8 @@ public partial class PlayerMove
                         // 데미지주기
                         playerHealth.CallFallDamage(FallDamage);
 
+                        // 떨어지는 소리하기/////////////ㅁㅁㅁㅁㅁㅁㅁ/ㅁ/ㅁㅁ/
+
                         // 지금
                         // 애니메이션 재생
                         ps.AddDebuffState(DefaultPlayerSkillDebuff.EnumSkillDebuff.FALL_DOWN, FallStunTime);
@@ -788,11 +790,39 @@ public partial class PlayerMove
 
     }
 
+
+    bool isUseMoveSound = false;
+    private void AllTargetUpdate()
+    {
+
+    }
+
+
+
     public void CallRandomJumpSound()
     {
 
         playerSoundManager.PlayRandomEffectSound(
             SoundManager.EnumEffectSound.EFFECT_CHAR_JUMP_1,
             SoundManager.EnumEffectSound.EFFECT_CHAR_JUMP_3);
+    }
+
+    public void CallRandomMoveSound()
+    {
+        playerSoundManager.PlayRandomEffectSound(
+            SoundManager.EnumEffectSound.EFFECT_CHAR_MOVE_1,
+            SoundManager.EnumEffectSound.EFFECT_CHAR_MOVE_3);
+    }
+
+    public void CallFallDownSound()
+    {
+        playerSoundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_FALLDOWN);
+    }
+
+    public void CallFallDownEffect()
+    {
+        GameObject go = PoolingManager.GetInstance().CreateEffect(PoolingManager.EffctType.FALLDOWN_EFFECT);
+
+        go.transform.position = transform.position + Vector3.up * 0.15f;
     }
 }

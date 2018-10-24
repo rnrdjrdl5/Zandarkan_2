@@ -31,7 +31,8 @@ public class RescueAnimator : StateMachineBehaviour {
 
 
         // 정상적인 경로로 입력이 들어오면 해당되지않음.
-        // 살리고 있을때는 RescueType이 1이다.
+        // 다 살렸을 때 RescueType은 2
+
         if (animator.GetInteger("RescueType") != 1)
             return;
 

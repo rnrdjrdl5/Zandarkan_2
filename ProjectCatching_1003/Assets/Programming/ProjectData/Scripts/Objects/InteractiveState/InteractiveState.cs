@@ -211,6 +211,7 @@ public class InteractiveState : Photon.MonoBehaviour, IPunObservable {
         if (PhotonNetwork.isMasterClient)
             CanUseObject = false;
 
+        // 본인만 newinter를 가진상태임.
         if (newInteractionSkill != null)
         {
 

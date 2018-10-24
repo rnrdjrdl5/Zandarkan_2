@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4005700659958158}
   - component: {fileID: 198094505471757178}
   - component: {fileID: 199677755760786010}
-  - component: {fileID: 114840584596021460}
+  - component: {fileID: 114794718125623868}
   - component: {fileID: 114805295935183854}
   m_Layer: 0
   m_Name: FX_KDH_Prefab_chair
@@ -198,6 +198,17 @@ Transform:
   m_Father: {fileID: 4624830789798890}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114794718125623868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146384554403142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39332a8d9188f6948abe6349313dada5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114805295935183854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,17 +231,6 @@ MonoBehaviour:
     ShakeSpeed: 5
   StartTime: 0
   LastSpeed: 5
---- !u!114 &114840584596021460
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146384554403142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3193792898be73149a3cdde8b406acbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198094505471757178
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -26,14 +26,15 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
     private LobbyUIManager lobbyUIManager;
     private SoundManager soundManager;
 
-
-
+    
     public float AnimationTime = 1.5f;
 
     public string gameVersion;
 
     private bool isUseEvent;
-    public Animator MenuBookAnimator;
+    private Animator MenuBookAnimator;
+
+
 
 
     private void Awake()
@@ -44,6 +45,8 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
 
         gameStateType = EnumGameState.NONE;
 
+
+        MenuBookAnimator = GameObject.Find("MenuBook").gameObject.GetComponent<Animator>();
 
         Debug.Log("Animator : " + MenuBookAnimator);
 
@@ -63,7 +66,7 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
 
         LobbyRoomMouseSetting();
 
-        // soundManager.PlayBGSound(SoundManager.EnumBGSound.BG_LOBBY_SOUND);
+        soundManager.PlayBGSound(SoundManager.EnumBGSound.BG_LOBBY_SOUND);
 
         TitleStart();
     }
@@ -177,6 +180,18 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
     // Click 이벤트
     public void ClickSWBackButton()
     {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_EXIT_1);
+
         lobbyUIManager.systemPanelScript.SetActive(false);
+    }
+
+    public void MouseOverSound()
+    {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_MOUSE_OVER);
+    }
+
+    public void KeyBoardHitSound()
+    {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_KEYBOARD_HIT);
     }
 }

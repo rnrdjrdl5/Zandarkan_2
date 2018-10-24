@@ -106,6 +106,30 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.26578948
+        functionName: BringPosDrawerSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 689fee5cff97215458d911452b2c7d19,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5105263
+        functionName: BringPosDrawerSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 689fee5cff97215458d911452b2c7d19,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7473684
+        functionName: OpenPosMeka
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 689fee5cff97215458d911452b2c7d19,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
