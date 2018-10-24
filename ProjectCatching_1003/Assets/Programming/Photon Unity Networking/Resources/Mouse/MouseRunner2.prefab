@@ -2767,7 +2767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown:
-    MaxCoolDown: 1
+    MaxCoolDown: 35
   InputKey:
     SkillKeyType: 5
   ExitInputKey:
@@ -3042,7 +3042,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2e1babaf6fb9c1040a6d8c2c223fb77f, type: 3}
   - {fileID: 8300000, guid: 113b2be437b4553479194f40a7a8ec72, type: 3}
   - {fileID: 8300000, guid: 8c0cc483ca02fed46a5e1f5eec03b922, type: 3}
-  - {fileID: 8300000, guid: e75f3f5c931613d448c5658c407a2134, type: 3}
+  - {fileID: 8300000, guid: 600ee720944451e47ae1750ee4897810, type: 3}
   - {fileID: 8300000, guid: aa211a6b020fbdf49be38931057e4055, type: 3}
   - {fileID: 8300000, guid: 2831742815bc76a468dc5464830e21a6, type: 3}
   - {fileID: 8300000, guid: d33317dbeaa0d784ea3bcd42e5685d25, type: 3}
@@ -3052,10 +3052,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4794dc7e30a633645baaab18d82bdd7c, type: 3}
   - {fileID: 8300000, guid: fb5cc9a9d5edd66418aa3db030be057b, type: 3}
   - {fileID: 8300000, guid: fc94c1fef04212d48b36ed2ef1b3bc6c, type: 3}
-  - {fileID: 8300000, guid: 6e4ec455330c32842abf694272b2903a, type: 3}
-  - {fileID: 8300000, guid: ec2b158adc508184fbb4cefa8ad4ad44, type: 3}
-  - {fileID: 8300000, guid: e5d51946c295d554d97fde12dda486cd, type: 3}
-  - {fileID: 8300000, guid: 2e1154cb986ab3c44917b0eda8f2b290, type: 3}
+  - {fileID: 8300000, guid: b28db51bd640e8e448c2b03aad4f70e8, type: 3}
+  - {fileID: 8300000, guid: 2dafa2981d2bc574fa422b2d238f0f48, type: 3}
+  - {fileID: 8300000, guid: 5bcf8315a4533a040bae6fcfc2de60cf, type: 3}
+  - {fileID: 8300000, guid: 4e7be860c8d86e5479580ad7ce4ecec1, type: 3}
+  - {fileID: 8300000, guid: 58722a050f9c13f4289579f6ed3cdec7, type: 3}
   BGAudios: []
 --- !u!114 &114588761159274496
 MonoBehaviour:
@@ -3105,7 +3106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown:
-    MaxCoolDown: 1
+    MaxCoolDown: 50
   InputKey:
     SkillKeyType: 6
   ExitInputKey:
@@ -3130,7 +3131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RescueDistance: 10
-  MaxRescueTime: 30
+  MaxRescueTime: 3
   RescueHP: 10
   MinPlayerDis: 1.5
   defaultInput:

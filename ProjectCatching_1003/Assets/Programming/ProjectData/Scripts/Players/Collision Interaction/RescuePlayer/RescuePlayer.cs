@@ -350,6 +350,10 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
         soundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_MOUSE_REVIVE);
         go.transform.position = transform.position;
     }
+    private void RescuingSound()
+    {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_RESCUING_1);
+    }
 
 
     /***** Call RPC 함수 *****/

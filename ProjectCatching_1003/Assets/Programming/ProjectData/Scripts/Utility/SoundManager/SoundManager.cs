@@ -77,7 +77,8 @@ public class SoundManager : MonoBehaviour {
         EFFECT_POSDRAWER_BRING1, EFFECT_POSDRAWER_BRING2, EFFECT_POSDRAWER_BRING3,
 
         EFFECT_CANDLE_BREAK1 , 
-        EFFECT_POSMEKA_OPEN1
+        EFFECT_POSMEKA_OPEN1 , 
+        EFFECT_RESCUING_1
 
 
 
@@ -359,6 +360,12 @@ public class SoundManager : MonoBehaviour {
             case EnumEffectSound.EFFECT_CANDLE_BREAK1:
                 audioClip = effectDic["Effect_Candle_Break1"];
                 break;
+
+            case EnumEffectSound.EFFECT_RESCUING_1:
+                audioClip = effectDic["Effect_Rescuing1"];
+                break;
+
+
         }
         return audioClip;
 

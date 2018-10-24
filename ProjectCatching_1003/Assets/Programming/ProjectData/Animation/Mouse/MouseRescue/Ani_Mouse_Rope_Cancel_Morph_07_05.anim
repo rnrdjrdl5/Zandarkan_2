@@ -61036,4 +61036,28 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.16666667
+    functionName: RescuingSound
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 64749792bc941254eadf220cd08cb744,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: RescuingSound
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 64749792bc941254eadf220cd08cb744,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: RescuingSound
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 64749792bc941254eadf220cd08cb744,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

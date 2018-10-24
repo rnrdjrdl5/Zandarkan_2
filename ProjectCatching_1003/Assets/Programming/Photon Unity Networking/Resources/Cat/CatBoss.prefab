@@ -2746,7 +2746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown:
-    MaxCoolDown: 1
+    MaxCoolDown: 50
   InputKey:
     SkillKeyType: 6
   ExitInputKey:
@@ -2883,7 +2883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown:
-    MaxCoolDown: 1
+    MaxCoolDown: 5
   InputKey:
     SkillKeyType: 1
   ExitInputKey:
