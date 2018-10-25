@@ -30,6 +30,7 @@ public class LobbyUIManager : MonoBehaviour {
 
     public TitlePanelScript titlePanelScript;
 
+    public HelpWindowScript helpWindowScript;
 
 
     // 공용 용도의 라인
@@ -88,6 +89,9 @@ public class LobbyUIManager : MonoBehaviour {
 
         systemPanelScript = new SystemPanelScript();
         systemPanelScript.InitData();
+
+        helpWindowScript = new HelpWindowScript();
+        helpWindowScript.InitData();
 
     }
 

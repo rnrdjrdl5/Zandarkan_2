@@ -2678,7 +2678,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 11
+    SkillKeyType: 16
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2719,6 +2719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb39f4a4a8b6fbd4580e28e4c3933fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIManager: {fileID: 0}
+  pv: {fileID: 0}
   isNetworkPlayer: 1
   PlayerViewPosition: {x: 0, y: 1.25, z: -2.1}
 --- !u!114 &114280744846611292
@@ -2830,7 +2832,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 15
+    SkillKeyType: 20
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2867,7 +2869,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 14
+    SkillKeyType: 19
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2903,7 +2905,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 12
+    SkillKeyType: 17
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -3037,7 +3039,7 @@ MonoBehaviour:
   gravity: 40
   AtLeastFallPosition: 3
   FallDamage: 27
-  FallStunTime: 2
+  FallStunTime: 1
   GroundHieght: 0.15
   JumpHeight: 0.15
   MoveDir: {x: 0, y: 0, z: 0}
@@ -3187,7 +3189,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 13
+    SkillKeyType: 18
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []

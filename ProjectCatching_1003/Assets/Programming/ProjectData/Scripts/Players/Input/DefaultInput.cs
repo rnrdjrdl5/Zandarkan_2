@@ -10,7 +10,7 @@ public class DefaultInput{
     {
         LEFTMOUSE, RIGHTMOUSE, LEFTSHIFT, RIGHTSHIFT, SPACE, Q, E, F ,
          PUSINGLEFTSHIFT , NOTPUSHINGLEFTSHIFT
-            , F1,F2,F3,F4,F5,F6
+            , F1,F2,F3,F4,F5,F6 , TWO, THREE , FOUR , FIVE, SIX
     }
 
     public EnumSkillKey SkillKeyType;
@@ -53,20 +53,20 @@ public class DefaultInput{
             case EnumSkillKey.F1:
                 ReturnType = Input.GetKey(KeyCode.F1);
                 break;
-            case EnumSkillKey.F2:
-                ReturnType = Input.GetKey(KeyCode.F2);
+            case EnumSkillKey.TWO:
+                ReturnType = Input.GetKey(KeyCode.Alpha2);
                 break;
-            case EnumSkillKey.F3:
-                ReturnType = Input.GetKey(KeyCode.F3);
+            case EnumSkillKey.THREE:
+                ReturnType = Input.GetKey(KeyCode.Alpha3);
                 break;
-            case EnumSkillKey.F4:
-                ReturnType = Input.GetKey(KeyCode.F4);
+            case EnumSkillKey.FOUR:
+                ReturnType = Input.GetKey(KeyCode.Alpha4);
                 break;
-            case EnumSkillKey.F5:
-                ReturnType = Input.GetKey(KeyCode.F5);
+            case EnumSkillKey.FIVE:
+                ReturnType = Input.GetKey(KeyCode.Alpha5);
                 break;
-            case EnumSkillKey.F6:
-                ReturnType = Input.GetKey(KeyCode.F6);
+            case EnumSkillKey.SIX:
+                ReturnType = Input.GetKey(KeyCode.Alpha6);
                 break;
 
             case EnumSkillKey.F:

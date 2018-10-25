@@ -16,7 +16,7 @@ public partial class PlayerManager
         // 모든 조건을 판단해서 if로 넣는게 아닌 느낌
         // 조건문 간결화신경쓰고
         // if else가 많아지면 팩토리로 빼버리기
-        
+
         PhotonView pv = gameObject.GetComponent<PhotonView>();
 
         if (pv == null)
@@ -27,7 +27,7 @@ public partial class PlayerManager
 
 
 
-        
+
     }
 
     void SetSpringArm()
@@ -55,15 +55,37 @@ public partial class PlayerManager
         springArmObject.PlayerMove = pm;
 
         springArmObject.SpringArmPosition = PlayerViewPosition;
-        
+
 
     }
 
     // Damage 들어갈 떄, 관련 데미지 모두삭제.
 
+    
 
+    void UseExplain()
+    {
 
+        if (!pv.isMine) return;
+        
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            string playerType = (string)PhotonNetwork.player.
+                    CustomProperties["PlayerType"];           
 
+            uIManager.explainGamePanelScript.ShowExplain(playerType);
+        }
 
+    }
 
+    /*void UseNextPage()
+    {
+        if (uIManager.explainGamePanelScript.ExplainGamePanel.activeInHierarchy)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                uIManager.explainGamePanelScript.NextPage();
+            }
+        }
+    }*/
 }

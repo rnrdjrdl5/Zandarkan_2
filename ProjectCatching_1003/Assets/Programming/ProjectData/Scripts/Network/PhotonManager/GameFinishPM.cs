@@ -125,6 +125,10 @@ public partial class PhotonManager
         uIManager.OverlayCanvas.SetActive(false);
 
         uIManager.interObjectGUIPanelScript.SetActive(false);
+
+        // 도움말 못키게하기
+        uIManager.explainGamePanelScript.SetActive(false);
+        uIManager.explainGamePanelScript.OffisCanUseExplain();
     }
 
 

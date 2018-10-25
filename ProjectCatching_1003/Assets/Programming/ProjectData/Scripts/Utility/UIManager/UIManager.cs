@@ -61,6 +61,8 @@ public class UIManager : Photon.PunBehaviour {
     public InterObjectGUIPanelScript interObjectGUIPanelScript { get; set; }
 
 
+    // 도움말
+    public ExplainGamePanelScript explainGamePanelScript { get; set; }
     IEnumerator EnumCoro;
 
 
@@ -246,6 +248,8 @@ public class UIManager : Photon.PunBehaviour {
         interObjectGUIPanelScript = new InterObjectGUIPanelScript();
         interObjectGUIPanelScript.InitData();
 
+        explainGamePanelScript = new ExplainGamePanelScript();
+        explainGamePanelScript.InitData();
 
     }
 

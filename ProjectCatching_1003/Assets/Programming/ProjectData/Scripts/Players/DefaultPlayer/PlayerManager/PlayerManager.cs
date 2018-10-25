@@ -4,7 +4,9 @@ using UnityEngine;
 
 public partial class PlayerManager : MonoBehaviour {
 
-    
+
+    public UIManager uIManager;
+    public PhotonView pv;
 
     // Use this for initialization
     private void Awake()
@@ -22,15 +24,24 @@ public partial class PlayerManager : MonoBehaviour {
         if(photonManager != null)
             photonManager.AllPlayers.Add(gameObject);
 
+
         SetSpringArm();
 
+
+        uIManager = UIManager.GetInstance();
+        pv = gameObject.GetPhotonView();
 
 
 
     }
 
+
+    
     private void Update()
     {
+        //UseNextPage();
+
+        UseExplain();
 
 
     }
