@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEditor;
 
 
+
+
 public partial class TutorialGuideEditor
 {
     void SettingActionInspector(TutorialAction nowAction)
@@ -28,8 +30,14 @@ public partial class TutorialGuideEditor
             case TutorialAction.EnumTutorialAction.RESET_PRACTICE:
                 SetResetSkill(nowAction);
                 break;
-            case TutorialAction.EnumTutorialAction.RESCUE:
-                Rescue(nowAction);
+            case TutorialAction.EnumTutorialAction.SET_AI_STATE:
+                SetAIState(nowAction);
+                break;
+            case TutorialAction.EnumTutorialAction.SHOW_IMAGE:
+                ShowImage(nowAction);
+                break;
+            case TutorialAction.EnumTutorialAction.RELEASE_IMAGE:
+                ReleaseImage(nowAction);
                 break;
         }
     }
@@ -52,6 +60,7 @@ public partial class TutorialGuideEditor
     }
 
 
+    // AI오브젝트를 정한다.
     void SetAITarget(string enumText , TutorialAction nowAction)
     {
         //1. 대상
@@ -113,9 +122,26 @@ public partial class TutorialGuideEditor
             nowAction.PracticeSkillType);
     }
 
-    void Rescue(TutorialAction nowAction)
+    void SetAIState(TutorialAction nowAction)
     {
-        SetAITarget("구출 설정 대상", nowAction);
+        SetAITarget("설정 대상", nowAction);
+
+        nowAction.AnimationStateType = (TutorialAction.EnumAnimationState)EditorGUILayout.EnumPopup
+            ("애니메이션 설정대상",
+            nowAction.AnimationStateType);
     }
 
+    void ShowImage(TutorialAction nowAction)
+    {
+        nowAction.ShowImageType = (TutorialAction.EnumShowImage)EditorGUILayout.EnumPopup
+            ("UI이미지 대상",
+            nowAction.ShowImageType);
+    }
+
+    void ReleaseImage(TutorialAction nowAction)
+    {
+        nowAction.ReleaseImageType = (TutorialAction.EnumShowImage)EditorGUILayout.EnumPopup
+            ("UI이미지 대상",
+            nowAction.ShowImageType);
+    }
 }

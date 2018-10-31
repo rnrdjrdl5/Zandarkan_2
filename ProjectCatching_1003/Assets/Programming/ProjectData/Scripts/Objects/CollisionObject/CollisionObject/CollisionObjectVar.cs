@@ -50,6 +50,10 @@ public partial class CollisionObject
     private List<string> NoUseCollisionType;
 
 
+    public static int OBJECT_MOUNT = 3;         // 오브젝트 총 개수
+    public enum EnumObject {NONE, MARBLE, TRAP };        // 종류
+    
+    public EnumObject ObjectType = EnumObject.NONE;
 
     public void SetNoUseCollisionType(NoUseCollision noUseCollision)
     {

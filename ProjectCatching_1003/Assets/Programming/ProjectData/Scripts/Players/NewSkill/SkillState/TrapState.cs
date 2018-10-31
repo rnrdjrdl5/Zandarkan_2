@@ -47,6 +47,7 @@ public class TrapState{
             CollisionObjectScript.SetCollisionReCheckTime(ReCheckTime);
             CollisionObjectScript.SetUsePlayer("Player" + PlayerObject.GetPhotonView().viewID);
             CollisionObjectScript.PlayerIOwnerID = ID;
+            CollisionObjectScript.ObjectType = CollisionObject.EnumObject.TRAP;
         }
 
         if (CollisionObjectDamageScript != null)

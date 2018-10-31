@@ -75,7 +75,8 @@ public partial class PlayerHealth
         if (playerNumber == -1) return;
 
         Vector3 RescueIconPosition = 
-            SpringArmObject.GetInstance().armCamera.GetComponent<Camera>().WorldToScreenPoint(GetComponent<PlayerBodyPart>().UpHeadPosition.transform.position);
+            SpringArmObject.GetInstance().armCamera.GetComponent<Camera>().
+            WorldToScreenPoint(GetComponent<PlayerBodyPart>().UpHeadPosition.transform.position);
 
         GameObject RescutIconObject =
             UIManager.GetInstance().rescueIconPanelScript.RescueSet[playerNumber];

@@ -9,13 +9,17 @@ public class IdleRunAnimation : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         TS = animator.gameObject.GetComponent<PlayerState>();
 
-        if (animator.GetFloat("DirectionX") == 0 && animator.GetFloat("DirectionY") == 0)
+        if (TS != null)
         {
-            TS.SetPlayerCondition(PlayerState.ConditionEnum.IDLE);
-        }
-        else
-        {
-            TS.SetPlayerCondition(PlayerState.ConditionEnum.RUN);
+            if (animator.GetFloat("DirectionX") == 0 && animator.GetFloat("DirectionY") == 0)
+            {
+
+                TS.SetPlayerCondition(PlayerState.ConditionEnum.IDLE);
+            }
+            else
+            {
+                TS.SetPlayerCondition(PlayerState.ConditionEnum.RUN);
+            }
         }
     }
 

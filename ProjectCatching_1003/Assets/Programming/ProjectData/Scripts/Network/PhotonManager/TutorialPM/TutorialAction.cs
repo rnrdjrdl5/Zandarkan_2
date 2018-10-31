@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Tutorial > TutorialElement > TutorialAction
+
 [System.Serializable]
 public class TutorialAction {
 
@@ -10,7 +12,8 @@ public class TutorialAction {
     public GameObject playerObject;
 
     // 액션타입.
-    public enum EnumTutorialAction { MESSAGE, WAIT, DEBUG, EMOTION, DRAW_IMAGE, PRACTICE_SKILL, RESET_PRACTICE , RESCUE}
+    public enum EnumTutorialAction { MESSAGE, WAIT, DEBUG, EMOTION, DRAW_IMAGE, PRACTICE_SKILL, RESET_PRACTICE 
+            , SET_AI_STATE, SHOW_IMAGE , RELEASE_IMAGE}
     public EnumTutorialAction tutorialActionType;
 
     // 텍스트용
@@ -27,7 +30,7 @@ public class TutorialAction {
 
 
     // 타겟
-    public enum EnumTutorialAI { TOMATO };
+    public enum EnumTutorialAI { TOMATO , CAT};
     public EnumTutorialAI tutorialAIType;
     public GameObject aIObject;
 
@@ -47,6 +50,13 @@ public class TutorialAction {
     public enum EnumPracticeSkill { MOUSE_SPREAD, NINJA_HIDE }
     public EnumPracticeSkill PracticeSkillType;
 
+    // 애니메이션 상태 설정 종류
+    public enum EnumAnimationState { RESCUE }
+    public EnumAnimationState AnimationStateType;
+
+    public enum EnumShowImage { GRADEUI, MOUSE_QSKILL, MOUSE_SHIFTSKILL , MOUSE_ESKILL}
+    public EnumShowImage ShowImageType;
+    public EnumShowImage ReleaseImageType;
 
     public float UseAction()
     {
@@ -83,9 +93,20 @@ public class TutorialAction {
                 ResetSkill();
                 break;
 
-            case EnumTutorialAction.RESCUE:
-                Rescue();
+            case EnumTutorialAction.SET_AI_STATE:
+                SetAIState();
                 break;
+
+            case EnumTutorialAction.SHOW_IMAGE:
+                ShowImage();
+                break;
+
+            case EnumTutorialAction.RELEASE_IMAGE:
+                ReleaseImage();
+                break;
+
+
+
 
         }
 
@@ -136,9 +157,53 @@ public class TutorialAction {
         }
     }
 
-    void Rescue()
+    void SetAIState()
     {
+
+        Animator anim = aIObject.GetComponent<Animator>();
+        switch (AnimationStateType)
+        {
+            case EnumAnimationState.RESCUE:
+                aIObject.GetComponent<AIHealth>().ApplyDamage(100);
+                break;
+        }
+
         
+    }
+
+    void ShowImage()
+    {
+
+        SettingImage(true, ShowImageType);
+    }
+
+    void ReleaseImage()
+    {
+
+        SettingImage(false, ReleaseImageType);
+    }
+
+    void SettingImage(bool isActive , EnumShowImage imageType)
+    {
+        if (imageType == EnumShowImage.MOUSE_QSKILL)
+        {
+            TutorialCanvasManager.GetInstance().MarbleUI.SetActive(isActive);
+        }
+
+        if (imageType == EnumShowImage.MOUSE_SHIFTSKILL)
+        {
+            TutorialCanvasManager.GetInstance().SpeedUI.SetActive(isActive);
+        }
+
+        if (imageType == EnumShowImage.GRADEUI)
+        {
+            TutorialCanvasManager.GetInstance().GradeUI.SetActive(isActive);
+        }
+
+        if (imageType == EnumShowImage.MOUSE_ESKILL)
+        {
+            TutorialCanvasManager.GetInstance().NinjaUI.SetActive(isActive);
+        }
     }
 
 

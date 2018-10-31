@@ -244,6 +244,14 @@ public partial class PhotonManager
 
                 newSpeedRun.EventExitCtnSkill += tutorialCondition.ResetMount;
             }
+
+            else if (tutorialCondition.activeType == TutorialCondition.EnumActive.RESCUE)
+            {
+                RescuePlayer rp = CurrentPlayer.GetComponent<RescuePlayer>();
+                rp.SuccessRescueEvent += tutorialCondition.IncreateMount;
+
+            }
+
         }
 
         if (tutorialCondition.tutorialConditionType == TutorialCondition.EnumTutorialCondition.USEINTERACTIVE)
@@ -252,6 +260,17 @@ public partial class PhotonManager
             tutorialCondition.intersMount = new int[tutorialCondition.MAX_INTERS];
 
             newInteractionSkill.EventInteractive += tutorialCondition.IncreaseInter;
+        }
+
+        if (tutorialCondition.tutorialConditionType == TutorialCondition.EnumTutorialCondition.HIT)
+        {
+
+            // 스킬 갯수만큼 초기화
+            tutorialCondition.nowHitMount = new int[CollisionObject.OBJECT_MOUNT];
+
+            // 히트판정에 있는 이벤트에 등록, 히트 물체 이름을 보낸다.
+            tutorialCondition.aIObject.GetComponent<AIPlayerHit>().HitEvent +=
+                tutorialCondition.IncreaseHitMount;
         }
 
     }

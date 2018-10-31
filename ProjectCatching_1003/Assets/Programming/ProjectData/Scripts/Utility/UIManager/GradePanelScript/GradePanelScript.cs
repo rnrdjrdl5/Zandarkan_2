@@ -110,6 +110,7 @@ public void InitEvent()
                   break;
               }
          }*/
+        
         CatGradeScore = (float)PhotonNetwork.player.CustomProperties["StoreScore"];
 
         PhotonManager photonManager = PhotonManager.GetInstance();

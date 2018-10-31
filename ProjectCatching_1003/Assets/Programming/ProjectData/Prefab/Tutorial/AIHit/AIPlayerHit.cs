@@ -27,6 +27,8 @@ public class AIPlayerHit : MonoBehaviour {
 		
 	}
 
+    public delegate void DeleHit(int eventType);
+    public event DeleHit HitEvent;
     private void OnTriggerStay(Collider other)
     {
         if (other.tag != "CheckCollision" &&
@@ -37,6 +39,9 @@ public class AIPlayerHit : MonoBehaviour {
         if (collisionObject == null) return;
 
         if (ReCheck(other, collisionObject)) return;
+
+        // 이벤트 사용 
+        HitEvent((int)collisionObject.ObjectType);
 
         LeftApplyDamage(other.gameObject, false, collisionObject);
 

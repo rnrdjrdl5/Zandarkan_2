@@ -41,6 +41,9 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
     GameObject helpEffect;
 
+    public delegate void deleSuccessRescue();
+    public event deleSuccessRescue SuccessRescueEvent;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -80,23 +83,39 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
     // Update => 대상의 CehckUseRescue로 이동
     public void Update()
     {
+        // Tutorial 용 체크 제작
+        if (PhotonManager.GetInstance().isTutorial)
+        {
+            if (!UseTutorialRescue())
+                UIManager.GetInstance().pressImagePanelScript.RescueImage.SetActive(false);
+
+            if (!defaultInput.IsUseKey()) return;
+
+            targetObject = tempTargetObject;
+
+            UseRescue();
+        }
 
 
-        if (!CheckPhotonMine())
-            return;
+        // 일반 플레이 시 사용
+        else
+        {
+            if (!CheckPhotonMine())
+                return;
 
-        // 실행 프로세스 체크
-        if (!ExecuteRescueProcess())
-            UIManager.GetInstance().pressImagePanelScript.RescueImage.SetActive(false);
+            // 실행 프로세스 체크
+            if (!ExecuteRescueProcess())
+                UIManager.GetInstance().pressImagePanelScript.RescueImage.SetActive(false);
 
-        if (!defaultInput.IsUseKey())
-            return;
+            if (!defaultInput.IsUseKey())
+                return;
 
 
-        // Ray로 찾지 못하면 한 대상을 계속 가리키게 된다.
-        targetObject = tempTargetObject;
+            // Ray로 찾지 못하면 한 대상을 계속 가리키게 된다.
+            targetObject = tempTargetObject;
 
-        targetObject.GetComponent<RescuePlayer>().CallCheckUseRescue(PhotonNetwork.player.ID);
+            targetObject.GetComponent<RescuePlayer>().CallCheckUseRescue(PhotonNetwork.player.ID);
+        }
     }
 
 
@@ -261,13 +280,22 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
             if (NowRescueTime >= MaxRescueTime)// 살려짐
             {
+                if(SuccessRescueEvent != null) SuccessRescueEvent();
+
                 NowRescueTime = 0.0f;
 
                 uIManager.rescueBarPanelScript.SetActive(false);
 
                 animator.SetInteger("RescueType", 2);
 
-                targetObject.GetComponent<RescuePlayer>().CallSuccessRescue();
+
+                // TUtorial인지 아닌지 구분해서 사용
+                RescuePlayer rp = targetObject.GetComponent<RescuePlayer>();
+
+                if (rp != null)
+                    rp.CallSuccessRescue();
+                else
+                    targetObject.GetComponent<AIRescue>().SuccessRescue();
 
                 StopCoroutine(CoroRescueTime);
                 // 코루틴 종료
@@ -313,8 +341,13 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
             return;
 
 
-        // 멀ㄹ 있는 대상도 지목할거고. 당연히. 
-        targetObject.GetComponent<RescuePlayer>().CallOtherCancelEvent();
+        // TUtorial인지 아닌지 구분해서 사용
+        RescuePlayer rp = targetObject.GetComponent<RescuePlayer>();
+        if (rp != null)
+            rp.CallOtherCancelEvent();
+        else
+            targetObject.GetComponent<AIRescue>().OtherCancelEvent();
+
 
 
     }
@@ -354,6 +387,52 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
     {
         soundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_RESCUING_1);
     }
+
+
+
+    private bool UseTutorialRescue()
+    {
+
+        if (!CheckState()) return false;
+
+
+        tempTargetObject = pointToLocation.FindObject
+            (RescueDistance, "RescueLayer", SpringArmObject.GetInstance().armCamera);
+
+        if (tempTargetObject != null) tempTargetObject = tempTargetObject.transform.root.gameObject;
+        else return false;
+
+
+        float PlayerDistance = (tempTargetObject.transform.position - gameObject.transform.position).magnitude;
+
+        //temp를 찾은상태인지, 거리는 충분한지
+        if (!CheckCanUseResque(PlayerDistance)) return false;
+
+        // 상대방의 거리 차이는 얼마나되는지
+        if (!CheckTutorialTeamState()) return false;
+
+        UIManager.GetInstance().pressImagePanelScript.RescueImage.SetActive(true);
+
+        return true;
+    }
+
+    public bool CheckTutorialTeamState()
+    {
+        Animator targetAnimator = tempTargetObject.GetComponent<Animator>();
+
+        if (targetAnimator == null)
+            return false;
+
+
+        if ((targetAnimator.GetInteger("WeaponType") == 2))
+            return true;
+
+        else
+            return false;
+    }
+
+
+
 
 
     /***** Call RPC 함수 *****/
