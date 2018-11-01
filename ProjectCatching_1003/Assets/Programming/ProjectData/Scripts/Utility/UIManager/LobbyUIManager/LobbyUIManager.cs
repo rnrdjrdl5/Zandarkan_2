@@ -42,6 +42,8 @@ public class LobbyUIManager : MonoBehaviour {
 
     public SystemPanelScript systemPanelScript;
 
+    public TutorialPanelScript tutorialPanelScript;
+
     private void Awake()
     {
         if (lobbyUIManager == null)
@@ -93,6 +95,10 @@ public class LobbyUIManager : MonoBehaviour {
         helpWindowScript = new HelpWindowScript();
         helpWindowScript.InitData();
 
+        tutorialPanelScript = new TutorialPanelScript();
+        tutorialPanelScript.InitData();
+
+        
     }
 
 

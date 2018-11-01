@@ -563,6 +563,7 @@ MonoBehaviour:
       PracticeSkillType: 0
       AnimationStateType: 0
       ShowImageType: 0
+      ReleaseImageType: 0
     maxTutorialAction: 1
   - tutorialConditions:
     - playerObject: {fileID: 0}
@@ -602,6 +603,7 @@ MonoBehaviour:
       PracticeSkillType: 0
       AnimationStateType: 0
       ShowImageType: 0
+      ReleaseImageType: 0
     maxTutorialAction: 1
   maxMouseTutorialCount: 2
   catTutorialElements: []
@@ -2180,7 +2182,7 @@ Prefab:
     - target: {fileID: 224175936259934118, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.2932739
+      value: 1.293335
       objectReference: {fileID: 0}
     - target: {fileID: 224175936259934118, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
@@ -2190,7 +2192,7 @@ Prefab:
     - target: {fileID: 224951943951134882, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.2932739
+      value: 1.293335
       objectReference: {fileID: 0}
     - target: {fileID: 224951943951134882, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
@@ -2220,7 +2222,7 @@ Prefab:
     - target: {fileID: 224824886700119104, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.2932739
+      value: 1.293335
       objectReference: {fileID: 0}
     - target: {fileID: 224824886700119104, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
@@ -2260,12 +2262,12 @@ Prefab:
     - target: {fileID: 224161418520299384, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 344.68488
+      value: 376.18488
       objectReference: {fileID: 0}
     - target: {fileID: 224161418520299384, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 192.04274
+      value: 209.54274
       objectReference: {fileID: 0}
     - target: {fileID: 224140245465577816, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
@@ -2639,12 +2641,12 @@ Prefab:
     - target: {fileID: 224244616284254664, guid: f02cf67bf56c1034e921e9e2d9fe1b53,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 344
+      value: 375.5
       objectReference: {fileID: 0}
     - target: {fileID: 224244616284254664, guid: f02cf67bf56c1034e921e9e2d9fe1b53,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 193.5
+      value: 211
       objectReference: {fileID: 0}
     - target: {fileID: 224244616284254664, guid: f02cf67bf56c1034e921e9e2d9fe1b53,
         type: 2}

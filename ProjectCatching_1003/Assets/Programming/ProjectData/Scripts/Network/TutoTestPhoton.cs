@@ -10,36 +10,42 @@ public class TutoTestPhoton : Photon.PunBehaviour
 
 	// Use this for initialization
 	void Awake () {
-        Debug.Log("시작");
+       /* Debug.Log("시작");
         PhotonNetwork.ConnectUsingSettings("Catcadqching!");
 
-        PhotonNetwork.autoJoinLobby = true;
+        PhotonNetwork.autoJoinLobby = true;*/
+    }
+
+    private void Start()
+    {
+        Debug.Log("수행");
+      //  PhotonManager.GetInstance().TutorialStart();
     }
 
     public override void OnJoinedLobby()
     {
-        base.OnJoinedLobby();
+       /* base.OnJoinedLobby();
 
         Debug.Log("로비");
 
-        PhotonNetwork.JoinRandomRoom();
+        PhotonNetwork.JoinRandomRoom();*/
     }
 
     public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
     {
-        base.OnPhotonRandomJoinFailed(codeAndMsg);
+       /* base.OnPhotonRandomJoinFailed(codeAndMsg);
         Debug.Log("찾기실패");
         RoomOptions ro = new RoomOptions
         {
             MaxPlayers = 6
         };
 
-        PhotonNetwork.CreateRoom("Catching" + Random.Range(0, 1000).ToString(), ro, TypedLobby.Default);
+        PhotonNetwork.CreateRoom("Catching" + Random.Range(0, 1000).ToString(), ro, TypedLobby.Default);*/
     }
 
     public override void OnJoinedRoom()
     {
-        base.OnJoinedRoom();
+       /* base.OnJoinedRoom();
 
         // 씬을 위해서 해쉬 생성
         ExitGames.Client.Photon.Hashtable PlayerSceneState = new ExitGames.Client.Photon.Hashtable
@@ -88,7 +94,7 @@ public class TutoTestPhoton : Photon.PunBehaviour
 
         Debug.Log("입장");
 
-        PhotonManager.GetInstance().TutorialStart();
+        PhotonManager.GetInstance().TutorialStart();*/
 
     }
 }

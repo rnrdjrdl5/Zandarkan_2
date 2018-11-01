@@ -107,8 +107,16 @@ public partial class NewLobbyRoomPhoton
 
         soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
 
-        lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.NOT_DEVELOP);
-        // 게임옵션
+        FindRoomGUI();
+        gameStateType = EnumGameState.TUTORIAL;
+
+        DeleFadeOut = lobbyUIManager.lobbyPanelScript.FadeOutEffect;
+        DeleFadeIn = lobbyUIManager.tutorialPanelScript.FadeInEffect;
+
+        DeleSetOff = lobbyUIManager.lobbyPanelScript.SetActive;
+        DeleSetOn = lobbyUIManager.tutorialPanelScript.SetActive;
+        StartCoroutine("Finish_FadeOut_Start_Animation");
+        FinishFadeEvent = WaitingRoomEvent;
     }
 
 

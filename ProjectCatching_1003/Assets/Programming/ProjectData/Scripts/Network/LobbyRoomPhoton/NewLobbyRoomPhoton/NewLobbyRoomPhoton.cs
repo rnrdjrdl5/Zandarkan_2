@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
 {
 
-    private enum EnumGameState { LOBBY, FINDROOM, ROOM, TITLE , NONE}
+    private enum EnumGameState { LOBBY, FINDROOM, ROOM, TITLE , TUTORIAL, NONE}
     private EnumGameState gameStateType;
 
 
@@ -129,7 +129,11 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
     {
         base.OnJoinedLobby();
 
-        FindRoomEnter();
+        if (gameStateType == EnumGameState.TUTORIAL)
+            TutorialEnter();
+
+        else if(gameStateType == EnumGameState.LOBBY)
+            FindRoomEnter();
     }
 
     public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
@@ -154,7 +158,16 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
     {
         base.OnJoinedRoom();
 
-        RoomEnter();
+
+        if (gameStateType == EnumGameState.TUTORIAL)
+        {
+            EnterRoomTutorial();
+        }
+
+        else if(gameStateType == EnumGameState.FINDROOM)
+            RoomEnter();
+
+        
     }
 
 
