@@ -202,13 +202,37 @@ public partial class PhotonManager
 
     public void SetTutorialGuide(TutorialGuide tg)
     {
+        // 플레이어를 정해준다.
+        
+
         // 1. 스킬에 필요한 데이터와 플레이어의 데이터를 연결시킨다.
 
+        string seletedChar = (string)PhotonNetwork.player.CustomProperties["PlayerType"];
+
+        TutorialElement[] seletedCharTutoElem = null;
+        int seletedCharCnt;
+
+        if (seletedChar == "Mouse")
+        {
+            seletedCharTutoElem = tg.mouseTutorialElements;
+            seletedCharCnt = tg.maxMouseTutorialCount;
+            tg.SeletedCharType = TutorialGuide.EnumSeletedChar.MOUSE;
+        }
+
+        else if (seletedChar == "Cat")
+        {
+            seletedCharTutoElem = tg.catTutorialElements;
+            seletedCharCnt = tg.maxCatTutorialCount;
+            tg.SeletedCharType = TutorialGuide.EnumSeletedChar.CAT;
+        }
+
+        
         // 종류찾기.
-        int tutorialElementCount = tg.mouseTutorialElements.Length;
+        int tutorialElementCount = seletedCharTutoElem.Length;
+
         for (int i = 0; i < tutorialElementCount; i++)
         {
-            TutorialElement tutorialElement = tg.mouseTutorialElements[i];
+            TutorialElement tutorialElement = seletedCharTutoElem[i];
 
             int tutorialCdtCount = tutorialElement.tutorialConditions.Length;
             for (int tcc = 0; tcc < tutorialCdtCount; tcc++)
@@ -229,6 +253,8 @@ public partial class PhotonManager
 
             }
         }
+
+
     }
 
     public void SetCondition(TutorialCondition tutorialCondition)
@@ -251,6 +277,14 @@ public partial class PhotonManager
                 rp.SuccessRescueEvent += tutorialCondition.IncreateMount;
 
             }
+
+            else if (tutorialCondition.activeType == TutorialCondition.EnumActive.TURN_OFF)
+            {
+                TurnOffLight tol = CurrentPlayer.GetComponent<TurnOffLight>();
+                tol.UseTurnOffSkillEvent += tutorialCondition.IncreateMount;
+
+            }
+            
 
         }
 

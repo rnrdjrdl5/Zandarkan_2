@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AIHealth : MonoBehaviour {
 
     public float health { get; set; }
+
+    public float maxBindTime { get; set; }
+    public float nowBindTime { get; set; }
+    public bool isUseDownBindTime = false;
+
     private Transform upHeadTransform;
 
 
@@ -13,6 +19,10 @@ public class AIHealth : MonoBehaviour {
     void Awake () {
         health = 100;
 
+        nowBindTime = 10;
+        maxBindTime = 10;
+
+
         upHeadTransform  = gameObject.transform.Find("UpHeadPosition");
     }
 	
@@ -20,7 +30,15 @@ public class AIHealth : MonoBehaviour {
 	void Update () {
 
         if (isBind)
+        {
             HelpIcon();
+
+            if(isUseDownBindTime)
+            nowBindTime -= Time.deltaTime;
+
+            CheckDead();
+        }
+
         else
             DeleteHelpIcon();
 
@@ -97,6 +115,18 @@ public class AIHealth : MonoBehaviour {
 
         RescueIconObject.transform.position = RescueIconPosition;
 
+
+
+        if (nowBindTime > 0)
+        {
+            TutorialCanvasManager.GetInstance().RescueIcon.fillAmount =
+                nowBindTime / maxBindTime;
+        }
+        else
+        {
+            TutorialCanvasManager.GetInstance().RescueIcon.fillAmount = 0.0f;
+        }
+
     }
 
     void DeleteHelpIcon()
@@ -104,6 +134,49 @@ public class AIHealth : MonoBehaviour {
         TutorialCanvasManager.GetInstance().RescueIconPanel.SetActive(false);
 
         TutorialCanvasManager.GetInstance().RescueSet1.SetActive(false);
+    }
+
+
+    void CheckDead()
+    {
+        if (nowBindTime <= 0)
+        {
+            StartCoroutine("PlayerDead");
+        }
+    }
+
+    IEnumerator PlayerDead()
+    {
+        Animator anim = GetComponent<Animator>();
+        anim.SetBool("isRopeDead", true);
+
+
+        yield return new WaitForSeconds(1.5f);
+
+        DeadEffect();
+
+
+        yield return new WaitForSeconds(1.5f);
+
+        DeadAction();
+        yield break;
+    }
+
+
+    public void DeadEffect()
+    {
+
+        GameObject go = PoolingManager.GetInstance().CreateEffect(PoolingManager.EffctType.DIE_EFFECT);
+        GetComponent<SoundManager>().PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_MOUSE_DEAD);
+
+        go.transform.SetParent(transform);
+        go.transform.localPosition = new Vector3(0.0f, 0.3f, 1.0f);
+    }
+
+    public void DeadAction()
+    {
+        TutorialCanvasManager.GetInstance().RescueIconPanel.SetActive(false);
+        gameObject.SetActive(false);
     }
 
 }

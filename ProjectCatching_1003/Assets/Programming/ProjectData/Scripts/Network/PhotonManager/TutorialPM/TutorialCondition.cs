@@ -37,7 +37,7 @@ public class TutorialCondition{
     public EnumOnMouse onMouseType;
 
     // 액티브 사용 시
-    public enum EnumActive { SPEEDRUN , RESCUE};
+    public enum EnumActive { SPEEDRUN , RESCUE , TURN_OFF};
     public EnumActive activeType;
     public float activeMount;
 
@@ -72,7 +72,7 @@ public class TutorialCondition{
     }
 
     // 타겟
-    public enum EnumTutorialAI { TOMATO, CAT };
+    public enum EnumTutorialAI { TOMATO, CAT , TOMATO2};
     public EnumTutorialAI tutorialAIType;
     public GameObject aIObject;
 
@@ -143,6 +143,12 @@ public class TutorialCondition{
             }
 
             else if (activeType == EnumActive.RESCUE)
+            {
+                if (activeMount <= playerActiveMount)
+                    return true;
+            }
+
+            else if (activeType == EnumActive.TURN_OFF)
             {
                 if (activeMount <= playerActiveMount)
                     return true;

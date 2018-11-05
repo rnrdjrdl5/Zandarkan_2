@@ -33,8 +33,11 @@ public class TurnOffLight : DefaultNewSkill
             return false;
     }
 
+    public delegate void DeleUseTurnOffSkill();
+    public event DeleUseTurnOffSkill UseTurnOffSkillEvent;
     public override void UseSkill()
     {
+        if(UseTurnOffSkillEvent != null) UseTurnOffSkillEvent();
 
         // 쥐를 제외한 모든 플레이어에게 사용
         for (int i = 0; i < PhotonManager.GetInstance().AllPlayers.Count; i++)

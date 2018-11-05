@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialCanvasManager : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class TutorialCanvasManager : MonoBehaviour {
     public GameObject OverlayCanvas;
     public GameObject RescueIconPanel;
     public GameObject RescueSet1;
+    public Image RescueIcon;
 
 
     public GameObject TutorialBigUI;
@@ -28,6 +30,7 @@ public class TutorialCanvasManager : MonoBehaviour {
         RescueIconPanel = OverlayCanvas.transform.Find("RescueIconPanel").gameObject;
 
         RescueSet1 = RescueIconPanel.transform.Find("RescueSet1").gameObject;
+        RescueIcon = RescueSet1.transform.Find("RescueIcon").GetComponent<Image>();
 
         TutorialBigUI = transform.Find("TutorialBigUI").gameObject;
         GradeUI = TutorialBigUI.transform.Find("GradeUI").gameObject;

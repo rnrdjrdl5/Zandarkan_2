@@ -6,15 +6,24 @@ using UnityEngine.SceneManagement;
 public partial class NewLobbyRoomPhoton
 {
 
+    public string tutorialSelectedType = "None";
+
     public void ClickTutorialSelectMouse()
     {
         if (!isUseEvent) return;
+
+        tutorialSelectedType = "Mouse";
+
         UseClickTutorialEffects();
+        
     }
 
     public void ClickTutorialSelectCat()
     {
         if (!isUseEvent) return;
+
+        tutorialSelectedType = "Cat";
+
         UseClickTutorialEffects();
     }
 
@@ -53,7 +62,7 @@ public partial class NewLobbyRoomPhoton
 
         ExitGames.Client.Photon.Hashtable PlayerType = new ExitGames.Client.Photon.Hashtable
         {
-            { "PlayerType","NULL" }
+            { "PlayerType",tutorialSelectedType }
         };
 
         ExitGames.Client.Photon.Hashtable UseBoss = new ExitGames.Client.Photon.Hashtable
@@ -87,6 +96,8 @@ public partial class NewLobbyRoomPhoton
 
 
         SceneManager.LoadScene("TutorialScene");
+
+        
     }
 
 

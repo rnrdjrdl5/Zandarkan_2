@@ -13,7 +13,7 @@ public class TutorialAction {
 
     // 액션타입.
     public enum EnumTutorialAction { MESSAGE, WAIT, DEBUG, EMOTION, DRAW_IMAGE, PRACTICE_SKILL, RESET_PRACTICE 
-            , SET_AI_STATE, SHOW_IMAGE , RELEASE_IMAGE}
+            , SET_AI_STATE, SHOW_IMAGE , RELEASE_IMAGE , USE_HITCHECK , SET_ACTIVE_AI , SET_USE_DEAD_COUNT}
     public EnumTutorialAction tutorialActionType;
 
     // 텍스트용
@@ -54,9 +54,20 @@ public class TutorialAction {
     public enum EnumAnimationState { RESCUE }
     public EnumAnimationState AnimationStateType;
 
+
     public enum EnumShowImage { GRADEUI, MOUSE_QSKILL, MOUSE_SHIFTSKILL , MOUSE_ESKILL}
     public EnumShowImage ShowImageType;
     public EnumShowImage ReleaseImageType;
+
+
+    public enum EnumNoHit { YES, NO };
+    public EnumNoHit NoHitType;
+
+    public enum EnumSetActiveAI { YES, NO };
+    public EnumSetActiveAI SetActiveType;
+
+    public enum EnumSetUseDeadCount { YES, NO };
+    public EnumSetUseDeadCount SetUseDeadCountType;
 
     public float UseAction()
     {
@@ -103,6 +114,18 @@ public class TutorialAction {
 
             case EnumTutorialAction.RELEASE_IMAGE:
                 ReleaseImage();
+                break;
+
+            case EnumTutorialAction.USE_HITCHECK:
+                SetNoHit();
+                break;
+
+            case EnumTutorialAction.SET_ACTIVE_AI:
+                SetActiveAI();
+                break;
+
+            case EnumTutorialAction.SET_USE_DEAD_COUNT:
+                SetUseDeadCount();
                 break;
 
 
@@ -206,6 +229,46 @@ public class TutorialAction {
         }
     }
 
+    void SetNoHit()
+    {
+        if (NoHitType == EnumNoHit.YES)
+        {
+            aIObject.GetComponent<AIPlayerHit>().isUseHitCheck = true;
+        }
+
+        else if(NoHitType == EnumNoHit.NO)
+        {
+            aIObject.GetComponent<AIPlayerHit>().isUseHitCheck = false;
+        }
+    }
+
+    void SetActiveAI()
+    {
+        if (SetActiveType == EnumSetActiveAI.YES)
+        {
+            aIObject.SetActive(true);
+        }
+
+        else if (SetActiveType == EnumSetActiveAI.NO)
+        {
+            aIObject.SetActive(false);
+        }
+    }
+
+    void SetUseDeadCount()
+    {
+        AIHealth ah = aIObject.GetComponent<AIHealth>();
+        if (ah == null)
+        {
+            Debug.Log("에러, 확인바람");
+        }
+
+        if (SetUseDeadCountType == EnumSetUseDeadCount.YES)
+            ah.isUseDownBindTime = true;
+
+        else if (SetUseDeadCountType == EnumSetUseDeadCount.NO)
+            ah.isUseDownBindTime = false;
+    }
 
 
 
