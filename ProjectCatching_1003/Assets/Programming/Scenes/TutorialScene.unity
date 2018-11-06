@@ -471,36 +471,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114360781524532308, guid: ec526c7345330724aae796afbb6fb3f1,
-        type: 2}
-      propertyPath: mouseTutorialElements.Array.data[0].tutorialConditions.Array.data[0].aIObject
-      value: 
-      objectReference: {fileID: 262353307}
-    - target: {fileID: 114360781524532308, guid: ec526c7345330724aae796afbb6fb3f1,
-        type: 2}
-      propertyPath: mouseTutorialElements.Array.data[0].tutorialActions.Array.data[0].aIObject
-      value: 
-      objectReference: {fileID: 943117464}
-    - target: {fileID: 114360781524532308, guid: ec526c7345330724aae796afbb6fb3f1,
-        type: 2}
-      propertyPath: mouseTutorialElements.Array.data[1].tutorialConditions.Array.data[0].aIObject
-      value: 
-      objectReference: {fileID: 262353307}
-    - target: {fileID: 114360781524532308, guid: ec526c7345330724aae796afbb6fb3f1,
-        type: 2}
-      propertyPath: catTutorialElements.Array.data[0].tutorialConditions.Array.data[0].aIObject
-      value: 
-      objectReference: {fileID: 943117464}
-    - target: {fileID: 114360781524532308, guid: ec526c7345330724aae796afbb6fb3f1,
-        type: 2}
-      propertyPath: catTutorialElements.Array.data[0].tutorialActions.Array.data[0].aIObject
-      value: 
-      objectReference: {fileID: 943117464}
-    - target: {fileID: 114360781524532308, guid: ec526c7345330724aae796afbb6fb3f1,
-        type: 2}
-      propertyPath: catTutorialElements.Array.data[1].tutorialConditions.Array.data[0].aIObject
-      value: 
-      objectReference: {fileID: 943117464}
     - target: {fileID: 114941083830065640, guid: ec526c7345330724aae796afbb6fb3f1,
         type: 2}
       propertyPath: AI.Array.data[0]
@@ -516,6 +486,26 @@ Prefab:
       propertyPath: AI.Array.data[2]
       value: 
       objectReference: {fileID: 1864060836}
+    - target: {fileID: 114360781524532308, guid: ec526c7345330724aae796afbb6fb3f1,
+        type: 2}
+      propertyPath: catTutorialElements.Array.data[0].tutorialConditions.Array.data[0].aIObject
+      value: 
+      objectReference: {fileID: 943117464}
+    - target: {fileID: 114360781524532308, guid: ec526c7345330724aae796afbb6fb3f1,
+        type: 2}
+      propertyPath: catTutorialElements.Array.data[0].tutorialActions.Array.data[0].aIObject
+      value: 
+      objectReference: {fileID: 943117464}
+    - target: {fileID: 114360781524532308, guid: ec526c7345330724aae796afbb6fb3f1,
+        type: 2}
+      propertyPath: catTutorialElements.Array.data[1].tutorialConditions.Array.data[0].aIObject
+      value: 
+      objectReference: {fileID: 943117464}
+    - target: {fileID: 114360781524532308, guid: ec526c7345330724aae796afbb6fb3f1,
+        type: 2}
+      propertyPath: catTutorialElements.Array.data[1].tutorialActions.Array.data[0].aIObject
+      value: 
+      objectReference: {fileID: 943117464}
     - target: {fileID: 114586846345017054, guid: ec526c7345330724aae796afbb6fb3f1,
         type: 2}
       propertyPath: viewIdField
@@ -1043,6 +1033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUseDownBindTime: 0
+  isUseDownHealth: 0
   isBind: 0
 --- !u!114 &943117470
 MonoBehaviour:
@@ -1847,12 +1838,12 @@ Prefab:
     - target: {fileID: 224161418520299384, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 376.18488
+      value: 296.68488
       objectReference: {fileID: 0}
     - target: {fileID: 224161418520299384, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 209.54274
+      value: 165.04274
       objectReference: {fileID: 0}
     - target: {fileID: 224140245465577816, guid: 13f8e56a92fb46144835ec42c779aebf,
         type: 2}
@@ -2129,12 +2120,12 @@ Prefab:
     - target: {fileID: 224244616284254664, guid: f02cf67bf56c1034e921e9e2d9fe1b53,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 375.5
+      value: 296
       objectReference: {fileID: 0}
     - target: {fileID: 224244616284254664, guid: f02cf67bf56c1034e921e9e2d9fe1b53,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 211
+      value: 166.5
       objectReference: {fileID: 0}
     - target: {fileID: 224244616284254664, guid: f02cf67bf56c1034e921e9e2d9fe1b53,
         type: 2}
@@ -2350,6 +2341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUseDownBindTime: 0
+  isUseDownHealth: 0
   isBind: 0
 --- !u!114 &1864060841
 MonoBehaviour:

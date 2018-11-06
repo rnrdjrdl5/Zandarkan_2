@@ -39,14 +39,20 @@ public partial class TutorialGuideEditor
             case TutorialAction.EnumTutorialAction.RELEASE_IMAGE:
                 ReleaseImage(nowAction);
                 break;
-            case TutorialAction.EnumTutorialAction.USE_HITCHECK:
-                NoUseHitCheck(nowAction);
-                break;
             case TutorialAction.EnumTutorialAction.SET_ACTIVE_AI:
                 SetActiveAI(nowAction);
                 break;
             case TutorialAction.EnumTutorialAction.SET_USE_DEAD_COUNT:
                 UseDeadCount(nowAction);
+                break;
+            case TutorialAction.EnumTutorialAction.SET_AI_USE_HEALTH_DOWN:
+                UseHealthDown(nowAction);
+                break;
+            case TutorialAction.EnumTutorialAction.BLOCK_OTHER_SKILL:
+                UseBlockOtherSkill(nowAction);
+                break;
+            case TutorialAction.EnumTutorialAction.ACTIVE_OTHER_SKILL:
+                UseActiveOtherSkill(nowAction);
                 break;
         }
     }
@@ -154,16 +160,6 @@ public partial class TutorialGuideEditor
             nowAction.ShowImageType);
     }
 
-    void NoUseHitCheck(TutorialAction nowAction)
-    {
-        SetAITarget("히트판정 변경 대상", nowAction);
-
-        nowAction.NoHitType = (TutorialAction.EnumNoHit)EditorGUILayout.EnumPopup
-            ("가능 여부 설정",
-            nowAction.NoHitType);
-
-    }
-
     void SetActiveAI(TutorialAction nowAction)
     {
         SetAITarget("활성화 변경 대상", nowAction);
@@ -181,4 +177,25 @@ public partial class TutorialGuideEditor
             nowAction.SetUseDeadCountType);
         
     }
+
+    void UseHealthDown(TutorialAction nowAction)
+    {
+        SetAITarget("대상, 쥐만 결정해주세요.", nowAction);
+        nowAction.AIUseHealthDownType = (TutorialAction.EnumAIUseHealthDown)EditorGUILayout.EnumPopup
+            ("활성화 여부 결정",
+            nowAction.AIUseHealthDownType);
+    }
+
+    void UseBlockOtherSkill(TutorialAction nowAction)
+    {
+        nowAction.SkillType = (TutorialAction.EnumSkill)EditorGUILayout.EnumPopup
+            ("무슨스킬인지 선택",
+            nowAction.SkillType);
+    }
+
+    void UseActiveOtherSkill(TutorialAction nowAction)
+    {
+        EditorGUILayout.LabelField("모든스킬 재활성화");
+    }
+
 }

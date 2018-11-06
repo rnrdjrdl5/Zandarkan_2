@@ -19,6 +19,8 @@ public class MouseSpread : DefaultNewSkill {
 
     public override bool CheckState()
     {
+        if (!isUseSkill) return false;
+
         if ((
             playerState.EqualPlayerCondition(PlayerState.ConditionEnum.IDLE) ||
              playerState.EqualPlayerCondition(PlayerState.ConditionEnum.RUN)) &&

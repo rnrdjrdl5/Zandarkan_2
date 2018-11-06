@@ -14,7 +14,8 @@ using UnityEngine;
 public class DefaultNewSkill : MonoBehaviour {
 
 
-    
+    [HideInInspector]
+    public bool isUseSkill = true;
 
     /**** public ****/
 

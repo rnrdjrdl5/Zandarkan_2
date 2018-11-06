@@ -11,14 +11,11 @@ public class AIPlayerHit : MonoBehaviour {
 
     MathUtility mathUtility;
 
-    public bool isUseHitCheck { get; set; }
     private void Awake()
     {
         animator = GetComponent<Animator>();
         aIHealth = GetComponent<AIHealth>();
         mathUtility = new MathUtility();
-
-        isUseHitCheck = false;
     }
 
     // Use this for initialization
@@ -35,8 +32,6 @@ public class AIPlayerHit : MonoBehaviour {
     public event DeleHit HitEvent;
     private void OnTriggerStay(Collider other)
     {
-
-        if (!isUseHitCheck) return;
 
         if (other.tag != "CheckCollision" &&
             other.tag != "ItemCollision") return;

@@ -11,6 +11,7 @@ public class AIHealth : MonoBehaviour {
     public float nowBindTime { get; set; }
     public bool isUseDownBindTime = false;
 
+    public bool isUseDownHealth = false;
     private Transform upHeadTransform;
 
 
@@ -56,7 +57,17 @@ public class AIHealth : MonoBehaviour {
         if (isBind) return;
 
         // 데미지 입음
-        health -= _damage;
+        if (_damage > 0)
+        {
+            if (isUseDownHealth)
+                health -= _damage;
+        }
+        
+        else
+            health -= _damage;
+
+
+
 
 
 

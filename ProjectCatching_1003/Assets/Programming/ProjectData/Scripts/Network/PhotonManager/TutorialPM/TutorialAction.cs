@@ -13,7 +13,8 @@ public class TutorialAction {
 
     // 액션타입.
     public enum EnumTutorialAction { MESSAGE, WAIT, DEBUG, EMOTION, DRAW_IMAGE, PRACTICE_SKILL, RESET_PRACTICE 
-            , SET_AI_STATE, SHOW_IMAGE , RELEASE_IMAGE , USE_HITCHECK , SET_ACTIVE_AI , SET_USE_DEAD_COUNT}
+            , SET_AI_STATE, SHOW_IMAGE , RELEASE_IMAGE , SET_ACTIVE_AI , SET_USE_DEAD_COUNT ,SET_AI_USE_HEALTH_DOWN ,
+    BLOCK_OTHER_SKILL ,ACTIVE_OTHER_SKILL }
     public EnumTutorialAction tutorialActionType;
 
     // 텍스트용
@@ -30,7 +31,7 @@ public class TutorialAction {
 
 
     // 타겟
-    public enum EnumTutorialAI { TOMATO , CAT};
+    public enum EnumTutorialAI { TOMATO , CAT, TOMATO2};
     public EnumTutorialAI tutorialAIType;
     public GameObject aIObject;
 
@@ -68,6 +69,12 @@ public class TutorialAction {
 
     public enum EnumSetUseDeadCount { YES, NO };
     public EnumSetUseDeadCount SetUseDeadCountType;
+
+    public enum EnumAIUseHealthDown { YES, NO };
+    public EnumAIUseHealthDown AIUseHealthDownType;
+
+    public enum EnumSkill { SPEEDRUN , MARBLE , HIDE, FRYING_PAN, TURNOFF, TRAP , ATTACK};
+    public EnumSkill SkillType;
 
     public float UseAction()
     {
@@ -116,10 +123,6 @@ public class TutorialAction {
                 ReleaseImage();
                 break;
 
-            case EnumTutorialAction.USE_HITCHECK:
-                SetNoHit();
-                break;
-
             case EnumTutorialAction.SET_ACTIVE_AI:
                 SetActiveAI();
                 break;
@@ -127,6 +130,16 @@ public class TutorialAction {
             case EnumTutorialAction.SET_USE_DEAD_COUNT:
                 SetUseDeadCount();
                 break;
+            case EnumTutorialAction.SET_AI_USE_HEALTH_DOWN:
+                SetUseHealthDown();
+                break;
+            case EnumTutorialAction.BLOCK_OTHER_SKILL:
+                SetBlockSkill();
+                break;
+            case EnumTutorialAction.ACTIVE_OTHER_SKILL:
+                SetActiveOtherSkill();
+                break;
+                
 
 
 
@@ -229,19 +242,6 @@ public class TutorialAction {
         }
     }
 
-    void SetNoHit()
-    {
-        if (NoHitType == EnumNoHit.YES)
-        {
-            aIObject.GetComponent<AIPlayerHit>().isUseHitCheck = true;
-        }
-
-        else if(NoHitType == EnumNoHit.NO)
-        {
-            aIObject.GetComponent<AIPlayerHit>().isUseHitCheck = false;
-        }
-    }
-
     void SetActiveAI()
     {
         if (SetActiveType == EnumSetActiveAI.YES)
@@ -268,6 +268,111 @@ public class TutorialAction {
 
         else if (SetUseDeadCountType == EnumSetUseDeadCount.NO)
             ah.isUseDownBindTime = false;
+    }
+
+    void SetUseHealthDown()
+    {
+        AIHealth ah = aIObject.GetComponent<AIHealth>();
+        if (ah == null)
+        {
+            Debug.Log("에러, 확인바람");
+        }
+
+        if (SetUseDeadCountType == EnumSetUseDeadCount.YES)
+        {
+            ah.isUseDownHealth = true;
+        }
+
+        else if (SetUseDeadCountType == EnumSetUseDeadCount.NO)
+        {
+            ah.isUseDownHealth = false;
+        }
+    }
+
+    void SetBlockSkill()
+    {
+        
+
+        NewSpeedRun ns = playerObject.GetComponent<NewSpeedRun>();
+        if (ns != null) ns.isUseSkill = false;
+
+        CatAttack ca = playerObject.GetComponent<CatAttack>();
+        if (ca != null) ca.isUseSkill = false;
+
+        CatTrap ct = playerObject.GetComponent<CatTrap>();
+        if (ct != null) ct.isUseSkill = false;
+
+        NewThrowFryingPan tfp = playerObject.GetComponent<NewThrowFryingPan>();
+        if (tfp != null) tfp.isUseSkill = false;
+
+        TurnOffLight tol = playerObject.GetComponent<TurnOffLight>();
+        if (tol != null) tol.isUseSkill = false;
+
+
+        MouseSpread ms = playerObject.GetComponent<MouseSpread>();
+        if (ms != null) ms.isUseSkill = false;
+
+        NinjaHide nh = playerObject.GetComponent<NinjaHide>();
+        if (nh != null) nh.isUseSkill = false;
+
+
+
+
+        switch (SkillType)
+        {
+            case EnumSkill.FRYING_PAN:
+                if (tfp != null) tfp.isUseSkill = true;
+                break;
+
+            case EnumSkill.TRAP:
+                if (ct != null) ct.isUseSkill = true;
+                break;
+
+            case EnumSkill.TURNOFF:
+                if (tol != null) tol.isUseSkill = true;
+                break;
+
+            case EnumSkill.SPEEDRUN:
+                if (ns != null) ns.isUseSkill = true;
+                break;
+            case EnumSkill.ATTACK:
+                if (ca != null) ca.isUseSkill = true;
+                break;
+
+            case EnumSkill.MARBLE:
+                if (ms != null) ms.isUseSkill = true;
+                break;
+
+            case EnumSkill.HIDE:
+                if (nh != null) nh.isUseSkill = true;
+                break;
+
+
+        }
+    }
+
+    void SetActiveOtherSkill()
+    {
+        NewSpeedRun ns = playerObject.GetComponent<NewSpeedRun>();
+        if (ns != null) ns.isUseSkill = true;
+
+        CatAttack ca = playerObject.GetComponent<CatAttack>();
+        if (ca != null) ca.isUseSkill = true;
+
+        CatTrap ct = playerObject.GetComponent<CatTrap>();
+        if (ct != null) ct.isUseSkill = true;
+
+        NewThrowFryingPan tfp = playerObject.GetComponent<NewThrowFryingPan>();
+        if (tfp != null) tfp.isUseSkill = true;
+
+        TurnOffLight tol = playerObject.GetComponent<TurnOffLight>();
+        if (tol != null) tol.isUseSkill = true;
+
+        MouseSpread ms = playerObject.GetComponent<MouseSpread>();
+        if (ms != null) ms.isUseSkill = true;
+
+        NinjaHide nh = playerObject.GetComponent<NinjaHide>();
+        if (nh != null) nh.isUseSkill = true;
     }
 
 

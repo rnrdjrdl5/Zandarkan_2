@@ -20,6 +20,8 @@ public class TurnOffLight : DefaultNewSkill
 
     public override bool CheckState()
     {
+        if (!isUseSkill) return false;
+
         //이동중이거나 가만히 있을 때 가능합니다.
         if ((
             playerState.EqualPlayerCondition(PlayerState.ConditionEnum.IDLE) ||
