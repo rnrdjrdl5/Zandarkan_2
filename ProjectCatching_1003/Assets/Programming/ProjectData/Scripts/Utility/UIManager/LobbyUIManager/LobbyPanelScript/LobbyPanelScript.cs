@@ -7,7 +7,7 @@ public class LobbyPanelScript{
     public GameObject LobbyPanel { get; set; }
 
     public GameObject EnterImage { get; set; }
-    public GameObject OptionImage { get; set; }
+    public GameObject TutorialImage { get; set; }
     public GameObject ExitImage { get; set; }
     public GameObject LogoImage { get; set; }
 
@@ -30,7 +30,7 @@ public class LobbyPanelScript{
         LobbyPanel = UICanvas.transform.Find("LobbyPanel").gameObject;
 
         EnterImage = LobbyPanel.transform.Find("EnterImage").gameObject;
-        OptionImage = LobbyPanel.transform.Find("OptionImage").gameObject;
+        TutorialImage = LobbyPanel.transform.Find("TutorialImage").gameObject;
         ExitImage = LobbyPanel.transform.Find("ExitImage").gameObject;
         LogoImage = LobbyPanel.transform.Find("LogoImage").gameObject;
 
@@ -46,7 +46,7 @@ public class LobbyPanelScript{
         LobbyPanel.SetActive(isActive);
 
         EnterImage.SetActive(isActive);
-        OptionImage.SetActive(isActive);
+        TutorialImage.SetActive(isActive);
         ExitImage.SetActive(isActive);
         LogoImage.SetActive(isActive);
 
@@ -58,7 +58,7 @@ public class LobbyPanelScript{
         EnterImageEffect.AddFadeEffectNode(EnterImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
         lobbyUIManager.UpdateEvent += EnterImageEffect.EffectEventLobby;
 
-        OptionImageEffect.AddFadeEffectNode(OptionImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
+        OptionImageEffect.AddFadeEffectNode(TutorialImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
         lobbyUIManager.UpdateEvent += OptionImageEffect.EffectEventLobby;
 
         ExitImageEffect.AddFadeEffectNode(ExitImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.OUT);
@@ -75,7 +75,7 @@ public class LobbyPanelScript{
         EnterImageEffect.AddFadeEffectNode(EnterImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
         lobbyUIManager.UpdateEvent += EnterImageEffect.EffectEventLobby;
 
-        OptionImageEffect.AddFadeEffectNode(OptionImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
+        OptionImageEffect.AddFadeEffectNode(TutorialImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);
         lobbyUIManager.UpdateEvent += OptionImageEffect.EffectEventLobby;
 
         ExitImageEffect.AddFadeEffectNode(ExitImage, lobbyUIManager.UIFadeTime, UIEffectNode.EnumFade.IN);

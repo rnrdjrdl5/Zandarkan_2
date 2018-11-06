@@ -53,6 +53,7 @@ public class TorqueProjectileState
             CollisionObjectScript.SetCollisionReCheckTime(ReCheckTime);
             CollisionObjectScript.SetUsePlayer("Player" + PlayerObject.GetPhotonView().viewID);
             CollisionObjectScript.PlayerIOwnerID = ID;
+            CollisionObjectScript.ObjectType = CollisionObject.EnumObject.FRYINGPAN;
         }
 
         if (CollisionObjectDamageScript != null)

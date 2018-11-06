@@ -59,6 +59,7 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
 
     public float StartImage_WaitTime = 1.5f;
 
+
     public List<GameObject> AllPlayers { get; set; }            // 플레이어들(오브젝트)을 가리키는 변수 , 플레이어에게 무슨 효과를 주려고 할 때.
     public List<PhotonPlayer> MousePlayerListOneSort { get; set; }         // 쥐를 담는 리스트, 1회 정렬 이외에 하지 않음.
 
@@ -307,6 +308,8 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
     {
     }
 
+    int CountSound = 3;
+
     void DecreateTimeCountImageAction()
     {
         TimerValue -= Time.deltaTime;
@@ -316,15 +319,39 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
         if (TimerValue >= 2 && TimerValue < 3)
         {
             CountImage = 2;
+
+            if (CountSound == 3)
+            {
+                SpringArmObject.GetInstance().GetSystemSoundManager().
+                    PlayEffectSound(SoundManager.EnumEffectSound.UI_PRECOUNTDOWN_3);
+
+                CountSound -= 1;
+            }
         }
 
         else if (TimerValue >= 1 && TimerValue < 2)
         {
             CountImage = 1;
+
+            if (CountSound == 2)
+            {
+                SpringArmObject.GetInstance().GetSystemSoundManager().
+                    PlayEffectSound(SoundManager.EnumEffectSound.UI_PRECOUNTDOWN_2);
+
+                CountSound -= 1;
+            }
         }
 
         else
         {
+            if (CountSound == 1)
+            {
+                SpringArmObject.GetInstance().GetSystemSoundManager().
+                    PlayEffectSound(SoundManager.EnumEffectSound.UI_PRECOUNTDOWN_1);
+
+                CountSound -= 1;
+            }
+
             CountImage = 0;
         }
 
@@ -522,18 +549,22 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
 
         Debug.Log("나간 사람 : " + otherPlayer.ID);
         // 리스트 내 플레이어 삭제
-        for (int i = 0; i < AllPlayers.Count; i++)
+        for (int i = AllPlayers.Count-1 ; i >= 0; i--)
         {
-            if (AllPlayers[i].GetPhotonView().ownerId == otherPlayer.ID)
-            {
-                Destroy(AllPlayers[i]);
-                break;
-            }
 
             if ((string)otherPlayer.CustomProperties["PlayerType"] == "Cat")
             {
                 isLeftCatPlayer = true;
             }
+
+            if (AllPlayers[i].GetPhotonView().ownerId == otherPlayer.ID)
+            {
+                AllPlayers.Remove(AllPlayers[i]);
+                Destroy(AllPlayers[i]);
+                
+            }
+
+            
         }
     }
 

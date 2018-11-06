@@ -6,8 +6,13 @@ public class GroggyAnimator : StateMachineBehaviour {
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        animator.GetComponent<PlayerMove>().ResetMoveSpeed();
-        animator.GetComponent<PlayerState>().SetPlayerCondition(PlayerState.ConditionEnum.GROGGY);
+
+        PlayerMove pm = animator.GetComponent<PlayerMove>();
+        if (pm != null) pm.ResetMoveSpeed();
+
+        PlayerState ps = animator.GetComponent<PlayerState>();
+        if(ps != null) ps.SetPlayerCondition(PlayerState.ConditionEnum.GROGGY);
+        
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

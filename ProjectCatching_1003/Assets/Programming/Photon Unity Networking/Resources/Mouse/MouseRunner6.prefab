@@ -2590,7 +2590,7 @@ MonoBehaviour:
   gravity: 40
   AtLeastFallPosition: 3
   FallDamage: 27
-  FallStunTime: 2
+  FallStunTime: 1
   GroundHieght: 0.15
   JumpHeight: 0.15
   MoveDir: {x: 0, y: 0, z: 0}
@@ -2617,6 +2617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb39f4a4a8b6fbd4580e28e4c3933fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIManager: {fileID: 0}
+  pv: {fileID: 0}
   isNetworkPlayer: 1
   PlayerViewPosition: {x: 0, y: 1.25, z: -2.1}
 --- !u!114 &114114389988759228
@@ -2658,7 +2660,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 15
+    SkillKeyType: 20
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2715,7 +2717,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 13
+    SkillKeyType: 18
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2812,7 +2814,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 14
+    SkillKeyType: 19
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2891,6 +2893,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: isRevive
+  - Type: 4
+    SynchronizeType: 0
+    Name: isFallDown
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -2909,6 +2914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   springArmObject: {fileID: 0}
   objectManager: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!114 &114476912830610336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2947,7 +2953,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 12
+    SkillKeyType: 17
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2994,6 +3000,26 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8c254e2318cdb6d4d9bb51ab42267d14, type: 3}
   - {fileID: 8300000, guid: f0d71735119cdc74a96edec796264320, type: 3}
   - {fileID: 8300000, guid: 812db8e9880f821458f7abdc941485c6, type: 3}
+  - {fileID: 8300000, guid: 2444b60c75325144c8e41406216986e8, type: 3}
+  - {fileID: 8300000, guid: 939de267044c74f46a459f98280d23f3, type: 3}
+  - {fileID: 8300000, guid: 2e1babaf6fb9c1040a6d8c2c223fb77f, type: 3}
+  - {fileID: 8300000, guid: 113b2be437b4553479194f40a7a8ec72, type: 3}
+  - {fileID: 8300000, guid: 8c0cc483ca02fed46a5e1f5eec03b922, type: 3}
+  - {fileID: 8300000, guid: 600ee720944451e47ae1750ee4897810, type: 3}
+  - {fileID: 8300000, guid: aa211a6b020fbdf49be38931057e4055, type: 3}
+  - {fileID: 8300000, guid: 2831742815bc76a468dc5464830e21a6, type: 3}
+  - {fileID: 8300000, guid: d33317dbeaa0d784ea3bcd42e5685d25, type: 3}
+  - {fileID: 8300000, guid: fc90c808be4a20f4a9fe39104d718fd7, type: 3}
+  - {fileID: 8300000, guid: 14c731ced3503494c8456e4f6cb55b21, type: 3}
+  - {fileID: 8300000, guid: f211ae242f557534f80c4b5af765568b, type: 3}
+  - {fileID: 8300000, guid: 4794dc7e30a633645baaab18d82bdd7c, type: 3}
+  - {fileID: 8300000, guid: fb5cc9a9d5edd66418aa3db030be057b, type: 3}
+  - {fileID: 8300000, guid: fc94c1fef04212d48b36ed2ef1b3bc6c, type: 3}
+  - {fileID: 8300000, guid: b28db51bd640e8e448c2b03aad4f70e8, type: 3}
+  - {fileID: 8300000, guid: 2dafa2981d2bc574fa422b2d238f0f48, type: 3}
+  - {fileID: 8300000, guid: 5bcf8315a4533a040bae6fcfc2de60cf, type: 3}
+  - {fileID: 8300000, guid: 4e7be860c8d86e5479580ad7ce4ecec1, type: 3}
+  - {fileID: 8300000, guid: 58722a050f9c13f4289579f6ed3cdec7, type: 3}
   BGAudios: []
 --- !u!114 &114669129778666096
 MonoBehaviour:
@@ -3087,7 +3113,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 11
+    SkillKeyType: 16
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -3110,7 +3136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RescueDistance: 10
-  MaxRescueTime: 15
+  MaxRescueTime: 3
   RescueHP: 10
   MinPlayerDis: 1.5
   defaultInput:

@@ -18,6 +18,8 @@ public partial class PlayerHealth
     public int GetPlayerNumber() { return playerNumber; }
     public void SetPlayerNumber(int pn) { playerNumber = pn; }
 
+    private SoundManager soundManager;
+
     private void SetAwake()
     {
 
@@ -25,6 +27,8 @@ public partial class PlayerHealth
         playerState = GetComponent<PlayerState>();
 
         animator = GetComponent<Animator>();
+
+        soundManager = GetComponent<SoundManager>();
 
         isHiting = false;
         NowHiting = 0.0f;
@@ -71,7 +75,8 @@ public partial class PlayerHealth
         if (playerNumber == -1) return;
 
         Vector3 RescueIconPosition = 
-            SpringArmObject.GetInstance().armCamera.GetComponent<Camera>().WorldToScreenPoint(GetComponent<PlayerBodyPart>().UpHeadPosition.transform.position);
+            SpringArmObject.GetInstance().armCamera.GetComponent<Camera>().
+            WorldToScreenPoint(GetComponent<PlayerBodyPart>().UpHeadPosition.transform.position);
 
         GameObject RescutIconObject =
             UIManager.GetInstance().rescueIconPanelScript.RescueSet[playerNumber];
@@ -313,6 +318,8 @@ public partial class PlayerHealth
         Debug.Log("액션");
 
         GameObject go = PoolingManager.GetInstance().CreateEffect(PoolingManager.EffctType.DIE_EFFECT);
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_MOUSE_DEAD);
+        
 
         go.transform.SetParent(transform);
         go.transform.localPosition = new Vector3(0.0f, 0.3f, 1.0f);

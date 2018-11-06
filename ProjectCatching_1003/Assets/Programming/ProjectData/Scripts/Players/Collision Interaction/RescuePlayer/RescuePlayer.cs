@@ -25,6 +25,7 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
     private PlayerHealth playerHealth;
     private UIManager uIManager;
     private PlayerBodyPart playerBodyPart;
+    private SoundManager soundManager;
 
     private bool isUsedRescue = false;      // 동기화, 살려지는지 판단
 
@@ -40,6 +41,9 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
     GameObject helpEffect;
 
+    public delegate void deleSuccessRescue();
+    public event deleSuccessRescue SuccessRescueEvent;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -48,6 +52,7 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
         playerMove = GetComponent<PlayerMove>();
         playerHealth = GetComponent<PlayerHealth>();
         playerBodyPart = GetComponent<PlayerBodyPart>();
+        soundManager = GetComponent<SoundManager>();
 
         uIManager = UIManager.GetInstance();
 
@@ -74,24 +79,43 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
         else return false;
     }
 
+
+    // Update => 대상의 CehckUseRescue로 이동
     public void Update()
     {
+        // Tutorial 용 체크 제작
+        if (PhotonManager.GetInstance().isTutorial)
+        {
+            if (!UseTutorialRescue())
+                UIManager.GetInstance().pressImagePanelScript.RescueImage.SetActive(false);
+
+            if (!defaultInput.IsUseKey()) return;
+
+            targetObject = tempTargetObject;
+
+            UseRescue();
+        }
 
 
-        if (!CheckPhotonMine())
-            return;
+        // 일반 플레이 시 사용
+        else
+        {
+            if (!CheckPhotonMine())
+                return;
 
-        if (!ExecuteRescueProcess())
-            UIManager.GetInstance().pressImagePanelScript.RescueImage.SetActive(false);
+            // 실행 프로세스 체크
+            if (!ExecuteRescueProcess())
+                UIManager.GetInstance().pressImagePanelScript.RescueImage.SetActive(false);
 
-        if (!defaultInput.IsUseKey())
-            return;
+            if (!defaultInput.IsUseKey())
+                return;
 
 
+            // Ray로 찾지 못하면 한 대상을 계속 가리키게 된다.
+            targetObject = tempTargetObject;
 
-        targetObject = tempTargetObject;
-
-        targetObject.GetComponent<RescuePlayer>().CallCheckUseRescue(PhotonNetwork.player.ID);
+            targetObject.GetComponent<RescuePlayer>().CallCheckUseRescue(PhotonNetwork.player.ID);
+        }
     }
 
 
@@ -111,9 +135,10 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
         float PlayerDistance = (tempTargetObject.transform.position - gameObject.transform.position).magnitude;
 
+        //temp를 찾은상태인지, 거리는 충분한지
         if (!CheckCanUseResque(PlayerDistance)) return false;
 
-
+        // 상대방의 거리 차이는 얼마나되는지
         if (!CheckOtherPlayerState()) return false;
 
 
@@ -170,7 +195,11 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
     private void CheckMinRescue()
     {
 
-        if (playerState.GetPlayerCondition() != PlayerState.ConditionEnum.RESCUE) return;
+        if (playerState.GetPlayerCondition() != PlayerState.ConditionEnum.RESCUE)
+        {
+            CancelEvent();
+            return;
+        }
 
 
         if (tempTargetObject == null)
@@ -246,19 +275,27 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
             NowRescueTime += Time.deltaTime;
 
-
             UpdateRescueEvent(NowRescueTime, MaxRescueTime);
-
+            if (playerHealth.GetNowHealth() <= 0) StopCoroutine(CoroRescueTime);
 
             if (NowRescueTime >= MaxRescueTime)// 살려짐
             {
+                if(SuccessRescueEvent != null) SuccessRescueEvent();
+
                 NowRescueTime = 0.0f;
 
                 uIManager.rescueBarPanelScript.SetActive(false);
 
                 animator.SetInteger("RescueType", 2);
 
-                targetObject.GetComponent<RescuePlayer>().CallSuccessRescue();
+
+                // TUtorial인지 아닌지 구분해서 사용
+                RescuePlayer rp = targetObject.GetComponent<RescuePlayer>();
+
+                if (rp != null)
+                    rp.CallSuccessRescue();
+                else
+                    targetObject.GetComponent<AIRescue>().SuccessRescue();
 
                 StopCoroutine(CoroRescueTime);
                 // 코루틴 종료
@@ -303,7 +340,14 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
         if (targetObject == null)
             return;
 
-        targetObject.GetComponent<RescuePlayer>().CallOtherCancelEvent();
+
+        // TUtorial인지 아닌지 구분해서 사용
+        RescuePlayer rp = targetObject.GetComponent<RescuePlayer>();
+        if (rp != null)
+            rp.CallOtherCancelEvent();
+        else
+            targetObject.GetComponent<AIRescue>().OtherCancelEvent();
+
 
 
     }
@@ -332,13 +376,63 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
     public void OffRevive()
     {
         animator.SetBool("isRevive", false);
-        animator.SetInteger("WeaponType", 0);
     }
     public void ReviveEffect()
     {
         GameObject go = PoolingManager.GetInstance().CreateEffect(PoolingManager.EffctType.REVIVE_EFFECT);
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_MOUSE_REVIVE);
         go.transform.position = transform.position;
     }
+    private void RescuingSound()
+    {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_RESCUING_1);
+    }
+
+
+
+    private bool UseTutorialRescue()
+    {
+
+        if (!CheckState()) return false;
+
+
+        tempTargetObject = pointToLocation.FindObject
+            (RescueDistance, "RescueLayer", SpringArmObject.GetInstance().armCamera);
+
+        if (tempTargetObject != null) tempTargetObject = tempTargetObject.transform.root.gameObject;
+        else return false;
+
+
+        float PlayerDistance = (tempTargetObject.transform.position - gameObject.transform.position).magnitude;
+
+        //temp를 찾은상태인지, 거리는 충분한지
+        if (!CheckCanUseResque(PlayerDistance)) return false;
+
+        // 상대방의 거리 차이는 얼마나되는지
+        if (!CheckTutorialTeamState()) return false;
+
+        UIManager.GetInstance().pressImagePanelScript.RescueImage.SetActive(true);
+
+        return true;
+    }
+
+    public bool CheckTutorialTeamState()
+    {
+        Animator targetAnimator = tempTargetObject.GetComponent<Animator>();
+
+        if (targetAnimator == null)
+            return false;
+
+
+        if ((targetAnimator.GetInteger("WeaponType") == 2))
+            return true;
+
+        else
+            return false;
+    }
+
+
+
 
 
     /***** Call RPC 함수 *****/
@@ -371,6 +465,7 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
 
     
+    // 타겟 대상의 RPC사용한다.
     [PunRPC]
     public void RPCCheckUseRescue(int vID)
     {
@@ -385,7 +480,7 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
 
         // 누군가가 살리지 않고 있으면 시도
-        if (!isUsedRescue)
+        if (!isUsedRescue && animator.GetInteger("WeaponType") == 2)
         {
 
             rescuePlayer.CallOKSign();
@@ -429,8 +524,19 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
         if (!CheckPhotonMine())
             return;
 
+
+        // 혹시라도 Rope 상태가 아닐 때 해제 시도할 경우
+        string playerType = (string)PhotonNetwork.player.CustomProperties["PlayerType"];
+
+        if (playerType != "Rope") return;
+        
+
+
+        
+
         isUsedRescue = false;
 
+        // 죄없는 플레이어를 use 시키면 안된다.
         playerHealth.SetisUseRopeDead(true);
     }
 
@@ -457,7 +563,7 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
 
         PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "PlayerType", "Mouse" } });
-
+        
         
 
         playerHealth.ResetNowRopeDeadTime();
@@ -467,9 +573,8 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
         isUsedRescue = false;
 
         playerState.SetWeaponType(PlayerState.WeaponEnum.NONE);
-        animator.SetInteger("DamagedType", 0);
         animator.SetBool("isRevive", true);
-
+        animator.SetInteger("WeaponType", 0);
 
 
         playerHealth.CallApplyDamage(-RescueHP);

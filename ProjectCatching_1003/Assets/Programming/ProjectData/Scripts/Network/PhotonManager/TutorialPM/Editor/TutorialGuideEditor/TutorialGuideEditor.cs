@@ -25,7 +25,7 @@ public partial class TutorialGuideEditor : Editor {
 
 
         // 1. 쥐 튜토리얼 수 받기
-        DynamicTutorialElement();
+        DynamicTutorialElementMouse();
 
         int count = tutorialGuide.maxMouseTutorialCount;
 
@@ -105,10 +105,98 @@ public partial class TutorialGuideEditor : Editor {
 
         }
         EditorGUI.indentLevel--;
+
+
+
+
+        // 2. 고양이도 생성하자.
+        tutorialPlayer = tutorialGuide.catTutorialElements;
+
+        // 1. 고양이 튜토리얼 동적할당 결정
+        DynamicTutorialElementCat();
+
+        count = tutorialGuide.maxCatTutorialCount;
+
+        EditorGUI.indentLevel++;
+
+        for (int i = 0; i < count; i++)
+        {
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("--- " + (i + 1) + " 번째 튜토리얼 사항" + " ---");
+
+
+            // 간단하게 튜토리얼 속성 사용
+            TutorialElement nowElement = tutorialPlayer[i];
+
+            // 조건 동적생성
+            DynamicTutorialCondition(nowElement);
+
+            // 액션 동적생성
+            DynamicTutorialAction(nowElement);
+
+
+
+            EditorGUILayout.Space();
+            EditorGUILayout.Space();
+
+
+            // 조건 설정
+            int conditionCount = nowElement.maxTutorialCondition;
+
+            for (int dtc = 0; dtc < conditionCount; dtc++)
+            {
+
+                // 간단하게 사용하기 위해 정의
+                TutorialCondition nowCondition = nowElement.tutorialConditions[dtc];
+
+                // 1. 타입 지정
+                nowCondition.tutorialConditionType =
+                    (TutorialCondition.EnumTutorialCondition)EditorGUILayout.EnumPopup
+                    ("조건 정의",
+                    nowCondition.tutorialConditionType);
+
+                // 2. 타입별로 인스펙터 조절
+                SettingConditionInspector(nowCondition);
+
+                EditorGUILayout.Space();
+            }
+
+
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("-------------------");
+            EditorGUILayout.Space();
+
+
+
+            int actionCount = nowElement.maxTutorialAction;
+
+            for (int dta = 0; dta < actionCount; dta++)
+            {
+                // 간단하게 설정하기
+                TutorialAction nowAction = nowElement.tutorialActions[dta];
+
+
+                // 1. 타입 지정
+                nowAction.tutorialActionType =
+                    (TutorialAction.EnumTutorialAction)EditorGUILayout.EnumPopup
+                    ("액션 정의",
+                    nowAction.tutorialActionType);
+
+                // 2. 타입별로 인스펙터 조절
+                SettingActionInspector(nowAction);
+
+                EditorGUILayout.Space();
+            }
+
+
+        }
+        EditorGUI.indentLevel--;
     }
 
 
-    void DynamicTutorialElement()
+    void DynamicTutorialElementMouse()
     {
         // 동적할당 조건 - 변수가 바뀌거나, 기존에 없는경우.
         int beforeMount = tutorialGuide.maxMouseTutorialCount;
@@ -147,6 +235,48 @@ public partial class TutorialGuideEditor : Editor {
 
         }
     }
+
+    void DynamicTutorialElementCat()
+    {
+        // 동적할당 조건 - 변수가 바뀌거나, 기존에 없는경우.
+        int beforeMount = tutorialGuide.maxCatTutorialCount;
+
+        int nowMount =
+            EditorGUILayout.IntField("고양이 최대 튜토리얼 수", tutorialGuide.maxCatTutorialCount);
+
+
+        // 값 할당은 0이상인경우. 
+        if (nowMount >= 0)
+        {
+            tutorialGuide.maxCatTutorialCount = nowMount;
+
+
+            // 1. 기존 값 백업
+            TutorialElement[] tempTutorialElement = tutorialGuide.catTutorialElements;
+
+            // 2. 새 값 생성
+            tutorialGuide.catTutorialElements = new TutorialElement[nowMount];
+
+            // 3. 0이면 null처리
+            if (nowMount == 0) tutorialGuide.catTutorialElements = null;
+
+            for (int i = 0; i < nowMount; i++)
+            {
+
+                // 기존 값이 있으면 기존 값 사용
+                if (i < beforeMount)
+                    tutorialGuide.catTutorialElements[i] = tempTutorialElement[i];
+
+                // 새 값이면 할당
+                else
+                    tutorialGuide.catTutorialElements[i] = new TutorialElement();
+            }
+
+
+        }
+    }
+
+
 
     void DynamicTutorialAction(TutorialElement tutorialElement)
     {

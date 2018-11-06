@@ -37,6 +37,8 @@ public class NewThrowFryingPan : DefaultNewSkill
     // 재정의
     public override bool CheckState()
     {
+        if (!isUseSkill) return false;
+
         //이동중이거나 가만히 있을 때 가능합니다.
         if ((
             playerState.EqualPlayerCondition(PlayerState.ConditionEnum.IDLE) ||

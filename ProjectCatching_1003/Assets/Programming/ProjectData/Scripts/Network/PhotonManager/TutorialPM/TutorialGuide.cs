@@ -15,13 +15,13 @@ public class TutorialGuide : MonoBehaviour {
     public TutorialElement[] catTutorialElements;
     public int maxCatTutorialCount;
 
+    public TutorialElement[] tempSeletedTutoElem;
 
+    public enum EnumSeletedChar { CAT, MOUSE }
+    public EnumSeletedChar SeletedCharType;
 
     private int nowTutorialCount;
 
-    public enum EunmTutorialPlayer { CAT, MOUSE };
-
-    public EunmTutorialPlayer tutorialPlayerType;
     public GameObject playerObject;
 
     // 메세지 오브젝트, 스크립트
@@ -64,13 +64,26 @@ public class TutorialGuide : MonoBehaviour {
     // 모든 Elements에게 데이터를 주지 말고 if문을 써서 하는게 나을 수도 있다.
     void SettingElements()
     {
-        int nowCount = mouseTutorialElements.Length;
+
+        if (SeletedCharType == EnumSeletedChar.CAT)
+        {
+            tempSeletedTutoElem = catTutorialElements;
+        }
+
+        else if (SeletedCharType == EnumSeletedChar.MOUSE)
+        {
+            tempSeletedTutoElem = mouseTutorialElements;
+        }
+
+
+
+        int nowCount = tempSeletedTutoElem.Length;
 
         for (int i = 0; i < nowCount; i++)
         {
 
             // 액션 속성들 설정
-            int actionCount = mouseTutorialElements[i].tutorialActions.Length;
+            int actionCount = tempSeletedTutoElem[i].tutorialActions.Length;
 
 
            // 수정생각하기
@@ -78,20 +91,20 @@ public class TutorialGuide : MonoBehaviour {
             for (int mte = 0; mte < actionCount; mte++) {
 
 
-                mouseTutorialElements[i].tutorialActions[mte].messageImageScript = messageImageScript;
-                mouseTutorialElements[i].tutorialActions[mte].messageObject = messageObject;
-                mouseTutorialElements[i].tutorialActions[mte].tutorialCanvas = tutorialCanvas;
+                tempSeletedTutoElem[i].tutorialActions[mte].messageImageScript = messageImageScript;
+                tempSeletedTutoElem[i].tutorialActions[mte].messageObject = messageObject;
+                tempSeletedTutoElem[i].tutorialActions[mte].tutorialCanvas = tutorialCanvas;
 
 
             }
 
             // 조건 설정들 설정
-            int conditionCount = mouseTutorialElements[i].tutorialConditions.Length;
+            int conditionCount = tempSeletedTutoElem[i].tutorialConditions.Length;
 
             for (int mtc = 0; mtc < conditionCount; mtc++)
             {
 
-                mouseTutorialElements[i].tutorialConditions[mtc].pointToLocation = pointToLocation;
+                tempSeletedTutoElem[i].tutorialConditions[mtc].pointToLocation = pointToLocation;
                 
             }
 
@@ -117,11 +130,11 @@ public class TutorialGuide : MonoBehaviour {
         {
 
             // 1. 컨디션 모두 확인
-            if (mouseTutorialElements[nowTutorialCount].CheckCondition())
+            if (tempSeletedTutoElem[nowTutorialCount].CheckCondition())
             {
 
                 TutorialAction[] tutorialActions =
-                    mouseTutorialElements[nowTutorialCount].tutorialActions;
+                    tempSeletedTutoElem[nowTutorialCount].tutorialActions;
 
                 int nowActionCount = tutorialActions.Length;
 
@@ -147,7 +160,7 @@ public class TutorialGuide : MonoBehaviour {
 
                 nowTutorialCount++;
 
-                if (nowTutorialCount >= mouseTutorialElements.Length) break;
+                if (nowTutorialCount >= tempSeletedTutoElem.Length) break;
 
             }
 

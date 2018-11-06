@@ -2522,7 +2522,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 11
+    SkillKeyType: 16
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2547,6 +2547,7 @@ MonoBehaviour:
   PlayerSpeed: 4
   PlayerBackSpeed: 3
   PlayerRopeSpeed: 2.5
+  PlayerRopeCurve: 0
   RotationSpeed: 100
   JumpSpeed: 10
   gravity: 40
@@ -2667,7 +2668,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 14
+    SkillKeyType: 19
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2704,7 +2705,7 @@ MonoBehaviour:
   IncreaseCoolTimeTick: 0
   DecreaseCoolTimeTick: 0
   attackState:
-    AttackDamage: 33
+    AttackDamage: 22
     DamageNumber: 10000
     RecheckTime: 1
   catSoundManager: {fileID: 0}
@@ -2771,6 +2772,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb39f4a4a8b6fbd4580e28e4c3933fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIManager: {fileID: 0}
+  pv: {fileID: 0}
   isNetworkPlayer: 1
   PlayerViewPosition: {x: 0.63, y: 1.3, z: -1.6}
 --- !u!114 &114716315751885068
@@ -2815,7 +2818,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 15
+    SkillKeyType: 20
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2840,7 +2843,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 12
+    SkillKeyType: 17
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []
@@ -2927,15 +2930,6 @@ MonoBehaviour:
     Name: DirectionY
   - Type: 4
     SynchronizeType: 0
-    Name: isAttack
-  - Type: 4
-    SynchronizeType: 0
-    Name: isThrowFryingPan
-  - Type: 4
-    SynchronizeType: 0
-    Name: isCatTrap
-  - Type: 4
-    SynchronizeType: 0
     Name: isSpeedRun
   - Type: 3
     SynchronizeType: 0
@@ -2946,6 +2940,15 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: isSlide
+  - Type: 4
+    SynchronizeType: 0
+    Name: isAttack
+  - Type: 4
+    SynchronizeType: 0
+    Name: isThrowFryingPan
+  - Type: 4
+    SynchronizeType: 0
+    Name: isCatTrap
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -3009,7 +3012,7 @@ MonoBehaviour:
   coolDown:
     MaxCoolDown: 0
   InputKey:
-    SkillKeyType: 13
+    SkillKeyType: 18
   ExitInputKey:
     SkillKeyType: 0
   PlayerSkillDebuffs: []

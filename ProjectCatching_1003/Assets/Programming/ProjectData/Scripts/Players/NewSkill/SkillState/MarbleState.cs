@@ -28,7 +28,7 @@ public class MarbleState {
     public float DestroyTime = 3.0f;
 
 
-
+    
 
     // 데이터를 설정합니다.
     public void SetData(GameObject CollisionGameObject, GameObject PlayerObject, int ID)
@@ -50,6 +50,7 @@ public class MarbleState {
             CollisionObjectScript.PlayerIOwnerID = ID;
             CollisionObjectScript.SetNoUseCollisionType(CollisionObject.NoUseCollision.MOUSE);
             CollisionObjectScript.SetNoUseCollisionType(CollisionObject.NoUseCollision.ROPE);
+            CollisionObjectScript.ObjectType = CollisionObject.EnumObject.MARBLE;
         }
 
         if (CollisionObjectDamageScript != null)

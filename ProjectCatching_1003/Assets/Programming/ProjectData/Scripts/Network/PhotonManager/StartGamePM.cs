@@ -51,8 +51,8 @@ public partial class PhotonManager
     {
 
         // 1. 선택한 플레이어로 생성한다. 임시로 쥐
-        ExitGames.Client.Photon.Hashtable MouseHash = new ExitGames.Client.Photon.Hashtable { { "PlayerType", "Mouse" } };
-        PhotonNetwork.player.SetCustomProperties(MouseHash);
+//        ExitGames.Client.Photon.Hashtable MouseHash = new ExitGames.Client.Photon.Hashtable { { "PlayerType", "Mouse" } };
+  //      PhotonNetwork.player.SetCustomProperties(MouseHash);
         photonView.RPC("RPCTutoCreatePlayer", PhotonTargets.All);
 
         // 플레이어 생성 완료 체크

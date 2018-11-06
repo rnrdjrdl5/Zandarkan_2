@@ -79040,6 +79040,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
+  - time: 0.25
+    functionName: SoundPreTable
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 67d834d25c092c246b20d3d482aafb64,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.032563
     functionName: CallAction
     data: 

@@ -19,8 +19,6 @@ public class CatAttack : DefaultNewSkill {
 
     private bool isUsingPreAttack;
 
-    
-
 
 
     protected override void Awake()
@@ -38,6 +36,10 @@ public class CatAttack : DefaultNewSkill {
     // 공격 조건을 재정의합니다.
     public override bool CheckState()
     {
+
+        if (!isUseSkill) return false;
+
+
 
         // 공격했다면.
         if ((playerState.EqualPlayerCondition(PlayerState.ConditionEnum.IDLE) ||

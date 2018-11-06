@@ -20,6 +20,8 @@ public class TurnOffLight : DefaultNewSkill
 
     public override bool CheckState()
     {
+        if (!isUseSkill) return false;
+
         //이동중이거나 가만히 있을 때 가능합니다.
         if ((
             playerState.EqualPlayerCondition(PlayerState.ConditionEnum.IDLE) ||
@@ -33,8 +35,11 @@ public class TurnOffLight : DefaultNewSkill
             return false;
     }
 
+    public delegate void DeleUseTurnOffSkill();
+    public event DeleUseTurnOffSkill UseTurnOffSkillEvent;
     public override void UseSkill()
     {
+        if(UseTurnOffSkillEvent != null) UseTurnOffSkillEvent();
 
         // 쥐를 제외한 모든 플레이어에게 사용
         for (int i = 0; i < PhotonManager.GetInstance().AllPlayers.Count; i++)

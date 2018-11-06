@@ -19,9 +19,11 @@ public partial class PlayerMove : Photon.PunBehaviour
 
     bool UpMove = false;
     bool RightMove = false;
+
     // Update is called once per frame
     void Update()
     {
+        AllTargetUpdate();
 
         if (springArmObject != null)
         {

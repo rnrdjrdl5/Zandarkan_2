@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
+public partial class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
 
     public bool IsUseAction { get; set; }
 
@@ -39,6 +39,8 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
     
     public Vector3 PlayerNextPosition { get; set; }     // 플레이어 상호작용 사용 시 강제이동되는 경우 사용
 
+
+    public SoundManager soundManager;
     /**** 접근자 ****/
 
 
@@ -59,7 +61,7 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
 
     private void Awake()
     {
-
+        soundManager = GetComponent<SoundManager>();
         animator = GetComponent<Animator>();                                      // 애니메이터 설정
 
         findObject = GetComponent<FindObject>();                                    // 탐지 오브젝트 설정
@@ -351,6 +353,18 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
 
     /**** 애니메이션 이벤트 ****/
 
+    public void SoundPreTable()
+    {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_MOUSE_PRETABLE);
+    }
+
+    public void SoundPreChair()
+    {
+        soundManager.PlayEffectSound(SoundManager.EnumEffectSound.EFFECT_MOUSE_PRECHAIR);
+    }
+
+
+
 
 
     // 액션 사용, 물리나 애니를 호출함
@@ -362,23 +376,32 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
         Vector3 PhysicsPower = transform.position - OriginalCameraPosition;
 
         GameObject go = PoolingManager.GetInstance().CreateEffectCameraShake(physicsEffect, photonView.isMine);
+        Debug.Log("physicsEffect : " + physicsEffect);
 
 
+        // 플레이어 에서 상호작용 으로 나가는 방향벡터
         Vector3 DirVector =
-            (gameObject.transform.position -
-            interactiveState.gameObject.transform.position).normalized;
+            (interactiveState.gameObject.transform.position -
+            gameObject.transform.position).normalized;
 
         DirVector.y = 0;
 
+        // 이펙트 별 위치 선정하기
+        go.transform.position = PoolingManager.GetInstance().DecideInterEffectPosition(physicsEffect, DirVector,
+            transform.position, interactiveState.gameObject.transform.position);
 
-        go.transform.position = interactiveState.transform.position +
+
+
+        /*go.transform.position = interactiveState.transform.position +
             Vector3.up +
-            DirVector * 0.5f;
+            DirVector * 0.5f;*/
 
+        // 이펙트 별 각도 설정하기
+        PoolingManager.GetInstance().DecideEffectRotate(go, gameObject);
 
-        go.transform.rotation = Quaternion.identity;
+        /*go.transform.rotation = transform.localRotation;
 
-        go.transform.Rotate(Vector3.right, -90.0f);
+        go.transform.Rotate(Vector3.right, -90.0f);*/
 
         return PhysicsPower;
 
@@ -388,6 +411,7 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
     public delegate void DeleInteractive(int data);
     public event DeleInteractive EventInteractive;
 
+
     private void CallAction()
     {
         
@@ -396,6 +420,8 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
         IsUseAction = true;
 
         // 물리 일 경우 날라갈 위치의 노말벡터 전달
+
+        ActionSound();
 
         if (interactiveState.ActionType == InteractiveState.EnumAction.PHYSICS)
         {
@@ -447,7 +473,7 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
             
         
 
-        
+
     }
 
     private void OffInteraction()
@@ -563,6 +589,9 @@ public class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
         cameraShake.enabled = true;
         
     }
+
+
+    
 
 }
 

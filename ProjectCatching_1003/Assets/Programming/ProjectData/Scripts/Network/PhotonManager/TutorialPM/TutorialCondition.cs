@@ -21,7 +21,7 @@ public class TutorialCondition{
 
     // 조건
     public enum EnumTutorialCondition {
-        PLACE, ALWAYS, ONMOUSE , USEACTIVE, USEINTERACTIVE
+        PLACE, ALWAYS, ONMOUSE , USEACTIVE, USEINTERACTIVE , HIT
     };
     public EnumTutorialCondition tutorialConditionType;
 
@@ -37,7 +37,7 @@ public class TutorialCondition{
     public EnumOnMouse onMouseType;
 
     // 액티브 사용 시
-    public enum EnumActive { SPEEDRUN};
+    public enum EnumActive { SPEEDRUN , RESCUE , TURN_OFF};
     public EnumActive activeType;
     public float activeMount;
 
@@ -58,6 +58,8 @@ public class TutorialCondition{
     }
 
 
+
+
     // 상호작용 설정
     public InteractiveState.EnumInteractiveObject interactiveObjectType;
     public int interactiveMount;
@@ -69,6 +71,32 @@ public class TutorialCondition{
         intersMount[data]++;
     }
 
+    // 타겟
+    public enum EnumTutorialAI { TOMATO, CAT , TOMATO2};
+    public EnumTutorialAI tutorialAIType;
+    public GameObject aIObject;
+
+
+    // 히트 횟수
+    public CollisionObject.EnumObject hitType;
+
+    public int maxHitMount;
+    public int[] nowHitMount;
+    public void IncreaseHitMount(int Data)
+    {
+        CollisionObject.EnumObject objecType = (CollisionObject.EnumObject)Data;
+
+        nowHitMount[Data]++;
+    }
+
+    public void ResetHitMount(int Data)
+    {
+        for (int i = 0; i < CollisionObject.OBJECT_MOUNT; i++)
+        {
+            nowHitMount[i] = 0;
+        }
+        maxHitMount = 0;
+    }
 
     public bool CheckCondition()
     {
@@ -108,6 +136,20 @@ public class TutorialCondition{
             // 해당스킬사용했는지?
             if (activeType == EnumActive.SPEEDRUN)
             {
+                TutorialCanvasManager.GetInstance().SpeedUI.SetActive(true);
+                if (activeMount <= playerActiveMount)
+                    TutorialCanvasManager.GetInstance().SpeedUI.SetActive(false);
+                return true;
+            }
+
+            else if (activeType == EnumActive.RESCUE)
+            {
+                if (activeMount <= playerActiveMount)
+                    return true;
+            }
+
+            else if (activeType == EnumActive.TURN_OFF)
+            {
                 if (activeMount <= playerActiveMount)
                     return true;
             }
@@ -117,6 +159,12 @@ public class TutorialCondition{
         if (tutorialConditionType == EnumTutorialCondition.USEINTERACTIVE)
         {
             if (intersMount[(int)interactiveObjectType] >= interactiveMount)
+                return true;
+        }
+
+        if (tutorialConditionType == EnumTutorialCondition.HIT)
+        {
+            if (maxHitMount <= nowHitMount[(int)hitType])
                 return true;
         }
 

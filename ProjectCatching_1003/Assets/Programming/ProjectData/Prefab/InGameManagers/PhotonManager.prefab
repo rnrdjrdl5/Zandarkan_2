@@ -78,15 +78,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e456c2ac9ba34e443a7989ccb0aea49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playTimerNumber: 1000
+  DramaticCameraPrefab: {fileID: 0}
   MaxCatScore: 100
-  PreScoreUITimer: 2
-  NextRoundTimer: 2
-  OneStarCondition: 16
-  TwoStarCondition: 32
-  ThreeStarCondition: 48
-  ForeStarCondition: 64
-  FiveStarCondition: 80
-  OneRestState: 25
-  TwoRestState: 50
-  AllPlayers: []
+  FinishGame_Between_WinLoseUI: 2
+  WinLoseUI_Between_FinishFadeOut: 2
+  FinishFadeOut_Between_ExitGame: 5
+  StartImage_WaitTime: 1.5
+  MouseLocation: []
+  CatLocation: {fileID: 0}
+  playTimes: 5a000000640000007800000096000000b4000000
+  GameBreakCondition: 5
+  MenuUIFadeInFadeOut: 1
+  mouseWinScoreCondition: []
+  isTutorial: 0
+  loadingSceneName: 

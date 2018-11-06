@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1414416182812360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.752445, y: -1.4572539, z: -4.7698236}
+  m_LocalPosition: {x: 0.59, y: -0.37, z: -1.474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4346960886491014}
@@ -304,9 +304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EffectAudios:
-  - {fileID: 8300000, guid: 310d9cbd318bba54b81e920acd51eb39, type: 3}
-  - {fileID: 8300000, guid: 5056815a0d2aa4b49bf85567e4c9a9fa, type: 3}
-  - {fileID: 8300000, guid: d57ca678d7096334da92fd5dac40fd9d, type: 3}
   - {fileID: 8300000, guid: e5dbd055092dbb64285864bcac9477da, type: 3}
   - {fileID: 8300000, guid: 9d8940bfe8d60704f8da4c813894be88, type: 3}
   - {fileID: 8300000, guid: 6ca046094ea23f1409ff83f5a4567f65, type: 3}
@@ -314,9 +311,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b27fe043c28668a44a3c10604bdee2d7, type: 3}
   - {fileID: 8300000, guid: 2ed4e28a01fb1cf4db1b4e865ca44608, type: 3}
   - {fileID: 8300000, guid: 1b13b3c1d78de57438f7b8071ade6a76, type: 3}
+  - {fileID: 8300000, guid: af3e5623991859247911dfb09e2b81c2, type: 3}
+  - {fileID: 8300000, guid: 69c2b907f44cece47b9017f226210e03, type: 3}
+  - {fileID: 8300000, guid: 5bf7a9337d1a4e54c9113e8b7962ed2b, type: 3}
+  - {fileID: 8300000, guid: e024e7e4ef61162468e259ae3ff4f678, type: 3}
+  - {fileID: 8300000, guid: 11d52eb9d2c941f4e9a1a3a3acb3303f, type: 3}
+  - {fileID: 8300000, guid: 6ea0fe0408ee92a419802f5dc19af463, type: 3}
+  - {fileID: 8300000, guid: 4fe949ab79e85134298c7c1de4456eaf, type: 3}
+  - {fileID: 8300000, guid: 56ca5521757d45b4481de47087bb57f4, type: 3}
+  - {fileID: 8300000, guid: dac22f6e2f884144cb3b569c54f58df5, type: 3}
+  - {fileID: 8300000, guid: 3f71c9ddc627b4f4db7f8607ba626cb2, type: 3}
+  - {fileID: 8300000, guid: ee644f330f16b8e498c61ad09994f60e, type: 3}
+  - {fileID: 8300000, guid: f71be883e4b71d541bbc64939aceb540, type: 3}
+  - {fileID: 8300000, guid: 67fb518e417224d4989c946fb7b3321b, type: 3}
   BGAudios:
-  - {fileID: 8300000, guid: 2e75e1a56c3d3a143a6ae90c4852fe8a, type: 3}
-  - {fileID: 8300000, guid: c287e1854fc002248a392ebb69fe4631, type: 3}
+  - {fileID: 8300000, guid: 769413b3331207d44895ee9a71198c0c, type: 3}
+  - {fileID: 8300000, guid: 2accc955b868a884d9d3ca3961e86b4c, type: 3}
 --- !u!124 &124741815419522688
 Behaviour:
   m_ObjectHideFlags: 1

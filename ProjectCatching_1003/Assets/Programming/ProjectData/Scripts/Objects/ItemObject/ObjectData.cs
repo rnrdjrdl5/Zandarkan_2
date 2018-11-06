@@ -48,6 +48,7 @@ public class ObjectData : MonoBehaviour {
             CollisionObjectDamageScript.SetObjectDamage(ObjectDamage * -1.0f);
             CollisionObjectDamageScript.SetObjectDamageNumber(ObjectDamageNumber);
             CollisionObjectDamageScript.EffectType = PoolingManager.EffctType.CHEESE_HEALING_EFFECT;
+            CollisionObjectDamageScript.effectSoundType = SoundManager.EnumRandomEffectSound.CHEESE_HEALING_EFFECT;
         }
 
         if (CollisionObjectTimeScript != null)

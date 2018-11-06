@@ -165,6 +165,14 @@ public partial class PhotonManager
     {
         UIManager.GetInstance().gameStartCountPanelScript.Start.SetActive(true);
 
+        string playerType = (string)PhotonNetwork.player.CustomProperties["PlayerType"];
+
+        if (playerType == "Cat")
+            SpringArmObject.GetInstance().GetSystemSoundManager().PlayEffectSound(SoundManager.EnumEffectSound.UI_STARTCOUNT_CAT);
+
+        else if (playerType == "Mouse")
+            SpringArmObject.GetInstance().GetSystemSoundManager().PlayEffectSound(SoundManager.EnumEffectSound.UI_STARTCOUNT_MOUSE);
+
         yield return new WaitForSeconds(StartImage_WaitTime);
 
         UIManager.GetInstance().gameStartCountPanelScript.Start.SetActive(false);
@@ -194,13 +202,37 @@ public partial class PhotonManager
 
     public void SetTutorialGuide(TutorialGuide tg)
     {
+        // 플레이어를 정해준다.
+        
+
         // 1. 스킬에 필요한 데이터와 플레이어의 데이터를 연결시킨다.
 
+        string seletedChar = (string)PhotonNetwork.player.CustomProperties["PlayerType"];
+
+        TutorialElement[] seletedCharTutoElem = null;
+        int seletedCharCnt;
+
+        if (seletedChar == "Mouse")
+        {
+            seletedCharTutoElem = tg.mouseTutorialElements;
+            seletedCharCnt = tg.maxMouseTutorialCount;
+            tg.SeletedCharType = TutorialGuide.EnumSeletedChar.MOUSE;
+        }
+
+        else if (seletedChar == "Cat")
+        {
+            seletedCharTutoElem = tg.catTutorialElements;
+            seletedCharCnt = tg.maxCatTutorialCount;
+            tg.SeletedCharType = TutorialGuide.EnumSeletedChar.CAT;
+        }
+
+        
         // 종류찾기.
-        int tutorialElementCount = tg.mouseTutorialElements.Length;
+        int tutorialElementCount = seletedCharTutoElem.Length;
+
         for (int i = 0; i < tutorialElementCount; i++)
         {
-            TutorialElement tutorialElement = tg.mouseTutorialElements[i];
+            TutorialElement tutorialElement = seletedCharTutoElem[i];
 
             int tutorialCdtCount = tutorialElement.tutorialConditions.Length;
             for (int tcc = 0; tcc < tutorialCdtCount; tcc++)
@@ -221,6 +253,8 @@ public partial class PhotonManager
 
             }
         }
+
+
     }
 
     public void SetCondition(TutorialCondition tutorialCondition)
@@ -236,6 +270,22 @@ public partial class PhotonManager
 
                 newSpeedRun.EventExitCtnSkill += tutorialCondition.ResetMount;
             }
+
+            else if (tutorialCondition.activeType == TutorialCondition.EnumActive.RESCUE)
+            {
+                RescuePlayer rp = CurrentPlayer.GetComponent<RescuePlayer>();
+                rp.SuccessRescueEvent += tutorialCondition.IncreateMount;
+
+            }
+
+            else if (tutorialCondition.activeType == TutorialCondition.EnumActive.TURN_OFF)
+            {
+                TurnOffLight tol = CurrentPlayer.GetComponent<TurnOffLight>();
+                tol.UseTurnOffSkillEvent += tutorialCondition.IncreateMount;
+
+            }
+            
+
         }
 
         if (tutorialCondition.tutorialConditionType == TutorialCondition.EnumTutorialCondition.USEINTERACTIVE)
@@ -244,6 +294,17 @@ public partial class PhotonManager
             tutorialCondition.intersMount = new int[tutorialCondition.MAX_INTERS];
 
             newInteractionSkill.EventInteractive += tutorialCondition.IncreaseInter;
+        }
+
+        if (tutorialCondition.tutorialConditionType == TutorialCondition.EnumTutorialCondition.HIT)
+        {
+
+            // 스킬 갯수만큼 초기화
+            tutorialCondition.nowHitMount = new int[CollisionObject.OBJECT_MOUNT];
+
+            // 히트판정에 있는 이벤트에 등록, 히트 물체 이름을 보낸다.
+            tutorialCondition.aIObject.GetComponent<AIPlayerHit>().HitEvent +=
+                tutorialCondition.IncreaseHitMount;
         }
 
     }
