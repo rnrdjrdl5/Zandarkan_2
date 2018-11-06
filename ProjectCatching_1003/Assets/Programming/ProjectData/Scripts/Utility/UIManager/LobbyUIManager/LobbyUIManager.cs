@@ -44,6 +44,8 @@ public class LobbyUIManager : MonoBehaviour {
 
     public TutorialPanelScript tutorialPanelScript;
 
+
+    public TutorialLoadingPanelScript tutorialLoadingPanelScript;
     private void Awake()
     {
         if (lobbyUIManager == null)
@@ -97,6 +99,9 @@ public class LobbyUIManager : MonoBehaviour {
 
         tutorialPanelScript = new TutorialPanelScript();
         tutorialPanelScript.InitData();
+
+        tutorialLoadingPanelScript = new TutorialLoadingPanelScript();
+        tutorialLoadingPanelScript.InitData();
 
         
     }

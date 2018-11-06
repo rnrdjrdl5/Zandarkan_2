@@ -26,6 +26,8 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
     private LobbyUIManager lobbyUIManager;
     private SoundManager soundManager;
 
+   
+
     
     public float AnimationTime = 1.5f;
 
@@ -79,6 +81,8 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
         TitleUpdate();
 
         FindRoomUpdate();
+
+        TutorialUpdate();
 
     }
 
@@ -164,8 +168,12 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
             EnterRoomTutorial();
         }
 
-        else if(gameStateType == EnumGameState.FINDROOM)
+        else if (gameStateType == EnumGameState.FINDROOM)
+        {
             RoomEnter();
+        }
+
+        
 
         
     }

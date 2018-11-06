@@ -525,7 +525,7 @@ MonoBehaviour:
   - tutorialConditions:
     - playerObject: {fileID: 0}
       tutorialPlaceType: 0
-      tutorialConditionType: 0
+      tutorialConditionType: 1
       tutorialPlace: {fileID: 1845498708753784}
       checkTutorialPlace: {fileID: 114354780976935108}
       onMouseType: 0
@@ -546,54 +546,7 @@ MonoBehaviour:
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
       tutorialActionType: 0
-      messageText: q
-      messageSizeType: 0
-      messageObject: {fileID: 0}
-      messageImageScript: {fileID: 0}
-      waitTime: 0
-      tutorialAIType: 0
-      aIObject: {fileID: 0}
-      emoticonType: 0
-      imageObject: {fileID: 0}
-      imageXPosition: 0
-      imageYPosition: 0
-      PracticeSkillType: 0
-      AnimationStateType: 0
-      ShowImageType: 0
-      ReleaseImageType: 0
-      NoHitType: 0
-      SetActiveType: 0
-      SetUseDeadCountType: 0
-      AIUseHealthDownType: 0
-      SkillType: 0
-    maxTutorialAction: 1
-  maxMouseTutorialCount: 1
-  catTutorialElements:
-  - tutorialConditions:
-    - playerObject: {fileID: 0}
-      tutorialPlaceType: 0
-      tutorialConditionType: 1
-      tutorialPlace: {fileID: 1845498708753784}
-      checkTutorialPlace: {fileID: 114354780976935108}
-      onMouseType: 0
-      activeType: 0
-      activeMount: 0
-      playerActiveMount: 0
-      interactiveObjectType: 0
-      interactiveMount: 0
-      intersMount: 
-      MAX_INTERS: 100
-      tutorialAIType: 0
-      aIObject: {fileID: 0}
-      hitType: 3
-      maxHitMount: 1
-      nowHitMount: 
-    maxTutorialCondition: 1
-    tutorialActions:
-    - tutorialCanvas: {fileID: 0}
-      playerObject: {fileID: 0}
-      tutorialActionType: 13
-      messageText: qwbdbqqwwqqwb
+      messageText: "\uC791\uC740\uC0AC\uC774\uC988\n\uC791\uC740\uC0AC\uC774\uC9882"
       messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
@@ -630,15 +583,62 @@ MonoBehaviour:
       MAX_INTERS: 100
       tutorialAIType: 0
       aIObject: {fileID: 0}
-      hitType: 3
-      maxHitMount: 1
+      hitType: 0
+      maxHitMount: 0
       nowHitMount: 
     maxTutorialCondition: 1
     tutorialActions:
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
-      tutorialActionType: 14
-      messageText: dqwbqwb
+      tutorialActionType: 0
+      messageText: "\uB178\uB9D0\uC0AC\uC774\uC988"
+      messageSizeType: 1
+      messageObject: {fileID: 0}
+      messageImageScript: {fileID: 0}
+      waitTime: 0
+      tutorialAIType: 0
+      aIObject: {fileID: 0}
+      emoticonType: 0
+      imageObject: {fileID: 0}
+      imageXPosition: 0
+      imageYPosition: 0
+      PracticeSkillType: 0
+      AnimationStateType: 0
+      ShowImageType: 0
+      ReleaseImageType: 0
+      NoHitType: 0
+      SetActiveType: 0
+      SetUseDeadCountType: 0
+      AIUseHealthDownType: 0
+      SkillType: 0
+    maxTutorialAction: 1
+  maxMouseTutorialCount: 2
+  catTutorialElements:
+  - tutorialConditions:
+    - playerObject: {fileID: 0}
+      tutorialPlaceType: 0
+      tutorialConditionType: 1
+      tutorialPlace: {fileID: 1845498708753784}
+      checkTutorialPlace: {fileID: 114354780976935108}
+      onMouseType: 0
+      activeType: 0
+      activeMount: 0
+      playerActiveMount: 0
+      interactiveObjectType: 0
+      interactiveMount: 0
+      intersMount: 
+      MAX_INTERS: 100
+      tutorialAIType: 0
+      aIObject: {fileID: 0}
+      hitType: 0
+      maxHitMount: 0
+      nowHitMount: 
+    maxTutorialCondition: 1
+    tutorialActions:
+    - tutorialCanvas: {fileID: 0}
+      playerObject: {fileID: 0}
+      tutorialActionType: 2
+      messageText: 
       messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
@@ -659,7 +659,7 @@ MonoBehaviour:
       AIUseHealthDownType: 0
       SkillType: 0
     maxTutorialAction: 1
-  maxCatTutorialCount: 2
+  maxCatTutorialCount: 1
   tempSeletedTutoElem: []
   SeletedCharType: 0
   playerObject: {fileID: 0}

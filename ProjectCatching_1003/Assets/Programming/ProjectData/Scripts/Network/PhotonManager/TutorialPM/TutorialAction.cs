@@ -19,7 +19,7 @@ public class TutorialAction {
 
     // 텍스트용
     public string messageText;
-    public enum EnumMessageSize { SMALL, NORMAL, BIG };     // 주의점 , MessageImageScript와 다른 열거형  사용, 순서를 맞추자.
+    public enum EnumMessageSize { SMALL, NORMAL};     // 주의점 , MessageImageScript와 다른 열거형  사용, 순서를 맞추자.
     public EnumMessageSize messageSizeType;
 
     // 메세지 박스

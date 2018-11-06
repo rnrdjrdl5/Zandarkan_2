@@ -47,7 +47,7 @@ public class MessageImageScript : MonoBehaviour {
 
     public enum EnumMessageSize { SMALL , NORMAL , BIG } // 주의점 , TutorialAction과 다른 열거형  사용, 순서를 맞추자.
 
-    public float[] messageBoxSize;
+    public Vector2[] messageBoxSize;
     public float sizeOffset;
 
     public Sprite[] messageBoxSprite;
@@ -59,10 +59,10 @@ public class MessageImageScript : MonoBehaviour {
     {
 
         // 1. 이미지 크기 설정.
-        rectTransform.sizeDelta = new Vector2(messageBoxSize[(int)enumMessageSize], rectTransform.sizeDelta.y);
+        rectTransform.sizeDelta = new Vector2(messageBoxSize[(int)enumMessageSize].x, messageBoxSize[(int)enumMessageSize].y);
 
         // 2. 이미지 위치 설정
-        transform.localPosition = new Vector3( (canvasScaler.referenceResolution.x  - messageBoxSize[(int)enumMessageSize] - sizeOffset) /2 ,
+        transform.localPosition = new Vector3( (canvasScaler.referenceResolution.x  - messageBoxSize[(int)enumMessageSize].x - sizeOffset) /2 ,
             transform.localPosition.y, 0);
 
         // 3. 이미지 설정
@@ -74,7 +74,7 @@ public class MessageImageScript : MonoBehaviour {
 
         // 2. 텍스트 위치 보정
         tutorialMsgText.gameObject.transform.localPosition = new Vector3(
-            (-messageBoxSize[(int)enumMessageSize] + msgOffset.x) / 2, 
+            (-messageBoxSize[(int)enumMessageSize].x + msgOffset.x) / 2, 
             rectTransform.sizeDelta.y / 2 - msgOffset.y,  
             0);
             

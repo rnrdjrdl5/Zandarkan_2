@@ -100,14 +100,14 @@ public partial class NewLobbyRoomPhoton
         Application.Quit();
     }
 
-    // Title - Option 클릭 시 , 삭제 예정
+
     public void ClickGameTutorial()
     {
         if (!isUseEvent) return;
 
         soundManager.PlayEffectSound(SoundManager.EnumEffectSound.UI_BUTTONCLICK_1);
 
-        FindRoomGUI();
+        //FindRoomGUI();
         gameStateType = EnumGameState.TUTORIAL;
 
         DeleFadeOut = lobbyUIManager.lobbyPanelScript.FadeOutEffect;
