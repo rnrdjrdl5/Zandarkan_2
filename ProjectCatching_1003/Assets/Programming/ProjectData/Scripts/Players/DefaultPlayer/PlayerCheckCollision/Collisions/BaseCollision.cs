@@ -184,7 +184,24 @@ public class BaseCollision : Photon.PunBehaviour{
 
 
 
+        NewSpeedRun nsr = gameObject.GetComponent<NewSpeedRun>();
+        if (nsr != null)
+        {
 
+            if (collisionObjectDamage.HealingStaminaGauge != 0)
+            {
+
+                nsr.coolDown.SetNowCoolDown(
+                    nsr.coolDown.GetNowCoolDown() -
+                    (float)(collisionObjectDamage.HealingStaminaGauge / 100));
+
+                if (nsr.coolDown.GetNowCoolDown() < 0)
+                {
+                    nsr.coolDown.SetNowCoolDown(0);
+                }
+            }
+        }
+                
 
 
 
@@ -340,6 +357,9 @@ public class BaseCollision : Photon.PunBehaviour{
 
         // 애니메이션 여부 판단해서 재생함.
         LeftAnimation(go , true);
+
+        // 스테미나 추가하기?
+        
 
     }
 

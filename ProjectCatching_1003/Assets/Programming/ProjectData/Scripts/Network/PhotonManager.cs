@@ -104,6 +104,7 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
 
     // 튜토리얼모드인지 여부 확인
     public bool isTutorial;
+    
 
     /**** 접근자 ****/
 
@@ -140,7 +141,6 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
         // 플레이어 위치 씬 변경
         ExitGames.Client.Photon.Hashtable ht = new ExitGames.Client.Photon.Hashtable { { "Scene", "InGame" } };
         PhotonNetwork.player.SetCustomProperties(ht);
-
 
         condition = new Condition(CheckGameStart);
         conditionLoop = new ConditionLoop(NoAction);

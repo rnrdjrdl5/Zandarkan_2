@@ -37,4 +37,6 @@ public class CollisionObjectDamage : MonoBehaviour
     public PoolingManager.EffctType EffectType { get; set; }
     public SoundManager.EnumRandomEffectSound effectSoundType { get; set; }
 
+    public float HealingStaminaGauge;
+
 }

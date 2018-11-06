@@ -20,6 +20,9 @@ public class ObjectData : MonoBehaviour {
     [Header(" - 자연 소멸 시간")]
     public float DestroyTime = 3.0f;
 
+    [Header(" - 스태미나 회복량 퍼센트")]
+    public float StaminaHealingGauge = 50;
+
     public void SetData(int ownerID ,string ObjectName)
     {
 
@@ -49,6 +52,7 @@ public class ObjectData : MonoBehaviour {
             CollisionObjectDamageScript.SetObjectDamageNumber(ObjectDamageNumber);
             CollisionObjectDamageScript.EffectType = PoolingManager.EffctType.CHEESE_HEALING_EFFECT;
             CollisionObjectDamageScript.effectSoundType = SoundManager.EnumRandomEffectSound.CHEESE_HEALING_EFFECT;
+            CollisionObjectDamageScript.HealingStaminaGauge = StaminaHealingGauge;
         }
 
         if (CollisionObjectTimeScript != null)

@@ -22,7 +22,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: wire_115115115
-    second: {fileID: 2100000, guid: f580cb2681257ae43b96172e70098981, type: 2}
+    second: {fileID: 2100000, guid: 9c5df644b47bd6640a3d4e99144f372e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -93,6 +93,14 @@ ModelImporter:
         functionName: MiddleFallDown
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: a69eee08f5f60c14c803d7cd461642fe,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8363229
+        functionName: BoomPosDrawerSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 689fee5cff97215458d911452b2c7d19,
           type: 3}
         floatParameter: 0
         intParameter: 0

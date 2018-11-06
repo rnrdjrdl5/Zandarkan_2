@@ -8,12 +8,22 @@ using UnityEngine;
 public class TutoTestPhoton : Photon.PunBehaviour
 {
 
+    public bool isTest = true;
+    public enum EnumPlayer { MOUSE,CAT}
+    public EnumPlayer enumPlayerType;
+
 	// Use this for initialization
 	void Awake () {
-       /* Debug.Log("시작");
+
+        if (!isTest)
+        {
+            Destroy(this);
+        }
+
+        Debug.Log("시작");
         PhotonNetwork.ConnectUsingSettings("Catcadqching!");
 
-        PhotonNetwork.autoJoinLobby = true;*/
+        PhotonNetwork.autoJoinLobby = true;
     }
 
     private void Start()
@@ -24,28 +34,28 @@ public class TutoTestPhoton : Photon.PunBehaviour
 
     public override void OnJoinedLobby()
     {
-       /* base.OnJoinedLobby();
+        base.OnJoinedLobby();
 
         Debug.Log("로비");
 
-        PhotonNetwork.JoinRandomRoom();*/
+        PhotonNetwork.JoinRandomRoom();
     }
 
     public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
     {
-       /* base.OnPhotonRandomJoinFailed(codeAndMsg);
+        base.OnPhotonRandomJoinFailed(codeAndMsg);
         Debug.Log("찾기실패");
         RoomOptions ro = new RoomOptions
         {
             MaxPlayers = 6
         };
 
-        PhotonNetwork.CreateRoom("Catching" + Random.Range(0, 1000).ToString(), ro, TypedLobby.Default);*/
+        PhotonNetwork.CreateRoom("Catching" + Random.Range(0, 1000).ToString(), ro, TypedLobby.Default);
     }
 
     public override void OnJoinedRoom()
     {
-       /* base.OnJoinedRoom();
+        base.OnJoinedRoom();
 
         // 씬을 위해서 해쉬 생성
         ExitGames.Client.Photon.Hashtable PlayerSceneState = new ExitGames.Client.Photon.Hashtable
@@ -58,9 +68,19 @@ public class TutoTestPhoton : Photon.PunBehaviour
             { "Offset","NULL" }
         };
 
+        string tempType = null;
+        if (enumPlayerType == EnumPlayer.CAT)
+        {
+            tempType = "Cat";
+        }
+        else
+        {
+            tempType = "Mouse";
+        }
+
         ExitGames.Client.Photon.Hashtable PlayerType = new ExitGames.Client.Photon.Hashtable
         {
-            { "PlayerType","NULL" }
+            { "PlayerType",tempType }
         };
 
         ExitGames.Client.Photon.Hashtable UseBoss = new ExitGames.Client.Photon.Hashtable
@@ -94,7 +114,7 @@ public class TutoTestPhoton : Photon.PunBehaviour
 
         Debug.Log("입장");
 
-        PhotonManager.GetInstance().TutorialStart();*/
+        PhotonManager.GetInstance().TutorialStart();
 
     }
 }

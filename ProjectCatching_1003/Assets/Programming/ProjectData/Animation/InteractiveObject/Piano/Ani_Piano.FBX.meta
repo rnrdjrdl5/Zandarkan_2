@@ -555,6 +555,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.90582955
+        functionName: BoomPosDrawerSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 689fee5cff97215458d911452b2c7d19,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7242152
+        functionName: BoomPosDrawerSound
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 689fee5cff97215458d911452b2c7d19,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
