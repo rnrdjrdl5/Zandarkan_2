@@ -95,7 +95,7 @@ public partial class NewLobbyRoomPhoton
 
         yield return new WaitForSeconds(1.5f);
 
-//        PhotonNetwork.JoinLobby();
+        PhotonNetwork.JoinLobby();
     }
 
     public void EnterRoomTutorial()

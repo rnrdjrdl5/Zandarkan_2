@@ -197,7 +197,21 @@ public partial class PhotonManager
         tg.playerObject = CurrentPlayer;
         SetTutorialGuide(tg);
 
+
+        //FadeOutTutorialImage    
+        StartCoroutine("FadeAndStart", tg);
+
         tg.StartTutorial();
+    }
+
+    IEnumerator FadeAndStart(TutorialGuide tg)
+    {
+        TutorialCanvasManager.GetInstance().FadeOutTutorialImage();
+
+        yield return new WaitForSeconds(MenuUIFadeInFadeOut);
+
+        tg.StartTutorial();
+
     }
 
     public void SetTutorialGuide(TutorialGuide tg)

@@ -42,7 +42,7 @@ public class CoolDown
     public void DecreaseCoolDown()
     {
         // 쿨타임이 줄어드는 상태라면
-        if(isUseCoolDown)
+        if (isUseCoolDown)
         {
 
             NowCoolDown -= Time.deltaTime;
@@ -51,19 +51,20 @@ public class CoolDown
             if (NowCoolDown <= 0)
                 NowCoolDown = 0;
 
-            if(DecreaseEvent != null)   
-                 DecreaseEvent(NowCoolDown, MaxCoolDown, SkillNumber);
+            if (DecreaseEvent != null)
+                DecreaseEvent(NowCoolDown, MaxCoolDown, SkillNumber);
 
 
             if (NowCoolDown <= 0)
             {
                 isUseCoolDown = false;
                 NowCoolDown = 0;
-                if(CanUseSkillEvent!= null)
-                     CanUseSkillEvent(SkillNumber);
+                if (CanUseSkillEvent != null)
+                    CanUseSkillEvent(SkillNumber);
             }
         }
     }
+
 
 
     public void CalcCoolDown()

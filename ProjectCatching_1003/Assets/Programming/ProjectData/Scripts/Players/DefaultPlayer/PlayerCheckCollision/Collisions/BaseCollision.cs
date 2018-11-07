@@ -181,26 +181,7 @@ public class BaseCollision : Photon.PunBehaviour{
 
         // 데미지 주기
         playerHealth.CallApplyDamage(collisionObjectDamage.GetObjectDamage());
-
-
-
-        NewSpeedRun nsr = gameObject.GetComponent<NewSpeedRun>();
-        if (nsr != null)
-        {
-
-            if (collisionObjectDamage.HealingStaminaGauge != 0)
-            {
-
-                nsr.coolDown.SetNowCoolDown(
-                    nsr.coolDown.GetNowCoolDown() -
-                    (float)(collisionObjectDamage.HealingStaminaGauge / 100));
-
-                if (nsr.coolDown.GetNowCoolDown() < 0)
-                {
-                    nsr.coolDown.SetNowCoolDown(0);
-                }
-            }
-        }
+        playerHealth.CallAddStamina(collisionObjectDamage.HealingStaminaGauge);
                 
 
 

@@ -51,6 +51,23 @@ public class NewSpeedRun : DefaultNewSkill {
         UpdateCtnCoolTimeEvent = UIManager.GetInstance().skillPanelScript.UpdateSkillCoolTimeImage;
     }
 
+    protected override void Update()
+    {
+        base.Update();
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log("회복");
+            DownCtnCoolTime(20);
+            Debug.Log(" 사용 후 현재게이지 : " + NowCtnCoolTime);
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log(" 현재게이지 : " + NowCtnCoolTime);
+        }
+    }
+
     protected override void Awake()
     {
 

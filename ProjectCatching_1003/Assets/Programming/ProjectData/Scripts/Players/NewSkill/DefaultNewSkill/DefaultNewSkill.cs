@@ -191,6 +191,27 @@ public class DefaultNewSkill : MonoBehaviour {
 
     }
 
+    public void DownCtnCoolTime(float _Stamina)
+    {
+        float persent = 0.0f;
+        if (_Stamina != 0)
+        {
+            persent = _Stamina / 100;
+        }
+
+        NowCtnCoolTime -= MaxCtnCoolTime * persent;
+
+        if (NowCtnCoolTime <= 0)
+        {
+            NowCtnCoolTime = 0;
+        }
+
+        if (UpdateCtnCoolTimeEvent != null)
+            UpdateCtnCoolTimeEvent(NowCtnCoolTime, MaxCtnCoolTime, PlayerSkillNumber);
+
+        coolDown.SetNowCoolDown(0);
+    }
+
     /************************  아래부터는 재정의 해야 할 목록 *******************/
 
     // 현재 상태를 체크합니다.

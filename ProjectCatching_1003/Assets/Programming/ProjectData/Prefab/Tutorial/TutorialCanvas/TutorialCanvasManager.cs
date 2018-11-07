@@ -21,6 +21,8 @@ public class TutorialCanvasManager : MonoBehaviour {
     public GameObject MarbleUI;
     public GameObject NinjaUI;
 
+    public GameObject BaseTutorialImage;
+    public UIEffect BaseTutorialImageEffect;
     // Use this for initialization
     private void Awake()
     {
@@ -39,7 +41,16 @@ public class TutorialCanvasManager : MonoBehaviour {
         MarbleUI = TutorialBigUI.transform.Find("MarbleUI").gameObject;
         NinjaUI = TutorialBigUI.transform.Find("NinjaUI").gameObject;
 
+        BaseTutorialImage = transform.Find("BaseTutorialImage").gameObject;
+        BaseTutorialImageEffect = new UIEffect();
 
+
+    }
+
+    public void FadeOutTutorialImage()
+    {
+        BaseTutorialImageEffect.AddFadeEffectNode(BaseTutorialImage, PhotonManager.GetInstance().MenuUIFadeInFadeOut, UIEffectNode.EnumFade.OUT);
+        UIManager.GetInstance().UpdateEvent += BaseTutorialImageEffect.EffectEvent;
     }
 
 }

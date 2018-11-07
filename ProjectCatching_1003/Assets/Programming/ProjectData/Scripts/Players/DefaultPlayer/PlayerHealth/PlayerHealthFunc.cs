@@ -98,8 +98,8 @@ public partial class PlayerHealth
 
     }
 
-    
-    
+
+
 
 
     // 일반 데미지
@@ -107,6 +107,14 @@ public partial class PlayerHealth
     {
         photonView.RPC("ApplyDamage", PhotonTargets.All, _damage);
     }
+
+    public void CallAddStamina(float _Stamina)
+    {
+        photonView.RPC("AddStamina", PhotonTargets.All, _Stamina);
+    }
+
+
+
 
     // 낙하될 떄 데미지
     public void CallFallDamage(float _damage)
@@ -241,6 +249,15 @@ public partial class PlayerHealth
 
 
 
+    }
+
+    [PunRPC]
+    public void AddStamina(float _Stamina)
+    {
+        NewSpeedRun nsr = gameObject.GetComponent<NewSpeedRun>();
+
+        if(nsr != null)
+            nsr.DownCtnCoolTime(_Stamina);
     }
 
     [PunRPC]
