@@ -14,107 +14,65 @@ public class NotificationManagerEditor : Editor {
 
     public override void OnInspectorGUI()
     {
+        notificationManager.maxMessageTime = EditorGUILayout.FloatField("시스템 창 지속시간",
+            notificationManager.maxMessageTime);
 
-        // Notification 동적할당
-        DynamicNotifications();
+        EditorGUILayout.LabelField("쥐가 잡혔을 때");
+        notificationManager.RopeNotification =
+            EditorGUILayout.TextArea(notificationManager.RopeNotification);
+
+        EditorGUILayout.LabelField("쥐가 살아났을 때");
+        notificationManager.RescueNotification =
+            EditorGUILayout.TextArea(notificationManager.RescueNotification);
 
 
-        int count = notificationManager.notificationElements.Length;
-
-        for (int i = 0; i < count; i++)
-        {
-            EditorGUILayout.Space();
-            EditorGUILayout.LabelField("---  알림 선택 ---");
-
-            NotificationElement notificationElement =
-                notificationManager.notificationElements[i];
-
-            notificationElement.NotificationType =
-                (NotificationElement.EnumNotification)EditorGUILayout.EnumPopup
-                    ("타입 선정",
-                    notificationElement.NotificationType);
-
-            SettingNotification(notificationElement);
-
-        }
-
-        
+        DynamicRestNotification();
     }
 
-    private void DynamicNotifications()
+    
+
+    private void DynamicRestNotification()
     {
         // 동적할당 조건 - 변수가 바뀌거나, 기존에 없는경우.
-        int beforeMount = notificationManager.maxNotification;
+        int beforeMount = notificationManager.maxRestNotification;
 
         int nowMount =
-            EditorGUILayout.IntField("알림 타입 갯수 설정", notificationManager.maxNotification);
+            EditorGUILayout.IntField("최대 레스토랑 무너짐 메세지 개수", notificationManager.maxRestNotification);
 
 
 
-        notificationManager.maxNotification = nowMount;
+        notificationManager.maxRestNotification = nowMount;
 
-        // 값이 커지면 동적할당.
-        // 1 이상인경우 동적할당
-        // 동적할당 시 기존 값은 전달해야한다.
+        string[] tempString = new string[nowMount];
+        int[] tempAtLeastCount = new int[nowMount];
+        bool[] tempBool = new bool[nowMount];
         if (nowMount >= 0)
         {
 
-            // 1. 기존 값 백업
-            NotificationElement[] tempNotificationElement = notificationManager.notificationElements;
-
-            // 2. 새 값 생성
-            notificationManager.notificationElements = new NotificationElement[nowMount];
-
-            // 3. 0이면 null처리
-            if (nowMount == 0) notificationManager.notificationElements = null;
-
             for (int i = 0; i < nowMount; i++)
             {
-
-                // 기존 값이 있으면 기존 값 사용
-                if (i < beforeMount)
-                    notificationManager.notificationElements[i] = tempNotificationElement[i];
-
-                // 새 값이면 할당
-                else
-                    notificationManager.notificationElements[i] = new NotificationElement();
+                if (i < beforeMount) {
+                    tempAtLeastCount[i] =
+                        EditorGUILayout.IntField("특수 지점", notificationManager.AtLeastRestCount[i]);
+                    tempString[i] = EditorGUILayout.TextArea(notificationManager.RestNotifications[i]);
+                    tempBool[i] = notificationManager.isUseRestMessage[i];
+                    
+                }
+                else {
+                    tempAtLeastCount[i] =
+                        EditorGUILayout.IntField("특수 지점", tempAtLeastCount[i]);
+                    tempString[i] = EditorGUILayout.TextArea(tempString[i]);
+                    tempBool[i] = false;
+                }
+                
             }
         }
+
+        notificationManager.RestNotifications = tempString;
+        notificationManager.AtLeastRestCount = tempAtLeastCount;
+        notificationManager.isUseRestMessage = tempBool;
     }
 
-    private void SettingNotification(NotificationElement notificationElement)
-    {
-        switch (notificationElement.NotificationType)
-        {
-            case NotificationElement.EnumNotification.ROPE:
-                UseRopeInspector(notificationElement);
-                break;
 
-            case NotificationElement.EnumNotification.RESCUE:
-                break;
-
-            case NotificationElement.EnumNotification.DESTROY:
-                break;
-        }
-
-    }
-
-    void UseRopeInspector(NotificationElement notificationElement)
-    {
-        EditorGUILayout.LabelField("Rope 구출 내용");
-        notificationElement.ropeNotification = 
-            EditorGUILayout.TextArea(notificationElement.ropeNotification);
-    }
-
-    void UseRescueInspector(NotificationElement notificationElement)
-    {
-        EditorGUILayout.LabelField("Rescue 구출 내용");
-        notificationElement.rescueNotification =
-            EditorGUILayout.TextArea(notificationElement.rescueNotification);
-    }
-
-    void UseDestroyInspector(NotificationElement notificationElement)
-    {
-        EditorGUILayout.LabelField("Destroy 내용");
-    }
+   
 }

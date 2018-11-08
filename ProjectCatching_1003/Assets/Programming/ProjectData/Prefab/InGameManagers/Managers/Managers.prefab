@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 114408539924560812}
   - component: {fileID: 114434136386367396}
   - component: {fileID: 114799559960631730}
+  - component: {fileID: 114720838940311336}
   m_Layer: 0
   m_Name: PhotonManager
   m_TagString: Untagged
@@ -1225,6 +1226,26 @@ MonoBehaviour:
   GradePanel_ShakePower: 10
   HPPanel_ShakeFrequency: 10
   HPPanel_ShakePower: 10
+--- !u!114 &114720838940311336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1227716106270884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11f6a75e192fdd4eb1b69f0ac440364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RopeNotification: "\uC950\uC950@\uBA85\uB0A8\uC74C"
+  RescueNotification: "\uBD80\uD65C\uD65C@\uBA85\uB0A8\uC74C"
+  maxRestNotification: 2
+  RestNotifications:
+  - "\uBB34\uB108\uC9C4\uB2E4@\uAC8C\uC774\uC9C0"
+  - "\uBB34\uB108\uC9C4\uB2E4@\uAC8C\uC774\uC9C0"
+  AtLeastRestCount: 620000005f000000
+  isUseRestMessage: 0000
+  maxMessageTime: 2
 --- !u!114 &114799559960631730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1260,6 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InterObj: []
+  notificationManager: {fileID: 0}
 --- !u!198 &198102941408092378
 ParticleSystem:
   m_ObjectHideFlags: 1

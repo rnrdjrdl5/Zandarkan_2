@@ -78,7 +78,7 @@ public class GradePanelScript{
 
 }
 
-public void InitEvent()
+    public void InitEvent()
     {
         ObjectManager.GetInstance().RemoveEvent += ShakeRestaurantEvent;
     }

@@ -37,6 +37,9 @@ public class ObjectManager : MonoBehaviour {
         return photonManager;
     }
 
+    public NotificationManager notificationManager;
+
+
     // 아래부터는 오브젝트 카운팅 용 변수 입니다.
 
     private int[] mountObjects;     //오브젝트의 총 가중치를 의미함.
@@ -46,6 +49,7 @@ public class ObjectManager : MonoBehaviour {
 
     private int[] maxGUIObject;
     private int[] nowGUIObject;
+    
     
 
     private void Awake()
@@ -68,6 +72,7 @@ public class ObjectManager : MonoBehaviour {
     private void Start()
     {
         MaxInterObj = InterObj.Count;
+        notificationManager = NotificationManager.GetInstance();
     }
 
     public GameObject FindObject(int vID)
@@ -113,6 +118,20 @@ public class ObjectManager : MonoBehaviour {
 
                 // 실질적 점수 설정
                 PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "StoreScore", NextCatScore } });
+
+                float restPersent = NextCatScore / photonManager.MaxCatScore * 100;
+                int restCount = notificationManager.maxRestNotification;
+
+                for (int rc = 0; rc < restCount; rc++)
+                {
+                    if (notificationManager.AtLeastRestCount[rc] >= restPersent &&
+                        !notificationManager.isUseRestMessage[rc])
+                    {
+                        notificationManager.NotificationMessage(NotificationManager.EnumNotification.REST,rc);
+                        notificationManager.isUseRestMessage[rc] = true;
+                    }
+
+                }
 
 
 

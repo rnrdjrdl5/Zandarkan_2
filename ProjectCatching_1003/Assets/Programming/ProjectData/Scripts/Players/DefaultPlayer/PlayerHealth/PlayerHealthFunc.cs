@@ -128,6 +128,7 @@ public partial class PlayerHealth
         playerState.SetWeaponType(PlayerState.WeaponEnum.ROPE);
         animator.SetInteger("WeaponType", 2);
         PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "PlayerType", "Rope" } });
+        CallNotifiMessage(NotificationManager.EnumNotification.ROPE);
         // 1. 죽는 애니메이션 재생
 
         EnumCoro = CoroRopeDeadAnimation();
@@ -213,6 +214,11 @@ public partial class PlayerHealth
         photonView.RPC("RPCPostDeadAction", PhotonTargets.All);
     }
 
+
+    public void CallNotifiMessage(NotificationManager.EnumNotification enumNotification)
+    {
+        photonView.RPC("RPCNotifiMessage", PhotonTargets.All, (int)enumNotification);
+    }
     /**** RPC ****/
 
     [PunRPC]
@@ -238,6 +244,7 @@ public partial class PlayerHealth
             if (NowHealth <= 0)
             {
                 if (FinishHealthEvent != null) FinishHealthEvent();
+
 
                 NowHealth = 0;
                 BindRope();
@@ -343,6 +350,12 @@ public partial class PlayerHealth
         go.transform.localPosition = new Vector3(0.0f, 0.3f, 1.0f);
     }
 
+    [PunRPC]
+    public void RPCNotifiMessage(int enumNotification)
+    {
+
+        NotificationManager.GetInstance().NotificationMessage((NotificationManager.EnumNotification)enumNotification);
+    }
 
 
 

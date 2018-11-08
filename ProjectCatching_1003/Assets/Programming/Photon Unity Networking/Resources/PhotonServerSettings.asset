@@ -101,4 +101,5 @@ MonoBehaviour:
   - RPCTutoCreatePlayer
   - RPCTutoPlayingGame
   - AddStamina
+  - RPCNotifiMessage
   DisableAutoOpenWizard: 1

@@ -554,7 +554,9 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
         
         playerHealth.SetPlayerNumber(-1);
 
+
         
+
 
         if (!CheckPhotonMine())
             return;
@@ -563,8 +565,8 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
 
 
         PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "PlayerType", "Mouse" } });
-        
-        
+        NotificationManager.GetInstance().NotificationMessage(NotificationManager.EnumNotification.RESCUE);
+
 
         playerHealth.ResetNowRopeDeadTime();
         playerHealth.CallDecreaseDeadEvent();
