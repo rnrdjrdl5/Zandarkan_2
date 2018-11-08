@@ -156,6 +156,7 @@ public partial class PlayerHealth
         SpringArmObject.GetInstance().SwapSpringArm(SpringArmType.EnumSpringArm.FREE);
 
         UIManager.GetInstance().SetDeadUI();
+
         PoolingManager.GetInstance().PositionArea.SetActive(false);
 
         // 파괴대신 비활성화 시키고, 

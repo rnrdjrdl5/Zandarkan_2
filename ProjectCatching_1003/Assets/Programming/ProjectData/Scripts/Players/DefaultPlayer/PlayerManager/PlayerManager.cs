@@ -8,11 +8,16 @@ public partial class PlayerManager : MonoBehaviour {
     public UIManager uIManager;
     public PhotonView pv;
 
+    
+
+    
+
     // Use this for initialization
     private void Awake()
     {
         SetFallowCamera();
 
+        pointToLocation = new PointToLocation();
 
     }
     private void Start()
@@ -43,6 +48,33 @@ public partial class PlayerManager : MonoBehaviour {
 
         UseExplain();
 
+        UsePlayerName();
 
+    }
+
+    private PointToLocation pointToLocation;
+    public float showPlayerNameDis = 5.0f;
+    void UsePlayerName()
+    {
+        GameObject go = pointToLocation.FindObject(showPlayerNameDis, "OtherPlayer", SpringArmObject.GetInstance().armCamera);
+
+        if (go == null)
+        {
+            uIManager.playerNamePanelScript.SetActive(false);
+            return;
+        }
+            
+
+        // 해당 플레이어가 가리키는 phootn을 받아와야 한다.
+
+
+        PhotonView pv = go.GetComponent<PhotonView>();
+        if (pv == null) return;
+
+        string CurrentPlayerName = pv.owner.NickName;
+
+        uIManager.playerNamePanelScript.SetActive(true);
+        uIManager.playerNamePanelScript.PlayerNameTextText.text = CurrentPlayerName;
+        
     }
 }

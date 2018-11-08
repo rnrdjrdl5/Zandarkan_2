@@ -2611,6 +2611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46a9aca4186d5f4f9ef226282b44e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUseSkill: 1
   coolDown:
     MaxCoolDown: 0
   InputKey:
@@ -2636,6 +2637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d309592381f5e404595163791b40000b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUseSkill: 1
   coolDown:
     MaxCoolDown: 0
   InputKey:
@@ -2661,6 +2663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3562cac74a01e408f6f5ff8722ec2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUseSkill: 1
   coolDown:
     MaxCoolDown: 0
   InputKey:
@@ -2688,7 +2691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uIManager: {fileID: 0}
   pv: {fileID: 0}
-  isNetworkPlayer: 1
+  showPlayerNameDis: 100
   PlayerViewPosition: {x: 0, y: 1.25, z: -2.1}
 --- !u!114 &114270170937222782
 MonoBehaviour:
@@ -2725,6 +2728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe881260d4dc47469404027e794cd94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUseSkill: 1
   coolDown:
     MaxCoolDown: 35
   InputKey:
@@ -2757,6 +2761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fccd3545596434649be2385937c921b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUseSkill: 1
   coolDown:
     MaxCoolDown: 0
   InputKey:
@@ -2872,6 +2877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f58467a3f7572b449f29673137b68a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUseSkill: 1
   coolDown:
     MaxCoolDown: 50
   InputKey:
@@ -2928,6 +2934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9363f0cdae9b2674fba662c1d23df693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUseSkill: 1
   coolDown:
     MaxCoolDown: 5
   InputKey:
@@ -3173,6 +3180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f2c257cd805564389ef65b9d49e269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUseSkill: 1
   coolDown:
     MaxCoolDown: 0
   InputKey:

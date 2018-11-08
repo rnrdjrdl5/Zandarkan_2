@@ -50311,12 +50311,12 @@ Prefab:
     - target: {fileID: 224118108428797396, guid: 2abec209895e080498b6750782243e81,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 457.27924
+      value: 370.77924
       objectReference: {fileID: 0}
     - target: {fileID: 224118108428797396, guid: 2abec209895e080498b6750782243e81,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 258.24277
+      value: 209.74278
       objectReference: {fileID: 0}
     - target: {fileID: 114237840695055366, guid: 2abec209895e080498b6750782243e81,
         type: 2}

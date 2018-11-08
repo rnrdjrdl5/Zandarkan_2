@@ -65,8 +65,14 @@ public class UIManager : Photon.PunBehaviour {
     public ExplainGamePanelScript explainGamePanelScript { get; set; }
     IEnumerator EnumCoro;
 
+    //플레이어 이름
+    public PlayerNamePanelScript playerNamePanelScript { get; set; }
 
+    // 옵저버 플레이어 이름 표시
+    public ObserverNamePanelScript observerNamePanelScript { get; set; }
 
+    // 알림 메세지
+    public NotificationPanelScript notificationPanelScript { get; set; }
 
 
     static private UIManager uIManager;
@@ -251,6 +257,14 @@ public class UIManager : Photon.PunBehaviour {
         explainGamePanelScript = new ExplainGamePanelScript();
         explainGamePanelScript.InitData();
 
+        playerNamePanelScript = new PlayerNamePanelScript();
+        playerNamePanelScript.InitData();
+
+        observerNamePanelScript = new ObserverNamePanelScript();
+        observerNamePanelScript.InitData();
+
+        notificationPanelScript = new NotificationPanelScript();
+        notificationPanelScript.InitData();
     }
 
     private void Start()
@@ -318,5 +332,11 @@ public class UIManager : Photon.PunBehaviour {
         saucePanelScript.SaucePanel.SetActive(false);
 
         deadOutLinePanelScript.DeadOutLinePanel.SetActive(true);
+
+        playerNamePanelScript.PlayerNameTextText.text = "";
+        playerNamePanelScript.isCanShow = false;
+        playerNamePanelScript.SetActive(false);
+
+        observerNamePanelScript.isUseShow = true;
     }
 }

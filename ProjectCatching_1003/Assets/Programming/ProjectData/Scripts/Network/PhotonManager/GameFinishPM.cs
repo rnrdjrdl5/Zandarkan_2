@@ -129,6 +129,15 @@ public partial class PhotonManager
         // 도움말 못키게하기
         uIManager.explainGamePanelScript.SetActive(false);
         uIManager.explainGamePanelScript.OffisCanUseExplain();
+
+        // 플레이어 이름 못띄우도록 변경
+        uIManager.playerNamePanelScript.isCanShow = false;
+        uIManager.playerNamePanelScript.SetActive(false);
+        uIManager.playerNamePanelScript.PlayerNameTextText.text = "";
+
+        uIManager.observerNamePanelScript.isUseShow = false;
+        uIManager.observerNamePanelScript.SetActive(false);
+        uIManager.observerNamePanelScript.ObserverNameTextText.text = "";
     }
 
 

@@ -204,6 +204,8 @@ public partial class PhotonManager
         tg.StartTutorial();
     }
 
+
+
     IEnumerator FadeAndStart(TutorialGuide tg)
     {
         TutorialCanvasManager.GetInstance().FadeOutTutorialImage();
@@ -327,4 +329,6 @@ public partial class PhotonManager
     {
         tutorialAction.playerObject = CurrentPlayer;
     }
+
+
 }

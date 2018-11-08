@@ -7,8 +7,5 @@ public partial class PlayerManager
 
     public bool IsUseHideCursor { get; set; }
 
-
-    public bool isNetworkPlayer = true;
-
     public Vector3 PlayerViewPosition;
 }

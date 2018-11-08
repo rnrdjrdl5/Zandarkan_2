@@ -171,6 +171,9 @@ public class SpringArmObject : MonoBehaviour
 
         SpringArmPosition = PlayerObject.GetComponent<PlayerManager>().PlayerViewPosition;
 
+        PhotonView pv = PlayerObject.GetComponent<PhotonView>();
 
+        UIManager.GetInstance().observerNamePanelScript.ObserverNameTextText.text = pv.owner.NickName;
+        UIManager.GetInstance().observerNamePanelScript.SetActive(true);
     }
 }
