@@ -54,6 +54,12 @@ public partial class TutorialGuideEditor
             case TutorialAction.EnumTutorialAction.ACTIVE_OTHER_SKILL:
                 UseActiveOtherSkill(nowAction);
                 break;
+            case TutorialAction.EnumTutorialAction.FADE_OUT:
+                UseFadeOut(nowAction);
+                break;
+            case TutorialAction.EnumTutorialAction.GAME_END:
+                UseGameEnd(nowAction);
+                break;
         }
     }
 
@@ -198,4 +204,13 @@ public partial class TutorialGuideEditor
         EditorGUILayout.LabelField("모든스킬 재활성화");
     }
 
+    void UseFadeOut(TutorialAction nowAction)
+    {
+        nowAction.FadeOutTime = EditorGUILayout.FloatField("페이드아웃 시간", nowAction.FadeOutTime);
+    }
+
+    void UseGameEnd(TutorialAction nowAction)
+    {
+        EditorGUILayout.LabelField("게임 종료");
+    }
 }

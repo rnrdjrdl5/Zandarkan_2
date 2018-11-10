@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Tutorial > TutorialElement > TutorialAction
 
@@ -14,7 +15,7 @@ public class TutorialAction {
     // 액션타입.
     public enum EnumTutorialAction { MESSAGE, WAIT, DEBUG, EMOTION, DRAW_IMAGE, PRACTICE_SKILL, RESET_PRACTICE 
             , SET_AI_STATE, SHOW_IMAGE , RELEASE_IMAGE , SET_ACTIVE_AI , SET_USE_DEAD_COUNT ,SET_AI_USE_HEALTH_DOWN ,
-    BLOCK_OTHER_SKILL ,ACTIVE_OTHER_SKILL }
+    BLOCK_OTHER_SKILL ,ACTIVE_OTHER_SKILL , FADE_OUT , GAME_END}
     public EnumTutorialAction tutorialActionType;
 
     // 텍스트용
@@ -76,6 +77,8 @@ public class TutorialAction {
     public enum EnumSkill { SPEEDRUN , MARBLE , HIDE, FRYING_PAN, TURNOFF, TRAP , ATTACK};
     public EnumSkill SkillType;
 
+    public float FadeOutTime;
+
     public float UseAction()
     {
         float returnTime = 0f;
@@ -97,10 +100,6 @@ public class TutorialAction {
 
             case EnumTutorialAction.EMOTION:
                 UseEmotion();
-                break;
-
-            case EnumTutorialAction.DRAW_IMAGE:
-                DrawImage();
                 break;
 
             case EnumTutorialAction.PRACTICE_SKILL:
@@ -139,6 +138,12 @@ public class TutorialAction {
             case EnumTutorialAction.ACTIVE_OTHER_SKILL:
                 SetActiveOtherSkill();
                 break;
+            case EnumTutorialAction.FADE_OUT:
+                UseFadeOut();
+                break;
+            case EnumTutorialAction.GAME_END:
+                UseGameEnd();
+                break;
                 
 
 
@@ -155,17 +160,6 @@ public class TutorialAction {
     {
         aIObject.GetComponent<AIEmotions>().UseEmotion((int)emoticonType);
     }
-
-    void DrawImage()
-    {
-       // Vector3 position = new Vector3(imageXPosition, imageYPosition, 0);
-
-        // 생성할 방법이 필요하다. 그러면?
-        //GameObject go = Instantiate(imageObject, position, Quaternion.identity);
-
-        //go.transform.parent = tutorialCanvas.transform;
-    }
-
     void PracticeSkill()
     {
         switch (PracticeSkillType)
@@ -375,7 +369,15 @@ public class TutorialAction {
         if (nh != null) nh.isUseSkill = true;
     }
 
+    void UseFadeOut()
+    {
+        UIManager.GetInstance().fadeImageScript.FadeEffect(FadeOutTime);
+    }
 
+    void UseGameEnd()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
 
 
 
