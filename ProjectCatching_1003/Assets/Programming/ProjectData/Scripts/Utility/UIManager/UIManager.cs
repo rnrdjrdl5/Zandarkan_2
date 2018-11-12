@@ -295,8 +295,10 @@ public class UIManager : Photon.PunBehaviour {
                 // 탭키, 시간 이미지 위치 변경.
 
                 limitTimePanelScript.AddTimeYPosition(-guiHeightSize);
-                interObjectGUIPanelScript.AddTapImageHeight(-guiHeightSize);
 
+                interObjectGUIPanelScript.isOpen = true;
+
+                interObjectGUIPanelScript.PushTab();
             }
 
             else
@@ -305,7 +307,9 @@ public class UIManager : Photon.PunBehaviour {
                 interObjectGUIPanelScript.SetObjectActive(false);
 
                 limitTimePanelScript.AddTimeYPosition(+guiHeightSize);
-                interObjectGUIPanelScript.AddTapImageHeight(+guiHeightSize);
+
+                interObjectGUIPanelScript.isOpen = false;
+                interObjectGUIPanelScript.PushTab();
 
 
             }

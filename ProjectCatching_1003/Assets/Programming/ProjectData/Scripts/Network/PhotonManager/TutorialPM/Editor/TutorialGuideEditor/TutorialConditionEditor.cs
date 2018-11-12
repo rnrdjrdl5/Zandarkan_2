@@ -25,6 +25,12 @@ public partial class TutorialGuideEditor
             case TutorialCondition.EnumTutorialCondition.HIT:
                 UseHitInspector(nowCondition);
                 break;
+            case TutorialCondition.EnumTutorialCondition.ROPEDEAD:
+                UseRopeDead(nowCondition);
+                break;
+            case TutorialCondition.EnumTutorialCondition.PLAYERDEAD:
+                UsePlayerDead(nowCondition);
+                break;
         }
     }
 
@@ -108,6 +114,17 @@ public partial class TutorialGuideEditor
         {
             nowCondition.aIObject = tutorialAI.AI[tutorialAIType];
         }
+    }
+
+    void UseRopeDead(TutorialCondition nowCondition)
+    {
+        SetAITarget("로프가 묶여있는지 판단할 AI", nowCondition);
+
+    }
+
+    void UsePlayerDead(TutorialCondition nowCondition)
+    {
+        SetAITarget("죽은 AI 대상", nowCondition);
     }
 }
 

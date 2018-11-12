@@ -14,7 +14,7 @@ public partial class TutorialGuideEditor : Editor {
     {
         tutorialGuide = (TutorialGuide)target;
         tutorialPlace = tutorialGuide.GetComponent<TutorialPlace>();
-        tutorialAI = tutorialGuide.GetComponent<TutorialAI>();
+        tutorialAI = tutorialGuide.GetComponent<TutorialAI>();        
     }
 
     public override void OnInspectorGUI()

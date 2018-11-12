@@ -399,7 +399,7 @@ public class RescuePlayer : Photon.MonoBehaviour, IPunObservable
         tempTargetObject = pointToLocation.FindObject
             (RescueDistance, "RescueLayer", SpringArmObject.GetInstance().armCamera);
 
-        if (tempTargetObject != null) tempTargetObject = tempTargetObject.transform.root.gameObject;
+        if (tempTargetObject != null) tempTargetObject = tempTargetObject.transform.parent.gameObject;
         else return false;
 
 

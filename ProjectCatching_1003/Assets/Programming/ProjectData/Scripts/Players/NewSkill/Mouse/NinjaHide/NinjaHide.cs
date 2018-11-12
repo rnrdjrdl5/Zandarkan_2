@@ -39,9 +39,14 @@ public class NinjaHide : DefaultNewSkill {
             return false;
     }
 
+
+    public delegate void DeleUseNinjaHide();
+    public event DeleUseNinjaHide NinjaHideEvent;
     public override void UseSkill()
     {
         base.UseSkill();
+
+        if (NinjaHideEvent != null) NinjaHideEvent();
 
         // 콜백으로 뺴서 사용하기?
         UIManager.GetInstance().hidePanelScript.SetCutSceneEffect();

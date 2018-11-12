@@ -4,6 +4,11 @@ using UnityEngine;
 
 public partial class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable {
 
+    // Tutorial 전용
+    public bool isUseChoiseInter = false;
+    public InteractiveState.EnumInteractiveObject[] tutorialInterObj;
+
+
     public bool IsUseAction { get; set; }
 
 
@@ -122,11 +127,34 @@ public partial class NewInteractionSkill : Photon.MonoBehaviour, IPunObservable 
                     if (CheckInterKey())
                     {
 
+                       
 
 
                         // 1.  상호작용 물체 등록
-                        interactiveObject = findObject.GetObjectTarget();
+                            interactiveObject = findObject.GetObjectTarget();
                         interactiveState = interactiveObject.GetComponent<InteractiveState>();
+
+
+                        // 튜토리얼, 선택해서 상호작용 사용 할 때
+                        if (isUseChoiseInter)
+                        {
+
+                            bool isHaveInter = false;
+                            int cnt = tutorialInterObj.Length;
+
+                            for (int i = 0; i < cnt; i++)
+                            {
+                                if (interactiveState.interactiveObjectType == tutorialInterObj[i])
+                                {
+                                    isHaveInter = true;
+                                }
+                            }
+
+                            if (!isHaveInter) return;
+                        }
+
+
+
 
                         // 2. 상호작용 탐지 해제
                         findObject.SetisUseFindObject(false);

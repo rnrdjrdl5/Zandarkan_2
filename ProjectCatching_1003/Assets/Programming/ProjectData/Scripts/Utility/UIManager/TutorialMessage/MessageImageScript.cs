@@ -14,7 +14,8 @@ public class MessageImageScript : MonoBehaviour {
 
     private void Awake()
     {
-        canvasScaler = gameObject.transform.root.GetComponent<CanvasScaler>();
+        //canvasScaler = gameObject.transform.root.GetComponent<CanvasScaler>();
+        canvasScaler = GameObject.Find("TutorialCanvas").GetComponent<CanvasScaler>();
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
 

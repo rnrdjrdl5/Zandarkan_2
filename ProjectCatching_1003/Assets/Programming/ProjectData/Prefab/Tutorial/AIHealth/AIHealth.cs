@@ -27,26 +27,39 @@ public class AIHealth : MonoBehaviour {
         upHeadTransform  = gameObject.transform.Find("UpHeadPosition");
     }
 	
+
+    bool DeadOffset = true;
 	// Update is called once per frame
 	void Update () {
 
+
+
         if (isBind)
         {
-            HelpIcon();
+            if(gameObject.tag == "Mouse")
+                HelpIcon();
 
-            if(isUseDownBindTime)
-            nowBindTime -= Time.deltaTime;
+            if (isUseDownBindTime)
+                nowBindTime -= Time.deltaTime;
 
             CheckDead();
         }
 
         else
-            DeleteHelpIcon();
+        {
+            Debug.Log("IsBind : " + isBind);
+            if (gameObject.tag == "Mouse")
+                DeleteHelpIcon();
+        }
 
 
     }
 
 
+    public bool isUseRopeEvent = false;
+    public delegate void DeleNoParam();
+    public event DeleNoParam AIRopeEvent;
+    
     public bool isBind = false;
     public void ApplyDamage(float _damage)
     {
@@ -74,6 +87,7 @@ public class AIHealth : MonoBehaviour {
         // 체력 0이하면 밧줄로 변경
         if (health <= 0)
         {
+            if(AIRopeEvent != null) AIRopeEvent();
 
             isBind = true;
             health = 0;
@@ -150,14 +164,22 @@ public class AIHealth : MonoBehaviour {
 
     void CheckDead()
     {
-        if (nowBindTime <= 0)
+        if (DeadOffset)
         {
-            StartCoroutine("PlayerDead");
+            
+            if (nowBindTime <= 0)
+            {
+                DeadOffset = false;
+                StartCoroutine("PlayerDead");
+            }
         }
     }
 
+    public event DeleNoParam PlayerDeadEvent;
     IEnumerator PlayerDead()
     {
+
+        PlayerDeadEvent();
         Animator anim = GetComponent<Animator>();
         anim.SetBool("isRopeDead", true);
 

@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class InterObjectGUIPanelScript
 {
-    
+
+    public    bool isOpen;
+
     private GameObject InterObjectGUIPanel;
     private void InitInterObjectGUIPanel()
     {
@@ -41,6 +43,8 @@ public class InterObjectGUIPanelScript
 
     public void InitGUIs()
     {
+        
+
         GUIObjects = new GameObject[MAX_GUI_MOUNT];
         interGUITypes = new InterGUIType[MAX_GUI_MOUNT];
         GUINowTexts = new Text[MAX_GUI_MOUNT];
@@ -65,19 +69,30 @@ public class InterObjectGUIPanelScript
 
     }
 
-    public GameObject TapImage;
-    public void InitTapImage() { TapImage = InterObjectGUIPanel.transform.Find("TapImage").gameObject; }
-    public void AddTapImageHeight(float yPosition)
-    {
-        TapImage.transform.localPosition = new Vector3(
-            TapImage.transform.localPosition.x,
-            TapImage.transform.localPosition.y + yPosition,
-            TapImage.transform.localPosition.z);
-        
+    public GameObject Tabs;
+    public void InitTabs() { Tabs = InterObjectGUIPanel.transform.Find("Tabs").gameObject; }
+
+    public GameObject TabClose;
+    public void InitTabClose() { TabClose = Tabs.transform.Find("TabClose").gameObject; }
+    public GameObject TabOpen;
+    public void InitTabOpen() { TabOpen = Tabs.transform.Find("TabOpen").gameObject; }
+
+    public GameObject MaxTabText;
+    public Text MaxTabTextText;
+    public void InitMaxTabText() {
+        MaxTabText = Tabs.transform.Find("MaxTabText").gameObject;
+        MaxTabTextText = MaxTabText.GetComponent<Text>();
+    }
+    public GameObject NowTabText;
+    public Text NowTabTextText;
+    public void InitNowTabText() {
+        NowTabText = Tabs.transform.Find("NowTabText").gameObject;
+        NowTabTextText = NowTabText.GetComponent<Text>();
     }
 
     public void InitData()
     {
+        isOpen = false;
 
         InitInterObjectGUIPanel();
 
@@ -88,17 +103,51 @@ public class InterObjectGUIPanelScript
 
         InitGUIs();
 
-        InitTapImage();
+
+        InitTabs();
+        InitTabClose();
+        InitTabOpen();
+        InitMaxTabText();
+        InitNowTabText();
+
     }
 
     public void SetActive(bool isActive)
     {
-        Debug.Log("dsafsadsf");
         InterObjectGUIPanel.SetActive(isActive);
 
         ObjGUIBgImage.SetActive(isActive);
-        TapImage.SetActive(isActive);
+
+        Tabs.SetActive(isActive);
+        TabOpen.SetActive(isActive);
+        TabClose.SetActive(isActive);
+
+        NowTabText.SetActive(isActive);
+        MaxTabText.SetActive(isActive);
+
+        if (isActive == true)
+        {
+            PushTab();
+        }
     }
+
+    public void PushTab()
+    {
+        if (isOpen)
+        {
+            TabOpen.SetActive(true);
+            TabClose.SetActive(false);
+        }
+
+        else if (!isOpen)
+        {
+            TabOpen.SetActive(false);
+            TabClose.SetActive(true);
+        }
+
+        SetTextColor(isOpen);
+    }
+
     public bool GetObjectActive()
     {
         return Objects.activeInHierarchy;
@@ -130,6 +179,27 @@ public class InterObjectGUIPanelScript
         }
 
 
+    }
+    public void SetNowMaxText(int nowData, int maxData)
+    {
+        Debug.Log("nowData : " + nowData);
+        NowTabTextText.text = nowData.ToString();
+        MaxTabTextText.text = maxData.ToString();
+    }
+
+    public void SetTextColor(bool io)
+    {
+        if (io)
+        {
+            NowTabTextText.color = Color.black;
+            MaxTabTextText.color = Color.black;
+        }
+
+        else if (!io)
+        {
+            NowTabTextText.color = Color.white;
+            MaxTabTextText.color = Color.white;
+        }
     }
 
     public void SetGUICheck(int[] maxData, int[] nowData)

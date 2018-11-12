@@ -15,6 +15,7 @@ public class ObjectManager : MonoBehaviour {
     public static ObjectManager GetInstance() { return objectManager; }
 
     public int MaxInterObj { get; set; }
+    public int NowInterObj { get; set; }
     public List<GameObject> InterObj;
     public void AddInterObj(GameObject go) { InterObj.Add(go); }
     
@@ -72,6 +73,7 @@ public class ObjectManager : MonoBehaviour {
     private void Start()
     {
         MaxInterObj = InterObj.Count;
+        NowInterObj = MaxInterObj;
         notificationManager = NotificationManager.GetInstance();
     }
 
@@ -142,9 +144,11 @@ public class ObjectManager : MonoBehaviour {
                     nowGUIObject[(int)IS.interactiveObjectType] = 0;
                 }
 
+                NowInterObj -= 1;
 
                 UIManager.GetInstance().interObjectGUIPanelScript.SetText(maxGUIObject, nowGUIObject);
                 UIManager.GetInstance().interObjectGUIPanelScript.SetGUICheck(maxGUIObject, nowGUIObject);
+                UIManager.GetInstance().interObjectGUIPanelScript.SetNowMaxText(NowInterObj, MaxInterObj);
 
 
                 // }
@@ -195,6 +199,7 @@ public class ObjectManager : MonoBehaviour {
 
         // GUI와 Text 일치화
         UIManager.GetInstance().interObjectGUIPanelScript.SetText(maxGUIObject, nowGUIObject);
+        UIManager.GetInstance().interObjectGUIPanelScript.SetNowMaxText(NowInterObj, MaxInterObj);
     }
 
     public void CalcObjectMag()

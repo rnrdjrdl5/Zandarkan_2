@@ -76,6 +76,8 @@ public partial class NewLobbyRoomPhoton
     void DrawRoomState()
     {
 
+        DrawRoomName();
+
         CheckStartButton();
 
         // 패널  수 
@@ -142,6 +144,15 @@ public partial class NewLobbyRoomPhoton
             lobbyUIManager.roomPanelScript.StartImage.SetActive(false);
             lobbyUIManager.roomPanelScript.ReadyImage.SetActive(true);
         }
+    }
+
+    void DrawRoomName()
+    {
+        string roomName = PhotonNetwork.room.Name;
+
+        lobbyUIManager.roomPanelScript.RoomNameText.text = roomName;
+
+        lobbyUIManager.roomPanelScript.RoomName.SetActive(true);
     }
 
     // 방 들어갔을때, Photon Event임.

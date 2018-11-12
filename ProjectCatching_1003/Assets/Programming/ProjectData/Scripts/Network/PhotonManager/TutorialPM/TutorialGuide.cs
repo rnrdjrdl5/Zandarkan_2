@@ -117,6 +117,7 @@ public class TutorialGuide : MonoBehaviour {
     {
         SettingElements();
 
+        Debug.Log("asf");
         StartCoroutine("TutorialLoop");
 
         
@@ -132,7 +133,6 @@ public class TutorialGuide : MonoBehaviour {
             // 1. 컨디션 모두 확인
             if (tempSeletedTutoElem[nowTutorialCount].CheckCondition())
             {
-
                 TutorialAction[] tutorialActions =
                     tempSeletedTutoElem[nowTutorialCount].tutorialActions;
 
@@ -150,7 +150,9 @@ public class TutorialGuide : MonoBehaviour {
                         if (tempTime >= waitTime) break;
 
                         else {
+                            Debug.Log("맥스 시간 : " + waitTime);
                             tempTime += Time.deltaTime;
+                            Debug.Log("대기");
                             yield return null;
                         }
 

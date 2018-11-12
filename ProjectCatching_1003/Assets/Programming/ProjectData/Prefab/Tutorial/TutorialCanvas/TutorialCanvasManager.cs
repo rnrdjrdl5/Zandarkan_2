@@ -21,6 +21,10 @@ public class TutorialCanvasManager : MonoBehaviour {
     public GameObject MarbleUI;
     public GameObject NinjaUI;
 
+    public GameObject FrypanUI;
+    public GameObject TrapUI;
+    public GameObject TurnOffUI;
+
     public GameObject BaseTutorialImage;
     public UIEffect BaseTutorialImageEffect;
     // Use this for initialization
@@ -40,6 +44,10 @@ public class TutorialCanvasManager : MonoBehaviour {
         SpeedUI = TutorialBigUI.transform.Find("SpeedUI").gameObject;
         MarbleUI = TutorialBigUI.transform.Find("MarbleUI").gameObject;
         NinjaUI = TutorialBigUI.transform.Find("NinjaUI").gameObject;
+
+        FrypanUI = TutorialBigUI.transform.Find("FrypanUI").gameObject;
+        TrapUI = TutorialBigUI.transform.Find("TrapUI").gameObject;
+        TurnOffUI = TutorialBigUI.transform.Find("TurnOffUI").gameObject;
 
         BaseTutorialImage = transform.Find("BaseTutorialImage").gameObject;
         BaseTutorialImageEffect = new UIEffect();

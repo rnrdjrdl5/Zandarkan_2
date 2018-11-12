@@ -32,6 +32,9 @@ public class RoomPanelScript{
     // 플레이어 정보
     public PlayerPanelScript[] playerPanelScripts;
 
+    // 방 제목
+    public GameObject RoomName;
+    public Text RoomNameText;
 
     private UIEffect StartImageEffect;
     private UIEffect ReadyImageEffect;
@@ -44,6 +47,7 @@ public class RoomPanelScript{
     private UIEffect ChaserButtonEffect;
     private UIEffect RandomButtonEffect;
 
+    
 
     public void SetActive(bool isActive)
     {
@@ -69,6 +73,8 @@ public class RoomPanelScript{
 
         lobbyUIManager.LineSetActive(isActive);
 
+        RoomName.SetActive(false);
+
     }
 
     public void InitData()
@@ -89,6 +95,8 @@ public class RoomPanelScript{
         ChaserButton = ChoosePlayer.transform.Find("ChaserButton").gameObject;
         RandomButton = ChoosePlayer.transform.Find("RandomButton").gameObject;
 
+        RoomName = RoomPanel.transform.Find("RoomName").gameObject;
+        RoomNameText = RoomName.GetComponent<Text>();
 
         InitPlayerPanelScript();
 

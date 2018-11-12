@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class TutorialCondition{
 
+    public bool isUsedCondition = false;
+
     // 최대거리
     const float INFINIFY_DISTANCE = 10000f;
 
@@ -21,7 +23,7 @@ public class TutorialCondition{
 
     // 조건
     public enum EnumTutorialCondition {
-        PLACE, ALWAYS, ONMOUSE , USEACTIVE, USEINTERACTIVE , HIT
+        PLACE, ALWAYS, ONMOUSE , USEACTIVE, USEINTERACTIVE , HIT , ROPEDEAD , PLAYERDEAD
     };
     public EnumTutorialCondition tutorialConditionType;
 
@@ -36,25 +38,55 @@ public class TutorialCondition{
     public enum EnumOnMouse { TOMATO};
     public EnumOnMouse onMouseType;
 
+
+    // 모든 스킬 리셋
+    public void ResetCondition()
+    {
+        playerActiveMount = 0;
+        ResetInter();
+        ResetHitMount();
+        ResetRopeDead();
+        ResetPlayerDead();
+    }
+
+
+
     // 액티브 사용 시
-    public enum EnumActive { SPEEDRUN , RESCUE , TURN_OFF};
+    public enum EnumActive { SPEEDRUN , RESCUE , TURN_OFF , NINJA ,TRAP};
     public EnumActive activeType;
     public float activeMount;
+
+    
+
+
+
+
+
+
 
     // 스킬 사용시간
     public float playerActiveMount;
     public void IncreateTime()
     {
-        playerActiveMount += Time.deltaTime;
+        if (isUsedCondition)
+        {
+            playerActiveMount += Time.deltaTime;
+        }
     }
     public void IncreateMount()
     {
-        playerActiveMount++;
+        if (isUsedCondition)
+        {
+            playerActiveMount++;
+        }
     }
 
     public void ResetMount()
     {
-        playerActiveMount = 0;
+        if (isUsedCondition)
+        {
+            playerActiveMount = 0;
+        }
     }
 
 
@@ -68,8 +100,27 @@ public class TutorialCondition{
     public int MAX_INTERS = 100;        // 상호작용의 최대개수
     public void IncreaseInter(int data)
     {
-        intersMount[data]++;
+        if (isUsedCondition)
+        {
+            intersMount[data]++;
+        }
     }
+
+    public void ResetInter()
+    {
+        if(isUsedCondition)
+        {
+
+            if (tutorialConditionType != EnumTutorialCondition.USEINTERACTIVE) return;
+
+            for (int i = 0; i < MAX_INTERS; i++)
+            {
+                intersMount[i] = 0;
+            }
+        }
+    }
+
+
 
     // 타겟
     public enum EnumTutorialAI { TOMATO, CAT , TOMATO2};
@@ -84,19 +135,63 @@ public class TutorialCondition{
     public int[] nowHitMount;
     public void IncreaseHitMount(int Data)
     {
-        CollisionObject.EnumObject objecType = (CollisionObject.EnumObject)Data;
-
-        nowHitMount[Data]++;
-    }
-
-    public void ResetHitMount(int Data)
-    {
-        for (int i = 0; i < CollisionObject.OBJECT_MOUNT; i++)
+        if (isUsedCondition)
         {
-            nowHitMount[i] = 0;
+            CollisionObject.EnumObject objecType = (CollisionObject.EnumObject)Data;
+
+            nowHitMount[Data]++;
         }
-        maxHitMount = 0;
     }
+
+    public void ResetHitMount()
+    {
+        if (isUsedCondition)
+        {
+            if (tutorialConditionType != EnumTutorialCondition.HIT) return;
+
+            for (int i = 0; i < CollisionObject.OBJECT_MOUNT; i++)
+            {
+                nowHitMount[i] = 0;
+            }
+            maxHitMount = 0;
+        }
+    }
+
+
+
+    public bool isUseRopeDead = false;
+    public void SetOnRopeDead()
+    {
+        if (isUsedCondition)
+        {
+            isUseRopeDead = true;
+        }
+    }
+    public void ResetRopeDead()
+    {
+        if (isUsedCondition)
+        {
+            isUsePlayerDead = false;
+        }
+    }
+
+    public bool isUsePlayerDead = false;
+    public void SetOnPlayerDead()
+    {
+        if (isUsedCondition)
+        {
+            isUsePlayerDead = true;
+        }
+    }
+
+    public void ResetPlayerDead()
+    {
+        if (isUsedCondition)
+        {
+            isUsePlayerDead = false;
+        }
+    }
+
 
     public bool CheckCondition()
     {
@@ -136,10 +231,11 @@ public class TutorialCondition{
             // 해당스킬사용했는지?
             if (activeType == EnumActive.SPEEDRUN)
             {
-                TutorialCanvasManager.GetInstance().SpeedUI.SetActive(true);
                 if (activeMount <= playerActiveMount)
-                    TutorialCanvasManager.GetInstance().SpeedUI.SetActive(false);
-                return true;
+                {
+                    
+                    return true;
+                }
             }
 
             else if (activeType == EnumActive.RESCUE)
@@ -147,8 +243,20 @@ public class TutorialCondition{
                 if (activeMount <= playerActiveMount)
                     return true;
             }
-
+            
             else if (activeType == EnumActive.TURN_OFF)
+            {
+                if (activeMount <= playerActiveMount)
+                    return true;
+            }
+
+            else if (activeType == EnumActive.NINJA)
+            {
+                if (activeMount <= playerActiveMount)
+                    return true;
+            }
+
+            else if (activeType == EnumActive.TRAP)
             {
                 if (activeMount <= playerActiveMount)
                     return true;
@@ -158,16 +266,39 @@ public class TutorialCondition{
 
         if (tutorialConditionType == EnumTutorialCondition.USEINTERACTIVE)
         {
+            
             if (intersMount[(int)interactiveObjectType] >= interactiveMount)
+            {  
                 return true;
+            }
+
+          
+            
         }
 
         if (tutorialConditionType == EnumTutorialCondition.HIT)
         {
             if (maxHitMount <= nowHitMount[(int)hitType])
                 return true;
+
+        }
+        if (tutorialConditionType == EnumTutorialCondition.ROPEDEAD)
+        {
+            if (isUseRopeDead == true)
+            {
+                return true;
+            }
         }
 
+        if (tutorialConditionType == EnumTutorialCondition.PLAYERDEAD)
+        {
+            if (isUsePlayerDead == true)
+            {
+                return true;
+            }
+
+        }
+        
 
             return false;
     }

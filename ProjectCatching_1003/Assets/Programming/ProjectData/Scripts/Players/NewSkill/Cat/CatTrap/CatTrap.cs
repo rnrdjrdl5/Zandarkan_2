@@ -65,6 +65,9 @@ public class CatTrap : DefaultNewSkill
             return false;
     }
 
+
+    public delegate void DeleNoParan();
+    public event DeleNoParan UseCatTrapEvent;
     public override void UseSkill()
     {
         animator.SetBool("isCatTrap", true);
@@ -77,6 +80,7 @@ public class CatTrap : DefaultNewSkill
         // 본인인 경우
         if(photonView.isMine)
         {
+            UseCatTrapEvent();
             // 비어있는 리스트 제거
             CheckEmptyTraps();
 

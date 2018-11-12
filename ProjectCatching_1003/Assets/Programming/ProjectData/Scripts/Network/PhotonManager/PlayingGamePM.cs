@@ -201,7 +201,6 @@ public partial class PhotonManager
         //FadeOutTutorialImage    
         StartCoroutine("FadeAndStart", tg);
 
-        tg.StartTutorial();
     }
 
 
@@ -255,8 +254,9 @@ public partial class PhotonManager
             {
                 TutorialCondition tutorialCondition = tutorialElement.tutorialConditions[tcc];
 
-                //액션 셋팅
-                SetCondition(tutorialCondition);
+                
+                SetCondition(tutorialCondition, tcc);
+                
             }
 
             int tutorialAcCondition = tutorialElement.tutorialActions.Length;
@@ -264,7 +264,7 @@ public partial class PhotonManager
             {
                 TutorialAction tutorialAction = tutorialElement.tutorialActions[tac];
 
-                //조건 셋팅
+                
                 SetAction(tutorialAction);
 
             }
@@ -273,7 +273,7 @@ public partial class PhotonManager
 
     }
 
-    public void SetCondition(TutorialCondition tutorialCondition)
+    public void SetCondition(TutorialCondition tutorialCondition, int tcc)
     {
         tutorialCondition.playerObject = CurrentPlayer;
 
@@ -282,25 +282,46 @@ public partial class PhotonManager
             if (tutorialCondition.activeType == TutorialCondition.EnumActive.SPEEDRUN)
             {
                 NewSpeedRun newSpeedRun = CurrentPlayer.GetComponent<NewSpeedRun>();
-                newSpeedRun.EventUseCtnSkill += tutorialCondition.IncreateTime;
+                if (newSpeedRun != null)
+                {
+                    newSpeedRun.EventUseCtnSkill += tutorialCondition.IncreateTime;
 
-                newSpeedRun.EventExitCtnSkill += tutorialCondition.ResetMount;
+                    newSpeedRun.EventExitCtnSkill += tutorialCondition.ResetMount;
+                }
             }
 
             else if (tutorialCondition.activeType == TutorialCondition.EnumActive.RESCUE)
             {
                 RescuePlayer rp = CurrentPlayer.GetComponent<RescuePlayer>();
-                rp.SuccessRescueEvent += tutorialCondition.IncreateMount;
+                if (rp != null)
+                    rp.SuccessRescueEvent += tutorialCondition.IncreateMount;
 
             }
 
             else if (tutorialCondition.activeType == TutorialCondition.EnumActive.TURN_OFF)
             {
                 TurnOffLight tol = CurrentPlayer.GetComponent<TurnOffLight>();
-                tol.UseTurnOffSkillEvent += tutorialCondition.IncreateMount;
+                if (tol != null)
+                    tol.UseTurnOffSkillEvent += tutorialCondition.IncreateMount;
 
             }
-            
+
+            else if (tutorialCondition.activeType == TutorialCondition.EnumActive.NINJA)
+            {
+                NinjaHide nh = CurrentPlayer.GetComponent<NinjaHide>();
+                if (nh != null)
+                    nh.NinjaHideEvent += tutorialCondition.IncreateMount;
+
+            }
+
+            else if (tutorialCondition.activeType == TutorialCondition.EnumActive.TRAP)
+            {
+                CatTrap ct = CurrentPlayer.GetComponent<CatTrap>();
+                if (ct != null)
+                {
+                    ct.UseCatTrapEvent += tutorialCondition.IncreateMount;
+                }
+            }
 
         }
 
@@ -310,6 +331,7 @@ public partial class PhotonManager
             tutorialCondition.intersMount = new int[tutorialCondition.MAX_INTERS];
 
             newInteractionSkill.EventInteractive += tutorialCondition.IncreaseInter;
+            Debug.Log("사용횟수 체크");
         }
 
         if (tutorialCondition.tutorialConditionType == TutorialCondition.EnumTutorialCondition.HIT)
@@ -321,6 +343,17 @@ public partial class PhotonManager
             // 히트판정에 있는 이벤트에 등록, 히트 물체 이름을 보낸다.
             tutorialCondition.aIObject.GetComponent<AIPlayerHit>().HitEvent +=
                 tutorialCondition.IncreaseHitMount;
+        }
+        if (tutorialCondition.tutorialConditionType == TutorialCondition.EnumTutorialCondition.ROPEDEAD)
+        {
+            AIHealth ah = tutorialCondition.aIObject.GetComponent<AIHealth>();
+            ah.AIRopeEvent += tutorialCondition.SetOnRopeDead;
+        }
+
+        if (tutorialCondition.tutorialConditionType == TutorialCondition.EnumTutorialCondition.PLAYERDEAD)
+        {
+            AIHealth ah = tutorialCondition.aIObject.GetComponent<AIHealth>();
+            ah.PlayerDeadEvent += tutorialCondition.SetOnPlayerDead;
         }
 
     }

@@ -15,7 +15,7 @@ public class TutorialAction {
     // 액션타입.
     public enum EnumTutorialAction { MESSAGE, WAIT, DEBUG, EMOTION, DRAW_IMAGE, PRACTICE_SKILL, RESET_PRACTICE 
             , SET_AI_STATE, SHOW_IMAGE , RELEASE_IMAGE , SET_ACTIVE_AI , SET_USE_DEAD_COUNT ,SET_AI_USE_HEALTH_DOWN ,
-    BLOCK_OTHER_SKILL ,ACTIVE_OTHER_SKILL , FADE_OUT , GAME_END}
+    BLOCK_OTHER_SKILL ,ACTIVE_OTHER_SKILL , FADE_OUT , GAME_END, SET_INTER_TYPE , RESET_INTER_TYPE}
     public EnumTutorialAction tutorialActionType;
 
     // 텍스트용
@@ -49,7 +49,7 @@ public class TutorialAction {
     public float imageYPosition;
 
     // 스킬 연습
-    public enum EnumPracticeSkill { MOUSE_SPREAD, NINJA_HIDE }
+    public enum EnumPracticeSkill { MOUSE_SPREAD, NINJA_HIDE, FLYINGPAN, TRAP, TURNOFF }
     public EnumPracticeSkill PracticeSkillType;
 
     // 애니메이션 상태 설정 종류
@@ -57,7 +57,7 @@ public class TutorialAction {
     public EnumAnimationState AnimationStateType;
 
 
-    public enum EnumShowImage { GRADEUI, MOUSE_QSKILL, MOUSE_SHIFTSKILL , MOUSE_ESKILL}
+    public enum EnumShowImage { GRADEUI, MOUSE_QSKILL, MOUSE_SHIFTSKILL , MOUSE_ESKILL , CAT_RSKILL, CAT_QSKILL , CAT_ESKILL }
     public EnumShowImage ShowImageType;
     public EnumShowImage ReleaseImageType;
 
@@ -78,6 +78,13 @@ public class TutorialAction {
     public EnumSkill SkillType;
 
     public float FadeOutTime;
+
+
+    public enum EnumInterPosition {TABLE_CHAIR , DRAWER };
+    public EnumInterPosition InterPositionType;    
+
+    public InteractiveState.EnumInteractiveObject[] tutorInterObj;
+    public int maxTutoInterObj;
 
     public float UseAction()
     {
@@ -144,9 +151,14 @@ public class TutorialAction {
             case EnumTutorialAction.GAME_END:
                 UseGameEnd();
                 break;
-                
 
+            case EnumTutorialAction.SET_INTER_TYPE:
+                UseSetInterType();
+                break;
 
+            case EnumTutorialAction.RESET_INTER_TYPE:
+                UseResetInterType();
+                break;
 
 
         }
@@ -170,6 +182,16 @@ public class TutorialAction {
             case EnumPracticeSkill.NINJA_HIDE:
                 playerObject.GetComponent<NinjaHide>().coolDown.PracticeCoolDown();
                 break;
+            case EnumPracticeSkill.FLYINGPAN:
+                playerObject.GetComponent<NewThrowFryingPan>().coolDown.PracticeCoolDown();
+                break;
+            case EnumPracticeSkill.TRAP:
+                playerObject.GetComponent<CatTrap>().coolDown.PracticeCoolDown();
+                break;
+            case EnumPracticeSkill.TURNOFF:
+                playerObject.GetComponent<TurnOffLight>().coolDown.PracticeCoolDown();
+                break;
+
 
         }
     }
@@ -183,6 +205,15 @@ public class TutorialAction {
                 break;
             case EnumPracticeSkill.NINJA_HIDE:
                 playerObject.GetComponent<NinjaHide>().coolDown.ResetCoolDown();
+                break;
+            case EnumPracticeSkill.FLYINGPAN:
+                playerObject.GetComponent<NewThrowFryingPan>().coolDown.ResetCoolDown();
+                break;
+            case EnumPracticeSkill.TRAP:
+                playerObject.GetComponent<CatTrap>().coolDown.ResetCoolDown();
+                break;
+            case EnumPracticeSkill.TURNOFF:
+                playerObject.GetComponent<TurnOffLight>().coolDown.ResetCoolDown();
                 break;
         }
     }
@@ -233,6 +264,21 @@ public class TutorialAction {
         if (imageType == EnumShowImage.MOUSE_ESKILL)
         {
             TutorialCanvasManager.GetInstance().NinjaUI.SetActive(isActive);
+        }
+
+        if (imageType == EnumShowImage.CAT_QSKILL)
+        {
+            TutorialCanvasManager.GetInstance().TrapUI.SetActive(isActive);
+        }
+
+        if (imageType == EnumShowImage.CAT_RSKILL)
+        {
+            TutorialCanvasManager.GetInstance().FrypanUI.SetActive(isActive);
+        }
+
+        if (imageType == EnumShowImage.CAT_ESKILL)
+        {
+            TutorialCanvasManager.GetInstance().TurnOffUI.SetActive(isActive);
         }
     }
 
@@ -379,6 +425,27 @@ public class TutorialAction {
         PhotonNetwork.LeaveRoom();
     }
 
+    void UseSetInterType()
+    {
+        NewInteractionSkill newInterSkill = playerObject.GetComponent<NewInteractionSkill>();
 
+        if (newInterSkill != null)
+        {
+
+            newInterSkill.tutorialInterObj = tutorInterObj;
+            newInterSkill.isUseChoiseInter = true;
+        }
+    }
+
+    void UseResetInterType()
+    {
+        NewInteractionSkill newInterSkill = playerObject.GetComponent<NewInteractionSkill>();
+
+        if (newInterSkill != null)
+        {
+            newInterSkill.tutorialInterObj = null;
+            newInterSkill.isUseChoiseInter = false;
+        }
+    }
 
 }

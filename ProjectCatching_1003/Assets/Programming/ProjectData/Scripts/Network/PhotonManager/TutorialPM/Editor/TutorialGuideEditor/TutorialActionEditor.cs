@@ -60,6 +60,12 @@ public partial class TutorialGuideEditor
             case TutorialAction.EnumTutorialAction.GAME_END:
                 UseGameEnd(nowAction);
                 break;
+            case TutorialAction.EnumTutorialAction.SET_INTER_TYPE:
+                UseSetInterType(nowAction);
+                break;
+            case TutorialAction.EnumTutorialAction.RESET_INTER_TYPE:
+                UseResetInterType(nowAction);
+                break;
         }
     }
 
@@ -163,7 +169,7 @@ public partial class TutorialGuideEditor
     {
         nowAction.ReleaseImageType = (TutorialAction.EnumShowImage)EditorGUILayout.EnumPopup
             ("UI이미지 대상",
-            nowAction.ShowImageType);
+            nowAction.ReleaseImageType);
     }
 
     void SetActiveAI(TutorialAction nowAction)
@@ -213,4 +219,55 @@ public partial class TutorialGuideEditor
     {
         EditorGUILayout.LabelField("게임 종료");
     }
+
+    void UseSetInterType(TutorialAction nowAction)
+    {
+
+
+        // 동적할당 조건 - 변수가 바뀌거나, 기존에 없는경우.
+        int beforeMount = nowAction.maxTutoInterObj;
+
+        int nowMount =
+            EditorGUILayout.IntField("상호작용 수", nowAction.maxTutoInterObj);
+
+
+        InteractiveState.EnumInteractiveObject[] tempInterObj = 
+            new InteractiveState.EnumInteractiveObject[nowMount];
+        
+        if (nowMount >= 0)
+        {
+            nowAction.maxTutoInterObj = nowMount;
+
+            for (int i = 0; i < nowMount; i++)
+            {
+                if (i < beforeMount)
+                {
+                    tempInterObj[i] = (InteractiveState.EnumInteractiveObject)EditorGUILayout.EnumPopup
+                                        ("상호작용 선택",
+                                        nowAction.tutorInterObj[i]);
+
+                }
+                else
+                {
+                    tempInterObj[i] = (InteractiveState.EnumInteractiveObject)EditorGUILayout.EnumPopup
+                                        ("상호작용 선택",
+                                        tempInterObj[i]);
+                }
+
+            }
+        }
+
+        nowAction.tutorInterObj = tempInterObj;
+    }
+
+    void UseResetInterType(TutorialAction nowAction)
+    {
+        
+
+
+
+        EditorGUILayout.LabelField("상호작용 모두 사용가능");
+    }
+
 }
+
