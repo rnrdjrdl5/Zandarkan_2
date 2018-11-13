@@ -656,7 +656,7 @@ MonoBehaviour:
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
       tutorialActionType: 0
-      messageText: "\uC88B\uB124\uC694,\n\uC774\uBC88\uC5D4 \uD1A0\uB9C8\uD1A0\uC5D0\uAC8C
+      messageText: "\uC88B\uB124\uC694!\n\n\uC774\uBC88\uC5D4 \uD1A0\uB9C8\uD1A0\uC5D0\uAC8C
         \uAC00\uAE4C\uC774 \uAC00\uBCF4\uB3C4\uB85D \uD558\uC8E0\n\v\uBC29\uD5A5\uD0A4\uB97C
         \uD1B5\uD574 \uCE90\uB9AD\uD130\uB97C \uC774\uB3D9\uC2DC\uD0AC \uC218 \uC788\uC2B5\uB2C8\uB2E4.\r"
       messageSizeType: 1
@@ -713,7 +713,7 @@ MonoBehaviour:
       messageText: "Shift\uD0A4\uC640 \uBC29\uD5A5\uD0A4\uB97C \uD568\uAED8 \uB204\uB974\uB294
         \uAC83\uC73C\uB85C \n\uC880 \uB354 \uBE60\uB974\uAC8C \uC774\uB3D9\uD560 \uC218
         \uC788\uC2B5\uB2C8\uB2E4.\v"
-      messageSizeType: 1
+      messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 0
@@ -773,7 +773,7 @@ MonoBehaviour:
       checkTutorialPlace: {fileID: 114354780976935108}
       onMouseType: 0
       activeType: 0
-      activeMount: 3
+      activeMount: 1
       playerActiveMount: 0
       interactiveObjectType: 0
       interactiveMount: 0
@@ -821,7 +821,7 @@ MonoBehaviour:
       messageText: "\uB3C4\uB9DD\uC790\uB294 \uD568\uAED8 \uD611\uB825\uD558\uC5EC
         \n\uB808\uC2A4\uD1A0\uB791\uC744 \uC5C9\uB9DD\uC73C\uB85C \uB9CC\uB4E4\uC5B4\uC57C
         \uD569\uB2C8\uB2E4.\r"
-      messageSizeType: 1
+      messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 0
@@ -875,10 +875,10 @@ MonoBehaviour:
       playerObject: {fileID: 0}
       tutorialActionType: 0
       messageText: "\uC0C1\uD638\uC791\uC6A9 \uC624\uBE0C\uC81D\uD2B8\uC5D0 \uC811\uADFC\uD574
-        \n\uC0C1\uD638\uC791\uC6A9 \uD0A4\uB97C \uB204\uB974\uB294 \uAC83\uC73C\uB85C\n
-        \v\uB808\uC2A4\uD1A0\uB791\uC744 \uC5C9\uB9DD\uC73C\uB85C \uB9CC\uB4E4 \uC218
+        \uC0C1\uD638\uC791\uC6A9 \uD0A4\uB97C \uB204\uB974\uB294 \uAC83\uC73C\uB85C
+        \n\uB808\uC2A4\uD1A0\uB791\uC744 \uC5C9\uB9DD\uC73C\uB85C \uB9CC\uB4E4 \uC218
         \uC788\uC2B5\uB2C8\uB2E4.\r"
-      messageSizeType: 1
+      messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 0
@@ -1195,10 +1195,10 @@ MonoBehaviour:
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
       tutorialActionType: 0
-      messageText: "\uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD558\uBA74 \n\uD6A8\uACFC\uC801\uC73C\uB85C
+      messageText: "\uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD558\uBA74 \uD6A8\uACFC\uC801\uC73C\uB85C
         \uCD94\uACA9\uC790\uB97C \uD53C\uD574 \n\uB808\uC2A4\uD1A0\uB791\uC744 \uC5B4\uC9C0\uB7FD\uD790
         \uC218 \uC788\uC2B5\uB2C8\uB2E4.\r"
-      messageSizeType: 1
+      messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 5
@@ -1846,10 +1846,11 @@ MonoBehaviour:
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
       tutorialActionType: 0
-      messageText: "\uB3C4\uB9DD\uC790\uAC00 \uC2B9\uB9AC\uD558\uAE30 \uC704\uD574\uC11C\uB294\n\uB808\uC2A4\uD1A0\uB791\uC744
-        \uC5C9\uB9DD\uC73C\uB85C \uB9CC\uB4E4\uC5B4 \n\v\uBAA9\uD45C \uAC8C\uC774\uC9C0
-        \uC774\uD558\uB85C \uB9CC\uB4E4\uC5B4\uC57C \uD569\uB2C8\uB2E4.\r"
-      messageSizeType: 1
+      messageText: "\uB3C4\uB9DD\uC790\uAC00 \uC2B9\uB9AC\uD558\uAE30 \uC704\uD574\uC11C\uB294
+        \uB808\uC2A4\uD1A0\uB791\uC744 \uC5C9\uB9DD\uC73C\uB85C \uB9CC\uB4E4\uC5B4
+        \n\v\uBAA9\uD45C \uAC8C\uC774\uC9C0 \uC774\uD558\uB85C \uB9CC\uB4E4\uC5B4\uC57C
+        \uD569\uB2C8\uB2E4.\r"
+      messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 0
@@ -1930,7 +1931,7 @@ MonoBehaviour:
       playerObject: {fileID: 0}
       tutorialActionType: 0
       messageText: "1\uBC88 \uAC8C\uC774\uC9C0 \uC774\uD558\uB85C \uB0B4\uB824\uAC00\uACE0
-        \n\uAC8C\uC784 \uC2DC\uAC04\uC774 \uC885\uB8CC \uB420 \uB54C\uAE4C\uC9C0 \uC0DD\uC874\uD558\uBA74
+        \n\uAC8C\uC784 \uC2DC\uAC04\uC774 \uC885\uB8CC \uB420 \uB54C\uAE4C\uC9C0 \uC0DD\uC874\uD558\uBA74\n
         \v\n\uB3C4\uB9DD\uC790 \uC9C4\uC601\uC774 \uC2B9\uB9AC\uD569\uB2C8\uB2E4."
       messageSizeType: 1
       messageObject: {fileID: 0}
@@ -1986,9 +1987,9 @@ MonoBehaviour:
       playerObject: {fileID: 0}
       tutorialActionType: 0
       messageText: "1\uBC88 \uAC8C\uC774\uC9C0 \uC774\uD558\uB85C \uB808\uC2A4\uD1A0\uB791\uC744
-        \n\uC5C9\uB9DD\uC73C\uB85C \uB9CC\uB4E4\uC5B4\uB3C4 \v\n\uBAA8\uB4E0 \uB3C4\uB9DD\uC790\uAC00
+        \uC5C9\uB9DD\uC73C\uB85C \uB9CC\uB4E4\uC5B4\uB3C4 \v\n\uBAA8\uB4E0 \uB3C4\uB9DD\uC790\uAC00
         \uC81C\uC555\uB418\uBA74 \uD328\uBC30\uD569\uB2C8\uB2E4.\r"
-      messageSizeType: 1
+      messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 0
@@ -2122,6 +2123,33 @@ MonoBehaviour:
       maxTutoInterObj: 0
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
+      tutorialActionType: 9
+      messageText: 
+      messageSizeType: 0
+      messageObject: {fileID: 0}
+      messageImageScript: {fileID: 0}
+      waitTime: 2.5
+      tutorialAIType: 0
+      aIObject: {fileID: 0}
+      emoticonType: 0
+      imageObject: {fileID: 0}
+      imageXPosition: 0
+      imageYPosition: 0
+      PracticeSkillType: 0
+      AnimationStateType: 0
+      ShowImageType: 0
+      ReleaseImageType: 0
+      NoHitType: 0
+      SetActiveType: 0
+      SetUseDeadCountType: 0
+      AIUseHealthDownType: 0
+      SkillType: 0
+      FadeOutTime: 0
+      InterPositionType: 0
+      tutorInterObj: 
+      maxTutoInterObj: 0
+    - tutorialCanvas: {fileID: 0}
+      playerObject: {fileID: 0}
       tutorialActionType: 1
       messageText: 
       messageSizeType: 0
@@ -2174,7 +2202,7 @@ MonoBehaviour:
       InterPositionType: 0
       tutorInterObj: 
       maxTutoInterObj: 0
-    maxTutorialAction: 12
+    maxTutorialAction: 13
   maxMouseTutorialCount: 9
   catTutorialElements:
   - tutorialConditions:
@@ -2284,7 +2312,7 @@ MonoBehaviour:
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
       tutorialActionType: 0
-      messageText: "\uC88B\uB124\uC694, \uC774\uBC88\uC5D4 \uD1A0\uB9C8\uD1A0\uC5D0\uAC8C
+      messageText: "\uC88B\uB124\uC694! \n\n\uC774\uBC88\uC5D4 \uD1A0\uB9C8\uD1A0\uC5D0\uAC8C
         \uAC00\uAE4C\uC774 \uAC00\uBCF4\uB3C4\uB85D \uD558\uC8E0\v\n\uBC29\uD5A5\uD0A4\uB97C
         \uD1B5\uD574 \uCE90\uB9AD\uD130\uB97C \uC774\uB3D9\uC2DC\uD0AC \uC218 \uC788\uC2B5\uB2C8\uB2E4."
       messageSizeType: 1
@@ -2341,7 +2369,7 @@ MonoBehaviour:
       messageText: "Shift\uD0A4\uC640 \uBC29\uD5A5\uD0A4\uB97C \uD568\uAED8 \uB204\uB974\uB294
         \uAC83\uC73C\uB85C\n\uC880 \uB354 \uBE60\uB974\uAC8C \uC774\uB3D9\uD560 \uC218
         \uC788\uC2B5\uB2C8\uB2E4"
-      messageSizeType: 1
+      messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 0
@@ -2374,7 +2402,7 @@ MonoBehaviour:
       checkTutorialPlace: {fileID: 114354780976935108}
       onMouseType: 0
       activeType: 0
-      activeMount: 3
+      activeMount: 1
       playerActiveMount: 0
       interactiveObjectType: 0
       interactiveMount: 0
@@ -2448,7 +2476,7 @@ MonoBehaviour:
       playerObject: {fileID: 0}
       tutorialActionType: 0
       messageText: "\uACF5\uACA9 \uD0A4\uB97C \uB204\uB974\uBA74 \uD504\uB77C\uC774\uD32C\uC744
-        \uD718\uB458\uB7EC \n\uC545\uB3D9\uB4E4\uC744 \uD63C\uB0B4\uC904 \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\v\uC545\uB3D9\uC758
+        \uD718\uB458\uB7EC \n\uC545\uB3D9\uB4E4\uC744 \uD63C\uB0B4\uC904 \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\n\v\uC545\uB3D9\uC758
         HP\uAC00 0\uC774 \uB418\uBA74 \uC81C\uC555 \uC0C1\uD0DC\uAC00 \uB429\uB2C8\uB2E4."
       messageSizeType: 1
       messageObject: {fileID: 0}
@@ -2908,10 +2936,10 @@ MonoBehaviour:
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
       tutorialActionType: 0
-      messageText: "Q \uC2A4\uD0AC\uC744 \uC774\uC6A9\uD574\n\uB3C4\uB9DD\uC790\uC758
+      messageText: "Q \uC2A4\uD0AC\uC744 \uC774\uC6A9\uD574 \uB3C4\uB9DD\uC790\uC758
         \uACBD\uB85C\uB97C \uCC28\uB2E8\uD558\uB294\n\uB36B\uC744 \uC124\uCE58\uD560
         \uC218 \uC788\uC2B5\uB2C8\uB2E4."
-      messageSizeType: 1
+      messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 0
@@ -3126,7 +3154,7 @@ MonoBehaviour:
       tutorialActionType: 0
       messageText: "E\uC2A4\uD0AC\uC744 \uC774\uC6A9\uD574\n\uC554\uC804 \uC2A4\uD0AC\uC744
         \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.\r"
-      messageSizeType: 1
+      messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 0
@@ -3341,7 +3369,7 @@ MonoBehaviour:
       tutorialActionType: 0
       messageText: "\uCD94\uACA9\uAC00 \uC2B9\uB9AC\uD558\uAE30 \uC704\uD574\uC11C\uB294\n\uBAA8\uB4E0
         \uB3C4\uB9DD\uC790\uB97C \uC81C\uC555\uD558\uAC70\uB098 \r\uB3C4\uB9DD\uC790\uB4E4\uC744
-        \uBC29\uD574\uD574 \n\uBAA9\uD45C \uAC8C\uC774\uC9C0 \uC774\uD558\uB85C \uB9CC\uB4E4\uC9C0
+        \uBC29\uD574\uD574\n\n\uBAA9\uD45C \uAC8C\uC774\uC9C0 \uC774\uD558\uB85C \uB9CC\uB4E4\uC9C0
         \uBABB\uD558\uAC8C \uB9C9\uC544\uC57C \uD569\uB2C8\uB2E4.\r"
       messageSizeType: 1
       messageObject: {fileID: 0}
@@ -3426,7 +3454,7 @@ MonoBehaviour:
       messageText: "\uD0C0\uC774\uBA38\uAC00 \uC885\uB8CC\uB418\uC5C8\uC744 \uB54C
         \n1\uBC88 \uAC8C\uC774\uC9C0 \uC774\uD558\uB85C \uB0B4\uB824\uAC00\uC9C0 \uC54A\uC558\uC73C\uBA74
         \uC2B9\uB9AC\uD569\uB2C8\uB2E4.\r"
-      messageSizeType: 1
+      messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 0
@@ -3617,12 +3645,39 @@ MonoBehaviour:
       maxTutoInterObj: 0
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
-      tutorialActionType: 1
+      tutorialActionType: 9
       messageText: 
       messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
       waitTime: 2
+      tutorialAIType: 0
+      aIObject: {fileID: 0}
+      emoticonType: 0
+      imageObject: {fileID: 0}
+      imageXPosition: 0
+      imageYPosition: 0
+      PracticeSkillType: 0
+      AnimationStateType: 0
+      ShowImageType: 0
+      ReleaseImageType: 0
+      NoHitType: 0
+      SetActiveType: 0
+      SetUseDeadCountType: 0
+      AIUseHealthDownType: 0
+      SkillType: 0
+      FadeOutTime: 0
+      InterPositionType: 0
+      tutorInterObj: 
+      maxTutoInterObj: 0
+    - tutorialCanvas: {fileID: 0}
+      playerObject: {fileID: 0}
+      tutorialActionType: 1
+      messageText: 
+      messageSizeType: 0
+      messageObject: {fileID: 0}
+      messageImageScript: {fileID: 0}
+      waitTime: 2.5
       tutorialAIType: 0
       aIObject: {fileID: 0}
       emoticonType: 0
@@ -3669,7 +3724,7 @@ MonoBehaviour:
       InterPositionType: 0
       tutorInterObj: 
       maxTutoInterObj: 0
-    maxTutorialAction: 15
+    maxTutorialAction: 16
   maxCatTutorialCount: 9
   tempSeletedTutoElem: []
   SeletedCharType: 0

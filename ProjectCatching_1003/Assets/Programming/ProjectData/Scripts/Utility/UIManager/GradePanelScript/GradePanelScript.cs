@@ -131,7 +131,6 @@ public class GradePanelScript{
         float GradeYellowArrowYPos = GradeRootYPos + photonManager.GameTimeOutCondition / 100 * GradeBarImageRect.rect.height;
 
         
-
         GradeArrow.transform.localPosition = new Vector3(
             GradeArrow.transform.localPosition.x,
             GradeArrowYPos,

@@ -9,6 +9,9 @@ public class NotificationManager : MonoBehaviour {
 
     public string RopeNotification;
     public string RescueNotification;
+    public string FinishDestroyMessage;
+    public string FastSecondMouseMessage;
+    public string FastSecondCatMessage;
 
     public int maxRestNotification;
     public string[] RestNotifications;
@@ -16,7 +19,7 @@ public class NotificationManager : MonoBehaviour {
     public bool[] isUseRestMessage;
 
 
-    public enum EnumNotification { RESCUE, ROPE, REST};
+    public enum EnumNotification { RESCUE, ROPE, REST , FINISH_DESTROY , FAST_MOUSE_SECOND, FAST_CAT_SECOND };
 
 
     private float nowMessageTime;
@@ -64,20 +67,41 @@ public class NotificationManager : MonoBehaviour {
         string tempMessage = null;
         int playerCount = 0;
 
+
+        bool isUseData = false;
         switch (enumNotification)
         {
             // 메세지 결정.
             case EnumNotification.ROPE:
                 tempMessage = RopeNotification;
                 playerCount = CountMousePlayer();
+                isUseData = true;
                 break;
 
             case EnumNotification.RESCUE:
                 tempMessage = RescueNotification;
                 playerCount = CountMousePlayer();
+                isUseData = true;
                 break;
+
+            case EnumNotification.FINISH_DESTROY:
+                tempMessage = FinishDestroyMessage;
+                isUseData = false;
+                break;
+
+            case EnumNotification.FAST_CAT_SECOND:
+                tempMessage = FastSecondCatMessage;
+                isUseData = false;
+                break;
+
+            case EnumNotification.FAST_MOUSE_SECOND:
+                tempMessage = FastSecondMouseMessage;
+                isUseData = false;
+                break;
+
         }
-        SetNotifiText(tempMessage, playerCount);
+        if (isUseData) { SetNotifiText(tempMessage, playerCount); }
+        else { SetNotifiText(tempMessage); }
     }
 
 
@@ -119,6 +143,12 @@ public class NotificationManager : MonoBehaviour {
         string connectString = messageSplit[0] + playerCount + messageSplit[1];
         UIManager.GetInstance().notificationPanelScript.NotificationTextText.text = connectString;
 
+        isUseMessage = true;
+    }
+
+    public void SetNotifiText(string tempMessage)
+    {
+        UIManager.GetInstance().notificationPanelScript.NotificationTextText.text = tempMessage;
         isUseMessage = true;
     }
 

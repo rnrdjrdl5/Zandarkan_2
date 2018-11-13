@@ -1237,13 +1237,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11f6a75e192fdd4eb1b69f0ac440364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RopeNotification: "\uC950\uC950@\uBA85\uB0A8\uC74C"
-  RescueNotification: "\uBD80\uD65C\uD65C@\uBA85\uB0A8\uC74C"
+  RopeNotification: "\uB77C\uC790\uB0D0\uAC00 \uD53C\uB9DD\uB2E8\uC744 \uCCB4\uD3EC\uD588\uC2B5\uB2C8\uB2E4!
+    \uD604\uC7AC @\uBA85 \uC0DD\uC874!"
+  RescueNotification: "\uD53C\uB9DD\uB2E8\uC774 \uB3D9\uB8CC\uB97C \uAD6C\uCD9C\uD588\uC2B5\uB2C8\uB2E4!
+    \uD604\uC7AC @\uBA85 \uC0DD\uC874!"
+  FinishDestroyMessage: "\uD30C\uAD34\uC728 \uB3C4\uB2EC\uD588\uC2B5\uB2C8\uB2F9"
+  FastSecondMouseMessage: "\uC950\uAC00 \uB2E4 \uC5CE\uC5C8\uC2B5\uB2C8\uB2E4 \uACE0\uC591\u3147
+    \u3163\uD30C\uC774\uD305"
+  FastSecondCatMessage: "\uACE0\uC591\uC774 \uAC00\uC774\uAE30\uB824\uACE0\uD569\uB2C8\uB2E4
+    \uC950 \uD30C\uC774\uD305"
   maxRestNotification: 2
   RestNotifications:
-  - "\uBB34\uB108\uC9C4\uB2E4@\uAC8C\uC774\uC9C0"
-  - "\uBB34\uB108\uC9C4\uB2E4@\uAC8C\uC774\uC9C0"
-  AtLeastRestCount: 620000005f000000
+  - "\uBC1C\uC0DD\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4"
+  - "\uBC1C\uC0DD\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4"
+  AtLeastRestCount: ffffffffffffffff
   isUseRestMessage: 0000
   maxMessageTime: 2
 --- !u!114 &114799559960631730

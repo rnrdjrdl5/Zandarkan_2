@@ -15,8 +15,10 @@ public class TutoTestPhoton : Photon.PunBehaviour
 	// Use this for initialization
 	void Awake () {
 
+
         if (!isTest)
         {
+            PhotonNetwork.autoJoinLobby = false;
             Destroy(this);
         }
 

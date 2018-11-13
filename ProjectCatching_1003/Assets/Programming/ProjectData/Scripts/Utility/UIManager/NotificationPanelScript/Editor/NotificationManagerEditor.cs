@@ -25,8 +25,20 @@ public class NotificationManagerEditor : Editor {
         notificationManager.RescueNotification =
             EditorGUILayout.TextArea(notificationManager.RescueNotification);
 
+        EditorGUILayout.LabelField("파괴율 도달 시");
+        notificationManager.FinishDestroyMessage =
+            EditorGUILayout.TextArea(notificationManager.FinishDestroyMessage);
 
-        DynamicRestNotification();
+        EditorGUILayout.LabelField("30초 도달 시, 고양이");
+        notificationManager.FastSecondCatMessage =
+            EditorGUILayout.TextArea(notificationManager.FastSecondCatMessage);
+
+        EditorGUILayout.LabelField("30초 도달 시, 쥐");
+        notificationManager.FastSecondMouseMessage =
+            EditorGUILayout.TextArea(notificationManager.FastSecondMouseMessage);
+
+
+        //DynamicRestNotification();
     }
 
     

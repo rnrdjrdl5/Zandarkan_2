@@ -261,7 +261,16 @@ public partial class NewLobbyRoomPhoton
     public void ClickGameStart()
     {
 
+        
+
+
         if (!isUseEvent) return;
+
+        if (PhotonNetwork.playerList.Length <= 1)
+        {
+            lobbyUIManager.systemPanelScript.OutputRoomMessage(RoomSystemMessage.EnumSystemCondition.NOT_START);
+            return;
+        }
 
         for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
         {

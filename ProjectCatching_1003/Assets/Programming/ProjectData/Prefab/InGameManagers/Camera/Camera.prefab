@@ -309,8 +309,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6ca046094ea23f1409ff83f5a4567f65, type: 3}
   - {fileID: 8300000, guid: 9a9e902ddd3323c46a45850d3e33dfff, type: 3}
   - {fileID: 8300000, guid: b27fe043c28668a44a3c10604bdee2d7, type: 3}
-  - {fileID: 8300000, guid: 2ed4e28a01fb1cf4db1b4e865ca44608, type: 3}
-  - {fileID: 8300000, guid: 1b13b3c1d78de57438f7b8071ade6a76, type: 3}
+  - {fileID: 8300000, guid: d3dd7ad6a355fa14ca43687295ebf9cb, type: 3}
+  - {fileID: 8300000, guid: 9079068da3c77a141a3a793e32358368, type: 3}
   - {fileID: 8300000, guid: af3e5623991859247911dfb09e2b81c2, type: 3}
   - {fileID: 8300000, guid: 69c2b907f44cece47b9017f226210e03, type: 3}
   - {fileID: 8300000, guid: 5bf7a9337d1a4e54c9113e8b7962ed2b, type: 3}
@@ -325,8 +325,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f71be883e4b71d541bbc64939aceb540, type: 3}
   - {fileID: 8300000, guid: 67fb518e417224d4989c946fb7b3321b, type: 3}
   BGAudios:
-  - {fileID: 8300000, guid: 769413b3331207d44895ee9a71198c0c, type: 3}
-  - {fileID: 8300000, guid: 2accc955b868a884d9d3ca3961e86b4c, type: 3}
+  - {fileID: 8300000, guid: 0187a766857e17f44ac81eedca91a586, type: 3}
+  - {fileID: 8300000, guid: f17d5f9a21d2d0c4aa51fd14dedfcfd6, type: 3}
 --- !u!124 &124741815419522688
 Behaviour:
   m_ObjectHideFlags: 1

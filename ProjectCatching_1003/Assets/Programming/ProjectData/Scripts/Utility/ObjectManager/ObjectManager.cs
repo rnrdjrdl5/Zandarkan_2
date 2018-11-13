@@ -91,6 +91,8 @@ public class ObjectManager : MonoBehaviour {
         return null;
     }
 
+
+    bool isUseDestroyMessage = false;
     public void RemoveObject(int vID)
     {
 
@@ -121,21 +123,35 @@ public class ObjectManager : MonoBehaviour {
                 // 실질적 점수 설정
                 PhotonNetwork.player.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "StoreScore", NextCatScore } });
 
-                float restPersent = NextCatScore / photonManager.MaxCatScore * 100;
-                int restCount = notificationManager.maxRestNotification;
+                float Persent = NextCatScore / photonManager.MaxCatScore * 100;
 
-                for (int rc = 0; rc < restCount; rc++)
+                if (!isUseDestroyMessage)
                 {
-                    if (notificationManager.AtLeastRestCount[rc] >= restPersent &&
-                        !notificationManager.isUseRestMessage[rc])
+                    if (photonManager.GameTimeOutCondition >= Persent)
                     {
-                        notificationManager.NotificationMessage(NotificationManager.EnumNotification.REST,rc);
-                        notificationManager.isUseRestMessage[rc] = true;
+                        notificationManager.NotificationMessage(NotificationManager.EnumNotification.FINISH_DESTROY);
+                        isUseDestroyMessage = true;
                     }
-
                 }
 
+                /*
+                                float restPersent = NextCatScore / photonManager.MaxCatScore * 100;
+                                int restCount = notificationManager.maxRestNotification;
 
+
+
+
+                                // 사용하지 않음.
+                                for (int rc = 0; rc < restCount; rc++)
+                                {
+                                    if (notificationManager.AtLeastRestCount[rc] >= restPersent &&
+                                        !notificationManager.isUseRestMessage[rc])
+                                    {
+                                        notificationManager.NotificationMessage(NotificationManager.EnumNotification.REST,rc);
+                                        notificationManager.isUseRestMessage[rc] = true;
+                                    }
+
+                                }*/
 
                 // GUI 카운트
                 nowGUIObject[(int)IS.interactiveObjectType]--;

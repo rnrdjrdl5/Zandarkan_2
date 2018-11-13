@@ -97,7 +97,7 @@ public partial class NewLobbyRoomPhoton : Photon.PunBehaviour
     /*** 해당 기능 FSM으로 바꿔서 사용할 수 있음. ****/
     IEnumerator Finish_FadeOut_Start_Animation()
     {
-
+        Debug.Log("Asfd");
         isUseEvent = false;
 
         if(DeleFadeOut != null)

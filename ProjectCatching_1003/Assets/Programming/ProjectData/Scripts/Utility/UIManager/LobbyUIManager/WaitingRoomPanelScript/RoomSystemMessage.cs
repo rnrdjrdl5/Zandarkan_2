@@ -8,7 +8,7 @@ public class RoomSystemMessage : MonoBehaviour {
 
     public int maxSystem;
 
-    public enum EnumSystemCondition {NOT_QUICK_MATCH, SAME_ROOM , EMPTY_NAME , EMPTY_ROOM_NAME , NOT_DEVELOP};
+    public enum EnumSystemCondition {NOT_QUICK_MATCH, SAME_ROOM , EMPTY_NAME , EMPTY_ROOM_NAME , NOT_DEVELOP , NOT_START};
     public EnumSystemCondition[] systemConditionType; 
 
     public string[] SystemText;

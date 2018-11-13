@@ -289,6 +289,26 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
         {
             if (playTimerNumber <= 30)
             {
+
+                float score = (float)PhotonNetwork.player.CustomProperties["StoreScore"];
+
+                float persent;
+                if (score == 0) { persent = 0; }
+                else { persent = score / MaxCatScore * 100; }
+
+                if (GameTimeOutCondition >= persent)
+                {
+                    GetComponent<NotificationManager>().
+                        NotificationMessage(NotificationManager.EnumNotification.FAST_MOUSE_SECOND);
+                }
+                else if (GameTimeOutCondition < persent)
+                {
+                    GetComponent<NotificationManager>().
+                        NotificationMessage(NotificationManager.EnumNotification.FAST_CAT_SECOND);
+                }
+
+
+
                 StartCoroutine("LastThirtyTime");
                 isUse30Second = true;
             }
