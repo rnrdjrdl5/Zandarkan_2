@@ -11,6 +11,7 @@ public class NinjaHide : DefaultNewSkill {
 
     protected override void Awake()
     {
+        
         base.Awake();
 
         defaultCdtAct = new NormalCdtAct();
@@ -98,6 +99,8 @@ public class NinjaHide : DefaultNewSkill {
                 smr[i].enabled = false;
             }
         }
+
+        
 
         PlayerHideBuff playerHideBuff = GetComponent<PlayerHideBuff>();
 

@@ -18,22 +18,32 @@ public class NotificationManagerEditor : Editor {
             notificationManager.maxMessageTime);
 
         EditorGUILayout.LabelField("쥐가 잡혔을 때");
+        notificationManager.RopeNotificationCount =
+            EditorGUILayout.IntField("줄 수", notificationManager.RopeNotificationCount);
         notificationManager.RopeNotification =
             EditorGUILayout.TextArea(notificationManager.RopeNotification);
 
         EditorGUILayout.LabelField("쥐가 살아났을 때");
+        notificationManager.RescueNotificationCount =
+            EditorGUILayout.IntField("줄 수", notificationManager.RescueNotificationCount);
         notificationManager.RescueNotification =
             EditorGUILayout.TextArea(notificationManager.RescueNotification);
 
         EditorGUILayout.LabelField("파괴율 도달 시");
+        notificationManager.FinishDestroyMessageCount =
+            EditorGUILayout.IntField("줄 수", notificationManager.FinishDestroyMessageCount);
         notificationManager.FinishDestroyMessage =
             EditorGUILayout.TextArea(notificationManager.FinishDestroyMessage);
 
         EditorGUILayout.LabelField("30초 도달 시, 고양이");
+        notificationManager.FastSecondCatMessageCount =
+            EditorGUILayout.IntField("줄 수", notificationManager.FastSecondCatMessageCount);
         notificationManager.FastSecondCatMessage =
             EditorGUILayout.TextArea(notificationManager.FastSecondCatMessage);
 
         EditorGUILayout.LabelField("30초 도달 시, 쥐");
+        notificationManager.FastSecondMouseMessageCount =
+            EditorGUILayout.IntField("줄 수", notificationManager.FastSecondMouseMessageCount);
         notificationManager.FastSecondMouseMessage =
             EditorGUILayout.TextArea(notificationManager.FastSecondMouseMessage);
 

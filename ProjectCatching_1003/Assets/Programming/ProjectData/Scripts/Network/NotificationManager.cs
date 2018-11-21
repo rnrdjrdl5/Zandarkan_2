@@ -8,10 +8,20 @@ public class NotificationManager : MonoBehaviour {
     static public NotificationManager GetInstance() { return notificationManager; }
 
     public string RopeNotification;
+    public int RopeNotificationCount;
+
     public string RescueNotification;
+    public int RescueNotificationCount;
+
     public string FinishDestroyMessage;
+    public int FinishDestroyMessageCount;
+
     public string FastSecondMouseMessage;
+    public int FastSecondMouseMessageCount;
+
     public string FastSecondCatMessage;
+    public int FastSecondCatMessageCount;
+
 
     public int maxRestNotification;
     public string[] RestNotifications;
@@ -57,6 +67,7 @@ public class NotificationManager : MonoBehaviour {
     {
 
         UIManager.GetInstance().notificationPanelScript.SetActive(true);
+        UIManager.GetInstance().notificationPanelScript.MoveAction();
 
         if (isUseMessage)
         {
@@ -67,6 +78,7 @@ public class NotificationManager : MonoBehaviour {
         string tempMessage = null;
         int playerCount = 0;
 
+        int endlNumber = 0;
 
         bool isUseData = false;
         switch (enumNotification)
@@ -75,33 +87,38 @@ public class NotificationManager : MonoBehaviour {
             case EnumNotification.ROPE:
                 tempMessage = RopeNotification;
                 playerCount = CountMousePlayer();
+                endlNumber = RopeNotificationCount;
                 isUseData = true;
                 break;
 
             case EnumNotification.RESCUE:
                 tempMessage = RescueNotification;
-                playerCount = CountMousePlayer();
+                playerCount = CountMousePlayer() + 1;
+                endlNumber = RescueNotificationCount;
                 isUseData = true;
                 break;
 
             case EnumNotification.FINISH_DESTROY:
                 tempMessage = FinishDestroyMessage;
+                endlNumber = FinishDestroyMessageCount;
                 isUseData = false;
                 break;
 
             case EnumNotification.FAST_CAT_SECOND:
                 tempMessage = FastSecondCatMessage;
+                endlNumber = FastSecondCatMessageCount;
                 isUseData = false;
                 break;
 
             case EnumNotification.FAST_MOUSE_SECOND:
                 tempMessage = FastSecondMouseMessage;
+                endlNumber = FastSecondMouseMessageCount;
                 isUseData = false;
                 break;
 
         }
-        if (isUseData) { SetNotifiText(tempMessage, playerCount); }
-        else { SetNotifiText(tempMessage); }
+        if (isUseData) { SetNotifiText(tempMessage, playerCount , endlNumber); }
+        else { SetNotifiText(tempMessage, endlNumber); }
     }
 
 
@@ -126,11 +143,11 @@ public class NotificationManager : MonoBehaviour {
                 break;
         }
 
-        SetNotifiText(tempMessage, playerCount);
+        SetNotifiText(tempMessage, playerCount , 1);
     }
 
 
-    public void SetNotifiText(string tempMessage, int playerCount)
+    public void SetNotifiText(string tempMessage, int playerCount, int endlCount)
     {
         string[] messageSplit = tempMessage.Split('@');
 
@@ -144,11 +161,17 @@ public class NotificationManager : MonoBehaviour {
         UIManager.GetInstance().notificationPanelScript.NotificationTextText.text = connectString;
 
         isUseMessage = true;
+
+
+        //초기 100
+        UIManager.GetInstance().notificationPanelScript.SetBackGroundY(endlCount * 50);
+
     }
 
-    public void SetNotifiText(string tempMessage)
+    public void SetNotifiText(string tempMessage , int endlCount)
     {
         UIManager.GetInstance().notificationPanelScript.NotificationTextText.text = tempMessage;
+        UIManager.GetInstance().notificationPanelScript.SetBackGroundY(endlCount * 50);
         isUseMessage = true;
     }
 

@@ -657,8 +657,8 @@ MonoBehaviour:
       playerObject: {fileID: 0}
       tutorialActionType: 0
       messageText: "\uC88B\uB124\uC694!\n\n\uC774\uBC88\uC5D4 \uD1A0\uB9C8\uD1A0\uC5D0\uAC8C
-        \uAC00\uAE4C\uC774 \uAC00\uBCF4\uB3C4\uB85D \uD558\uC8E0\n\v\uBC29\uD5A5\uD0A4\uB97C
-        \uD1B5\uD574 \uCE90\uB9AD\uD130\uB97C \uC774\uB3D9\uC2DC\uD0AC \uC218 \uC788\uC2B5\uB2C8\uB2E4.\r"
+        \uAC00\uAE4C\uC774 \uAC00\uBCF4\uB3C4\uB85D \uD558\uC8E0\nw,a,s,d\uB97C \uD1B5\uD574
+        \uCE90\uB9AD\uD130\uB97C \uC774\uB3D9\uC2DC\uD0AC \uC218 \uC788\uC2B5\uB2C8\uB2E4.\r"
       messageSizeType: 1
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
@@ -710,9 +710,8 @@ MonoBehaviour:
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
       tutorialActionType: 0
-      messageText: "Shift\uD0A4\uC640 \uBC29\uD5A5\uD0A4\uB97C \uD568\uAED8 \uB204\uB974\uB294
-        \uAC83\uC73C\uB85C \n\uC880 \uB354 \uBE60\uB974\uAC8C \uC774\uB3D9\uD560 \uC218
-        \uC788\uC2B5\uB2C8\uB2E4.\v"
+      messageText: "\uC774\uB3D9 \uC911\uC5D0 Shift\uB97C \uB20C\uB7EC\r\n\uC880 \uB354
+        \uBE60\uB974\uAC8C \uC774\uB3D9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
       messageSizeType: 0
       messageObject: {fileID: 0}
       messageImageScript: {fileID: 0}
@@ -2150,6 +2149,33 @@ MonoBehaviour:
       maxTutoInterObj: 0
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
+      tutorialActionType: 19
+      messageText: 
+      messageSizeType: 0
+      messageObject: {fileID: 0}
+      messageImageScript: {fileID: 0}
+      waitTime: 2.5
+      tutorialAIType: 0
+      aIObject: {fileID: 0}
+      emoticonType: 0
+      imageObject: {fileID: 0}
+      imageXPosition: 0
+      imageYPosition: 0
+      PracticeSkillType: 0
+      AnimationStateType: 0
+      ShowImageType: 0
+      ReleaseImageType: 0
+      NoHitType: 0
+      SetActiveType: 0
+      SetUseDeadCountType: 0
+      AIUseHealthDownType: 0
+      SkillType: 0
+      FadeOutTime: 0
+      InterPositionType: 0
+      tutorInterObj: 
+      maxTutoInterObj: 0
+    - tutorialCanvas: {fileID: 0}
+      playerObject: {fileID: 0}
       tutorialActionType: 1
       messageText: 
       messageSizeType: 0
@@ -2202,7 +2228,7 @@ MonoBehaviour:
       InterPositionType: 0
       tutorInterObj: 
       maxTutoInterObj: 0
-    maxTutorialAction: 13
+    maxTutorialAction: 14
   maxMouseTutorialCount: 9
   catTutorialElements:
   - tutorialConditions:
@@ -2313,7 +2339,7 @@ MonoBehaviour:
       playerObject: {fileID: 0}
       tutorialActionType: 0
       messageText: "\uC88B\uB124\uC694! \n\n\uC774\uBC88\uC5D4 \uD1A0\uB9C8\uD1A0\uC5D0\uAC8C
-        \uAC00\uAE4C\uC774 \uAC00\uBCF4\uB3C4\uB85D \uD558\uC8E0\v\n\uBC29\uD5A5\uD0A4\uB97C
+        \uAC00\uAE4C\uC774 \uAC00\uBCF4\uB3C4\uB85D \uD558\uC8E0\v\nw,a,s,d\uB97C
         \uD1B5\uD574 \uCE90\uB9AD\uD130\uB97C \uC774\uB3D9\uC2DC\uD0AC \uC218 \uC788\uC2B5\uB2C8\uB2E4."
       messageSizeType: 1
       messageObject: {fileID: 0}
@@ -2366,7 +2392,7 @@ MonoBehaviour:
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
       tutorialActionType: 0
-      messageText: "Shift\uD0A4\uC640 \uBC29\uD5A5\uD0A4\uB97C \uD568\uAED8 \uB204\uB974\uB294
+      messageText: "Shift\uD0A4\uC640 w,a,s,d\uB97C \uD568\uAED8 \uB204\uB974\uB294
         \uAC83\uC73C\uB85C\n\uC880 \uB354 \uBE60\uB974\uAC8C \uC774\uB3D9\uD560 \uC218
         \uC788\uC2B5\uB2C8\uB2E4"
       messageSizeType: 0
@@ -3672,6 +3698,33 @@ MonoBehaviour:
       maxTutoInterObj: 0
     - tutorialCanvas: {fileID: 0}
       playerObject: {fileID: 0}
+      tutorialActionType: 19
+      messageText: 
+      messageSizeType: 0
+      messageObject: {fileID: 0}
+      messageImageScript: {fileID: 0}
+      waitTime: 2.5
+      tutorialAIType: 0
+      aIObject: {fileID: 0}
+      emoticonType: 0
+      imageObject: {fileID: 0}
+      imageXPosition: 0
+      imageYPosition: 0
+      PracticeSkillType: 0
+      AnimationStateType: 0
+      ShowImageType: 0
+      ReleaseImageType: 0
+      NoHitType: 0
+      SetActiveType: 0
+      SetUseDeadCountType: 0
+      AIUseHealthDownType: 0
+      SkillType: 0
+      FadeOutTime: 0
+      InterPositionType: 0
+      tutorInterObj: 
+      maxTutoInterObj: 0
+    - tutorialCanvas: {fileID: 0}
+      playerObject: {fileID: 0}
       tutorialActionType: 1
       messageText: 
       messageSizeType: 0
@@ -3724,7 +3777,7 @@ MonoBehaviour:
       InterPositionType: 0
       tutorInterObj: 
       maxTutoInterObj: 0
-    maxTutorialAction: 16
+    maxTutorialAction: 17
   maxCatTutorialCount: 9
   tempSeletedTutoElem: []
   SeletedCharType: 0

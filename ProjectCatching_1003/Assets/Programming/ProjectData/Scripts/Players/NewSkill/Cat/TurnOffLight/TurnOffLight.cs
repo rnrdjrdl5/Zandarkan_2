@@ -1,21 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 
 public class TurnOffLight : DefaultNewSkill
 {
     // 불 끌때 각종 옵션입니다.
     public TurnOffLightState turnOffLightState;
 
-   
+    PostProcessingBehaviour nowPPB;
+
+    PostProcessingProfile tempPPP;
+    public PostProcessingProfile changePPP;
+
+    private float nowTurnOffTime;
+
+    
 
     protected override void Awake()
     {
         base.Awake();
 
-
         defaultCdtAct = new NormalCdtAct();
         defaultCdtAct.InitCondition(this);
+
+        
+    }
+
+    private void Start()
+    {
+        PostProcessingBehaviour ppp = SpringArmObject.GetInstance().armCamera.GetComponent<PostProcessingBehaviour>();
+        if (ppp != null)
+        {
+            nowPPB = ppp;
+            tempPPP = ppp.profile;
+        }
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (nowTurnOffTime >= 0)
+        {
+            nowTurnOffTime -= Time.deltaTime;
+
+            if (nowTurnOffTime <= 0)
+            {
+                SetPostProcessing(false);
+            }
+        }
     }
 
     public override bool CheckState()
@@ -61,6 +95,23 @@ public class TurnOffLight : DefaultNewSkill
         CreateTurnOffPanel();
     }
 
+    void SetPostProcessing(bool isChange)
+    {
+        nowTurnOffTime = turnOffLightState.TurnOffTime;
+        PostProcessingBehaviour ppp = SpringArmObject.GetInstance().armCamera.GetComponent<PostProcessingBehaviour>();
+        if (ppp != null)
+        {
+            if (isChange)
+            {
+                ppp.profile = changePPP;
+            }
+            else
+            {
+                ppp.profile = tempPPP;
+            }
+        }
+    }
+
     public void CreateTurnOffPanel()
     {
 
@@ -75,6 +126,7 @@ public class TurnOffLight : DefaultNewSkill
         if (photonView.isMine)
         {
             tops.BlackBackGround.SetActive(false);
+            SetPostProcessing(true);
         }
 
         TurnOffPanel turnOffPanel =  turnOffPanelObject.GetComponent<TurnOffPanel>();
@@ -83,6 +135,7 @@ public class TurnOffLight : DefaultNewSkill
 
 
         turnOffPanel.SetTurnOffTime(turnOffLightState.TurnOffTime);
+        
 
 
 

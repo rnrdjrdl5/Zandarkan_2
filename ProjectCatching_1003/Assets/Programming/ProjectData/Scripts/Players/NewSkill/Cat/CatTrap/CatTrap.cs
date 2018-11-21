@@ -80,7 +80,8 @@ public class CatTrap : DefaultNewSkill
         // 본인인 경우
         if(photonView.isMine)
         {
-            UseCatTrapEvent();
+            if(UseCatTrapEvent != null) UseCatTrapEvent();
+
             // 비어있는 리스트 제거
             CheckEmptyTraps();
 

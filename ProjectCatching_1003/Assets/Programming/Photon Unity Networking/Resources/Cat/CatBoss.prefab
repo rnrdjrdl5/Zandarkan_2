@@ -2766,6 +2766,7 @@ MonoBehaviour:
     TrunOffPanel: {fileID: 1478077443266326, guid: 2609ca348ce3ba840b05c845eb21ef1d,
       type: 2}
     TurnOffTime: 3
+  changePPP: {fileID: 11400000, guid: 8e594ba6aea4a54439cc667c32bbbbe2, type: 2}
 --- !u!114 &114678052343782202
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -63,10 +63,14 @@ public partial class PlayerManager : MonoBehaviour {
             uIManager.playerNamePanelScript.SetActive(false);
             return;
         }
-            
+
 
         // 해당 플레이어가 가리키는 phootn을 받아와야 한다.
 
+
+
+        PlayerHideBuff phb = go.GetComponent<PlayerHideBuff>();
+        if (phb != null) return;
 
         PhotonView pv = go.GetComponent<PhotonView>();
         if (pv == null) return;

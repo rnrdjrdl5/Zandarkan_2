@@ -21,11 +21,15 @@ public class TutoTestPhoton : Photon.PunBehaviour
             PhotonNetwork.autoJoinLobby = false;
             Destroy(this);
         }
+        else
+        {
+            PhotonNetwork.autoJoinLobby = true;
+        }
 
         Debug.Log("시작");
         PhotonNetwork.ConnectUsingSettings("Catcadqching!");
 
-        PhotonNetwork.autoJoinLobby = true;
+        
     }
 
     private void Start()

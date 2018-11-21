@@ -15,7 +15,7 @@ public class TutorialAction {
     // 액션타입.
     public enum EnumTutorialAction { MESSAGE, WAIT, DEBUG, EMOTION, DRAW_IMAGE, PRACTICE_SKILL, RESET_PRACTICE 
             , SET_AI_STATE, SHOW_IMAGE , RELEASE_IMAGE , SET_ACTIVE_AI , SET_USE_DEAD_COUNT ,SET_AI_USE_HEALTH_DOWN ,
-    BLOCK_OTHER_SKILL ,ACTIVE_OTHER_SKILL , FADE_OUT , GAME_END, SET_INTER_TYPE , RESET_INTER_TYPE}
+    BLOCK_OTHER_SKILL ,ACTIVE_OTHER_SKILL , FADE_OUT , GAME_END, SET_INTER_TYPE , RESET_INTER_TYPE , RELEASE_MESSAGE}
     public EnumTutorialAction tutorialActionType;
 
     // 텍스트용
@@ -160,6 +160,9 @@ public class TutorialAction {
                 UseResetInterType();
                 break;
 
+            case EnumTutorialAction.RELEASE_MESSAGE:
+                UseReleaseMessage();
+                break;
 
         }
 
@@ -417,6 +420,7 @@ public class TutorialAction {
 
     void UseFadeOut()
     {
+        SpringArmObject.GetInstance().GetSystemSoundManager().FadeOutSound();
         UIManager.GetInstance().fadeImageScript.FadeEffect(FadeOutTime);
     }
 
@@ -446,6 +450,11 @@ public class TutorialAction {
             newInterSkill.tutorialInterObj = null;
             newInterSkill.isUseChoiseInter = false;
         }
+    }
+
+    void UseReleaseMessage()
+    {
+        messageObject.SetActive(false);
     }
 
 }

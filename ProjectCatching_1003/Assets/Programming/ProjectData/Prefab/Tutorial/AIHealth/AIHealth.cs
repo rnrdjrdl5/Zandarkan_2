@@ -47,7 +47,6 @@ public class AIHealth : MonoBehaviour {
 
         else
         {
-            Debug.Log("IsBind : " + isBind);
             if (gameObject.tag == "Mouse")
                 DeleteHelpIcon();
         }

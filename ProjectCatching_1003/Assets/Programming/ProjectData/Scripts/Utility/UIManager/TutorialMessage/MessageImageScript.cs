@@ -46,8 +46,6 @@ public class MessageImageScript : MonoBehaviour {
         rectTransform.sizeDelta = new Vector2(messageBoxSize[(int)enumMessageSize].x, messageBoxSize[(int)enumMessageSize].y);
 
         // 2. 이미지 위치 설정
-        /*  transform.localPosition = new Vector3( (canvasScaler.referenceResolution.x  - messageBoxSize[(int)enumMessageSize].x - sizeOffset) /2 ,
-              transform.localPosition.y, 0);*/
 
         float xSize = messageBoxSize[(int)enumMessageSize].x / 2;
         float ySize = messageBoxSize[(int)enumMessageSize].y / 2;
@@ -68,6 +66,11 @@ public class MessageImageScript : MonoBehaviour {
             0);
             
 
+
+    }
+
+    public void ReleaseMessage()
+    {
 
     }
 

@@ -1239,20 +1239,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RopeNotification: "\uB77C\uC790\uB0D0\uAC00 \uD53C\uB9DD\uB2E8\uC744 \uCCB4\uD3EC\uD588\uC2B5\uB2C8\uB2E4!
     \uD604\uC7AC @\uBA85 \uC0DD\uC874!"
+  RopeNotificationCount: 1
   RescueNotification: "\uD53C\uB9DD\uB2E8\uC774 \uB3D9\uB8CC\uB97C \uAD6C\uCD9C\uD588\uC2B5\uB2C8\uB2E4!
     \uD604\uC7AC @\uBA85 \uC0DD\uC874!"
-  FinishDestroyMessage: "\uD30C\uAD34\uC728 \uB3C4\uB2EC\uD588\uC2B5\uB2C8\uB2F9"
-  FastSecondMouseMessage: "\uC950\uAC00 \uB2E4 \uC5CE\uC5C8\uC2B5\uB2C8\uB2E4 \uACE0\uC591\u3147
-    \u3163\uD30C\uC774\uD305"
-  FastSecondCatMessage: "\uACE0\uC591\uC774 \uAC00\uC774\uAE30\uB824\uACE0\uD569\uB2C8\uB2E4
-    \uC950 \uD30C\uC774\uD305"
+  RescueNotificationCount: 1
+  FinishDestroyMessage: "\uB808\uC2A4\uD1A0\uB791\uC774 \uC5C9\uB9DD\uC785\uB2C8\uB2E4\r\n\uB77C\uC790\uB0D0\uAC00
+    \uD53C\uB9DD\uB2E8\uC744 \uBAA8\uB450 \uC7A1\uC9C0 \uBABB\uD558\uBA74 \uD328\uBC30\uD569\uB2C8\uB2E4."
+  FinishDestroyMessageCount: 2
+  FastSecondMouseMessage: "\uC2DC\uAC04\uC774 \uC5BC\uB9C8\uB0A8\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4\r\n\uB77C\uC790\uB0D0\uAC00
+    \uD53C\uB9DD\uB2E8\uC744 \uBAA8\uB450 \uC7A1\uC9C0 \uBABB\uD558\uBA74\r \uD328\uBC30\uD569\uB2C8\uB2E4."
+  FastSecondMouseMessageCount: 2
+  FastSecondCatMessage: "\uC2DC\uAC04\uC774 \uC5BC\uB9C8\uB0A8\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4\r\n\uBAA9\uD45C\uAC8C\uC774\uC9C0
+    \uC774\uC0C1 \uC5B4\uC9C0\uB974\uC9C0 \uBABB\uD558\uBA74 \uD53C\uB9DD\uB2E8\uC758
+    \uD328\uBC30 \uC785\uB2C8\uB2E4."
+  FastSecondCatMessageCount: 2
   maxRestNotification: 2
   RestNotifications:
   - "\uBC1C\uC0DD\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4"
   - "\uBC1C\uC0DD\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4"
   AtLeastRestCount: ffffffffffffffff
   isUseRestMessage: 0000
-  maxMessageTime: 2
+  maxMessageTime: 3
 --- !u!114 &114799559960631730
 MonoBehaviour:
   m_ObjectHideFlags: 1

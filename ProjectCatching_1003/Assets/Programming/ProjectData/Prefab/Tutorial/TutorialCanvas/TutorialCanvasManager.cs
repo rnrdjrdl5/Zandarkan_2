@@ -57,6 +57,7 @@ public class TutorialCanvasManager : MonoBehaviour {
 
     public void FadeOutTutorialImage()
     {
+        Debug.Log("fv232rv");
         BaseTutorialImageEffect.AddFadeEffectNode(BaseTutorialImage, PhotonManager.GetInstance().MenuUIFadeInFadeOut, UIEffectNode.EnumFade.OUT);
         UIManager.GetInstance().UpdateEvent += BaseTutorialImageEffect.EffectEvent;
     }

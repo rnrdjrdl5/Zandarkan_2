@@ -130,7 +130,6 @@ public class UIManager : Photon.PunBehaviour {
 
 
 
-
     /************************************ ResultUI ***********************************************/
 
 

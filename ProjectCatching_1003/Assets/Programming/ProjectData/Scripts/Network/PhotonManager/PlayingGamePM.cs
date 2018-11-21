@@ -197,6 +197,7 @@ public partial class PhotonManager
         tg.playerObject = CurrentPlayer;
         SetTutorialGuide(tg);
 
+        SpringArmObject.GetInstance().GetSystemSoundManager().PlayBGSound(SoundManager.EnumBGSound.BG_INGAME_SOUND);
 
         //FadeOutTutorialImage    
         StartCoroutine("FadeAndStart", tg);
@@ -207,6 +208,7 @@ public partial class PhotonManager
 
     IEnumerator FadeAndStart(TutorialGuide tg)
     {
+        Debug.Log("Afs");
         TutorialCanvasManager.GetInstance().FadeOutTutorialImage();
 
         yield return new WaitForSeconds(MenuUIFadeInFadeOut);

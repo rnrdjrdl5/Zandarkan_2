@@ -68,6 +68,8 @@ public class TutorialPanelScript : MonoBehaviour {
         CatSelect.SetActive(isActive);
 
         TutorialPanel.SetActive(isActive);
+
+        lobbyUIManager.LineSetActive(isActive);
     }
 
     public void FadeOutEffect()
@@ -126,6 +128,6 @@ public class TutorialPanelScript : MonoBehaviour {
         lobbyUIManager.UpdateEvent += ReturnButtonEffect.EffectEventLobby;
 
 
-        lobbyUIManager.LineFadeOutEffect();
+        lobbyUIManager.LineFadeInEffect();
     }
 }

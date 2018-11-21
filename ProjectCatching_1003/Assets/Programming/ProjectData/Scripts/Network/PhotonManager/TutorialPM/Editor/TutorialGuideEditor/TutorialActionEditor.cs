@@ -66,6 +66,9 @@ public partial class TutorialGuideEditor
             case TutorialAction.EnumTutorialAction.RESET_INTER_TYPE:
                 UseResetInterType(nowAction);
                 break;
+            case TutorialAction.EnumTutorialAction.RELEASE_MESSAGE:
+                UseReleaseMessage(nowAction);
+                break;
         }
     }
 
@@ -267,6 +270,11 @@ public partial class TutorialGuideEditor
 
 
         EditorGUILayout.LabelField("상호작용 모두 사용가능");
+    }
+
+    void UseReleaseMessage(TutorialAction nowAction)
+    {
+        EditorGUILayout.LabelField("메세지 창 삭제");
     }
 
 }
