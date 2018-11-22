@@ -53,7 +53,8 @@ public class NotificationPanelScript {
     {
         NotifiUIEffect.AddMoveEffectNode(NotificationPanel,
            Vector2.right * -NotificationPanel.GetComponent<RectTransform>().rect.width,
-           Vector2.zero, 0.5f);
+           Vector2.zero,
+           0.5f);
 
         NotifiUIEffect.AddWaitEffectNode(2.0f);
 

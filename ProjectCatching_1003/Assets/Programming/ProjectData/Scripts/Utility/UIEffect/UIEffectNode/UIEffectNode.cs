@@ -177,6 +177,11 @@ private bool StandardMoveEffect()
         if (persentTime >= 1)
         {
             NowPosition = Vector2.Lerp(FirstPosition, LastPosition, 1);
+
+            TargetObject.transform.localPosition =
+            new Vector3(NowPosition.x, NowPosition.y, 0);
+
+
             return false;
         }
 
