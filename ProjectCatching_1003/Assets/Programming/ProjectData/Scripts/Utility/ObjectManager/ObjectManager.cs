@@ -134,25 +134,6 @@ public class ObjectManager : MonoBehaviour {
                     }
                 }
 
-                /*
-                                float restPersent = NextCatScore / photonManager.MaxCatScore * 100;
-                                int restCount = notificationManager.maxRestNotification;
-
-
-
-
-                                // 사용하지 않음.
-                                for (int rc = 0; rc < restCount; rc++)
-                                {
-                                    if (notificationManager.AtLeastRestCount[rc] >= restPersent &&
-                                        !notificationManager.isUseRestMessage[rc])
-                                    {
-                                        notificationManager.NotificationMessage(NotificationManager.EnumNotification.REST,rc);
-                                        notificationManager.isUseRestMessage[rc] = true;
-                                    }
-
-                                }*/
-
                 // GUI 카운트
                 nowGUIObject[(int)IS.interactiveObjectType]--;
                 if (nowGUIObject[(int)IS.interactiveObjectType] < 0) {
@@ -220,7 +201,7 @@ public class ObjectManager : MonoBehaviour {
 
     public void CalcObjectMag()
     {
-        int TotalHeightObjectMount = 0;
+        float TotalHeightObjectMount = 0;
 
         for (int i = 0; i < MAX_OBJECT_TYPE; i++)
         {
@@ -228,10 +209,10 @@ public class ObjectManager : MonoBehaviour {
         }
 
 
-        float Mag = GetPhotonManager().MaxCatScore / TotalHeightObjectMount;        // 배율 구하기
+        float Mag;
         if (TotalHeightObjectMount == 0)
         {
-            Debug.Log(" 총 가중치 0임. 확인 바람. ");
+            
             Mag = 0;
         }
         else { Mag = GetPhotonManager().MaxCatScore / TotalHeightObjectMount; }
@@ -248,8 +229,6 @@ public class ObjectManager : MonoBehaviour {
                 IS.InterObjectMag = Mag;
             }
         }
-
-        Debug.Log(" 배율 :" + Mag);
 
     }
 

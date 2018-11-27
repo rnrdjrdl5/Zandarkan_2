@@ -19,6 +19,13 @@ public class UIEffect{
     public void EffectEvent()
     {
 
+
+        if (listUIEffectNode.Count == 0)
+        {
+            UIManager.GetInstance().UpdateEvent -= EffectEvent;
+            return;
+        }
+
         if (!listUIEffectNode[0].NodeUpdate())
         {
 
