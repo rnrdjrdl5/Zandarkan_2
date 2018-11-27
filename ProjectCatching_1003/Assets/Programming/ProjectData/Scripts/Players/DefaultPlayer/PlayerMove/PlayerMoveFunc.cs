@@ -772,10 +772,10 @@ public partial class PlayerMove
 
 
         if (Physics.SphereCast(gameObject.transform.position + Vector3.up * characterController.radius,
-    characterController.radius,
-    Vector3.down,
-    out hit,
-    JumpHeight))
+            characterController.radius,
+             Vector3.down,
+               out hit,
+               JumpHeight))
         {
 
             Debug.DrawRay(gameObject.transform.position, hit.distance * Vector3.down, Color.green);
