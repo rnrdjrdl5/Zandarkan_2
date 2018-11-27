@@ -166,7 +166,7 @@ public class UIEffectNode {
     }
 
 
-private bool StandardMoveEffect()
+    private bool StandardMoveEffect()
     {
         NowTime += Time.deltaTime;
 
@@ -174,8 +174,15 @@ private bool StandardMoveEffect()
 
         float persentTime = CalcTimePersent();
 
+
+        bool returnType = true;
         if (persentTime >= 1)
         {
+<<<<<<< HEAD
+            NowPosition = LastPosition;
+            //return false;
+            returnType = false;
+=======
             NowPosition = Vector2.Lerp(FirstPosition, LastPosition, 1);
 
             TargetObject.transform.localPosition =
@@ -183,16 +190,20 @@ private bool StandardMoveEffect()
 
 
             return false;
+>>>>>>> 3c8fc8f0f27cc2d4a6ce5751427646964a0a6f9d
         }
 
-
-        NowPosition = Vector2.Lerp(FirstPosition, LastPosition, persentTime);
+        else
+        {
+            NowPosition = Vector2.Lerp(FirstPosition, LastPosition, persentTime);
+            returnType = true;
+        }
 
 
         TargetObject.transform.localPosition =
             new Vector3(NowPosition.x, NowPosition.y, 0);
 
-        return true;
+        return returnType;
 
     }
 

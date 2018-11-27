@@ -220,7 +220,7 @@ public class ObjectManager : MonoBehaviour {
 
     public void CalcObjectMag()
     {
-        int TotalHeightObjectMount = 0;
+        float TotalHeightObjectMount = 0;
 
         for (int i = 0; i < MAX_OBJECT_TYPE; i++)
         {
@@ -228,7 +228,7 @@ public class ObjectManager : MonoBehaviour {
         }
 
 
-        float Mag = GetPhotonManager().MaxCatScore / TotalHeightObjectMount;        // 배율 구하기
+        float Mag;
         if (TotalHeightObjectMount == 0)
         {
             Debug.Log(" 총 가중치 0임. 확인 바람. ");
@@ -250,6 +250,9 @@ public class ObjectManager : MonoBehaviour {
         }
 
         Debug.Log(" 배율 :" + Mag);
+        Debug.Log(" 계산한 원래스코어 : " + TotalHeightObjectMount * Mag);
+        Debug.Log(" 순수 원래스코어 : " + GetPhotonManager().MaxCatScore);
+        Debug.Log(" 총 가중치 :" + TotalHeightObjectMount);
 
     }
 
