@@ -278,7 +278,7 @@ public class UIManager : Photon.PunBehaviour {
 
 
         // 하위 스크립트의 이벤트들을 실행
-        if(UpdateEvent!= null) UpdateEvent();
+        UpdateEvent();
 
         //UI 키입력 처리
         if (Input.GetKeyDown(KeyCode.Tab))

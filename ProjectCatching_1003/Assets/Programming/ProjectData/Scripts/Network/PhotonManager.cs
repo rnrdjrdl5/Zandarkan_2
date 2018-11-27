@@ -579,9 +579,8 @@ public partial class PhotonManager : Photon.PunBehaviour , IPunObservable
 
             if (AllPlayers[i].GetPhotonView().ownerId == otherPlayer.ID)
             {
-                Destroy(AllPlayers[i]);
                 AllPlayers.Remove(AllPlayers[i]);
-                
+                Destroy(AllPlayers[i]);
                 
             }
 
